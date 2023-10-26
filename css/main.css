@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer compoonents {
+    .container {
+        @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-secondary ;
+    }
+    .sub-container {
+        @apply flex flex-row items-center justify-between py-5;
+    }
+    .header-title-group {
+        @apply flex flex-col items-start border-2 border-secondary;
+    }
+    .header-title {
+        @apply text-4xl font-bold uppercase py-5;
+    }
+    .header-subtitle {
+        @apply text-2xl font-bold italic py-5;
+    }
+    .header-description {
+        @apply text-base leading-8 max-w-5xl py-5;
+    }
+    .nav-menu {
+        @apply flex justify-start py-5 space-x-5;
+    }
+    .main-nav-link {
+        @apply uppercase my-5 mr-3 px-3 py-1 hover:bg-tertiary bg-accent;
+    }
+    .footer-info {
+        @apply flex items-stretch justify-between py-5;
+    }
+
+    .post-container {
+        @apply max-w-5xl
+    }
+    .sidebar {
+        @apply bg-tertiary px-5 mx-5
+    }
+
+
+    .article-meta {
+        @apply mb-3 font-bold
+    }
+    .article-inner {
+        @apply bg-tertiary my-5 py-5 px-5
+    }
+    .article-header {
+        @apply uppercase bg-accent-light hover:bg-primary hover:underline py-1 mb-5 text-center text-2xl font-bold
+    }
+    .article-footer {
+        @apply flex items-center bg-primary py-1 my-5 px-5
+    }
+    .article-share-link {
+        @apply capitalize my-5 px-3 py-1 hover:bg-tertiary bg-accent
+    }
+    .post-tag {
+        @apply px-5
+    }
+    .article-tag-list {
+        @apply flex mx-5 px-5 space-x-3
+    }
+    .article-tag-list-item {
+        @apply hover:underline
+    }
+
+
+    .widget-wrap {
+        @apply py-5 my-5
+    }
+    .widget-title {
+        @apply bg-primary uppercase text-xl text-center px-5 py-1
+    }
+    .widget {
+        @apply pt-2 pb-5 my-5
+    }
+    .tag-list-item {
+        @apply hover:underline
+    }
+    .archive-list-item {
+        @apply hover:underline
+    }
+    .recent-post-list-item {
+        @apply hover:underline
+    }
+}
