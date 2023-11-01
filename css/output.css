@@ -584,6 +584,7 @@ video {
     --tw-bg-opacity: 1;
     background-color: rgb(18 18 18 / var(--tw-bg-opacity));
     font-family: Poppins, sans-serif;
+    font-weight: 300;
   }
 
   .container {
@@ -632,7 +633,7 @@ video {
     padding-bottom: 1.25rem;
     font-size: 2.25rem;
     line-height: 2.5rem;
-    font-weight: 700;
+    font-weight: 600;
     text-transform: uppercase;
   }
 
@@ -641,7 +642,7 @@ video {
     padding-bottom: 1.25rem;
     font-size: 1.5rem;
     line-height: 2rem;
-    font-weight: 600;
+    font-weight: 500;
     font-style: italic;
   }
 
@@ -711,7 +712,6 @@ video {
 
   .article-meta {
     margin-bottom: 0.75rem;
-    font-weight: 700;
   }
 
   .article-inner {
@@ -732,7 +732,7 @@ video {
     text-align: center;
     font-size: 1.5rem;
     line-height: 2rem;
-    font-weight: 600;
+    font-weight: 500;
     text-transform: capitalize;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;

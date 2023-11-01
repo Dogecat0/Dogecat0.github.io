@@ -5,7 +5,7 @@
 @layer compoonents {
     /* Global */
     .body {
-        @apply bg-primary font-pop;
+        @apply bg-primary font-pop font-light;
     }
     .container {
         @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-secondary ;
@@ -17,10 +17,10 @@
         @apply flex flex-col items-start;
     }
     .header-title {
-        @apply text-4xl font-bold uppercase py-5;
+        @apply text-4xl font-semibold uppercase py-5;
     }
     .header-subtitle {
-        @apply text-2xl font-semibold italic py-5;
+        @apply text-2xl font-medium italic py-5;
     }
     .header-description {
         @apply text-base leading-8 max-w-5xl py-5;
@@ -44,13 +44,13 @@
 
     /* Post */
     .article-meta {
-        @apply mb-3 font-bold
+        @apply mb-3
     }
     .article-inner {
         @apply bg-tertiary my-5 py-5 px-5
     }
     .article-header {
-        @apply capitalize mb-2 text-center text-2xl font-semibold bg-accent-light transition ease-in-out delay-150 hover:bg-opacity-70 duration-300
+        @apply capitalize mb-2 text-center text-2xl font-medium bg-accent-light transition ease-in-out delay-150 hover:bg-opacity-70 duration-300
     }
     .article-entry {
         @apply pb-5
