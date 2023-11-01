@@ -38,7 +38,7 @@
     e.stopPropagation();
 
     var $this = $(this),
-      url = $this.attr('data-url');
+      url = $this.attr('data-url'),
       encodedUrl = encodeURIComponent(url),
       id = 'article-share-box-' + $this.attr('data-id'),
       title = $this.attr('data-title'),
