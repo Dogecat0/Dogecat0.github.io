@@ -42,6 +42,17 @@
         @apply bg-tertiary px-5 mx-5
     }
 
+    /* Search */
+    .site-search {
+        @apply text-primary
+    }
+    .search-result-list {
+        @apply flex flex-col bg-secondary p-5 m-5 absolute z-50
+    }
+    .search-result-title{
+        @apply font-medium
+    }
+
     /* Post */
     .article-meta {
         @apply mb-3

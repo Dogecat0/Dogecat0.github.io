@@ -73,13 +73,14 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
           <a class="main-nav-link" href="/archives">Archives</a>
         
       </nav>
-      <div id="site_search">
-        <div id="form-group">
-        <input id="local-search-input" type="text" name="q" placeholder="Search" class="text-primary st-search-input st-default-search-input">
-        </div>
-        <div id="local-search-result">
-        </div>
-      </div>
+      
+    <div id="site_search" class="site-search">
+     <div class="form-group" class="site-search-input">
+      <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+     </div>  
+    <div id="local-search-result" class="local-search-result"></div>
+    </div>
+  
     </div>
   </div>
 </header>
@@ -249,8 +250,41 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <script src="/js/script.js"></script>
 
 
+<script src="/js/search.js"></script>
 
 
+
+
+
+
+
+
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<!-- 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+ -->
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+<!-- syntax highlighting -->
 
   </div>
 </body>

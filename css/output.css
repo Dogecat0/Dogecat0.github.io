@@ -568,11 +568,6 @@ video {
   }
 }
 
-.text-primary {
-  --tw-text-opacity: 1;
-  color: rgb(18 18 18 / var(--tw-text-opacity));
-}
-
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -706,6 +701,28 @@ video {
     background-color: rgb(16 38 32 / var(--tw-bg-opacity));
     padding-left: 1.25rem;
     padding-right: 1.25rem;
+  }
+
+  /* Search */
+
+  .site-search {
+    --tw-text-opacity: 1;
+    color: rgb(18 18 18 / var(--tw-text-opacity));
+  }
+
+  .search-result-list {
+    position: absolute;
+    z-index: 50;
+    margin: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    --tw-bg-opacity: 1;
+    background-color: rgb(250 243 224 / var(--tw-bg-opacity));
+    padding: 1.25rem;
+  }
+
+  .search-result-title {
+    font-weight: 500;
   }
 
   /* Post */
