@@ -779,6 +779,12 @@ video {
     padding-right: 1.25rem;
   }
 
+  .article-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
   /* Post share */
 
   .article-share-link {
