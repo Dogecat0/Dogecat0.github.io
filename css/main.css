@@ -2,7 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer compoonents {
+@layer base {
+    h2 {
+        @apply text-lg font-normal py-3
+    }
+    p {
+        @apply leading-8 my-3
+    }
+    p a {
+        @apply text-accent hover:opacity-70 hover:underline
+    }
+    li {
+        @apply leading-6 my-3 list-disc list-inside
+    }
+
+}
+
+@layer search {
+    /* Search */
+    .site-search {
+        @apply text-primary
+    }
+    .search-result-list {
+        @apply flex flex-col bg-secondary p-5 m-5 absolute z-50
+    }
+    .search-result-title{
+        @apply font-medium capitalize
+    }
+}
+
+@layer components {
     /* Global */
     .body {
         @apply bg-primary font-pop font-light;
@@ -34,7 +63,6 @@
     .footer-info {
         @apply flex items-stretch justify-between py-5;
     }
-
     .post-container {
         @apply max-w-5xl
     }
@@ -42,16 +70,7 @@
         @apply bg-tertiary px-5 mx-5
     }
 
-    /* Search */
-    .site-search {
-        @apply text-primary
-    }
-    .search-result-list {
-        @apply flex flex-col bg-secondary p-5 m-5 absolute z-50
-    }
-    .search-result-title{
-        @apply font-medium capitalize
-    }
+
 
     /* Post */
     .article-meta {
@@ -72,6 +91,7 @@
     .article-nav {
         @apply flex items-center justify-between
     }
+
 
     /* Post share */
     .article-share-link {
@@ -101,9 +121,8 @@
         @apply flex space-x-3
     }
     .article-tag-list-item {
-        @apply hover:underline
+        @apply hover:underline list-none
     }
-
 
     .widget-wrap {
         @apply py-5 my-5
@@ -113,14 +132,5 @@
     }
     .widget {
         @apply pt-2 pb-5 my-5
-    }
-    .tag-list-item {
-        @apply hover:underline
-    }
-    .archive-list-item {
-        @apply hover:underline
-    }
-    .recent-post-list-item {
-        @apply hover:underline
     }
 }
