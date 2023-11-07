@@ -37,7 +37,7 @@
         @apply bg-primary font-pop font-light;
     }
     .container {
-        @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-secondary ;
+        @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-secondary ;
     }
     .sub-container {
         @apply flex flex-row items-center justify-between py-5;
