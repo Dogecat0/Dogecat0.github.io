@@ -868,22 +868,6 @@ li {
 @layer share {
   /* Post share */
 
-  .article-share-link {
-    margin-top: 1.25rem;
-    margin-bottom: 1.25rem;
-    --tw-bg-opacity: 1;
-    background-color: rgb(204 55 0 / var(--tw-bg-opacity));
-    padding-left: 0.75rem;
-    padding-right: 0.75rem;
-    padding-top: 0.25rem;
-    padding-bottom: 0.25rem;
-    text-transform: capitalize;
-  }
-
-  .article-share-link:hover {
-    --tw-bg-opacity: 0.6;
-  }
-
   .article-share-box {
     visibility: hidden;
     position: absolute;

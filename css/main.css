@@ -33,9 +33,6 @@
 
 @layer share {
     /* Post share */
-    .article-share-link {
-        @apply capitalize my-5 px-3 py-1 focus:bg-opacity-60 bg-accent
-    }
     .article-share-box {
         @apply absolute bg-accent-light p-4 shadow-lg invisible;
     }
