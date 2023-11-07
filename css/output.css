@@ -450,7 +450,7 @@ p {
 
 p a {
   --tw-text-opacity: 1;
-  color: rgb(204 55 0 / var(--tw-text-opacity));
+  color: rgb(205 138 80 / var(--tw-text-opacity));
 }
 
 p a:hover {
@@ -464,6 +464,16 @@ li {
   list-style-position: inside;
   list-style-type: disc;
   line-height: 1.5rem;
+}
+
+li a {
+  --tw-text-opacity: 1;
+  color: rgb(205 138 80 / var(--tw-text-opacity));
+}
+
+li a:hover {
+  text-decoration-line: underline;
+  opacity: 0.7;
 }
 
 *, ::before, ::after {
