@@ -779,6 +779,7 @@ li a:hover {
 }
 
 .article-entry {
+  padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 }
 
@@ -800,6 +801,10 @@ li a:hover {
 }
 
 /* Post tag */
+
+.article-date {
+  padding-top: 1.25rem;
+}
 
 .article-tag-list {
   display: flex;

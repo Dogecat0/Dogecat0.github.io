@@ -105,7 +105,7 @@
         @apply capitalize mb-2 text-center text-2xl font-medium bg-accent-light transition ease-in-out delay-150 hover:bg-opacity-70 duration-300
     }
     .article-entry {
-        @apply pb-5
+        @apply py-5
     }
     .article-footer {
         @apply flex items-center justify-between bg-primary mt-2 px-5
@@ -115,6 +115,9 @@
     }
 
     /* Post tag */
+    .article-date {
+        @apply pt-5
+    }
     .post-tag {
         @apply px-5
     }
