@@ -13,7 +13,7 @@
         @apply text-accent-light hover:opacity-70 hover:underline
     }
     li {
-        @apply leading-8 my-3 list-disc list-inside
+        @apply leading-6 my-3 list-disc list-inside
     }
     li a {
         @apply text-accent-light hover:opacity-70 hover:underline
@@ -105,7 +105,7 @@
         @apply capitalize mb-2 text-center text-2xl font-medium bg-accent-light transition ease-in-out delay-150 hover:bg-opacity-70 duration-300
     }
     .article-entry {
-        @apply py-5
+        @apply py-5 leading-8
     }
     .article-footer {
         @apply flex items-center justify-between bg-primary mt-2 px-5
