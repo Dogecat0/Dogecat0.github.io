@@ -15,7 +15,7 @@
 <meta property="og:description" content="This post will cover React and related concepts like Vite, Components, JSX, etc which comprise the part1-a of the course...">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-11-08T23:05:34.000Z">
-<meta property="article:modified_time" content="2023-11-09T12:41:14.280Z">
+<meta property="article:modified_time" content="2023-11-09T14:12:29.226Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Full Stack">
 <meta property="article:tag" content="JavaScript">
@@ -27,11 +27,11 @@
   
     <link rel="shortcut icon" href="/icons/favicon.ico">
   
-  
+  <!-- 
     
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
 
-  
+   -->
   
 <link rel="stylesheet" href="/css/output.css">
 
@@ -123,39 +123,38 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="Intro"><a title="Intro" class="headerlink" href="#Intro"></a>Intro</h2><p>This post will cover React and related concepts like Vite, Components, JSX, etc which comprise the part1-a of the course together with some of my thoughts and lessons learned.</p>
-<h2 id="New-concepts"><a title="New concepts" class="headerlink" href="#New-concepts"></a>New concepts</h2><ul>
-<li><p>React: React is a JavaScript library for building user interfaces. It allows developers to create reusable UI components and manage the state of their applications efficiently. <a target="_blank" rel="noopener" href="https://react.dev/">More details</a></p>
-</li>
-<li><p>Vite: Vite is a modern frontend build tool that provides a faster and leaner development experience for web projects. It uses native ES modules for serving code instead of bundling during development, which results in significantly faster start times. It supports frameworks like React, Vue, Svelte, and more. <a target="_blank" rel="noopener" href="https://vitejs.dev/">Mode details</a></p>
-</li>
-<li><p>React components: Components are one of the core concepts of React. They are the foundation upon which you build user interfaces. <a target="_blank" rel="noopener" href="https://react.dev/learn/your-first-component">More details</a></p>
-</li>
-<li><p>JSX: JSX is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file. React components use JSX to represent the HTML markup. <a target="_blank" rel="noopener" href="https://react.dev/learn/writing-markup-with-jsx">More details</a><br><br>Main rules of JSX:</p>
+        <h2 id="Intro">Intro</h2>
+<p>This post will cover React and related concepts like Vite, Components, JSX, etc which comprise the part1-a of the course together with some of my thoughts and lessons learned.</p>
+<h2 id="New-concepts">New concepts</h2>
+<ul>
+<li>React: React is a JavaScript library for building user interfaces. It allows developers to create reusable UI components and manage the state of their applications efficiently. <a target="_blank" rel="noopener" href="https://react.dev/">More details</a></li>
+<li>Vite: Vite is a modern frontend build tool that provides a faster and leaner development experience for web projects. It uses native ES modules for serving code instead of bundling during development, which results in significantly faster start times. It supports frameworks like React, Vue, Svelte, and more. <a target="_blank" rel="noopener" href="https://vitejs.dev/">Mode details</a></li>
+<li>React components: Components are one of the core concepts of React. They are the foundation upon which you build user interfaces. <a target="_blank" rel="noopener" href="https://react.dev/learn/your-first-component">More details</a></li>
+<li>JSX: JSX is a syntax extension for JavaScript that lets you write HTML-like markup inside a JavaScript file. React components use JSX to represent the HTML markup. <a target="_blank" rel="noopener" href="https://react.dev/learn/writing-markup-with-jsx">More details</a><br /><br>
+Main rules of JSX:
 <ul>
 <li>Return a single root element</li>
 <li>Use camelCase for HTML attributes</li>
 <li>Close all tags</li>
 </ul>
 </li>
-<li><p>Props: Props are short for properties. React components use props to communicate with each other. Every parent component can pass some information to its child components by give them props. <a target="_blank" rel="noopener" href="https://react.dev/learn/passing-props-to-a-component">More details</a></p>
-</li>
+<li>Props: Props are short for properties. React components use props to communicate with each other. Every parent component can pass some information to its child components by give them props. <a target="_blank" rel="noopener" href="https://react.dev/learn/passing-props-to-a-component">More details</a></li>
 </ul>
-<h2 id="Lessons-learned"><a title="Lessons learned" class="headerlink" href="#Lessons-learned"></a>Lessons learned</h2><ul>
-<li><p>“Software development is hard. It gets even harder if one is not using all the possible available tools such as the web-console and debug printing with console.log. Professionals use both all the time and there is no single reason why a beginner should not adopt the use of these wonderful helper methods that will make life so much easier.” - <a target="_blank" rel="noopener" href="https://fullstackopen.com/en/part1/introduction_to_react#props-passing-data-to-components">Full Stack Open</a></p>
-</li>
-<li><p>There are two ways to pass props to React components:</p>
-  
-<p>  The first way is to pass the props object to the component function and access the properties of the props object with dot notation.</p>
-  
-<p>  The second way is called destructuring assignment. It is a special syntax for neatly assigning values taken directly from an object to variables.<br><br>  (* Comparative thinking: Think of it as a similar way of passing parameters to a function in Python but using different braces.)</p>
-</li>
+<h2 id="Lessons-learned">Lessons learned</h2>
+<ul>
+<li>“Software development is hard. It gets even harder if one is not using all the possible available tools such as the web-console and debug printing with console.log. Professionals use both all the time and there is no single reason why a beginner should not adopt the use of these wonderful helper methods that will make life so much easier.” - <a target="_blank" rel="noopener" href="https://fullstackopen.com/en/part1/introduction_to_react#props-passing-data-to-components">Full Stack Open</a></li>
+<li>There are two ways to pass props to React components:</li>
 </ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Header</span>(<span class="params">props</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;props.course&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The first way is to pass the props object to the component function and access the properties of the props object with dot notation.</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">Header</span>(<span class="params">&#123; course &#125;</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="language-xml"><span class="tag">&lt;<span class="name">h1</span>&gt;</span>&#123;course&#125;<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The second way is called destructuring assignment. It is a special syntax for neatly assigning values taken directly from an object to variables.<br><br>
+(* Comparative thinking: Think of it as a similar way of passing parameters to a function in Python but using different braces.)</p>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2023/11/08/JavaScript-Full-Stack-Series-02-React.html" data-id="clor6wq5j0003qy69fovl3fy0" data-title="JavaScript Full-Stack Series - 02 - React" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2023/11/08/JavaScript-Full-Stack-Series-02-React.html" data-id="clor9zxdy0003o169ad0fbt7t" data-title="JavaScript Full-Stack Series - 02 - React" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
@@ -315,8 +314,8 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
    </script>
 
 
-<!-- syntax highlighting -->
-
+<!-- syntax highlighting
+ -->
   </div>
 </body>
 </html>
