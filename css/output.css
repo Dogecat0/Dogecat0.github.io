@@ -781,6 +781,7 @@ li a:hover {
 .article-entry {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
+  line-height: 2rem;
 }
 
 .article-footer {

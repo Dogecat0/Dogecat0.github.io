@@ -13,7 +13,7 @@
         @apply text-accent-light hover:opacity-70 hover:underline
     }
     li {
-        @apply leading-6 my-3 list-disc list-inside
+        @apply leading-8 my-3 list-disc list-inside
     }
     li a {
         @apply text-accent-light hover:opacity-70 hover:underline
