@@ -15,22 +15,22 @@
 <!-- End Google Analytics -->
 
   
-  <title>Inomad-Dairy-00-SES | Zhicheng&#39;s Blog</title>
+  <title>JavaScript-Full-Stack-Series-02-Comoplex_State_and_Debugging | Zhicheng&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
-  <meta name="description" content="After almost a week waiting for the SES service to be approved, Inomad finally got the approval email from AWS...">
+  <meta name="description" content="This blog covers some more complex React state related knowledge, demonstrating some ways to debug React apps...">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Inomad-Dairy-00-SES">
-<meta property="og:url" content="https://dogecat0.github.io/2023/11/10/Inomad-Dairy-00-SES.html">
+<meta property="og:title" content="JavaScript-Full-Stack-Series-02-Comoplex_State_and_Debugging">
+<meta property="og:url" content="https://dogecat0.github.io/2023/11/12/JavaScript-Full-Stack-Series-02-Comoplex-State-and-Debugging.html">
 <meta property="og:site_name" content="Zhicheng&#39;s Blog">
-<meta property="og:description" content="After almost a week waiting for the SES service to be approved, Inomad finally got the approval email from AWS...">
+<meta property="og:description" content="This blog covers some more complex React state related knowledge, demonstrating some ways to debug React apps...">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-11-10T23:15:57.000Z">
-<meta property="article:modified_time" content="2023-11-10T23:45:22.838Z">
+<meta property="article:published_time" content="2023-11-12T22:32:56.000Z">
+<meta property="article:modified_time" content="2023-11-12T23:36:31.852Z">
 <meta property="article:author" content="Zhicheng Wang">
-<meta property="article:tag" content="Inomad">
-<meta property="article:tag" content="AWS">
-<meta property="article:tag" content="SES">
+<meta property="article:tag" content="Full Stack">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="React">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
@@ -110,10 +110,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 </header>
 
       <div class="sub-container outer">
-        <section class="post-container" id="main"><article id="post-Inomad-Dairy-00-SES" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section class="post-container" id="main"><article id="post-JavaScript-Full-Stack-Series-02-Comoplex-State-and-Debugging" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <p class="article-date">
-  <time class="dt-published" datetime="2023-11-10T23:15:57.000Z" itemprop="datePublished">2023-11-10</time>
+  <time class="dt-published" datetime="2023-11-12T22:32:56.000Z" itemprop="datePublished">2023-11-12</time>
 </p>
     
   </div>
@@ -125,7 +125,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Inomad-Dairy-00-SES
+      JavaScript-Full-Stack-Series-02-Comoplex_State_and_Debugging
     </h1>
   
 
@@ -133,15 +133,48 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="🥳🎊">🥳🎊</h2>
-<p>I have been thinking to start a series about the e-commerce platform <a target="_blank" rel="noopener" href="https://github.com/Dogecat0/inomad-demo">Inomad</a> for quite a while now. However, I was not sure about the content of the series and how to structure it. The thinking is till going on but I’ve decided to start it anyway. So, here we go, let’s begin with a small celebration today.</p>
-<p>After almost a week waiting for the SES service to be approved, Inomad finally got the approval email from AWS. Thanks to the <a target="_blank" rel="noopener" href="https://github.com/django-ses/django-ses">django-ses</a> package, I was able to set up the email service quite easily with just set <code>EMAIL_BACKEND = django_ses.SESBackend</code> in the <code>settings.py </code>file.</p>
-<p>TBC…</p>
+        <h2 id="🔎-Intro">🔎 Intro</h2>
+<p>This blog covers some more complex React state related knowledge, as well as some ways to debug React apps. This part of the course covers quite a bit of new concpets and details, which requires more time to digest and practice.</p>
+<h2 id="💡-New-concepts">💡 New concepts</h2>
+<ul>
+<li>Batching:<br>
+React batches state updates to improve performance. This means that multiple setState() calls in a single component are batched together by React into a single update for the DOM. React processes state updates after event handlers have finished running. <a target="_blank" rel="noopener" href="https://react.dev/learn/queueing-a-series-of-state-updates">More details</a></li>
+<li>Updater function:<br>
+The updater function is a function that is passed to the setState() method, e.g. you can use <code>setNumber(n =&gt; n + 1)</code> to update soem state multiple times in one event. <a target="_blank" rel="noopener" href="https://react.dev/learn/queueing-a-series-of-state-updates">More details</a></li>
+<li>Rules of hooks:<br>
+Hooks are JavaScript functions, but they impose two additional rules:<br>
+Only call Hooks at the top level. Don’t call Hooks inside loops, conditions, or nested functions.<br>
+Only call Hooks from React function components. Don’t call Hooks from regular JavaScript functions.</li>
+</ul>
+<p>Examples:</p>
+<pre class="line-numbers language-jsx" data-language="jsx"><code class="language-jsx"><span class="token keyword">const</span> <span class="token function-variable function">App</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// these are ok</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>age<span class="token punctuation">,</span> setAge<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
+  <span class="token keyword">const</span> <span class="token punctuation">[</span>name<span class="token punctuation">,</span> setName<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">'Juha Tauriainen'</span><span class="token punctuation">)</span>
 
+  <span class="token keyword">if</span> <span class="token punctuation">(</span> age <span class="token operator">></span> <span class="token number">10</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// this does not work!</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>foobar<span class="token punctuation">,</span> setFoobar<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">for</span> <span class="token punctuation">(</span> <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> age<span class="token punctuation">;</span> i<span class="token operator">++</span> <span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// also this is not good</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>rightWay<span class="token punctuation">,</span> setRightWay<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token boolean">false</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">const</span> <span class="token function-variable function">notGood</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// and this is also illegal</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>x<span class="token punctuation">,</span> setX<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1000</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token comment">//...</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2023/11/10/Inomad-Dairy-00-SES.html" data-id="clow4786x0000dz690xcx9y59" data-title="Inomad-Dairy-00-SES" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2023/11/12/JavaScript-Full-Stack-Series-02-Comoplex-State-and-Debugging.html" data-id="clow478730004dz69dwqoc2dc" data-title="JavaScript-Full-Stack-Series-02-Comoplex_State_and_Debugging" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
@@ -150,11 +183,11 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       
   <ul class="article-tag-list">
     
-      <li class="article-tag-list-item"><a href="/tags/Inomad/">#Inomad</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Full-Stack/">#Full Stack</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/AWS/">#AWS</a></li>
+      <li class="article-tag-list-item"><a href="/tags/JavaScript/">#JavaScript</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/SES/">#SES</a></li>
+      <li class="article-tag-list-item"><a href="/tags/React/">#React</a></li>
     
   </ul>
 
@@ -164,19 +197,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
 <nav id="article-nav" class="article-nav">
   
-    <a href="/2023/11/12/JavaScript-Full-Stack-Series-02-State-and-Event-Handlers.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          JavaScript-Full-Stack-Series-02-State_and_Event_Handlers
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/11/09/JavaScript-Full-Stack-Series-02-JavaScript.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2023/11/12/JavaScript-Full-Stack-Series-02-State-and-Event-Handlers.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JavaScript-Full-Stack-Series-02-JavaScript</div>
+      <div class="article-nav-title">JavaScript-Full-Stack-Series-02-State_and_Event_Handlers</div>
     </a>
   
 </nav>
