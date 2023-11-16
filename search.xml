@@ -8,7 +8,7 @@
       <link href="/2023/11/15/JavaScript-Full-Stack-Series-03-Rendering-Collections.html"/>
       <url>/2023/11/15/JavaScript-Full-Stack-Series-03-Rendering-Collections.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<h2 id="🔎-Intro">🔎 Intro</h2><p>This blog covers how to render collections in React, how to use the <code>map</code> method to iterate over an array of objects and more related concepts.</p>]]></content>
       
       
       
@@ -16,9 +16,9 @@
             
             <tag> JavaScript </tag>
             
-            <tag> Full-Stack </tag>
+            <tag> React </tag>
             
-            <tag> Rendering </tag>
+            <tag> Full-Stack </tag>
             
             <tag> Collections </tag>
             
