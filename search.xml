@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>JavaScript-Full-Stack-Series-03-Rendering_Collections</title>
-      <link href="/2023/11/15/JavaScript-Full-Stack-Series-03-Rendering-Collections.html"/>
-      <url>/2023/11/15/JavaScript-Full-Stack-Series-03-Rendering-Collections.html</url>
+      <title>JavaScript-Full-Stack-Series-03-Rendering_Collections-and-Modules</title>
+      <link href="/2023/11/28/JavaScript-Full-Stack-Series-03-Rendering-Collections-and-Modules.html"/>
+      <url>/2023/11/28/JavaScript-Full-Stack-Series-03-Rendering-Collections-and-Modules.html</url>
       
-        <content type="html"><![CDATA[<h2 id="🔎-Intro">🔎 Intro</h2><p>This blog covers how to render collections in React, how to use the <code>map</code> method to iterate over an array of objects and more related concepts.</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="🔎-Intro">🔎 Intro</h2><p>This blog covers how to render collections in React, how to use the <code>map</code> method to iterate over an array of objects and more related concepts.</p><h2 id="💡-New-concepts">💡 New concepts</h2><ul><li>Map method:<br>The map() method creates a new array populated with the results of calling a provided function on every element in the calling array. <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">More details</a></li><li>Refacoring Modules:<br>Refactoring is the process of restructuring existing computer code—changing the factoring—without changing its external behavior.</li></ul><h2 id="👨‍💻-Reviewed-concepts">👨‍💻 Reviewed concepts</h2><ul><li>[Destructuring assignment] (<a href="https://dogecat0.github.io/2023/11/09/JavaScript-Full-Stack-Series-02-JavaScript.html">https://dogecat0.github.io/2023/11/09/JavaScript-Full-Stack-Series-02-JavaScript.html</a>)</li><li>[Event Handler] (<a href="https://dogecat0.github.io/2023/11/12/JavaScript-Full-Stack-Series-02-State-and-Event-Handlers.html">https://dogecat0.github.io/2023/11/12/JavaScript-Full-Stack-Series-02-State-and-Event-Handlers.html</a>)</li></ul><h2 id="📝-Course-exercise">📝 Course exercise</h2><ol><li>Updates to part1 exercise courseinfo with refactorred modules and trying out JavaScript arrays methods like <code>map</code>. <a href="https://github.com/Dogecat0/fullstack_open/tree/main/part2/courseinfo">Link to the repo</a></li></ol>]]></content>
       
       
       
