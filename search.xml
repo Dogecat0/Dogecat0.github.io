@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>JavaScript-Full-Stack-Series-03-Forms</title>
+      <link href="/2023/11/29/JavaScript-Full-Stack-Series-03-Forms.html"/>
+      <url>/2023/11/29/JavaScript-Full-Stack-Series-03-Forms.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="🔎-Intro">🔎 Intro</h2><p>This blog covers how to handle forms in React, how to use the <code>useState</code> hook to handle the state of the form and more related concepts.</p><h2 id="💡-New-concepts">💡 New concepts</h2><ul><li>useState hook:<br>The <code>useState</code> hook is a function that takes in an initial value and returns an array of two items: the current state and a function that updates it. <a href="https://react.dev/reference/react/useState">More details</a></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> React </tag>
+            
+            <tag> Forms </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript-Full-Stack-Series-03-Rendering_Collections-and-Modules</title>
       <link href="/2023/11/28/JavaScript-Full-Stack-Series-03-Rendering-Collections-and-Modules.html"/>
       <url>/2023/11/28/JavaScript-Full-Stack-Series-03-Rendering-Collections-and-Modules.html</url>
