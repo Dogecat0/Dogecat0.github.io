@@ -4,6 +4,29 @@
   
     
     <entry>
+      <title>JavaScript-Full-Stack-Series-03-Altering-Data-from-Server</title>
+      <link href="/2023/12/03/JavaScript-Full-Stack-Series/03-Altering-Data-from-Server.html"/>
+      <url>/2023/12/03/JavaScript-Full-Stack-Series/03-Altering-Data-from-Server.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="🔎-Intro">🔎 Intro</h2><p>This blog will touch the base of sosme conventions used by jason-server and REST APIS in general, taking a look at the URLs and HTTP request types, in REST.</p><span id="more"></span>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> React </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript-Full-Stack-Series-03-Get-Data-from-Server</title>
       <link href="/2023/11/30/JavaScript-Full-Stack-Series/03-Get-Data-from-Server.html"/>
       <url>/2023/11/30/JavaScript-Full-Stack-Series/03-Get-Data-from-Server.html</url>
@@ -19,6 +42,8 @@
             <tag> JavaScript </tag>
             
             <tag> React </tag>
+            
+            <tag> axios </tag>
             
         </tags>
       
