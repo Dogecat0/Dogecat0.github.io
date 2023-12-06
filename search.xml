@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>JavaScript-Full-Stack-Series-04-Nodejs-and-Express</title>
+      <link href="/2023/12/06/JavaScript-Full-Stack-Series/04-Nodejs-and-Express.html"/>
+      <url>/2023/12/06/JavaScript-Full-Stack-Series/04-Nodejs-and-Express.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="🔎-Intro">🔎 Intro</h2><p>Series of 04 blogs will cover the backend part of the full stack JavaScript development, towards implementing functionality on the server side of the stack. This blog covers the basics of Nodejs and Express, and how to use them to build a simple server.</p><span id="more"></span>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
+            
+            <tag> Nodejs </tag>
+            
+            <tag> Express </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JavaScript-Full-Stack-Series-03-Adding-Styles</title>
       <link href="/2023/12/04/JavaScript-Full-Stack-Series/03-Adding-Styles.html"/>
       <url>/2023/12/04/JavaScript-Full-Stack-Series/03-Adding-Styles.html</url>
