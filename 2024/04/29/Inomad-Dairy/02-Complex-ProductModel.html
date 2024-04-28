@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HENBHMXMT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0HENBHMXMT');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>02-Complex_ProductModel | Zhicheng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
+  <meta name="description" content="In this blog post, I’ll walk through how to model complex relationships between products using Django, specifically focusing on a scenario where products can be composed of other products, and vice ve">
+<meta property="og:type" content="article">
+<meta property="og:title" content="02-Complex_ProductModel">
+<meta property="og:url" content="https://dogecat0.github.io/2024/04/29/Inomad-Dairy/02-Complex-ProductModel.html">
+<meta property="og:site_name" content="Zhicheng&#39;s Blog">
+<meta property="og:description" content="In this blog post, I’ll walk through how to model complex relationships between products using Django, specifically focusing on a scenario where products can be composed of other products, and vice ve">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-04-28T23:09:44.000Z">
+<meta property="article:modified_time" content="2024-04-28T23:17:08.212Z">
+<meta property="article:author" content="Zhicheng Wang">
+<meta property="article:tag" content="Inomad">
+<meta property="article:tag" content="Django">
+<meta property="article:tag" content="ProductModel">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/output.css">
+
+  
+    <link rel="stylesheet" href="/css/prism.css">
+    <script src="/js/prism.js"></script>
+  
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="body">
+  <div id="container" class="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="header-title-group inner">
+      <p id="logo-wrap" class="header-title">
+        Zhicheng&#39;s Blog
+        <!-- <a href="/" id="logo">Zhicheng&#39;s Blog</a> -->
+      </p>
+      
+        <p id="subtitle-wrap" class="header-subtitle">
+          A Chronicles of a Self-taught Programmer: Learn to Debug Life
+          <!-- <a href="/" id="subtitle">A Chronicles of a Self-taught Programmer: Learn to Debug Life</a> -->
+        </p>
+      
+      
+        <p id="description-wrap" class="header-description">
+          Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity (and ChatGPT&#39;s endless patience), bolstered by my humble attitude of learning (with millions of searches on Google),
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+
+          <!-- <a href="/" id="description">Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity (and ChatGPT&#39;s endless patience), bolstered by my humble attitude of learning (with millions of searches on Google),
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+</a> -->
+        </p>
+      
+    </div>
+    <div id="header-inner" class="nav-menu inner">
+      <nav id="main-nav" class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      
+    <div id="site_search" class="site-search">
+     <div class="form-group" class="site-search-input">
+      <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+     </div>  
+    <div id="local-search-result" class="local-search-result"></div>
+    </div>
+  
+    </div>
+  </div>
+</header>
+
+      <div class="sub-container outer">
+        <section class="post-container" id="main"><article id="post-Inomad-Dairy/02-Complex-ProductModel" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <p class="article-date">
+  <time class="dt-published" datetime="2024-04-28T23:09:44.000Z" itemprop="datePublished">2024-04-29</time>
+</p>
+    
+  </div>
+  <hr>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      02-Complex_ProductModel
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>In this blog post, I’ll walk through how to model complex relationships between products using Django, specifically focusing on a scenario where products can be composed of other products, and vice versa.</p>
+<span id="more"></span>
+<p>This is a common requirement in industries like manufacturing, where products are often made up of various parts, each potentially being a product in itself.</p>
+<h2 id="Modeling-the-Product-Relationships">Modeling the Product Relationships</h2>
+<p>We start by defining our Product model, which needs to handle relationships where a product can have components and also be a component of other products. Here’s how we can efficiently structure this in Django:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>db <span class="token keyword">import</span> models
+
+<span class="token keyword">class</span> <span class="token class-name">Product</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> models<span class="token punctuation">.</span>CharField<span class="token punctuation">(</span>max_length<span class="token operator">=</span><span class="token number">255</span><span class="token punctuation">)</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ProductComponent</span><span class="token punctuation">(</span>models<span class="token punctuation">.</span>Model<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    parent <span class="token operator">=</span> models<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span>Product<span class="token punctuation">,</span> on_delete<span class="token operator">=</span>models<span class="token punctuation">.</span>CASCADE<span class="token punctuation">,</span> related_name<span class="token operator">=</span><span class="token string">'components'</span><span class="token punctuation">)</span>
+    part <span class="token operator">=</span> models<span class="token punctuation">.</span>ForeignKey<span class="token punctuation">(</span>Product<span class="token punctuation">,</span> on_delete<span class="token operator">=</span>models<span class="token punctuation">.</span>CASCADE<span class="token punctuation">,</span> related_name<span class="token operator">=</span><span class="token string">'part_of'</span><span class="token punctuation">)</span>
+    quantity <span class="token operator">=</span> models<span class="token punctuation">.</span>IntegerField<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>In this setup, ProductComponent acts as a linking model between Product instances, defining a many-to-many relationship from a product to its components through the foreign keys to Product.</p>
+<h2 id="Admin-Interface-Setup">Admin Interface Setup</h2>
+<p>To manage these relationships effectively in Django’s admin interface, we set up the models to include inlines, allowing administrators to edit product components directly within product entries:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>contrib <span class="token keyword">import</span> admin
+<span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> Product<span class="token punctuation">,</span> ProductComponent
+
+<span class="token keyword">class</span> <span class="token class-name">ProductComponentInline</span><span class="token punctuation">(</span>admin<span class="token punctuation">.</span>TabularInline<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    model <span class="token operator">=</span> ProductComponent
+    extra <span class="token operator">=</span> <span class="token number">1</span>
+
+<span class="token keyword">class</span> <span class="token class-name">ProductAdmin</span><span class="token punctuation">(</span>admin<span class="token punctuation">.</span>ModelAdmin<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    list_display <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token string">'name'</span><span class="token punctuation">,</span><span class="token punctuation">)</span>
+    inlines <span class="token operator">=</span> <span class="token punctuation">[</span>ProductComponentInline<span class="token punctuation">]</span>
+
+admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>Product<span class="token punctuation">,</span> ProductAdmin<span class="token punctuation">)</span>
+admin<span class="token punctuation">.</span>site<span class="token punctuation">.</span>register<span class="token punctuation">(</span>ProductComponent<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>This configuration makes it straightforward to manage the complex hierarchies of products and their parts.</p>
+<h2 id="Form-Handling">Form Handling</h2>
+<p>Handling forms for such a relationship involves using Django’s formsets to manage multiple product components within a single form interface. Here’s how you set up the forms:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django <span class="token keyword">import</span> forms
+<span class="token keyword">from</span> django<span class="token punctuation">.</span>forms <span class="token keyword">import</span> inlineformset_factory
+<span class="token keyword">from</span> <span class="token punctuation">.</span>models <span class="token keyword">import</span> Product<span class="token punctuation">,</span> ProductComponent
+
+<span class="token keyword">class</span> <span class="token class-name">ProductForm</span><span class="token punctuation">(</span>forms<span class="token punctuation">.</span>ModelForm<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">class</span> <span class="token class-name">Meta</span><span class="token punctuation">:</span>
+        model <span class="token operator">=</span> Product
+        fields <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span>
+
+ProductComponentFormSet <span class="token operator">=</span> inlineformset_factory<span class="token punctuation">(</span>
+    parent<span class="token operator">=</span>Product<span class="token punctuation">,</span>
+    model<span class="token operator">=</span>ProductComponent<span class="token punctuation">,</span>
+    fields<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'part'</span><span class="token punctuation">,</span> <span class="token string">'quantity'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    extra<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">,</span>
+    can_delete<span class="token operator">=</span><span class="token boolean">True</span>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>And integrating this into a view:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> django<span class="token punctuation">.</span>shortcuts <span class="token keyword">import</span> render<span class="token punctuation">,</span> redirect
+
+<span class="token keyword">def</span> <span class="token function">manage_product</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> product_id<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">if</span> product_id<span class="token punctuation">:</span>
+        product <span class="token operator">=</span> Product<span class="token punctuation">.</span>objects<span class="token punctuation">.</span>get<span class="token punctuation">(</span>pk<span class="token operator">=</span>product_id<span class="token punctuation">)</span>
+        form <span class="token operator">=</span> ProductForm<span class="token punctuation">(</span>instance<span class="token operator">=</span>product<span class="token punctuation">)</span>
+        formset <span class="token operator">=</span> ProductComponentFormSet<span class="token punctuation">(</span>instance<span class="token operator">=</span>product<span class="token punctuation">)</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        form <span class="token operator">=</span> ProductForm<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        formset <span class="token operator">=</span> ProductComponentFormSet<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> request<span class="token punctuation">.</span>method <span class="token operator">==</span> <span class="token string">'POST'</span><span class="token punctuation">:</span>
+        form <span class="token operator">=</span> ProductForm<span class="token punctuation">(</span>request<span class="token punctuation">.</span>POST<span class="token punctuation">,</span> instance<span class="token operator">=</span>product <span class="token keyword">if</span> product_id <span class="token keyword">else</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+        formset <span class="token operator">=</span> ProductComponentFormSet<span class="token punctuation">(</span>request<span class="token punctuation">.</span>POST<span class="token punctuation">,</span> instance<span class="token operator">=</span>product <span class="token keyword">if</span> product_id <span class="token keyword">else</span> <span class="token boolean">None</span><span class="token punctuation">)</span>
+
+        <span class="token keyword">if</span> form<span class="token punctuation">.</span>is_valid<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">and</span> formset<span class="token punctuation">.</span>is_valid<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            created_product <span class="token operator">=</span> form<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            formset<span class="token punctuation">.</span>instance <span class="token operator">=</span> created_product
+            formset<span class="token punctuation">.</span>save<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token keyword">return</span> redirect<span class="token punctuation">(</span><span class="token string">'product_list'</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> render<span class="token punctuation">(</span>request<span class="token punctuation">,</span> <span class="token string">'product/manage_product.html'</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token string">'form'</span><span class="token punctuation">:</span> form<span class="token punctuation">,</span> <span class="token string">'formset'</span><span class="token punctuation">:</span> formset<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>This product model setup allows for a flexible and scalable way to manage complex product relationships in Django, making it easier to handle intricate product hierarchies and compositions for products like those in the manufacturing industry that require parent/component relationships.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/04/29/Inomad-Dairy/02-Complex-ProductModel.html" data-id="clvk5it5d0003za69b1xeghoi" data-title="02-Complex_ProductModel" class="article-share-link" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+        </svg>
+      </button>
+      
+      
+      
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/Inomad/">#Inomad</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Django/">#Django</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/ProductModel/">#ProductModel</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+  
+    <a href="/2024/04/23/Inomad-Dairy/01-ProductModel.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Inomad-Dairy-01-ProductModel</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside class="sidebar" id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Tags</p>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collections/" rel="tag">Collections</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/" rel="tag">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/" rel="tag">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Forms/" rel="tag">Forms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Full-Stack/" rel="tag">Full Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inomad/" rel="tag">Inomad</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProductModel/" rel="tag">ProductModel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SES/" rel="tag">SES</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/axios/" rel="tag">axios</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Archives</p>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Recent Posts</p>
+    <div class="widget">
+      <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2024/04/29/Inomad-Dairy/02-Complex-ProductModel.html">02-Complex_ProductModel</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2024/04/23/Inomad-Dairy/01-ProductModel.html">Inomad-Dairy-01-ProductModel</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2023/12/06/JavaScript-Full-Stack-Series/04-Nodejs-and-Express.html">JavaScript-Full-Stack-Series-04-Nodejs-and-Express</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2023/12/04/JavaScript-Full-Stack-Series/03-Adding-Styles.html">JavaScript-Full-Stack-Series-03-Adding-Styles</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2023/12/03/JavaScript-Full-Stack-Series/03-Altering-Data-from-Server.html">JavaScript-Full-Stack-Series-03-Altering-Data-from-Server</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner footer-info">
+      
+      &copy; 2024 Zhicheng Wang<br>
+      <div>
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<!-- 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+ -->
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+  </div>
+</body>
+</html>
