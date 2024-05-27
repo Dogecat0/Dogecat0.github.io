@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro This blog covers how to handle forms in React, how to use the useState hook to handle the state of the form and more related concepts.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-11-29T09:42:00.000Z">
-<meta property="article:modified_time" content="2023-11-29T18:28:22.516Z">
+<meta property="article:modified_time" content="2024-05-27T21:54:22.296Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="Full Stack">
@@ -134,18 +134,18 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="🔎-Intro">🔎 Intro</h2>
+        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
 <p>This blog covers how to handle forms in React, how to use the <code>useState</code> hook to handle the state of the form and more related concepts.</p>
 <span id="more"></span>
-<h2 id="💡-New-concepts">💡 New concepts</h2>
+<h2 id="💡-New-concepts"><strong>💡 New concepts</strong></h2>
 <ul>
 <li>useState hook:<br>
 The <code>useState</code> hook is a function that takes in an initial value and returns an array of two items using array destructuring: the current state and a function that updates it. <a target="_blank" rel="noopener" href="https://react.dev/reference/react/useState">More details</a></li>
 <li>Controlled component:<br>
 In HTML, form elements such as <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> typically maintain their own state and update it based on user input. In React, mutable state is typically kept in the state property of components, and only updated with <code>setState()</code>. <a target="_blank" rel="noopener" href="https://react.dev/reference/react-dom/components/input#controlling-an-input-with-a-state-variable">More details</a></li>
 </ul>
-<h2 id="📚-Lessons-learned">📚 Lessons learned</h2>
-<h3 id="Three-important-parts-of-a-form">Three important parts of a form:</h3>
+<h2 id="📚-Lessons-learned"><strong>📚 Lessons learned</strong></h2>
+<h3 id="Three-important-parts-of-a-form"><strong>Three important parts of a form:</strong></h3>
 <ul>
 <li>onSubmit:<br>
 Attached to a form element, <code>onSubmit</code> is an event handler triggered when the form is submitted, typically when the user clicks a submit button.</li>
@@ -165,7 +165,7 @@ In JavaScript, the ternary operator <code>condition ? exprIfTrue : exprIfFalse</
   <span class="token comment">// do something</span>
   <span class="token operator">:</span> 
   <span class="token comment">// do something else</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-<h3 id="Refactoring-the-code-to-use-multiple-components">Refactoring the code to use multiple components:</h3>
+<h3 id="Refactoring-the-code-to-use-multiple-components"><strong>Refactoring the code to use multiple components:</strong></h3>
 <ul>
 <li>Keep the state in the parent component.</li>
 <li>Pass the state and event handler down to the child component as props.</li>
@@ -175,7 +175,7 @@ In JavaScript, the ternary operator <code>condition ? exprIfTrue : exprIfFalse</
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2023/11/29/JavaScript-Full-Stack-Series/03-Forms.html" data-id="clwpi22wp000omq69fwgj6ue9" data-title="JavaScript-Full-Stack-Series-03-Forms" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2023/11/29/JavaScript-Full-Stack-Series/03-Forms.html" data-id="clwpielbj000ovu69h8oa8zjt" data-title="JavaScript-Full-Stack-Series-03-Forms" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>

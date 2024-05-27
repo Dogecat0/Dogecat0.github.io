@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro This blog will touch the base of sosme conventions used by jason-server and REST APIS in general, taking a look at the URLs and HTTP request types, in REST.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-03T15:26:20.000Z">
-<meta property="article:modified_time" content="2023-12-05T17:24:01.759Z">
+<meta property="article:modified_time" content="2024-05-27T21:54:22.296Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="Full Stack">
@@ -134,15 +134,15 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <h2 id="🔎-Intro">🔎 Intro</h2>
+        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
 <p>This blog will touch the base of sosme conventions used by jason-server and REST APIS in general, taking a look at the URLs and HTTP request types, in REST.</p>
 <span id="more"></span>
-<h2 id="💡-New-concepts">💡 New concepts</h2>
+<h2 id="💡-New-concepts"><strong>💡 New concepts</strong></h2>
 <ul>
 <li>Object spread syntax:<br>
 The object spread syntax is a JavaScript feature that is used to make shallow copies of JavaScript objects. <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax">More details</a></li>
 </ul>
-<h2 id="👨‍💻-Reviewed-concepts">👨‍💻 Reviewed concepts</h2>
+<h2 id="👨‍💻-Reviewed-concepts"><strong>👨‍💻 Reviewed concepts</strong></h2>
 <ul>
 <li>REST:<br>
 REST stands for Representational State Transfer. It is a software architectural style that defines a set of constraints to be used for creating Web services. In REST terminology, we refer to individual data objects, such as the notes in our application, as resources. Every resource has a unique address associated with it - its URL.</li>
@@ -158,10 +158,10 @@ The catch() method returns a Promise and deals with rejected cases only. It beha
 <li>async/await:<br>
 The async function declaration defines an asynchronous function, which returns an AsyncFunction object. An asynchronous function is a function which operates asynchronously via the event loop, using an implicit Promise to return its result. Comparing to the traditional methods to handle promises like then() and catch(), async/await is more readable and easier to debug. <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">More details</a></li>
 </ul>
-<h2 id="📚-Lessons-learned">📚 Lessons learned</h2>
-<h3 id="The-palcement-of-useEffect-hook">The palcement of <code>useEffect</code> hook:</h3>
+<h2 id="📚-Lessons-learned"><strong>📚 Lessons learned</strong></h2>
+<h3 id="The-palcement-of-useEffect-hook"><strong>The palcement of <code>useEffect</code> hook:</strong></h3>
 <p>The <code>useEffect</code> is deigned to be called unconditionally at the top level of React component. The placement of the useEffect call at the top, middle, or end of the component function is a matter of preference and readability as long as it is in the function body of the component and not inside any conditionals or loops. <a target="_blank" rel="noopener" href="https://react.dev/reference/react/useEffect">More details</a></p>
-<h3 id="The-use-of-useEffect-hook">The use of <code>useEffect</code> hook:</h3>
+<h3 id="The-use-of-useEffect-hook"><strong>The use of <code>useEffect</code> hook:</strong></h3>
 <p><code>useEffect</code> hook has two parameters (like the example code snippet shown below from <a target="_blank" rel="noopener" href="https://github.com/Dogecat0/fullstack_open/blob/main/part2/phonebook/src/App.jsx">exercise</a>) which are the callback function and the dependency array. The callback function is called after the component has been rendered into the DOM. The dependency array is used to specify the conditions for running the effect. If the dependency array is empty, the effect is run after every render. If there are items in the dependency array, the effect is only run when one of the values in the array changes. <a target="_blank" rel="noopener" href="https://react.dev/reference/react/useEffect#useeffect">More details</a></p>
 <pre class="line-numbers language-jsx" data-language="jsx"><code class="language-jsx"><span class="token function">useEffect</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
     personService
@@ -170,7 +170,7 @@ The async function declaration defines an asynchronous function, which returns a
         <span class="token function">setPersons</span><span class="token punctuation">(</span>initialPersons<span class="token punctuation">)</span><span class="token punctuation">;</span>
       <span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
   <span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h2 id="📝-Course-exercise">📝 Course exercise</h2>
+<h2 id="📝-Course-exercise"><strong>📝 Course exercise</strong></h2>
 <ol>
 <li>Updates to part2 exercise phonebook with CRUD operations. <a target="_blank" rel="noopener" href="https://github.com/Dogecat0/fullstack_open/tree/main/part2/phonebook">Link to the repo</a></li>
 </ol>
@@ -178,7 +178,7 @@ The async function declaration defines an asynchronous function, which returns a
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2023/12/03/JavaScript-Full-Stack-Series/03-Altering-Data-from-Server.html" data-id="clwpi22wo000nmq692ri81eh6" data-title="JavaScript-Full-Stack-Series-03-Altering-Data-from-Server" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2023/12/03/JavaScript-Full-Stack-Series/03-Altering-Data-from-Server.html" data-id="clwpielbi000nvu69eb6oa9y3" data-title="JavaScript-Full-Stack-Series-03-Altering-Data-from-Server" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
