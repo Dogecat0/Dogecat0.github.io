@@ -4,11 +4,11 @@
   
     
     <entry>
-      <title>Inomad-Dairy-04-Infrastructure-Technologies_in_Cloud_Computing</title>
-      <link href="/2024/05/29/Inomad-Dairy/04-Infrastructure-Technologies-in-Cloud-Computing.html"/>
-      <url>/2024/05/29/Inomad-Dairy/04-Infrastructure-Technologies-in-Cloud-Computing.html</url>
+      <title>Inomad-Dairy-04-Infrastructure-Storage_Technologies_in_Cloud</title>
+      <link href="/2024/05/29/Inomad-Dairy/04-Infrastructure-Storage-Technologies-in-Cloud.html"/>
+      <url>/2024/05/29/Inomad-Dairy/04-Infrastructure-Storage-Technologies-in-Cloud.html</url>
       
-        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>In this post, I will delve into the key infrastructure technologies that underpin cloud computing. Understanding these technologies is essential for building scalable, reliable, and secure cloud-based applications.</p><span id="more"></span><h2 id="🔧-Key-Infrastructure-Technologies-in-Cloud-Computing"><strong>🔧 Key Infrastructure Technologies in Cloud Computing</strong></h2><h2 id="1-Virtualization">1. Virtualization</h2><ul><li>Definition: Virtualization technology allows for the creation of multiple virtual environments from a single physical hardware system, enabling better utilization of resources and isolation between different environments.</li></ul><p>Types of Virtualization:</p><ul><li>Server Virtualization: Divides a physical server into multiple virtual servers, each running its own operating system and applications.</li><li>Storage Virtualization: Pools physical storage from multiple devices into a single logical storage unit.</li><li>Network Virtualization: Combines hardware and software network resources and network functionality into a single, software-based administrative entity.</li></ul><h2 id="2-Containers">2. Containers</h2><ul><li>Definition: Containers are lightweight, standalone, executable packages that contain everything needed to run an application, including code, runtime, system tools, libraries, and settings. They provide a consistent environment for applications to run across different computing environments.</li></ul><h2 id="3-Microservices-Architecture">3. Microservices Architecture</h2><ul><li><p>Definition: Microservices architecture is an architectural style that structures an application as a collection of small, loosely coupled services. Each service is independently deployable, scalable, and maintainable, implementing a specific business capability.</p></li><li><p>Benefits: Scalability, ease of maintenance, faster deployment cycles.</p></li></ul><h2 id="4-Serverless-Computing">4. Serverless Computing</h2><ul><li>Definition: Serverless computing allows developers to build and run applications without managing servers. The cloud provider automatically provisions, scales, and manages the infrastructure required to run the code.</li></ul><h2 id="5-DevOps-and-Automation-Tools">5. DevOps and Automation Tools</h2><ul><li>Definition: Tools and practices that combine software development (Dev) and IT operations (Ops) to shorten the systems development life cycle and provide continuous delivery with high software quality.</li></ul><h2 id="6-Networking-and-Content-Devliery">6. Networking and Content Devliery</h2><ul><li>Definition: Technologies that manage network infrastructure, traffic distribution, and deliver content globally with low latency and high transfer speeds.</li></ul><h2 id="7-Security-and-identity-Management">7. Security and identity Management</h2><ul><li>Definition: Technologies and practices that protect cloud infrastructure, applications, and data, and manage user identities and access rights.</li></ul><h2 id="8-Monitoring-and-Logging">8. Monitoring and Logging</h2><ul><li>Definition: Tools that monitor cloud resources, track performance metrics, and log events for troubleshooting, performance optimization, and compliance.</li></ul><h2 id="9-Data-Management-and-Analytics">9. Data Management and Analytics</h2><ul><li>Definition: Technologies that store, process, and analyze large volumes of data to extract meaningful insights and support decision-making.</li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>In this post, I will explore the key storage technologies that underpin cloud computing. Storage is a critical component of any cloud infrastructure, enabling data persistence, retrieval, and management for applications and services.</p><span id="more"></span><p>Cloud storage technologies enable the storage, management, and retrieval of data in a scalable, flexible, and cost-effective manner. Here are the key types of cloud storage technologies:</p><h2 id="🔧-Key-Storage-Technologies-in-Cloud-Computing"><strong>🔧 Key Storage Technologies in Cloud Computing</strong></h2><h2 id="1-Object-Storage">1. Object Storage</h2><ul><li><p>Definition: Object storage manages data as objects, each containing the data itself, metadata, and a unique identifier.</p></li><li><p>Key Features: Scalability, durability, metadata management, cost-effectiveness.</p></li><li><p>Examples: Amazon S3, Google Cloud Storage, Azure Blob Storage.</p></li><li><p>Use Cases: Storing unstructured data, media files, backups, archives.</p></li></ul><h2 id="2-Block-Storage">2. Block Storage</h2>]]></content>
       
       
       
@@ -19,6 +19,49 @@
             <tag> Infrastructure </tag>
             
             <tag> Cloud Computing </tag>
+            
+            <tag> Storage </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Inomad-Dairy-04-Infrastructure-Technologies_in_Cloud_Computing</title>
+      <link href="/2024/05/29/Inomad-Dairy/04-Infrastructure-Technologies-in-Cloud-Computing.html"/>
+      <url>/2024/05/29/Inomad-Dairy/04-Infrastructure-Technologies-in-Cloud-Computing.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>In this post, I will delve into the key infrastructure technologies that underpin cloud computing. Understanding these technologies is essential for building scalable, reliable, and secure cloud-based applications.</p><span id="more"></span><h2 id="🔧-Key-Infrastructure-Technologies-in-Cloud-Computing"><strong>🔧 Key Infrastructure Technologies in Cloud Computing</strong></h2><h2 id="1-Virtualization">1. Virtualization</h2><ul><li>Definition: Virtualization technology allows for the creation of multiple virtual environments from a single physical hardware system, enabling better utilization of resources and isolation between different environments.</li></ul><p>Types of Virtualization:</p><ul><li>Server Virtualization: Divides a physical server into multiple virtual servers, each running its own operating system and applications.</li><li>Storage Virtualization: Pools physical storage from multiple devices into a single logical storage unit.</li><li>Network Virtualization: Combines hardware and software network resources and network functionality into a single, software-based administrative entity.</li></ul><h2 id="2-Containers">2. Containers</h2><ul><li>Definition: Containers are lightweight, standalone, executable packages that contain everything needed to run an application, including code, runtime, system tools, libraries, and settings. They provide a consistent environment for applications to run across different computing environments.</li></ul><h2 id="3-Microservices-Architecture">3. Microservices Architecture</h2><ul><li><p>Definition: Microservices architecture is an architectural style that structures an application as a collection of small, loosely coupled services. Each service is independently deployable, scalable, and maintainable, implementing a specific business capability.</p></li><li><p>Benefits: Scalability, ease of maintenance, faster deployment cycles.</p></li></ul><h2 id="4-Serverless-Computing">4. Serverless Computing</h2><ul><li>Definition: Serverless computing allows developers to build and run applications without managing servers. The cloud provider automatically provisions, scales, and manages the infrastructure required to run the code.</li></ul><h2 id="5-DevOps-and-Automation-Tools">5. DevOps and Automation Tools</h2><ul><li>Definition: Tools and practices that combine software development (Dev) and IT operations (Ops) to shorten the systems development life cycle and provide continuous delivery with high software quality.</li></ul><h2 id="6-Networking-and-Content-Devliery">6. Networking and Content Devliery</h2><ul><li>Definition: Technologies that manage network infrastructure, traffic distribution, and deliver content globally with low latency and high transfer speeds.</li></ul><h2 id="7-Security-and-identity-Management">7. Security and identity Management</h2><ul><li>Definition: Technologies and practices that protect cloud infrastructure, applications, and data, and manage user identities and access rights.</li></ul><h2 id="8-Monitoring-and-Logging">8. Monitoring and Logging</h2><ul><li>Definition: Tools that monitor cloud resources, track performance metrics, and log events for troubleshooting, performance optimization, and compliance.</li></ul><h2 id="9-Data-Management-and-Analytics">9. Data Management and Analytics</h2><ul><li>Definition: Technologies that store, process, and analyze large volumes of data to extract meaningful insights and support decision-making.</li></ul><p>In the upcoming posts, I will explore each of these infrastructure technologies in more detail.🌞</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Inomad </tag>
+            
+            <tag> Infrastructure </tag>
+            
+            <tag> Cloud Computing </tag>
+            
+            <tag> Virtualization </tag>
+            
+            <tag> Containers </tag>
+            
+            <tag> Microservices </tag>
+            
+            <tag> Serverless </tag>
+            
+            <tag> DevOps </tag>
+            
+            <tag> Networking </tag>
+            
+            <tag> Security </tag>
+            
+            <tag> Monitoring </tag>
+            
+            <tag> Data </tag>
             
         </tags>
       
