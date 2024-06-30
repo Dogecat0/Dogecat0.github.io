@@ -4,32 +4,11 @@
   
     
     <entry>
-      <title>Investment-02-Stocks-01-1st Month Summary</title>
-      <link href="/2024/06/15/Investment/02-Stocks-01-1st%20Month%20Summary.html"/>
-      <url>/2024/06/15/Investment/02-Stocks-01-1st%20Month%20Summary.html</url>
-      
-        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>In this post, I’ll summarize the key points from my first month of investing in stocks with GPT. It’s been an interesting journey so far trying out investing with GPT as a new investing learner.</p><span id="more"></span><p>First, I’m an aboslutely greenhorn in investment. With the power of GPT, I think it would be fun and educational to do an experienment investing with it, learning with it. I’ll only share some key findings in this post, the stocks I’ve invested in, and the overall performance of my portfolio. Regarding the detailed usage of GPT and the analysis of each company, I’ll cover them in separate posts in the future while I keep learning.</p><h2 id="📈-Portfolio-Performance"><strong>📈 Portfolio Performance</strong></h2><p>I started investing in individual stocks from 14th of May this year on a quite popular platform Trading212 which is an easy-to-use, 0 commision fee platform. For now there is no need to compare different platforms, let’s go back to the main point. During the first month I have invested in the following companies so far with the percentage of the total portfolio:</p><ul><li>Microsoft (MSFT): 19.91%</li><li>Nvidia (NVDA): 18.77%</li><li>Amazon (AMZN): 13.62%</li><li>Barclays (BARC): 10.53%</li><li>Alphabet Class A (GOOGL): 8.34%</li><li>CrowdStrike (CRWD): 7.49%</li><li>Mastercard (MA): 6.61%</li><li>Costco Wholesale (COST): 6.29%</li><li>Broadcom (AVGO): 6.05%</li><li>Vistra Corp (VST): 2.39%</li></ul><p>So far, the total return of the portfolio is 6.05%, meanwhile the S&amp;P 500 index has returned 2.33% in the same period. At the time when I was typing, another ETF hit me and I had a quick look which is Invesco QQQ, with the return at 5.80% (With the currently limited knowledge I think it’s a good index to follow together with S&amp;P 500). The portfolio has outperformed them 3.72% and 0.25% respectively in the first month.</p><p>The gain and loss of each stock in the portfolio are as follows:</p><ul><li>Microsoft (MSFT): +5.68%</li><li>Nvidia (NVDA): +23.01%</li><li>Amazon (AMZN): +0.05%</li><li>Barclays (BARC): -6.94%</li><li>Alphabet Class A (GOOGL): +2.44%</li><li>CrowdStrike (CRWD): +8.88%</li><li>Mastercard (MA): -1.41%</li><li>Costco Wholesale (COST): +3.10%</li><li>Broadcom (AVGO): +24.94%</li><li>Vistra Corp (VST): -11.80%</li></ul><h2 id="🛒-Buying-Strategy"><strong>🛒 Buying Strategy</strong></h2><p>As a salaried average person, I’ve decided to go with the most reliable method:a long-term investment strategy. I’ve invested in companies that I believe have strong fundamentals and growth potential in the future (Of course AI AI and AI for most of them). So the buying strategy is quite simple: buy and hold with bi-weekly top up.</p><h2 id="📊-End-of-Period-Adjustments"><strong>📊 End of Period Adjustments</strong></h2><p>For now I will hold all the companies I’ve invested in. Based on my current ability, I’ve adjusted the percentage of each company in the portfolio to keep the portfolio balanced. Of course with the learning journey continues, I will continue to monitor the performance of each company and make adjustments if necessary.</p><ul><li>Microsoft (MSFT): 17%</li><li>Nvidia (NVDA): 14%</li><li>Amazon (AMZN): 12%</li><li>Alphabet Class A (GOOGL): 12%</li><li>CrowdStrike (CRWD): 11%</li><li>Broadcom (AVGO): 11%</li><li>Costco Wholesale (COST): 10%</li><li>Mastercard (MA): 7%</li><li>Barclays (BARC): 5%</li><li>Vistra Corp (VST): 1%</li></ul><h2 id="📝-Next-Steps"><strong>📝 Next Steps</strong></h2><p>Learn, learn and learn. I think there are couple of things I need to learn more about:</p><ul><li>How to pick up the right companies to invest in</li><li>How to analyze the financial status of a company</li><li>How to manage and monitor the portfolio to help make adjustments if necessary</li><li>To help achive the above all, learn how to use GPT to help me with the analysis and make better decisions</li></ul>]]></content>
-      
-      
-      
-        <tags>
-            
-            <tag> Investment </tag>
-            
-            <tag> Stocks </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Inomad Dairy-04-Infrastructure-04-CDN and Networking</title>
-      <link href="/2024/05/29/Inomad%20Dairy/04-Infrastructure-04-CDN%20and%20Networking.html"/>
-      <url>/2024/05/29/Inomad%20Dairy/04-Infrastructure-04-CDN%20and%20Networking.html</url>
+      <link href="/2024/06/30/Inomad%20Dairy/04-Infrastructure-04-CDN%20and%20Networking.html"/>
+      <url>/2024/06/30/Inomad%20Dairy/04-Infrastructure-04-CDN%20and%20Networking.html</url>
       
-        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>In this post, I will explore Content Delivery Networks (CDNs) and networking technologies that play a crucial role in delivering content efficiently and securely over the internet. CDNs and networking solutions are essential components of modern cloud infrastructure, enabling fast and reliable access to web applications and services.</p><span id="more"></span><p>Content Delivery and Networking technologies play a critical role in ensuring that content and applications are delivered to users efficiently, reliably, and with low latency. These technologies encompass various services and solutions that optimize the delivery and performance of content and applications across the globe.</p><h2 id="🌐-Content-Delivery-Networks-CDNs"><strong>🌐 Content Delivery Networks (CDNs)</strong></h2><ul><li>Definition: A CDN is a distributed network of servers strategically placed around the globe to deliver content to users more quickly and reliably by caching content closer to the end-users.</li></ul><h2 id="Key-Features-of-CDNs">Key Features of CDNs:</h2><ul><li>Caching: Stores copies of content in multiple locations to reduce latency and improve load times.</li><li>Load Balancing: Distributes traffic across multiple servers to avoid overloading a single server.</li><li>Security: Provides DDoS protection, secure socket layer (SSL) encryption, and other security measures.</li><li>Content Optimization: Compresses and optimizes content for faster delivery and better performance.</li><li>Edge Computing: Enables processing and computation closer to the end-users for reduced latency.</li></ul><h2 id="Use-Cases-of-CDNs">Use Cases of CDNs:</h2><ul><li>Accelerating website performance and load times.</li><li>Streaming high-quality video content.</li><li>Distributing software updates and patches.</li><li>Protecting against DDoS attacks and other security threats.</li></ul><h2 id="🔗-Cloud-based-Networking-Technologies"><strong>🔗 Cloud-based Networking Technologies</strong></h2><ul><li>Definition: Cloud-based networking involves using cloud resources to manage, monitor, and control network traffic and services.</li></ul><p>Key Features of Cloud-based Networking:</p><h2 id="Virtual-Private-Cloud-VPC">Virtual Private Cloud (VPC)</h2><ul><li>Definition: A VPC is a private network within a cloud environment that allows users to define their own virtual network topology, including IP addresses, subnets, and routing tables.</li><li>Features:</li></ul><h3 id="1-Subnets-Divides-the-VPC-into-smaller-networks-for-better-organization-and-security">1. Subnets: Divides the VPC into smaller networks for better organization and security.</h3><h3 id="2-Route-Tables-Customizable-routing-to-control-traffic-flow-within-the-VPC-and-between-the-VPC-and-external-networks">2. Route Tables: Customizable routing to control traffic flow within the VPC and between the VPC and external networks.</h3><h3 id="3-Network-Access-Control-Lists-NACLs-Stateful-and-stateless-filtering-of-incoming-and-outgoing-traffic">3. Network Access Control Lists (NACLs): Stateful and stateless filtering of incoming and outgoing traffic.</h3><h3 id="4-Internet-Gateways-Enables-communication-between-the-VPC-and-the-internet">4. Internet Gateways: Enables communication between the VPC and the internet.</h3><h3 id="5-NAT-Gateways-Allows-instances-in-private-subnets-to-access-the-internet-while-remaining-private">5. NAT Gateways: Allows instances in private subnets to access the internet while remaining private.</h3><h2 id="Benefits-of-Cloud-based-Networking">Benefits of Cloud-based Networking:</h2><ul><li>Flexibility: Rapid deployment and scaling of network resources.</li><li>Security: Enhanced security features and encryption for data in transit.</li><li>Cost-Efficiency: Pay-as-you-go pricing models and reduced hardware costs.</li><li>Automation: Automated provisioning, monitoring, and management of network resources.</li></ul>]]></content>
+        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>In this post, I will explore Content Delivery Networks (CDNs) and networking technologies that play a crucial role in delivering content efficiently and securely over the internet. CDNs and networking solutions are essential components of modern cloud infrastructure, enabling fast and reliable access to web applications and services.</p><span id="more"></span><p>Content Delivery and Networking technologies play a critical role in ensuring that content and applications are delivered to users efficiently, reliably, and with low latency. These technologies encompass various services and solutions that optimize the delivery and performance of content and applications across the globe.</p><h2 id="🌐-Content-Delivery-Networks-CDNs"><strong>🌐 Content Delivery Networks (CDNs)</strong></h2><ul><li>Definition: A CDN is a distributed network of servers strategically placed around the globe to deliver content to users more quickly and reliably by caching content closer to the end-users.</li></ul><h2 id="Key-Features-of-CDNs">Key Features of CDNs:</h2><ul><li>Caching: Stores copies of content in multiple locations to reduce latency and improve load times.</li><li>Load Balancing: Distributes traffic across multiple servers to avoid overloading a single server.</li><li>Security: Provides DDoS protection, secure socket layer (SSL) encryption, and other security measures.</li><li>Content Optimization: Compresses and optimizes content for faster delivery and better performance.</li><li>Edge Computing: Enables processing and computation closer to the end-users for reduced latency.</li></ul><h2 id="Use-Cases-of-CDNs">Use Cases of CDNs:</h2><ul><li>Accelerating website performance and load times.</li><li>Streaming high-quality video content.</li><li>Distributing software updates and patches.</li><li>Protecting against DDoS attacks and other security threats.</li></ul><h2 id="🔗-Cloud-based-Networking-Technologies"><strong>🔗 Cloud-based Networking Technologies</strong></h2><ul><li>Definition: Cloud-based networking involves using cloud resources to manage, monitor, and control network traffic and services.</li></ul><p>Key Features of Cloud-based Networking:</p><h2 id="Virtual-Private-Cloud-VPC">Virtual Private Cloud (VPC)</h2><ul><li>Definition: A VPC is a private network within a cloud environment that allows users to define their own virtual network topology, including IP addresses, subnets, and routing tables.</li><li>Features:</li></ul><h3 id="1-Subnets-Divides-the-VPC-into-smaller-networks-for-better-organization-and-security">1. Subnets: Divides the VPC into smaller networks for better organization and security.</h3><h3 id="2-Route-Tables-Customizable-routing-to-control-traffic-flow-within-the-VPC-and-between-the-VPC-and-external-networks">2. Route Tables: Customizable routing to control traffic flow within the VPC and between the VPC and external networks.</h3><h3 id="3-Network-Access-Control-Lists-NACLs-Stateful-and-stateless-filtering-of-incoming-and-outgoing-traffic">3. Network Access Control Lists (NACLs): Stateful and stateless filtering of incoming and outgoing traffic.</h3><h3 id="4-Internet-Gateways-Enables-communication-between-the-VPC-and-the-internet">4. Internet Gateways: Enables communication between the VPC and the internet.</h3><h3 id="5-NAT-Gateways-Allows-instances-in-private-subnets-to-access-the-internet-while-remaining-private">5. NAT Gateways: Allows instances in private subnets to access the internet while remaining private.</h3><h2 id="Software-Defined-Networking-SDN">Software-Defined Networking (SDN)</h2><ul><li>Definition: SDN is an approach to networking that separates the control plane from the data plane, allowing network administrators to programmatically control network behavior through software applications.</li><li>Features:</li></ul><h3 id="1-Centralized-Control-Unified-management-console-for-configuring-and-managing-network-devices-and-services">1. Centralized Control: Unified management console for configuring and managing network devices and services.</h3><h3 id="2-Programmability-APIs-for-automating-network-configuration-and-management">2. Programmability: APIs for automating network configuration and management.</h3><h3 id="3-Dynamic-Routing-Real-time-traffic-management-and-path-optimization-based-on-network-conditions">3. Dynamic Routing: Real-time traffic management and path optimization based on network conditions.</h3><h3 id="4-Policy-Based-Security-Granular-control-over-network-access-and-security-policies">4. Policy-Based Security: Granular control over network access and security policies.</h3><h2 id="Elastic-Load-Balancing-ELB">Elastic Load Balancing (ELB)</h2><ul><li>Definition: ELB automatically distributes incoming application traffic across multiple targets, such as EC2 instances, containers, and IP addresses, to ensure optimal performance and availability.</li><li>Features:</li></ul><h3 id="1-Automatic-Scaling-Adjusts-capacity-to-handle-varying-traffic-levels">1. Automatic Scaling: Adjusts capacity to handle varying traffic levels.</h3><h3 id="2-Health-Checks-Monitors-the-health-of-registered-targets-and-routes-traffic-only-to-healthy-instances">2. Health Checks: Monitors the health of registered targets and routes traffic only to healthy instances.</h3><h3 id="3-Types-of-Load-Balancers-Includes-application-network-and-classic-load-balancers-tailored-for-different-use-cases">3. Types of Load Balancers: Includes application, network, and classic load balancers tailored for different use cases.</h3><h3 id="4-Cross-Zone-Load-Balancing-Distributes-traffic-evenly-across-multiple-availability-zones-for-high-availability">4. Cross-Zone Load Balancing: Distributes traffic evenly across multiple availability zones for high availability.</h3><h2 id="Global-Networking-and-Interconnectivity">Global Networking and Interconnectivity</h2><ul><li>Definition: Cloud providers offer global networking services that enable organizations to connect their on-premises data centers to cloud resources and establish secure, high-speed connections between different regions.</li><li>Features:</li></ul><h3 id="1-Private-Connectivity-Direct-connections-between-on-premises-networks-and-cloud-resources-without-traversing-the-public-internet">1. Private Connectivity: Direct connections between on-premises networks and cloud resources without traversing the public internet.</h3><h3 id="2-Global-Accelerator-Usesthe-global-network-of-a-cloud-provider-to-optimize-routing-and-improve-performance-for-internet-facing-applications">2. Global Accelerator: Usesthe global network of a cloud provider to optimize routing and improve performance for internet-facing applications.</h3><h3 id="3-Anycast-IP-Routes-user-requests-to-the-nearest-edge-location-for-reduced-latency-and-improved-performance">3. Anycast IP: Routes user requests to the nearest edge location for reduced latency and improved performance.</h3><h2 id="Network-Security">Network Security</h2><ul><li>Definition: Cloud-based networking solutions provide comprehensive security measures integrated into the cloud network infrastructure to protect against cyber threats and unauthorized access.</li><li>Features:</li></ul><h3 id="1-DDoS-Protection-Automated-defense-against-Distributed-Denial-of-Service-attacks">1. DDoS Protection: Automated defense against Distributed Denial of Service attacks.</h3><h3 id="2-Firewall-as-a-Service-FWaaS-Cloud-based-firewalls-that-protect-network-traffic">2. Firewall as a Service(FWaaS): Cloud-based firewalls that protect network traffic.</h3><h3 id="3-Encryption-Data-encryption-at-rest-and-in-transit-to-ensure-data-confidentiality">3. Encryption: Data encryption at rest and in transit to ensure data confidentiality.</h3><h3 id="4-Identity-and-Access-Management-IAM-Role-based-access-control-and-multi-factor-authentication-for-secure-network-access">4. Identity and Access Management(IAM): Role-based access control and multi-factor authentication for secure network access.</h3><h2 id="Edge-Computing">Edge Computing</h2><ul><li>Definition: Edge computing brings computation and data storage closer to the location where it is needed, reducing latency and improving performance for applications that require real-time processing.</li><li>Features:</li></ul><h3 id="1-Edge-Nodes-Locatoins-that-cache-content-and-provide-compute-power-closer-to-users">1. Edge Nodes: Locatoins that cache content and provide compute power closer to users.</h3><h3 id="2-Latency-Reduction-Processes-data-at-edge-locaitons-to-minimize-round-trip-time">2. Latency Reduction: Processes data at edge locaitons to minimize round-trip time.</h3><h3 id="3-Real-Time-Data-Processing-Enables-real-time-analytics-and-decision-making-at-the-edge">3. Real-Time Data Processing: Enables real-time analytics and decision-making at the edge.</h3><h2 id="Automation-and-Orchestration">Automation and Orchestration</h2><ul><li>Definition: Cloud-native automation and orchestration tools and APIs can automate the deployment, management, and operation of network resources, reducing manual intervention and improving efficiency.</li><li>Features:</li></ul><h3 id="1-Infrastructure-as-Code-IaC-Use-of-scripts-and-templates-to-provision-and-manage-network-infrastructure">1. Infrastructure as Code (IaC): Use of scripts and templates to provision and manage network infrastructure.</h3><h3 id="2-Auto-Scaling-Automatically-adjusts-network-resources-based-on-demand">2. Auto-Scaling: Automatically adjusts network resources based on demand.</h3><h3 id="3-Monitoring-and-Logging-Continuous-monitoring-and-logging-of-network-performance-and-events-for-troubleshooting-and-optimization">3. Monitoring and Logging: Continuous monitoring and logging of network performance and events for troubleshooting and optimization.</h3><h3 id="4-Self-Healing-Automated-detection-and-remediation-of-network-issues-without-human-intervention">4. Self-Healing: Automated detection and remediation of network issues without human intervention.</h3><h2 id="Service-Level-Agreements-SLAs">Service Level Agreements (SLAs)</h2><ul><li>Definition: Cloud providers offer SLAs that define the level of service, performance, and availability guarantees for network services, ensuring reliability and accountability.</li><li>Features:</li></ul><h3 id="1-Uptime-Guarantees-Commitments-to-network-availability-and-performance">1. Uptime Guarantees: Commitments to network availability and performance.</h3><h3 id="Performance-Metrics-Defined-benchmarks-for-network-latency-throughput-and-response-times">Performance Metrics: Defined benchmarks for network latency, throughput, and response times.</h3><h3 id="3-Compensation-Details-of-compensation-for-service-downtime-or-performance-issues">3. Compensation: Details of compensation for service downtime or performance issues.</h3><h2 id="🚀-Benefits-of-Cloud-based-Networking"><strong>🚀 Benefits of Cloud-based Networking:</strong></h2><ul><li>Flexibility: Rapid deployment and scaling of network resources.</li><li>Security: Enhanced security features and encryption for data in transit.</li><li>Cost-Efficiency: Pay-as-you-go pricing models and reduced hardware costs.</li><li>Automation: Automated provisioning, monitoring, and management of network resources.</li></ul>]]></content>
       
       
       
@@ -44,6 +23,27 @@
             <tag> CDN </tag>
             
             <tag> Networking </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Investment-02-Stocks-01-1st Month Summary</title>
+      <link href="/2024/06/15/Investment/02-Stocks-01-1st%20Month%20Summary.html"/>
+      <url>/2024/06/15/Investment/02-Stocks-01-1st%20Month%20Summary.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>In this post, I’ll summarize the key points from my first month of investing in stocks with GPT. It’s been an interesting journey so far trying out investing with GPT as a new investing learner.</p><span id="more"></span><p>First, I’m an aboslutely greenhorn in investment. With the power of GPT, I think it would be fun and educational to do an experienment investing with it, learning with it. I’ll only share some key findings in this post, the stocks I’ve invested in, and the overall performance of my portfolio. Regarding the detailed usage of GPT and the analysis of each company, I’ll cover them in separate posts in the future while I keep learning.</p><h2 id="📈-Portfolio-Performance"><strong>📈 Portfolio Performance</strong></h2><p>I started investing in individual stocks from 14th of May this year on a quite popular platform Trading212 which is an easy-to-use, 0 commision fee platform. For now there is no need to compare different platforms, let’s go back to the main point. During the first month I have invested in the following companies so far with the percentage of the total portfolio:</p><ul><li>Microsoft (MSFT): 19.91%</li><li>Nvidia (NVDA): 18.77%</li><li>Amazon (AMZN): 13.62%</li><li>Barclays (BARC): 10.53%</li><li>Alphabet Class A (GOOGL): 8.34%</li><li>CrowdStrike (CRWD): 7.49%</li><li>Mastercard (MA): 6.61%</li><li>Costco Wholesale (COST): 6.29%</li><li>Broadcom (AVGO): 6.05%</li><li>Vistra Corp (VST): 2.39%</li></ul><p>So far, the total return of the portfolio is 6.05%, meanwhile the S&amp;P 500 index has returned 2.33% in the same period. At the time when I was typing, another ETF hit me and I had a quick look which is Invesco QQQ, with the return at 5.80% (With the currently limited knowledge I think it’s a good index to follow together with S&amp;P 500). The portfolio has outperformed them 3.72% and 0.25% respectively in the first month.</p><p>The gain and loss of each stock in the portfolio are as follows:</p><ul><li>Microsoft (MSFT): +5.68%</li><li>Nvidia (NVDA): +23.01%</li><li>Amazon (AMZN): +0.05%</li><li>Barclays (BARC): -6.94%</li><li>Alphabet Class A (GOOGL): +2.44%</li><li>CrowdStrike (CRWD): +8.88%</li><li>Mastercard (MA): -1.41%</li><li>Costco Wholesale (COST): +3.10%</li><li>Broadcom (AVGO): +24.94%</li><li>Vistra Corp (VST): -11.80%</li></ul><h2 id="🛒-Buying-Strategy"><strong>🛒 Buying Strategy</strong></h2><p>As a salaried average person, I’ve decided to go with the most reliable method:a long-term investment strategy. I’ve invested in companies that I believe have strong fundamentals and growth potential in the future (Of course AI AI and AI for most of them). So the buying strategy is quite simple: buy and hold with bi-weekly top up.</p><h2 id="📊-End-of-Period-Adjustments"><strong>📊 End of Period Adjustments</strong></h2><p>For now I will hold all the companies I’ve invested in. Based on my current ability, I’ve adjusted the percentage of each company in the portfolio to keep the portfolio balanced. Of course with the learning journey continues, I will continue to monitor the performance of each company and make adjustments if necessary.</p><ul><li>Microsoft (MSFT): 17%</li><li>Nvidia (NVDA): 14%</li><li>Amazon (AMZN): 12%</li><li>Alphabet Class A (GOOGL): 12%</li><li>CrowdStrike (CRWD): 11%</li><li>Broadcom (AVGO): 11%</li><li>Costco Wholesale (COST): 10%</li><li>Mastercard (MA): 7%</li><li>Barclays (BARC): 5%</li><li>Vistra Corp (VST): 1%</li></ul><h2 id="📝-Next-Steps"><strong>📝 Next Steps</strong></h2><p>Learn, learn and learn. I think there are couple of things I need to learn more about:</p><ul><li>How to pick up the right companies to invest in</li><li>How to analyze the financial status of a company</li><li>How to manage and monitor the portfolio to help make adjustments if necessary</li><li>To help achive the above all, learn how to use GPT to help me with the analysis and make better decisions</li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Investment </tag>
+            
+            <tag> Stocks </tag>
             
         </tags>
       
@@ -175,6 +175,8 @@
       
         <tags>
             
+            <tag> JavaScript </tag>
+            
             <tag> Inomad </tag>
             
             <tag> Django </tag>
@@ -182,8 +184,6 @@
             <tag> Form </tag>
             
             <tag> Formset </tag>
-            
-            <tag> JavaScript </tag>
             
         </tags>
       
@@ -248,9 +248,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> Nodejs </tag>
             
@@ -273,9 +273,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -298,9 +298,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -323,9 +323,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -348,9 +348,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -373,9 +373,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -398,9 +398,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -421,9 +421,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -467,9 +467,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
         </tags>
       
@@ -488,9 +488,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -511,9 +511,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
         </tags>
       
@@ -532,9 +532,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
         </tags>
       
