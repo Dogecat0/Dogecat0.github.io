@@ -15,23 +15,24 @@
 <!-- End Google Analytics -->
 
   
-  <title>JavaScript Full Stack Series-04-Nodejs and Express | Zhicheng&#39;s Blog</title>
+  <title>Inomad Diary-04-infrastructure-08-Security Compliance and Governance | Zhicheng&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
-  <meta name="description" content="🔎 Intro Series of 04 blogs will cover the backend part of the full stack JavaScript development, towards implementing functionality on the server side of the stack. This blog covers the basics of Nod">
+  <meta name="description" content="🔎 Intro In this post, I will explore the concepts of security, compliance, and governance in modern cloud infrastructure and their importance in ensuring the confidentiality, integrity, and availabil">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript Full Stack Series-04-Nodejs and Express">
-<meta property="og:url" content="https://dogecat0.github.io/2023/12/06/JavaScript%20Full%20Stack%20Series/04-Nodejs%20and%20Express.html">
+<meta property="og:title" content="Inomad Diary-04-infrastructure-08-Security Compliance and Governance">
+<meta property="og:url" content="https://dogecat0.github.io/2024/07/06/Inomad%20Dairy/04-infrastructure-08-Security%20Compliance%20and%20Governance.html">
 <meta property="og:site_name" content="Zhicheng&#39;s Blog">
-<meta property="og:description" content="🔎 Intro Series of 04 blogs will cover the backend part of the full stack JavaScript development, towards implementing functionality on the server side of the stack. This blog covers the basics of Nod">
+<meta property="og:description" content="🔎 Intro In this post, I will explore the concepts of security, compliance, and governance in modern cloud infrastructure and their importance in ensuring the confidentiality, integrity, and availabil">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-12-06T12:02:52.000Z">
-<meta property="article:modified_time" content="2024-07-04T10:41:41.215Z">
+<meta property="article:published_time" content="2024-07-06T10:08:04.000Z">
+<meta property="article:modified_time" content="2024-07-06T10:41:36.998Z">
 <meta property="article:author" content="Zhicheng Wang">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="Full Stack">
-<meta property="article:tag" content="Nodejs">
-<meta property="article:tag" content="Express">
+<meta property="article:tag" content="Inomad">
+<meta property="article:tag" content="Infrastructure">
+<meta property="article:tag" content="Security">
+<meta property="article:tag" content="Compliance">
+<meta property="article:tag" content="Governance">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
@@ -111,10 +112,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 </header>
 
       <div class="sub-container outer">
-        <section class="post-container" id="main"><article id="post-JavaScript Full Stack Series/04-Nodejs and Express" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section class="post-container" id="main"><article id="post-Inomad Dairy/04-infrastructure-08-Security Compliance and Governance" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <p class="article-date">
-  <time class="dt-published" datetime="2023-12-06T12:02:52.000Z" itemprop="datePublished">2023-12-06</time>
+  <time class="dt-published" datetime="2024-07-06T10:08:04.000Z" itemprop="datePublished">2024-07-06</time>
 </p>
     
   </div>
@@ -126,7 +127,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      JavaScript Full Stack Series-04-Nodejs and Express
+      Inomad Diary-04-infrastructure-08-Security Compliance and Governance
     </h1>
   
 
@@ -135,32 +136,101 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>Series of 04 blogs will cover the backend part of the full stack JavaScript development, towards implementing functionality on the server side of the stack. This blog covers the basics of Nodejs and Express, and how to use them to build a simple server.</p>
+<p>In this post, I will explore the concepts of security, compliance, and governance in modern cloud infrastructure and their importance in ensuring the confidentiality, integrity, and availability of data and services. Security, compliance, and governance are critical aspects of cloud infrastructure that help organizations protect their assets, comply with regulations, and maintain operational efficiency.</p>
 <span id="more"></span>
-<h2 id="💡-New-concepts"><strong>💡 New concepts</strong></h2>
+<p>Security, compliance, and governance technologies are critical components in cloud computing, ensuring data protection, regulatory adherence, and opeartional integrity. A comprehensive approach to security, compliance, and governance is essential for organizations to mitigate risks, protect sensitive information, and maintain trust with customers and stakeholders.</p>
+<h2 id="🔒-Security"><strong>🔒 Security</strong></h2>
+<h2 id="1-Identity-and-Access-Mangement-IAM">1. Identity and Access Mangement (IAM):</h2>
 <ul>
-<li>Nodejs:<br>
-Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. <a target="_blank" rel="noopener" href="https://nodejs.org/en/about/">More details</a></li>
-<li>Express:<br>
-Imported as a module into Nodejs, Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. <a target="_blank" rel="noopener" href="https://expressjs.com/">More details</a></li>
-<li>Nodemon:<br>
-Nodemon is a tool that helps develop node.js based applications by automatically restarting the node application when file changes in the directory are detected. <a target="_blank" rel="noopener" href="https://nodemon.io/">More details</a></li>
-<li>Route parameters:<br>
-Route parameters are named URL segments that are used to capture the values specified at their position in the URL. <a target="_blank" rel="noopener" href="https://expressjs.com/en/guide/routing.html#route-parameters">More details</a></li>
-<li>Postman:<br>
-Postman is a collaboration platform for API development. Postman’s features simplify each step of building an API and streamline collaboration so you can create better APIs—faster. <a target="_blank" rel="noopener" href="https://www.postman.com/">More details</a></li>
-<li>REST Client:<br>
-REST Client allows you to send HTTP request and view the response in Visual Studio Code directly. <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client">More details</a></li>
+<li>Purpose: Controls who can access what resources in the clou denvironment.</li>
+<li>Components: Role-based access control (RBAC), multi-facotr authentication (MFA), identity federation.</li>
+<li>Best Practice: Principle of least privileage, regular review and audit of access permissions, integration with centralized identity providers (IdP)</li>
 </ul>
-<h2 id="👨‍💻-Reviewed-concepts"><strong>👨‍💻 Reviewed concepts</strong></h2>
+<h2 id="2-Encryption">2. Encryption:</h2>
 <ul>
-<li>[REST](<a href="https://dogecat0.github.io/2023/12/03/JavaScript">https://dogecat0.github.io/2023/12/03/JavaScript</a> Full Stack Series/03-Altering-Data-from-Server.html)</li>
+<li>Purpose: Protects data condientiality and integrity both at trest and in transit.</li>
+<li>Technologies: Transport Layer Security (TLS), Advanced Encryption Standard (AES), Public Key Infrastructure (PKI), Key Management Services (KMS).</li>
+<li>Best Practices: Encrypt sensitive data before storing or transmitting, manage encryption keys securely, ensure compliance with encryption standards and regulations (e.g., GDPR, FIPS 140-2).</li>
+</ul>
+<h2 id="3-Network-Security">3. Network Security:</h2>
+<ul>
+<li>Purpose: Protects cloud network infrastructure from unauthorized access and attacks.</li>
+<li>Technologies: Virtual Private Clouds (VPCs), network firewalls, VPNs, intrsion detection/prevention systems (IDS/IPS).</li>
+<li>Best Practices: Implement security groups and ACLs to control traffic, monitor network traffic for anomalies, regularly update security configurations.</li>
+</ul>
+<h2 id="4-Endpoint-Security">4. Endpoint Security:</h2>
+<ul>
+<li>Purpose: Secures devices accessing cloud services to prevent malware and unauthorized access.</li>
+<li>Thecnologies: Antivirus software, endpoint detection and response (EDR) tools, mobile device management (MDM).</li>
+<li>Best Practices: Enforce endpoint security policies, regularly update endpoint software and patches, implement device encryption and remote wipe capabilities.</li>
+</ul>
+<h2 id="5-Security-Information-and-Event-Management-SIEM">5.Security Information and Event Management (SIEM):</h2>
+<ul>
+<li>Purpose: Centralizes logging and analysis of security events for threat detection and response.</li>
+<li>Technologies: SIEM platform (e.g., Splunk, ELK Stack), log aggregation, correlation, and alerting.</li>
+<li>Best Practices: Monitor and correlate security logs from multiple sources, establish baseline activity profiles, automate alerts and responses to security incidents.</li>
+</ul>
+<h2 id="📜-Compliance"><strong>📜 Compliance</strong></h2>
+<h2 id="1-Audit-and-Reporting-Tools">1. Audit and Reporting Tools:</h2>
+<ul>
+<li>Purpose: Automates compliance assessments and generates audit report to demonstrate adherence to regulatory requirements.</li>
+<li>Technologies: Compliance management platforms (e.g., AWS Config, Azure Policy), audit log snad reporting features.</li>
+<li>Best Practices: Configure automated compliance checks for regulatory frameworks (e.g., GDPR, HIPAA), regularly review audit logs, and generate compliance reports for stakeholders.</li>
+</ul>
+<h2 id="2-Data-Loss-Prevention-DLP">2. Data Loss Prevention (DLP):</h2>
+<ul>
+<li>Purpose: Monitors and protects sensitive dta to prevent unauthorized access, us, or transmission.</li>
+<li>Technologies: DLP solutions (e.g., Symantec DLP, Microsoft DLP), data classification and tagging, policy enforcement.</li>
+<li>Best Practices: Classify sensitive data, implement data loss prevention policies and controls (e.g., encryption, data masking), monitor data access and movement.</li>
+</ul>
+<h2 id="3-Legal-Hold-and-E-Discovery">3. Legal Hold and E-Discovery:</h2>
+<ul>
+<li>Purpose: Facilitates data retention, search, and retireval for leagal and regulatory compliance purposes.</li>
+<li>Technologies: Legal hold capabilities in cloud storage services, e-discovery tools (e.g., Microsoft 365 Compliance Center).</li>
+<li>Best Practices: Implement retention policies for different data types, ensure legal hold mechanisms are effective and auditable, prepare for e-discovery requests with data search and retrieval capabilities.</li>
+</ul>
+<h2 id="4-Compliance-Automation">4. Compliance Automation:</h2>
+<ul>
+<li>Purpose: Enforces policies and controls through automated workflows to maintain regulatory compliance.</li>
+<li>Technolgogies: Policy enforcement mechanisms (e.g., AWS Config Rules, Azure Policy), compliance as code, compliance automation scripts.</li>
+<li>Best Practices: Define compliance policies as code (infrastructure as Code), automate compliance checks and remediation, integrate compliance automation with CI/CD pipelines.</li>
+</ul>
+<h2 id="📚-Governance"><strong>📚 Governance</strong></h2>
+<h2 id="1-Policy-Management">1. Policy Management:</h2>
+<ul>
+<li>Purpose: Defines and enforces policies for resource provisioning, usage limits, and configurations to maintain control and compliance.</li>
+<li>Technologies: Cloud-native policy engines (e.g., AWS IAM Policies, Azure Policy), custom scripts and automation tools.</li>
+<li>Best Practices: Establish clear policies for resource allocation, enforece policies using automated control, regularly review and updtae policies based on business requirements and regulatory chagnes.</li>
+</ul>
+<h2 id="2-Cost-Management">2. Cost Management:</h2>
+<ul>
+<li>Purpose: Tracks and optimizes cloud expenditures to align with budget constraints and financial goals.</li>
+<li>Technologies: Cost management tools (e.g., AWS Cost Expolrer, Azure Cost Management), buddgeting and forecasting features.</li>
+<li>Best Practices: Monitor cloud spending in real-time, implement cost allocation tags, optimize resource usage (e.g., rightsizing, reserved instances), set budget alerts and limits.</li>
+</ul>
+<h2 id="3-Performance-Monitoring">3. Performance Monitoring:</h2>
+<ul>
+<li>Purpose: Monitors service levels, uptime, and application performance to ensure adherence to governance policies and SLAs (Service Level Agreements).</li>
+<li>Technologies: Cloud monitoring and observability platform (e.g., AWS CloudWatch, Azure Monitor), application performance management (APM) tools.</li>
+<li>Best Practices: Set up monitoring ddashboards for key metrics, configure alerts for performance anomalies, conduct regular performance reviews and optimization.</li>
+</ul>
+<h2 id="4-Risk-Management">4. Risk Management:</h2>
+<ul>
+<li>Purpose: Identifies, assesses, and mitigates risks to cloud infrastructure, data, and services.</li>
+<li>Technologies: Risk assessment tools, vulnerability scanning, threat intelligence platforms.</li>
+<li>Best Practices: Conduct regular risk assessments, implement security controls based on risk profiles, monitor threat intelligence sources for emerging risks, and vulnerabilities.</li>
+</ul>
+<h2 id="5-Change-Mangement">5. Change Mangement:</h2>
+<ul>
+<li>Purpose: Mange changes to cloud environments through standardized processes to minimize disruptions and maintain stability.</li>
+<li>Technologies: Change mangement systems (e.g., AWS CloudFormation, Azure DevOps), version control systems.</li>
+<li>Best Practices: implement change approval workflows, automate deployment processes using CI/CD pipelines, maintain documentation and rollback procedures for changes.</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2023/12/06/JavaScript%20Full%20Stack%20Series/04-Nodejs%20and%20Express.html" data-id="cly9zwsk1001ccv699r7feogy" data-title="JavaScript Full Stack Series-04-Nodejs and Express" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/06/Inomad%20Dairy/04-infrastructure-08-Security%20Compliance%20and%20Governance.html" data-id="cly9zwsjt000icv69cgwchwde" data-title="Inomad Diary-04-infrastructure-08-Security Compliance and Governance" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
@@ -169,13 +239,15 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
       
   <ul class="article-tag-list">
     
-      <li class="article-tag-list-item"><a href="/tags/JavaScript/">#JavaScript</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Inomad/">#Inomad</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/Full-Stack/">#Full Stack</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Infrastructure/">#Infrastructure</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/Nodejs/">#Nodejs</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Security/">#Security</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/Express/">#Express</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Compliance/">#Compliance</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Governance/">#Governance</a></li>
     
   </ul>
 
@@ -185,19 +257,10 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
     
 <nav id="article-nav" class="article-nav">
   
-    <a href="/2024/04/23/Inomad%20Dairy/01-ProductModel.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Inomad-Dairy-01-ProductModel
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/12/04/JavaScript%20Full%20Stack%20Series/03-Adding%20Styles.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2024/07/05/Inomad%20Dairy/04-infrastructure-07-Messaging.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JavaScript Full Stack Series-03-Adding Styles</div>
+      <div class="article-nav-title">Inomad Dairy-04-infrastructure-07-Messaging</div>
     </a>
   
 </nav>
