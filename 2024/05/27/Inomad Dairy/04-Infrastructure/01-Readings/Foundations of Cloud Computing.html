@@ -15,24 +15,22 @@
 <!-- End Google Analytics -->
 
   
-  <title>04-infrastructure-09-Auditing Monitoring and Logging | Zhicheng&#39;s Blog</title>
+  <title>Inomad Diary-04-Infrastructure-01-Readings-Foundations of Cloud Computing | Zhicheng&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
-  <meta name="description" content="🔍 Intro Auditing, monitoring, and logging are critical components in the realm of cloud computing, ensuring operational integrity, security, and compliance. In this post, I will discuss the importanc">
+  <meta name="description" content="🔎 Intro From this post onwards, I will start exploring the related knowledge of infrastructure for software applications, particularly in the cloud. This post will cover the basics of cloud computing">
 <meta property="og:type" content="article">
-<meta property="og:title" content="04-infrastructure-09-Auditing Monitoring and Logging">
-<meta property="og:url" content="https://dogecat0.github.io/2024/07/07/Inomad%20Dairy/04-infrastructure-09-Auditing.html">
+<meta property="og:title" content="Inomad Diary-04-Infrastructure-01-Readings-Foundations of Cloud Computing">
+<meta property="og:url" content="https://dogecat0.github.io/2024/05/27/Inomad%20Dairy/04-Infrastructure/01-Readings/Foundations%20of%20Cloud%20Computing.html">
 <meta property="og:site_name" content="Zhicheng&#39;s Blog">
-<meta property="og:description" content="🔍 Intro Auditing, monitoring, and logging are critical components in the realm of cloud computing, ensuring operational integrity, security, and compliance. In this post, I will discuss the importanc">
+<meta property="og:description" content="🔎 Intro From this post onwards, I will start exploring the related knowledge of infrastructure for software applications, particularly in the cloud. This post will cover the basics of cloud computing">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-07-07T08:46:25.000Z">
-<meta property="article:modified_time" content="2024-07-07T09:07:24.787Z">
+<meta property="article:published_time" content="2024-05-27T21:30:34.000Z">
+<meta property="article:modified_time" content="2024-07-07T09:12:50.007Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
-<meta property="article:tag" content="Auditing">
-<meta property="article:tag" content="Monitoring">
-<meta property="article:tag" content="Logging">
+<meta property="article:tag" content="Cloud Computing">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
@@ -112,10 +110,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 </header>
 
       <div class="sub-container outer">
-        <section class="post-container" id="main"><article id="post-Inomad Dairy/04-infrastructure-09-Auditing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section class="post-container" id="main"><article id="post-Inomad Dairy/04-Infrastructure/01-Readings/Foundations of Cloud Computing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <p class="article-date">
-  <time class="dt-published" datetime="2024-07-07T08:46:25.000Z" itemprop="datePublished">2024-07-07</time>
+  <time class="dt-published" datetime="2024-05-27T21:30:34.000Z" itemprop="datePublished">2024-05-27</time>
 </p>
     
   </div>
@@ -127,7 +125,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      04-infrastructure-09-Auditing Monitoring and Logging
+      Inomad Diary-04-Infrastructure-01-Readings-Foundations of Cloud Computing
     </h1>
   
 
@@ -135,78 +133,88 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        <p><strong>🔍 Intro</strong></p>
-<p>Auditing, monitoring, and logging are critical components in the realm of cloud computing, ensuring operational integrity, security, and compliance. In this post, I will discuss the importance of auditing, monitoring, and logging in the cloud, and give it a detailed overview and study of these technologies.</p>
+        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
+<p>From this post onwards, I will start exploring the related knowledge of infrastructure for software applications, particularly in the cloud. This post will cover the basics of cloud computing.</p>
 <span id="more"></span>
-<p>Auditing, monitoring, and logging technologies play a crucial role in cloud infrastructure, providing visibility into system activities, detecting security incidents, and ensuring compliance with regulatory requirements. A comprehensive approach to auditing, monitoring, and logging is essential for organizations to maintain operational efficiency, protect sensitive information, and respond to security threats effectively.</p>
-<h2 id="🔍-Auditing"><strong>🔍 Auditing</strong></h2>
-<p>Auditing in clouding computing involves the systematic examination of cloud resources, configurations, and activities to verify compliance with organizational policies, regulatory requirements, and security best practices.</p>
-<h2 id="1-Purpose-of-Auditing">1. Purpose of Auditing:</h2>
-<p>Auditing ensures transparency, accountability, and governance across cloud envrionments by tracking and analyzing actions and changes.</p>
-<h2 id="2-Key-Components-of-Auditing">2. Key Components of Auditing:</h2>
+<h2 id="☁️-Core-Foundations-of-Cloud-Computing"><strong>☁️ Core Foundations of Cloud Computing</strong></h2>
+<p>Cloud computing is a technology paradigm that allows users to access and store data and applications on remote servers over the internet rather than on local servers or personal computers. This model offers flexibility, scalability, and cost efficiency. Here are the core foundations of cloud computing:</p>
+<h2 id="1-On-Demand-Self-Service">1. On-Demand Self-Service</h2>
 <ul>
-<li>Audit Logs: Detailed records of actions taken within cloud services, capturing events such as resource provisioning, configuration changes, and access attempts.</li>
-<li>Compliance Audits: Scheduled or ad-hoc assessments to validate adherence to regulatory standards (e.g., PCI DSS, GDPR) and internal policies.</li>
+<li>Definition: Users can provision computing capabilities, such as server time and network storage, as needed automatically without requiring human interaction with each service provider.</li>
+<li>Key Features: Web-based interfaces, automation tools, API access.</li>
 </ul>
-<h2 id="3-Technologies">3. Technologies:</h2>
+<h2 id="2-Broad-Network-Access">2. Broad Network Access</h2>
 <ul>
-<li>Cloud-native Tools: Platform-specific auditing solutions provided by cloud service providers (CSPs) like AWS CloudTrail, Azure Monitor, and Google CLoud Audit Logs.</li>
-<li>Thrid-party SOlutions: Enhanced auditing capabilities for multi-cloud environments or specific compliance needs.</li>
+<li>Definition: Cloud services are available over the network and accessed through standard mechanisms that promote use by heterogeneous thin or thick client platforms (e.g., mobile phones, tablets, laptops, and workstations).</li>
+<li>Key Features: Accessibility from any device, anywhere.</li>
 </ul>
-<h2 id="4-Best-Practices">4. Best Practices:</h2>
+<h2 id="3-Resource-Pooling">3. Resource Pooling</h2>
 <ul>
-<li>Configure logging for all critical services and ensure logs are retained securely.</li>
-<li>Implement automated audit check and alerts for suspicious activites.</li>
-<li>Regularly review audit logs and conduct audits to identify and address security gaps.</li>
+<li>Definition: The provider’s computing resources are pooled to serve multiple consumers using a multi-tenant model, with different physical and virtual resources dynamically assigned and reassigned according to consumer demand.</li>
+<li>Key Features: Location independence, resource sharing, virtualization.</li>
 </ul>
-<h2 id="👀-Monitoring"><strong>👀 Monitoring</strong></h2>
-<p>Cloud Monitoring involves real-time observation and analysis of cloud infrastructure, applications, and services to ensure performance, availability, and reliability.</p>
-<h2 id="1-Purpose-of-Monitoring">1. Purpose of Monitoring:</h2>
-<p>Detect and resolve issues proactively, optimize resource utilization, and meet service-level objective (SLOs) and service-level aggreements (SLAs).</p>
-<h2 id="2-Key-Components-of-Monitoring">2. Key Components of Monitoring:</h2>
+<h2 id="4-Rapid-Elasticity">4. Rapid Elasticity</h2>
 <ul>
-<li>Metrics: Quantitative data points (CPU usage, latency, etc) used to assess performance and health.</li>
-<li>Alerts: Automated notifications triggered by predefined thresholds or anomalies.</li>
-<li>Dashboards: Visual representations of key metrics for quick insights and troubleshooting.</li>
+<li>Definition: Capabilities can be elastically provisioned and released to scale rapidly outward and inward with demand. To the consumer, the capabilities available for provisioning often appear to be unlimited and can be appropriated in any quantity at any time.</li>
+<li>Key Features: Scalability, flexibility, auto-scaling.</li>
 </ul>
-<h2 id="3-Technologies-2">3. Technologies:</h2>
+<h2 id="5-Measured-Service">5. Measured Service</h2>
 <ul>
-<li>Cloud Provider Tools: AWS CloudWatch, Azure Monitor, Google Cloud Monitoring.</li>
-<li>Third-party Monitoring Tools: Datadog, New RElic, Prometheus for specialized metrics and analysis.</li>
+<li>Definition: Cloud systems automatically control and optimize resource use by leveraging a metering capability at some level of abstraction appropriate to the type of service (e.g., storage, processing, bandwidth, and active user accounts). Resource usage can be monitored, controlled, and reported, providing transparency for both the provider and consumer of the utilized service.</li>
+<li>Key Features: Pay-per-use, metered service, resource monitoring, billing.</li>
 </ul>
-<h2 id="4-Best-Practices-2">4. Best Practices:</h2>
+<p>These core foundations are the building blocks of cloud computing that enable businesses to scale and grow without the need for significant capital investment in infrastructure. Next, I will explore the cloud service models and deployment models.</p>
+<h2 id="🧩-Cloud-Service-Model"><strong>🧩 Cloud Service Model</strong></h2>
+<p>Cloud computing services are typically categorized into three service models based on the level of abstraction and control they provide to users. These models are Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS).</p>
+<h2 id="Infrastructure-as-a-Service-IaaS">Infrastructure as a Service (IaaS)</h2>
 <ul>
-<li>Define meaningful metrics aligned with business goals and application requirements.</li>
-<li>Establish alerting mechanisms with clear escalation paths for critical issues.</li>
-<li>Leverage monitoring data for capacity planning and performance optimization.</li>
+<li>Definition: Provides virtualized computing resources over the internet. It offers fundamental computing resources such as virtual machines, storage, and networks.</li>
+<li>Examples: Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP).</li>
+<li>Use Cases: Hosting websites, running enterprise applications, backup and disaster recovery.</li>
 </ul>
-<h2 id="📝-Logging"><strong>📝 Logging</strong></h2>
-<p>Logging involves the systematic recording of events, activities, and errors within cloud environments for troubleshooting, analysis, and compliance.</p>
-<h2 id="1-Purpose-of-Logging">1. Purpose of Logging:</h2>
-<p>Capture detailed records of operations, security events, and application behavior for retrospective analysis and audting.</p>
-<h2 id="2-Key-Components-of-Logging">2. Key Components of Logging:</h2>
+<h2 id="Platform-as-a-Service-PaaS">Platform as a Service (PaaS)</h2>
 <ul>
-<li>Log Types: Application logs, system logs, securityl logs, and audit logs.</li>
-<li>Log Formats: Strructured (JSON, XML) or unstructured (text-based) formats.</li>
-<li>Log Aggregation: Centralized collection and storage of logs for analysis and retention.</li>
+<li>Definition: Provides a platform allowing customers to develop, run, and manage applications without the complexity of building and maintaining the infrastructure.</li>
+<li>Examples: Heroku, Google App Engine, Microsoft Azure App Service.</li>
+<li>Use Cases: Web application development, mobile application development, API development.</li>
 </ul>
-<h2 id="3-Technologies-3">3. Technologies:</h2>
+<h2 id="Software-as-a-Service-SaaS">Software as a Service (SaaS)</h2>
 <ul>
-<li>Cloud-native Logging Services: AWS CloudWatch Logs, Azure Monitor Logs, Google Cloud Logging.</li>
-<li>Open-source Logging Tools: ELK Stack (Elasticsearch, Logstash, Kibana), Fluentd, Graylog.</li>
+<li>Definition: Delivers software applications over the internet, on a subscription basis, eliminating the need for organizations to install and run applications on their own computers or data centers.</li>
+<li>Examples: Salesforce, Google Workspace, Microsoft Office 365.</li>
+<li>Use Cases: CRM, email services, collaboration tools.</li>
 </ul>
-<h2 id="4-Best-Practices-3">4. Best Practices:</h2>
+<h2 id="🚀-Cloud-Deployment-Models"><strong>🚀 Cloud Deployment Models</strong></h2>
+<p>Cloud deployment models define the type of cloud environment based on ownership, size, and access. The common deployment models are Public Cloud, Private Cloud, Hybrid Cloud, and Community Cloud.</p>
+<h2 id="Public-Cloud">Public Cloud</h2>
 <ul>
-<li>Implement log aggregation to simplify log management and analysis.</li>
-<li>Enforce log retention policies to comply with regulatory requirements.</li>
-<li>Use log data for troubleshooting, security incident reponse, and performance tuning.</li>
+<li>Definition: Services are delivered over the public internet and shared across multiple organizations.</li>
+<li>Benefits: Cost-effective, scalable, no maintenance overhead.</li>
+<li>Examples: AWS, Azure, GCP.</li>
 </ul>
-<p>Auditing, monitoring, and logging technologies are indispensable for maintaining operational excellence and security in cloud environments. By integrating these practices into cloud deployment strategies, organizations can enhance transparency, mitigate risks, and improve overall operational efficiency.</p>
+<h2 id="Private-Cloud">Private Cloud</h2>
+<ul>
+<li>Definition: Services are maintained on a private network for a single organization, providing greater control and security.</li>
+<li>Benefits: Enhanced security, compliance, customizable.</li>
+<li>Examples: VMware vSphere, OpenStack.</li>
+</ul>
+<h2 id="Hybrid-Cloud">Hybrid Cloud</h2>
+<ul>
+<li>Definition: Combines public and private clouds, allowing data and applications to be shared between them.</li>
+<li>Benefits: Flexibility, cost-efficiency, improved security.</li>
+<li>Examples: Microsoft Azure Stack, AWS Outposts.</li>
+</ul>
+<h2 id="Community-Cloud">Community Cloud</h2>
+<ul>
+<li>Definition: A collaborative effort in which infrastructure is shared between several organizations from a specific community with common concerns (e.g., security, compliance).</li>
+<li>Benefits: Cost-sharing, improved collaboration.</li>
+<li>Examples: Government cloud services.</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/07/Inomad%20Dairy/04-infrastructure-09-Auditing.html" data-id="clybbyakx000kh86940zl50qw" data-title="04-infrastructure-09-Auditing Monitoring and Logging" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/05/27/Inomad%20Dairy/04-Infrastructure/01-Readings/Foundations%20of%20Cloud%20Computing.html" data-id="clybc85xy0018qe696ozd9c6y" data-title="Inomad Diary-04-Infrastructure-01-Readings-Foundations of Cloud Computing" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
@@ -219,11 +227,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
       <li class="article-tag-list-item"><a href="/tags/Infrastructure/">#Infrastructure</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/Auditing/">#Auditing</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/Monitoring/">#Monitoring</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/Logging/">#Logging</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Cloud-Computing/">#Cloud Computing</a></li>
     
   </ul>
 
@@ -233,10 +237,19 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
 <nav id="article-nav" class="article-nav">
   
+    <a href="/2024/05/29/Inomad%20Dairy/04-Infrastructure/01-Readings/Technologies%20in%20Cloud%20Computing.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Inomad Diary-04-Infrastructure-01-Readings-Technologies in Cloud Computing
+        
+      </div>
+    </a>
   
-    <a href="/2024/07/06/Inomad%20Dairy/04-infrastructure-08-Security%20Compliance%20and%20Governance.html" id="article-nav-older" class="article-nav-link-wrap">
+  
+    <a href="/2024/05/21/Investment/01-Investing%20or%20Mortgage-02-A%20Combined%20Approach.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Inomad Diary-04-infrastructure-08-Security Compliance and Governance</div>
+      <div class="article-nav-title">Investment-01-Investing or Mortgage-02-A Combined Approach</div>
     </a>
   
 </nav>
@@ -279,23 +292,23 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <ul>
         
           <li class="recent-post-list-item">
-            <a href="/2024/07/07/Inomad%20Dairy/04-infrastructure-09-Auditing.html">04-infrastructure-09-Auditing Monitoring and Logging</a>
+            <a href="/2024/07/07/Inomad%20Dairy/04-Infrastructure/01-Readings/Auditing.html">Inomad Diary-04-Infrastructure-01-Readings-Auditing Monitoring and Logging</a>
           </li>
         
           <li class="recent-post-list-item">
-            <a href="/2024/07/06/Inomad%20Dairy/04-infrastructure-08-Security%20Compliance%20and%20Governance.html">Inomad Diary-04-infrastructure-08-Security Compliance and Governance</a>
+            <a href="/2024/07/06/Inomad%20Dairy/04-Infrastructure/01-Readings/Security%20Compliance%20and%20Governance.html">Inomad Diary-04-Infrastructure-01-Readings-Security Compliance and Governance</a>
           </li>
         
           <li class="recent-post-list-item">
-            <a href="/2024/07/05/Inomad%20Dairy/04-infrastructure-07-Messaging.html">Inomad Dairy-04-infrastructure-07-Messaging</a>
+            <a href="/2024/07/05/Inomad%20Dairy/04-Infrastructure/01-Readings/Messaging.html">Inomad Diary-04-Infrastructure-01-Readings-Messaging</a>
           </li>
         
           <li class="recent-post-list-item">
-            <a href="/2024/07/04/Inomad%20Dairy/04-infrastructure-06-Development%20and%20Deployment.html">Inomad Dairy-04-infrastructure-06-Development and Deployment</a>
+            <a href="/2024/07/04/Inomad%20Dairy/04-Infrastructure/01-Readings/Development%20and%20Deployment.html">Inomad Diary-04-Infrastructure-01-Readings-Development and Deployment</a>
           </li>
         
           <li class="recent-post-list-item">
-            <a href="/2024/07/04/Inomad%20Dairy/04-Infrastructure-05-Database.html">Inomad Dairy-04-Infrastructure-05-Database</a>
+            <a href="/2024/07/04/Inomad%20Dairy/04-Infrastructure/01-Readings/Database.html">Inomad Diary-04-Infrastructure-01-Readings-Database</a>
           </li>
         
       </ul>
