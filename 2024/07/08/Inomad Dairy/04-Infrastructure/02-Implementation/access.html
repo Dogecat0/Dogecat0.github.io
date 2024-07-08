@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro From this post, I will start exploring the implementation of infrastructure technologies in the Inomad. In this post, I will set up Pulumi with AWS SSO to manage the cloud infrastructure as c">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-08T19:32:44.000Z">
-<meta property="article:modified_time" content="2024-07-08T19:53:34.842Z">
+<meta property="article:modified_time" content="2024-07-08T20:00:57.022Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -229,17 +229,14 @@ Confirm that the AWS_PROFILE environment variable is set correctly:</li>
 <li>Unset Conflicting Environment Variables:<br>
 Ensure no other AWS-related environment variables are set that could conflict with the SSO profile:</li>
 </ul>
-<pre><code class="language-bash">unset AWS_ACCESS_KEY_ID
-unset AWS_SECRET_ACCESS_KEY
-unset AWS_SESSION_TOKEN
-
-
-</code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">unset</span> AWS_ACCESS_KEY_ID
+<span class="token builtin class-name">unset</span> AWS_SECRET_ACCESS_KEY
+<span class="token builtin class-name">unset</span> AWS_SESSION_TOKEN<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/08/Inomad%20Dairy/04-Infrastructure/02-Implementation/access.html" data-id="clydeh4qs005v95695yubbbqn" data-title="Inomad Diary-04-Infrastructure-02-Implementations-Pulumi Setup with AWS SSO" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/08/Inomad%20Dairy/04-Infrastructure/02-Implementation/access.html" data-id="clydeqkul005vvg695zur1yb9" data-title="Inomad Diary-04-Infrastructure-02-Implementations-Pulumi Setup with AWS SSO" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
