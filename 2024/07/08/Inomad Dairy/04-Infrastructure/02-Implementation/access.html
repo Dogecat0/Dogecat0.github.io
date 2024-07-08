@@ -15,22 +15,23 @@
 <!-- End Google Analytics -->
 
   
-  <title>Inomad Diary-04-Infrastructure-01-Readings-Technologies in Cloud Computing | Zhicheng&#39;s Blog</title>
+  <title>Inomad Diary-04-Infrastructure-02-Implementations-Pulumi Setup with AWS SSO | Zhicheng&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
-  <meta name="description" content="🔎 Intro In this post, I will delve into the key infrastructure technologies that underpin cloud computing. Understanding these technologies is essential for building scalable, reliable, and secure cl">
+  <meta name="description" content="🔎 Intro From this post, I will start exploring the implementation of infrastructure technologies in the Inomad. In this post, I will set up Pulumi with AWS SSO to manage the cloud infrastructure as c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Inomad Diary-04-Infrastructure-01-Readings-Technologies in Cloud Computing">
-<meta property="og:url" content="https://dogecat0.github.io/2024/05/29/Inomad%20Dairy/04-Infrastructure/01-Readings/Technologies%20in%20Cloud%20Computing.html">
+<meta property="og:title" content="Inomad Diary-04-Infrastructure-02-Implementations-Pulumi Setup with AWS SSO">
+<meta property="og:url" content="https://dogecat0.github.io/2024/07/08/Inomad%20Dairy/04-Infrastructure/02-Implementation/access.html">
 <meta property="og:site_name" content="Zhicheng&#39;s Blog">
-<meta property="og:description" content="🔎 Intro In this post, I will delve into the key infrastructure technologies that underpin cloud computing. Understanding these technologies is essential for building scalable, reliable, and secure cl">
+<meta property="og:description" content="🔎 Intro From this post, I will start exploring the implementation of infrastructure technologies in the Inomad. In this post, I will set up Pulumi with AWS SSO to manage the cloud infrastructure as c">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-05-29T16:47:42.000Z">
-<meta property="article:modified_time" content="2024-07-07T09:14:27.567Z">
+<meta property="article:published_time" content="2024-07-08T19:32:44.000Z">
+<meta property="article:modified_time" content="2024-07-08T19:53:34.842Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
-<meta property="article:tag" content="Cloud Computing Technologies">
+<meta property="article:tag" content="Pulumi">
+<meta property="article:tag" content="AWS SSO">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
@@ -110,10 +111,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 </header>
 
       <div class="sub-container outer">
-        <section class="post-container" id="main"><article id="post-Inomad Dairy/04-Infrastructure/01-Readings/Technologies in Cloud Computing" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section class="post-container" id="main"><article id="post-Inomad Dairy/04-Infrastructure/02-Implementation/access" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <p class="article-date">
-  <time class="dt-published" datetime="2024-05-29T16:47:42.000Z" itemprop="datePublished">2024-05-29</time>
+  <time class="dt-published" datetime="2024-07-08T19:32:44.000Z" itemprop="datePublished">2024-07-08</time>
 </p>
     
   </div>
@@ -125,7 +126,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      Inomad Diary-04-Infrastructure-01-Readings-Technologies in Cloud Computing
+      Inomad Diary-04-Infrastructure-02-Implementations-Pulumi Setup with AWS SSO
     </h1>
   
 
@@ -134,58 +135,111 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>In this post, I will delve into the key infrastructure technologies that underpin cloud computing. Understanding these technologies is essential for building scalable, reliable, and secure cloud-based applications.</p>
+<p>From this post, I will start exploring the implementation of infrastructure technologies in the Inomad. In this post, I will set up Pulumi with AWS SSO to manage the cloud infrastructure as code. The post will cover biref steps of the configuration and mainly focus on the issues and solutions encountered during the setup process.</p>
 <span id="more"></span>
-<h2 id="🔧-Key-Infrastructure-Technologies-in-Cloud-Computing"><strong>🔧 Key Infrastructure Technologies in Cloud Computing</strong></h2>
-<h2 id="1-Virtualization">1. Virtualization</h2>
+<h2 id="🔧-Pulumi-Setup-with-AWS-SSO"><strong>🔧 Pulumi Setup with AWS SSO</strong></h2>
+<h2 id="1-What-is-Pulumi">1. What is Pulumi?</h2>
 <ul>
-<li>Definition: Virtualization technology allows for the creation of multiple virtual environments from a single physical hardware system, enabling better utilization of resources and isolation between different environments.</li>
+<li>Pulumi is an open-source infrastructure as code tool that allows you to define, deploy, and manage cloud infrastructure using familiar programming languages like JavaScript, TypeScript, Python, and Go.</li>
 </ul>
-<p>Types of Virtualization:</p>
+<h2 id="2-Why-Pulumi">2. Why Pulumi?</h2>
 <ul>
-<li>Server Virtualization: Divides a physical server into multiple virtual servers, each running its own operating system and applications.</li>
-<li>Storage Virtualization: Pools physical storage from multiple devices into a single logical storage unit.</li>
-<li>Network Virtualization: Combines hardware and software network resources and network functionality into a single, software-based administrative entity.</li>
+<li>Pulumi provides a modern approach to infrastructure as code by allowing you to use your favorite programming languages and tools to define and manage cloud resources.</li>
 </ul>
-<h2 id="2-Containers">2. Containers</h2>
+<h2 id="3-Setting-up-Pulumi-with-AWS-SSO">3. Setting up Pulumi with AWS SSO</h2>
+<p><strong>Step 1: Install Pulumi CLI</strong></p>
 <ul>
-<li>Definition: Containers are lightweight, standalone, executable packages that contain everything needed to run an application, including code, runtime, system tools, libraries, and settings. They provide a consistent environment for applications to run across different computing environments.</li>
+<li>Install the Pulumi CLI by following the instructions on the <a target="_blank" rel="noopener" href="https://www.pulumi.com/docs/get-started/install/">official Pulumi website</a>.</li>
 </ul>
-<h2 id="3-Microservices-Architecture">3. Microservices Architecture</h2>
+<p><strong>Step 2: Configure AWS SSO</strong></p>
+<p>The exact steps to configure AWS SSO may vary based on your organization’s setup, but the general steps are as follows:</p>
 <ul>
-<li>Definition: Microservices architecture is an architectural style that structures an application as a collection of small, loosely coupled services. Each service is independently deployable, scalable, and maintainable, implementing a specific business capability.</li>
-<li>Benifits: Scalability, resilience, flexibility, and ease of deployment.</li>
+<li>Configure AWS SSO to manage access to AWS accounts and services. Follow the instructions in the <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/singlesignon/latest/userguide/getting-started.html">AWS SSO documentation</a>.<br>
+⚠️ Note: AWS SSO now is called AWS IAM Identity Center.</li>
+<li>Create an AWS SSO user and assign the necessary permissions to access the AWS accounts.</li>
+<li>Set up AWS CLI with AWS SSO by following the instructions in the <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-sso.html">AWS CLI documentation</a>.</li>
+<li>Create an AWS SSO profile in the AWS CLI configuration specifically for Pulumi by running the following command:</li>
 </ul>
-<h2 id="4-Serverless-Computing">4. Serverless Computing</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">aws configure sso <span class="token parameter variable">--profile</span> <span class="token punctuation">[</span>profile-name<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
-<li>Definition: Serverless computing allows developers to build and run applications without managing servers. The cloud provider automatically provisions, scales, and manages the infrastructure required to run the code.</li>
+<li>Follow the prompts to configure the AWS SSO profile with the necessary details.</li>
 </ul>
-<h2 id="5-DevOps-and-Automation-Tools">5. DevOps and Automation Tools</h2>
+<p>⚠️ One thing to notice is there is a ‘sso-session’ and ‘profile’ in the AWS CLI configuration. The [sso-session] section is used to centralize and standardize SSO configuration settings that can be shared across multiple profiles. Here’s why it is beneficial:</p>
 <ul>
-<li>Definition: Tools and practices that combine software development (Dev) and IT operations (Ops) to shorten the systems development life cycle and provide continuous delivery with high software quality.</li>
+<li>Centralized Configuration: By defining SSO settings in the [sso-session] section, you can maintain a single configuration point for SSO-related parameters. This reduces redundancy and makes it easier to update SSO settings if needed.</li>
+<li>Reusability: Multiple profiles can reference the same [sso-session] configuration. This is particularly useful if you have several profiles that all use the same SSO start URL and region but differ in account IDs or roles.</li>
+<li>Clarity and Organization: Separating the session configuration from the profile configuration improves the readability and organization of your AWS configuration file. It becomes clearer which settings are for SSO sessions and which are for specific profiles.</li>
 </ul>
-<h2 id="6-Networking-and-Content-Devliery">6. Networking and Content Devliery</h2>
+<p>Example of AWS CLI configuration file:<br>
+Imagine you have multiple AWS profiles that use the same SSO start URL and region but different roles and account IDs. Using [sso-session] makes it easier to manage:</p>
+<p>[sso-session] section:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>sso-session my-sso<span class="token punctuation">]</span>
+sso_start_url <span class="token operator">=</span> https://my-sso-portal.awsapps.com/start
+sso_region <span class="token operator">=</span> us-west-2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>Multiple profiles referencing the same SSO session:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>profile dev<span class="token punctuation">]</span>
+sso_session <span class="token operator">=</span> my-sso
+sso_account_id <span class="token operator">=</span> <span class="token number">123456789012</span>
+sso_role_name <span class="token operator">=</span> DevRole
+region <span class="token operator">=</span> us-west-2
+
+<span class="token punctuation">[</span>profile prod<span class="token punctuation">]</span>
+sso_session <span class="token operator">=</span> my-sso
+sso_account_id <span class="token operator">=</span> <span class="token number">234567890123</span>
+sso_role_name <span class="token operator">=</span> ProdRole
+region <span class="token operator">=</span> us-west-2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Without [sso-session]:<br>
+Without using [sso-session], you would have to duplicate the SSO settings in each profile, which can be cumbersome and error-prone:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>profile dev<span class="token punctuation">]</span>
+sso_start_url <span class="token operator">=</span> https://my-sso-portal.awsapps.com/start
+sso_region <span class="token operator">=</span> us-west-2
+sso_account_id <span class="token operator">=</span> <span class="token number">123456789012</span>
+sso_role_name <span class="token operator">=</span> DevRole
+region <span class="token operator">=</span> us-west-2
+
+<span class="token punctuation">[</span>profile prod<span class="token punctuation">]</span>
+sso_start_url <span class="token operator">=</span> https://my-sso-portal.awsapps.com/start
+sso_region <span class="token operator">=</span> us-west-2
+sso_account_id <span class="token operator">=</span> <span class="token number">234567890123</span>
+sso_role_name <span class="token operator">=</span> ProdRole
+region <span class="token operator">=</span> us-west-2<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>So the [sso-session] section is a powerful feature that reduces redundancy and enhances maintainability in your AWS CLI configuration.</p>
+<p><strong>Step 3: Configure Pulumi with AWS SSO</strong></p>
+<p>Once you have set up AWS SSO and configured the AWS CLI, you can configure Pulumi to use AWS SSO by running the following command:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pulumi config <span class="token builtin class-name">set</span> cloud:provider aws profile <span class="token punctuation">[</span>profile-name<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>This command tells Pulumi to use the specified AWS SSO profile when interacting with AWS resources.</p>
+<p>⚠️ I have encountered an issue where Pulumi was not able to authenticate with AWS SSO using the profile I configured. The issue was related to the fact that Pulumi is not using the correct AWS credentials. To resolve this issue, there are several ways you can try:</p>
 <ul>
-<li>Definition: Technologies that manage network infrastructure, traffic distribution, and deliver content globally with low latency and high transfer speeds.</li>
+<li>Verify AWS SSO Login:<br>
+Ensure that you have logged in with AWS SSO:</li>
 </ul>
-<h2 id="7-Security-and-identity-Management">7. Security and identity Management</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">aws sso login <span class="token parameter variable">--profile</span> <span class="token punctuation">[</span>profile-name<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
-<li>Definition: Technologies and practices that protect cloud infrastructure, applications, and data, and manage user identities and access rights.</li>
+<li>Set the AWS_PROFILE for Pulumi:<br>
+Set the AWS_PROFILE environment variable for Pulumi to use the correct profile:</li>
 </ul>
-<h2 id="8-Monitoring-and-Logging">8. Monitoring and Logging</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">export</span> <span class="token assign-left variable">AWS_PROFILE</span><span class="token operator">=</span><span class="token punctuation">[</span>profile-name<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <ul>
-<li>Definition: Tools that monitor cloud resources, track performance metrics, and log events for troubleshooting, performance optimization, and compliance.</li>
+<li>Check Environment Variables:<br>
+Confirm that the AWS_PROFILE environment variable is set correctly:</li>
 </ul>
-<h2 id="9-Data-Management-and-Analytics">9. Data Management and Analytics</h2>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token variable">$AWS_PROFILE</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>It should output your SSO profile name.</p>
 <ul>
-<li>Definition: Technologies that store, process, and analyze large volumes of data to extract meaningful insights and support decision-making.</li>
+<li>Unset Conflicting Environment Variables:<br>
+Ensure no other AWS-related environment variables are set that could conflict with the SSO profile:</li>
 </ul>
-<p>In the upcoming posts, I will explore each of these infrastructure technologies in more detail.🌞</p>
+<pre><code class="language-bash">unset AWS_ACCESS_KEY_ID
+unset AWS_SECRET_ACCESS_KEY
+unset AWS_SESSION_TOKEN
+
+
+</code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/05/29/Inomad%20Dairy/04-Infrastructure/01-Readings/Technologies%20in%20Cloud%20Computing.html" data-id="clydeh4q9001e95696ioz39mp" data-title="Inomad Diary-04-Infrastructure-01-Readings-Technologies in Cloud Computing" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/08/Inomad%20Dairy/04-Infrastructure/02-Implementation/access.html" data-id="clydeh4qs005v95695yubbbqn" data-title="Inomad Diary-04-Infrastructure-02-Implementations-Pulumi Setup with AWS SSO" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
@@ -198,7 +252,9 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
       <li class="article-tag-list-item"><a href="/tags/Infrastructure/">#Infrastructure</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/Cloud-Computing-Technologies/">#Cloud Computing Technologies</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Pulumi/">#Pulumi</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/AWS-SSO/">#AWS SSO</a></li>
     
   </ul>
 
@@ -208,19 +264,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
 <nav id="article-nav" class="article-nav">
   
-    <a href="/2024/05/29/Inomad%20Dairy/04-Infrastructure/01-Readings/Storage%20Technologies%20in%20Cloud.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Inomad Diary-04-Infrastructure-01-Readings-Storage Technologies in Cloud
-        
-      </div>
-    </a>
   
-  
-    <a href="/2024/05/27/Inomad%20Dairy/04-Infrastructure/01-Readings/Foundations%20of%20Cloud%20Computing.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2024/07/07/Inomad%20Dairy/04-Infrastructure/01-Readings/Auditing%20Monitoring%20and%20Logging.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Inomad Diary-04-Infrastructure-01-Readings-Foundations of Cloud Computing</div>
+      <div class="article-nav-title">Inomad Diary-04-Infrastructure-01-Readings-Auditing Monitoring and Logging</div>
     </a>
   
 </nav>
