@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In this post, I will set up Pulumi with AWS Elastic Beanstalk to manage the cloud infrastructure as code. The post will cover biref steps of the configuration and mainly focus on the issues a">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-09T21:04:22.000Z">
-<meta property="article:modified_time" content="2024-07-09T21:24:47.940Z">
+<meta property="article:modified_time" content="2024-07-09T21:34:12.410Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -223,7 +223,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <h2 id="🔧-Beanstalk-Setup-with-Pulumi"><strong>🔧 Beanstalk Setup with Pulumi</strong></h2>
 <h2 id="1-Elastic-Beanstalk-Setup-Overview-on-AWS-Console">1. Elastic Beanstalk Setup Overview on AWS Console</h2>
 <p>Setting up Elastic Beanstalk on the AWS Console seems quite straightforward. You can create a new environment, select the platform, configure the environment settings, and deploy your application.</p>
-<p>Interesting things I’ve noticed during my reading through the documentation:<br>
+<p>⚠️ Interesting things I’ve noticed during my reading through the documentation:<br>
 Elabstic Beanstalk creates an envrionment with the following resources:</p>
 <ul>
 <li>EC2 instances: The underlying compute resources for your application.</li>
@@ -234,14 +234,24 @@ Elabstic Beanstalk creates an envrionment with the following resources:</p>
 <li>S3 bucket: Stores application versions and logs.</li>
 <li>CloudWatch alarms: Monitors the environment and triggers alarms based on metrics.</li>
 <li>CloudFormation stack: Manages the resources created by Elastic Beanstalk.</li>
-<li>Domain name: Maps to the load balancer for accessing the application.<br>
-<a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers.html">More details</a></li>
+<li>Domain name: Maps to the load balancer for accessing the application.</li>
 </ul>
+<p>So for starters, Elastic Beanstalk manages the underlying infrastructure, abstracts the complexity of managing these resources, allowing you to focus on deploying and managing your applications.</p>
+<p>⚠️ Elastic Beanstalk also creates a default VPC and subnets for the environment. You can customize the VPC settings, including the CIDR block, subnets, and security groups if needed. Again, very convenient for developers who want to focus on the application code and not worry about the infrastructure, especially newbies like me.</p>
+<p><a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/customize-containers.html">More details</a></p>
+<h2 id="2-Pulumi-Setup-with-Elastic-Beanstalk">2. Pulumi Setup with Elastic Beanstalk</h2>
+<p>There are major three steps to set up Pulumi with Elastic Beanstalk:</p>
+<ul>
+<li>Setup a new application for the Elastic Beanstalk. <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/aws/api-docs/elasticbeanstalk/application/">Link to example code</a></li>
+<li>Configure the Elastic Beanstalk environment settings as needed. <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/aws/api-docs/elasticbeanstalk/configurationtemplate/">Link to example code</a></li>
+<li>Create a new environment for the Elastic Beanstalk application. <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/aws/api-docs/elasticbeanstalk/environment/">Link to example code</a></li>
+</ul>
+<p>Since I will mostly use the default settings for the Elastic Beanstalk environment as it’s the first time, the setup process should be relatively straightforward like this. I will explore more customized settings in the future as needed.</p>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/09/Inomad%20Dairy/04-Infrastructure/02-Implementation/Beanstalk.html" data-id="clyex6aib001fq169hwqd8jo3" data-title="Inomad Diary-04-Infrastructure-02-Implementations-Beanstalk Setup with Pulumi" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/09/Inomad%20Dairy/04-Infrastructure/02-Implementation/Beanstalk.html" data-id="clyexidac005vhn695oexg51a" data-title="Inomad Diary-04-Infrastructure-02-Implementations-Beanstalk Setup with Pulumi" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
