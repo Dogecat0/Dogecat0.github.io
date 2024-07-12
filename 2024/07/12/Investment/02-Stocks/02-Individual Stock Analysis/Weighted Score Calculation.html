@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro Following last post, to avoid having a way too long blog, I will break down the calculation of the weighted score for each section in this separated post.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-12T09:30:04.000Z">
-<meta property="article:modified_time" content="2024-07-12T09:39:31.121Z">
+<meta property="article:modified_time" content="2024-07-12T09:42:56.671Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Investment">
 <meta property="article:tag" content="Stocks">
@@ -136,6 +136,71 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
         <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
 <p>Following last post, to avoid having a way too long blog, I will break down the calculation of the weighted score for each section in this separated post.</p>
 <span id="more"></span>
+<h2 id="🔢-Data-from-the-Report"><strong>🔢 Data from the Report</strong></h2>
+<p><strong>Income Statement:</strong></p>
+<ul>
+<li>Revenue: $211.92 billion</li>
+<li>Cost of Revenue: $65.86 billion</li>
+<li>Gross Profit: $146.05 billion</li>
+<li>Operating Income: $88.52 billion</li>
+<li>Net Income: $72.36 billion</li>
+</ul>
+<p><strong>Profititability:</strong><br>
+Gross Profit Margin: 70%<br>
+Operating Margin: 41%<br>
+Net Profit Margin: 36.43%</p>
+<p><strong>Cash Flow:</strong></p>
+<ul>
+<li>Operating Cash Flow: $87.58 billion</li>
+<li>Investing Cash Flow: -$22.68 billion</li>
+<li>Financing Cash Flow: -$43.94 billion</li>
+<li>Net Cash Flow: $20.77 billion</li>
+<li>Free Cash Flow: $59.48 billion</li>
+</ul>
+<p><strong>Financial Position:</strong></p>
+<ul>
+<li>Total Debt: $79.9 billion as of March 31, 2024.</li>
+<li>Debt-to-Equity Ratio: 0.32.</li>
+<li>Current Ratio: 1.24.</li>
+<li>Quick Ratio: 1.05.</li>
+<li>Interest Coverage Ratio: 39.76.</li>
+<li>Credit Rating: Microsoft holds a AAA credit rating from S&amp;P, reflecting its robust financial health and low risk of default.</li>
+</ul>
+<p><strong>Balance Sheet:</strong></p>
+<ul>
+<li>Cash &amp; Cash Equivalents: 80.02B</li>
+<li>Total Debt: 79.91B</li>
+<li>Net Cash: 110.00M</li>
+<li>Net Cash Per Share: $0.01</li>
+<li>Equity (Book Value): 253.15B</li>
+<li>Book Value Per Share:	34.06</li>
+<li>Working Capital: 28.66B</li>
+</ul>
+<p><strong>Financial Efficiency:</strong></p>
+<ul>
+<li>Return on Equity (ROE): 37.50%</li>
+<li>Return on Assets (ROA): 19.00%</li>
+<li>Return on Invested Capital (ROIC): 26.00%</li>
+<li>Asset Turnover: 0.52</li>
+<li>Inventory Turnover: 34.07</li>
+<li>Interest Coverage Ratio: 39.76</li>
+</ul>
+<p><strong>Dividends Yields:</strong></p>
+<ul>
+<li>Dividend Per Share: $3.00</li>
+<li>Dividend Yield: 0.65%</li>
+<li>Dividend Growth (YoY): 10.29%</li>
+<li>Years of Dividend Growth: 19</li>
+<li>Payout Ratio: 25.97%</li>
+<li>Buyback Yield: -0.11%</li>
+<li>Shareholder Yield: 0.55%</li>
+<li>Earnings Yield: 2.52%</li>
+<li>FCF Yield: 2.07%</li>
+</ul>
+<p><strong>Shareholder Returns::</strong><br>
+Total Return: $8.4 billion in Q3 FY24.<br>
+Dividends: Microsoft has a consistent track record of paying and increasing dividends, with a current yield of approximately 1%, and a payout ratio around 30%-35%, suggesting room for further increases.<br>
+Share Repurchases: Continuation of buyback programs to enhance shareholder value by reducing the number of outstanding shares, thus increasing earnings per share (EPS).</p>
 <h2 id="🧮-Calculation-for-Each-Seaction"><strong>🧮 Calculation for Each Seaction</strong></h2>
 <h2 id="1-Financial-Performance-Analysis">1. Financial Performance Analysis:</h2>
 <p><strong>Income Statement (Weight: 20%)</strong></p>
@@ -218,11 +283,24 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <ul>
 <li>Total Score = 0.054 + 0.0585 + 0.0605 = 0.173</li>
 </ul>
+<p><strong>Cash Flow (Weight: 20%)</strong></p>
+<p>Metrics and Weights:</p>
+<ul>
+<li>Operating Cash Flow (Weight: 5%)</li>
+<li>Investing Cash Flow (Weight: 2.5%)</li>
+<li>Financing Cash Flow (Weight: 2.5%)</li>
+<li>Net Cash Flow (Weight: 5%)</li>
+<li>Free Cash Flow (Weight: 5%)</li>
+</ul>
+<p>Normalized Scores:</p>
+<ul>
+<li>Operating Cash Flow: 87.58</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/12/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation.html" data-id="clyiiav1m006cr86903p0gfu6" data-title="Investment-02-Stocks-04-Weighted Score Calculation" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/12/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation.html" data-id="clyiif840006h45697dfl8mj1" data-title="Investment-02-Stocks-04-Weighted Score Calculation" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
