@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In this post, I’ll continue to explore the ChatGPT’s capability to introduce the concept of factor and weight in stock investment using the previous analysis report as an example.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-10T11:01:06.000Z">
-<meta property="article:modified_time" content="2024-07-10T12:16:51.630Z">
+<meta property="article:modified_time" content="2024-07-12T09:26:22.571Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Investment">
 <meta property="article:tag" content="Stocks">
@@ -446,14 +446,14 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <li>Periodic Review: Regularly review and adjust weights based on new data, market conditions, and changes in company fundamentals. Quarterly or semi-annualy reviews are common.</li>
 <li>Adaptive Algorithms: Implement machine learning algorithms that adaptively adjust weights based on continuous learning from new data. Algorithms like gradient boosting or reinforcement learning can be used to optimized weight assignment dynamically.</li>
 </ul>
-<h2 id="🔢-Scoring-and-Ranking"><strong>🔢 Scoring and Ranking</strong></h2>
+<h2 id="🔢-Scoring-and-Ranking-More-for-a-group-of-companies"><strong>🔢 Scoring and Ranking (More for a group of companies)</strong></h2>
 <h2 id="1-Scoring">1. Scoring:</h2>
 <ul>
 <li>Normalization of Metrics: Convert each raw metric into a standardized socre. This could involve z-score normalization, min-max scaling, or ranking each metric on a percentile basis. For example, for a metric like Revenue Growth, if the company’s revenue growth is in the 90th percentile of the peer group, it might receive a score of 90 out of 100.</li>
 <li>Weighted Composite Score: Calculate a composite score for each company by multiplying each normalized metric by its assigned weight and summing up the weighted scores. This gives a single score that represents the overall financial health and investment potential of the company. For example, if Revenue Growth has a weight of 0.2 and a normalized score of 90, its weighted score would be 0.2 * 90 = 18. Composite Score = Σ (Weight_i * Normalized Metric_i).</li>
 <li>Handling Missing Data: If some data points are missing, use imputation methods (mean/mode substitution, regression imputation) or adjust the weights proportionally.</li>
 </ul>
-<h2 id="2-Ranking-More-for-a-group-of-companies">2. Ranking: (More for a group of companies)</h2>
+<h2 id="2-Ranking">2. Ranking:</h2>
 <ul>
 <li>Composite Score Ranking: Rank companies based on their composite scores. Higher scores indicate better performance based on the selected factors and their weights.</li>
 <li>Tiered Ranking: Group companies into tiers (e.g., top 10%, next 20%) to facilitate investment decisions, focusing on the highest-tier companies for potential investments.</li>
@@ -510,7 +510,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/10/Investment/02-Stocks/Factor%20and%20Weight.html" data-id="clyft1iea000xar69407ccda3" data-title="Investment-02-Stocks-03-Factor and Weight" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/10/Investment/02-Stocks/Factor%20and%20Weight.html" data-id="clyihu208000xjc694zndcbom" data-title="Investment-02-Stocks-03-Factor and Weight" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
