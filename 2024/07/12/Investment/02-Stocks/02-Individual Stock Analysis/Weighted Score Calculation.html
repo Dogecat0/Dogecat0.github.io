@@ -18,15 +18,15 @@
   <title>Investment-02-Stocks-04-Weighted Score Calculation | Zhicheng&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
-  <meta name="description" content="🔎 Intro Following last post, to avoid having a way too long blog, I will break down the calculation of the weighted score for each section in this separated post.">
+  <meta name="description" content="🔎 Intro Following last one in the series, to avoid having a way too long blog, I will break down the calculation of the weighted score for each section in this separated post.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Investment-02-Stocks-04-Weighted Score Calculation">
 <meta property="og:url" content="https://dogecat0.github.io/2024/07/12/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation.html">
 <meta property="og:site_name" content="Zhicheng&#39;s Blog">
-<meta property="og:description" content="🔎 Intro Following last post, to avoid having a way too long blog, I will break down the calculation of the weighted score for each section in this separated post.">
+<meta property="og:description" content="🔎 Intro Following last one in the series, to avoid having a way too long blog, I will break down the calculation of the weighted score for each section in this separated post.">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-12T09:30:04.000Z">
-<meta property="article:modified_time" content="2024-07-12T09:42:56.671Z">
+<meta property="article:modified_time" content="2024-07-12T09:48:23.691Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Investment">
 <meta property="article:tag" content="Stocks">
@@ -134,7 +134,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>Following last post, to avoid having a way too long blog, I will break down the calculation of the weighted score for each section in this separated post.</p>
+<p>Following last one in the series, to avoid having a way too long blog, I will break down the calculation of the weighted score for each section in this separated post.</p>
 <span id="more"></span>
 <h2 id="🔢-Data-from-the-Report"><strong>🔢 Data from the Report</strong></h2>
 <p><strong>Income Statement:</strong></p>
@@ -294,13 +294,38 @@ Share Repurchases: Continuation of buyback programs to enhance shareholder value
 </ul>
 <p>Normalized Scores:</p>
 <ul>
-<li>Operating Cash Flow: 87.58</li>
+<li>Operating Cash Flow: 87.58/75 = 1.17</li>
+<li>Investing Cash Flow: -22.68/-25 = 0.91</li>
+<li>Financing Cash Flow: -43.94/-50 = 0.88</li>
+<li>Net Cash Flow: 20.77/15 = 1.38</li>
+<li>Free Cash Flow: 59.48/50 = 1.19</li>
+</ul>
+<p>Weighted Scores:</p>
+<ul>
+<li>Operating Cash Flow: 1.17*5% = 0.0585</li>
+<li>Investing Cash Flow: 0.91*2.5% = 0.02275</li>
+<li>Financing Cash Flow: 0.88*2.5% = 0.022</li>
+<li>Net Cash Flow: 1.38*5% = 0.069</li>
+<li>Free Cash Flow: 1.19*5% = 0.0595</li>
+</ul>
+<p>Total Cash Flow Score:</p>
+<ul>
+<li>Total Score = 0.0585 + 0.02275 + 0.022 + 0.069 + 0.0595 = 0.23175</li>
+</ul>
+<p><strong>Financial Position (Weight: 15%)</strong></p>
+<p>Metrics and Weights:</p>
+<ul>
+<li>Total Debt (Weight: 3%)</li>
+<li>Debt-to-Equity Ratio (Weight: 3%)</li>
+<li>Current Ratio (Weight: 3%)</li>
+<li>Quick Ratio (Weight: 3%)</li>
+<li>Interest Coverage Ratio (Weight: 3%)</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/12/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation.html" data-id="clyiif840006h45697dfl8mj1" data-title="Investment-02-Stocks-04-Weighted Score Calculation" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/12/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation.html" data-id="clyiim8uz006hlz69dgguhb7e" data-title="Investment-02-Stocks-04-Weighted Score Calculation" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
