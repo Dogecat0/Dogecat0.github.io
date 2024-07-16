@@ -15,23 +15,22 @@
 <!-- End Google Analytics -->
 
   
-  <title>JavaScript Full Stack Series-03-Adding Styles | Zhicheng&#39;s Blog</title>
+  <title>Investment-02-Stocks-04-Weighted Score Calculation-04-Valuation | Zhicheng&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
-  <meta name="description" content="🔎 Intro This will be simple blog that covers how to add styles to React applications with CSS. Since I’ve learned it before plus more about Tailwind CSS, integrating Tailwind CSS with React and how t">
+  <meta name="description" content="🔎 Intro This is post is the caculation of Valuation score for the weighted score calculation of an individual stock. This is a very straightforward calculation as it’s all data based similar to Finan">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript Full Stack Series-03-Adding Styles">
-<meta property="og:url" content="https://dogecat0.github.io/2023/12/04/JavaScript%20Full%20Stack%20Series/03-Adding%20Styles.html">
+<meta property="og:title" content="Investment-02-Stocks-04-Weighted Score Calculation-04-Valuation">
+<meta property="og:url" content="https://dogecat0.github.io/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Valuation.html">
 <meta property="og:site_name" content="Zhicheng&#39;s Blog">
-<meta property="og:description" content="🔎 Intro This will be simple blog that covers how to add styles to React applications with CSS. Since I’ve learned it before plus more about Tailwind CSS, integrating Tailwind CSS with React and how t">
+<meta property="og:description" content="🔎 Intro This is post is the caculation of Valuation score for the weighted score calculation of an individual stock. This is a very straightforward calculation as it’s all data based similar to Finan">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-12-04T20:05:00.000Z">
-<meta property="article:modified_time" content="2024-07-04T10:41:41.215Z">
+<meta property="article:published_time" content="2024-07-16T11:30:17.000Z">
+<meta property="article:modified_time" content="2024-07-16T12:19:09.794Z">
 <meta property="article:author" content="Zhicheng Wang">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="Full Stack">
-<meta property="article:tag" content="React">
-<meta property="article:tag" content="CSS">
+<meta property="article:tag" content="Investment">
+<meta property="article:tag" content="Stocks">
+<meta property="article:tag" content="Individual Stock Analysis">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
@@ -111,10 +110,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 </header>
 
       <div class="sub-container outer">
-        <section class="post-container" id="main"><article id="post-JavaScript Full Stack Series/03-Adding Styles" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section class="post-container" id="main"><article id="post-Investment/02-Stocks/02-Individual Stock Analysis/Weighted Score Calculation/Valuation" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
     <p class="article-date">
-  <time class="dt-published" datetime="2023-12-04T20:05:00.000Z" itemprop="datePublished">2023-12-04</time>
+  <time class="dt-published" datetime="2024-07-16T11:30:17.000Z" itemprop="datePublished">2024-07-16</time>
 </p>
     
   </div>
@@ -126,7 +125,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      JavaScript Full Stack Series-03-Adding Styles
+      Investment-02-Stocks-04-Weighted Score Calculation-04-Valuation
     </h1>
   
 
@@ -135,25 +134,196 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     <div class="e-content article-entry" itemprop="articleBody">
       
         <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>This will be simple blog that covers how to add styles to React applications with CSS. Since I’ve learned it before plus more about Tailwind CSS, integrating Tailwind CSS with React and how to use it to style React components would be interesting to cover in the future blogs.</p>
+<p>This is post is the caculation of Valuation score for the weighted score calculation of an individual stock. This is a very straightforward calculation as it’s all data based similar to Financial Performance section. The key metrics, weights and final scores are in the content below.</p>
 <span id="more"></span>
-<h2 id="👨‍💻-Reviewed-concepts"><strong>👨‍💻 Reviewed concepts</strong></h2>
+<h2 id="🔢-Content-Extracted-from-the-Report"><strong>🔢 Content Extracted from the Report</strong></h2>
+<p>Refer to the corresponding section in the <a href="https://dogecat0.github.io/2024/07/01/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Analysis%20Report.html">report</a> for the related content used for the calculation.</p>
+<h2 id="🧮-Calculation-for-Valuation"><strong>🧮 Calculation for Valuation</strong></h2>
+<h2 id="Price-to-Earnings-P-E-Ratio-Weight-15">Price-to-Earnings (P/E) Ratio (Weight: 15%):</h2>
+<p><strong>Metrics and Weights:</strong></p>
 <ul>
-<li>CSS:<br>
-CSS stands for Cascading Style Sheets. It is a style sheet language used for describing the presentation of a document written in a markup language such as HTML. [More details](<a href="https://dogecat0.github.io/2023/11/07/JavaScript">https://dogecat0.github.io/2023/11/07/JavaScript</a> Full Stack Series/01-Fundamentals.html)</li>
+<li>Current P/E Ratio (Weight: 7.5%)</li>
+<li>5-Year Average P/E Ratio (Weight: 7.5%)</li>
 </ul>
-<h2 id="📚-Lessons-learned"><strong>📚 Lessons learned</strong></h2>
-<h3 id="The-use-of-className-in-React"><strong>The use of <code>className</code> in React:</strong></h3>
-<p>In React, the <code>class</code> attribute is reserved for JavaScript classes. Instead, we use <code>className</code> to define the CSS class of an element.</p>
-<h2 id="📝-Course-exercise"><strong>📝 Course exercise</strong></h2>
-<ol>
-<li>Created a simple React application that displays countries’ info with its capital’s weather details plus search funtionalities. <a target="_blank" rel="noopener" href="https://github.com/Dogecat0/fullstack_open/tree/main/part2/countries">Link to the repo</a></li>
-</ol>
+<p><strong>P/E Ratio data:</strong></p>
+<ul>
+<li>Current P/E Ratio: 39.82</li>
+<li>Historical Average P/E Ratio: 32.5</li>
+<li>Benchmark P/E Ratio: 30</li>
+</ul>
+<p><strong>Normalized Score:</strong></p>
+<ul>
+<li>Normalized Current P/E Ratio: 39.82/30 = 1.3273</li>
+<li>Normalized 5-Year Average P/E Ratio: 32.5/30 = 1.0833</li>
+</ul>
+<p><strong>Weighted Scores:</strong></p>
+<ul>
+<li>Current P/E Ratio: 0.0995475</li>
+<li>5-Year Average P/E Ratio: 0.08125</li>
+<li>Total P/E Ratio Score: 0.1807975</li>
+</ul>
+<h2 id="Earnings-Per-Share-EPS-Weight-10">Earnings Per Share (EPS) (Weight: 10%):</h2>
+<p><strong>Metrics and Weights:</strong></p>
+<ul>
+<li>Current EPS Growth Rate (Weight: 5%)</li>
+<li>5-Year Average EPS Growth Rate (Weight: 5%)</li>
+</ul>
+<p><strong>EPS data:</strong></p>
+<ul>
+<li>Current EPS: $2.94</li>
+<li>5-Year Average EPS: $2.5</li>
+<li>Benchmark EPS: $3</li>
+</ul>
+<p><strong>Normalized Score:</strong></p>
+<ul>
+<li>Normalized Current EPS Growth Rate: 2.94/3 = 0.98</li>
+<li>Normalized 5-Year Average EPS Growth Rate: 2.5/3 = 0.8333</li>
+</ul>
+<p><strong>Weighted Scores:</strong></p>
+<ul>
+<li>Current EPS Growth Rate: 0.049</li>
+<li>5-Year Average EPS Growth Rate: 0.04167</li>
+<li>Total EPS Score: 0.09067</li>
+</ul>
+<h2 id="Enterprise-Value-and-Market-Capitalization">Enterprise Value and Market Capitalization:</h2>
+<p>This part is scraped from the report and is not included in this post. The data is used to calculate the EV/EBITDA ratio and the EV/Revenue ratio. The final scores are calculated based on the data.</p>
+<h2 id="Enterprise-Value-EBITDA-Ratio-Weight-15">Enterprise Value/EBITDA Ratio (Weight: 15%):</h2>
+<p><strong>Metrics and Weights:</strong></p>
+<ul>
+<li>Current EV/EBITDA Ratio (Weight: 7.5%)</li>
+<li>5-Year Average EV/EBITDA Ratio (Weight: 7.5%)</li>
+</ul>
+<p><strong>EV/EBITDA data:</strong></p>
+<ul>
+<li>Current EV/EBITDA Ratio: 26.73</li>
+<li>Historical Average EV/EBITDA Ratio: a range of 20-27</li>
+<li>Benchmark EV/EBITDA Ratio: 25</li>
+</ul>
+<p><strong>Normalized Score:</strong></p>
+<ul>
+<li>Normalized Current EV/EBITDA Ratio: 26.73/25 = 1.0692</li>
+<li>Normalized 5-Year Average EV/EBITDA Ratio: 23.5/25 = 0.94</li>
+</ul>
+<p><strong>Weighted Scores:</strong></p>
+<ul>
+<li>Current EV/EBITDA Ratio: 0.08019</li>
+<li>5-Year Average EV/EBITDA Ratio: 0.0705</li>
+<li>Total EV/EBITDA Ratio Score: 0.15069</li>
+</ul>
+<h2 id="Price-to-Sales-P-S-Ratio-Weight-15">Price-to-Sales (P/S) Ratio (Weight: 15%):</h2>
+<p><strong>Metrics and Weights:</strong></p>
+<ul>
+<li>Current P/S Ratio (Weight: 7.5%)</li>
+<li>5-Year Average P/S Ratio (Weight: 7.5%)</li>
+</ul>
+<p><strong>P/S Ratio data:</strong></p>
+<ul>
+<li>Current P/S Ratio: 11</li>
+<li>Historical Average P/S Ratio: 9</li>
+<li>Benchmark P/S Ratio: 10</li>
+</ul>
+<p><strong>Normalized Score:</strong></p>
+<ul>
+<li>Normalized Current P/S Ratio: 11/10 = 1.1</li>
+<li>Normalized 5-Year Average P/S Ratio: 9/10 = 0.9</li>
+</ul>
+<p><strong>Weighted Scores:</strong></p>
+<ul>
+<li>Current P/S Ratio: 0.0825</li>
+<li>5-Year Average P/S Ratio: 0.0675</li>
+<li>Total P/S Ratio Score: 0.15</li>
+</ul>
+<h2 id="Price-to-Book-P-B-Ratio-Weight-15">Price-to-Book (P/B) Ratio (Weight: 15%):</h2>
+<p><strong>Metrics and Weights:</strong></p>
+<ul>
+<li>Current P/B Ratio (Weight: 7.5%)</li>
+<li>5-Year Average P/B Ratio (Weight: 7.5%)</li>
+</ul>
+<p><strong>P/B Ratio data:</strong></p>
+<ul>
+<li>Current P/B Ratio: 14</li>
+<li>Historical Average P/B Ratio: 12</li>
+<li>Benchmark P/B Ratio: 13</li>
+</ul>
+<p><strong>Normalized Score:</strong></p>
+<ul>
+<li>Normalized Current P/B Ratio: 14/13 = 1.0769</li>
+<li>Normalized 5-Year Average P/B Ratio: 12/13 = 0.9231</li>
+</ul>
+<p><strong>Weighted Scores:</strong></p>
+<ul>
+<li>Current P/B Ratio: 0.08077</li>
+<li>5-Year Average P/B Ratio: 0.06923</li>
+<li>Total P/B Ratio Score: 0.150</li>
+</ul>
+<h2 id="Free-Cash-Flow-FCF-Yield-Weight-10">Free Cash Flow (FCF) Yield (Weight: 10%):</h2>
+<p><strong>Metrics and Weights:</strong></p>
+<ul>
+<li>Current FCF Yield (Weight: 10%)</li>
+</ul>
+<p><strong>FCF Yield data:</strong></p>
+<ul>
+<li>Current FCF Yield: 2.07%</li>
+<li>Benchmark FCF Yield: 2%</li>
+</ul>
+<p><strong>Normalzing Score:</strong></p>
+<ul>
+<li>Normalized Current FCF Yield: 2.07/2 = 1.035</li>
+</ul>
+<p><strong>Weighted Scores:</strong></p>
+<ul>
+<li>Current FCF Yield: 0.1035</li>
+</ul>
+<h2 id="Dividend-Yield-Weight-10">Dividend Yield (Weight: 10%):</h2>
+<p><strong>Metrics and Weights:</strong></p>
+<ul>
+<li>Current Dividend Yield (Weight: 10%)</li>
+<li>Dividend Growth Rate (Weight: 5%)</li>
+</ul>
+<p><strong>Dividend data:</strong></p>
+<ul>
+<li>Current Dividend Yield: 0.92%</li>
+<li>Dividend Growth Rate: 5%</li>
+<li>Benchmark Dividend Yield: 1%</li>
+</ul>
+<p><strong>Normalized Score:</strong></p>
+<ul>
+<li>Normalized Current Dividend Yield: 0.92/1 = 0.92</li>
+<li>Normalized Dividend Growth Rate: 5/5 = 1</li>
+</ul>
+<p><strong>Weighted Scores:</strong></p>
+<ul>
+<li>Current Dividend Yield: 0.092</li>
+<li>Dividend Growth Rate: 0.05</li>
+<li>Total Dividend Score: 0.142</li>
+</ul>
+<h2 id="Discounted-Cash-Flow-DCF-Analysis-Weight-10">Discounted Cash Flow (DCF) Analysis (Weight: 10%):</h2>
+<p><strong>Metrics and Weights:</strong></p>
+<ul>
+<li>DCF Intrinsic Value (Weight: 10%)</li>
+</ul>
+<p><strong>DCF data:</strong></p>
+<ul>
+<li>DCF Intrinsic Value: Assume calculated intrinsic value per share ishigher than the current trading price by 15%</li>
+</ul>
+<p><strong>Normalized Score:</strong></p>
+<ul>
+<li>Normalized DCF Intrinsic Value: 1.15</li>
+</ul>
+<p><strong>Weighted Scores:</strong></p>
+<ul>
+<li>DCF Intrinsic Value: 0.115</li>
+</ul>
+<h2 id="Comparable-Company-Analysis">Comparable Company Analysis:</h2>
+<p>This part is scraped from the report and is not included in this post. The data is used to calculate the P/E, EV/EBITDA, P/S and P/B ratios. The final scores are calculated based on the data.</p>
+<h2 id="Total-Valuation-Score">Total Valuation Score:</h2>
+<p>0.1807975<em>0.15 + 0.09067</em>0.1 + 0.15069<em>0.15 + 0.15</em>0.15 + 0.15<em>0.15 + 0.1035</em>0.1 + 0.142<em>0.1 + 0.115</em>0.1 = 0.153</p>
+<h2 id="🧮-Calculation-for-Risks"><strong>🧮 Calculation for Risks</strong></h2>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2023/12/04/JavaScript%20Full%20Stack%20Series/03-Adding%20Styles.html" data-id="clyofldwm000kq4699ndabe8v" data-title="JavaScript Full Stack Series-03-Adding Styles" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Valuation.html" data-id="clyofldwy001yq469aqqxcx42" data-title="Investment-02-Stocks-04-Weighted Score Calculation-04-Valuation" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
@@ -162,13 +332,11 @@ CSS stands for Cascading Style Sheets. It is a style sheet language used for des
       
   <ul class="article-tag-list">
     
-      <li class="article-tag-list-item"><a href="/tags/JavaScript/">#JavaScript</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Investment/">#Investment</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/Full-Stack/">#Full Stack</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Stocks/">#Stocks</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/React/">#React</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/CSS/">#CSS</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Individual-Stock-Analysis/">#Individual Stock Analysis</a></li>
     
   </ul>
 
@@ -178,19 +346,19 @@ CSS stands for Cascading Style Sheets. It is a style sheet language used for des
     
 <nav id="article-nav" class="article-nav">
   
-    <a href="/2023/12/06/JavaScript%20Full%20Stack%20Series/04-Nodejs%20and%20Express.html" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Risks.html" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          JavaScript Full Stack Series-04-Nodejs and Express
+          Investment-02-Stocks-04-Weighted Score Calculation-05-Risks
         
       </div>
     </a>
   
   
-    <a href="/2023/12/03/JavaScript%20Full%20Stack%20Series/03-Altering%20Data%20from%20Server.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JavaScript Full Stack Series-03-Altering Data from Server</div>
+      <div class="article-nav-title">Investment-02-Stocks-04-Weighted Score Calculation-03-Competitive Position, Industry Trends and Management/Governance</div>
     </a>
   
 </nav>

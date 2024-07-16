@@ -4,6 +4,65 @@
   
     
     <entry>
+      <title>Investment-02-Stocks-04-Weighted Score Calculation-05-Risks</title>
+      <link href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Risks.html"/>
+      <url>/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Risks.html</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Investment-02-Stocks-04-Weighted Score Calculation-04-Valuation</title>
+      <link href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Valuation.html"/>
+      <url>/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Valuation.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>This is post is the caculation of Valuation score for the weighted score calculation of an individual stock. This is a very straightforward calculation as it’s all data based similar to Financial Performance section. The key metrics, weights and final scores are in the content below.</p><span id="more"></span><h2 id="🔢-Content-Extracted-from-the-Report"><strong>🔢 Content Extracted from the Report</strong></h2><p>Refer to the corresponding section in the <a href="https://dogecat0.github.io/2024/07/01/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Analysis%20Report.html">report</a> for the related content used for the calculation.</p><h2 id="🧮-Calculation-for-Valuation"><strong>🧮 Calculation for Valuation</strong></h2><h2 id="Price-to-Earnings-P-E-Ratio-Weight-15">Price-to-Earnings (P/E) Ratio (Weight: 15%):</h2><p><strong>Metrics and Weights:</strong></p><ul><li>Current P/E Ratio (Weight: 7.5%)</li><li>5-Year Average P/E Ratio (Weight: 7.5%)</li></ul><p><strong>P/E Ratio data:</strong></p><ul><li>Current P/E Ratio: 39.82</li><li>Historical Average P/E Ratio: 32.5</li><li>Benchmark P/E Ratio: 30</li></ul><p><strong>Normalized Score:</strong></p><ul><li>Normalized Current P/E Ratio: 39.82/30 = 1.3273</li><li>Normalized 5-Year Average P/E Ratio: 32.5/30 = 1.0833</li></ul><p><strong>Weighted Scores:</strong></p><ul><li>Current P/E Ratio: 0.0995475</li><li>5-Year Average P/E Ratio: 0.08125</li><li>Total P/E Ratio Score: 0.1807975</li></ul><h2 id="Earnings-Per-Share-EPS-Weight-10">Earnings Per Share (EPS) (Weight: 10%):</h2><p><strong>Metrics and Weights:</strong></p><ul><li>Current EPS Growth Rate (Weight: 5%)</li><li>5-Year Average EPS Growth Rate (Weight: 5%)</li></ul><p><strong>EPS data:</strong></p><ul><li>Current EPS: $2.94</li><li>5-Year Average EPS: $2.5</li><li>Benchmark EPS: $3</li></ul><p><strong>Normalized Score:</strong></p><ul><li>Normalized Current EPS Growth Rate: 2.94/3 = 0.98</li><li>Normalized 5-Year Average EPS Growth Rate: 2.5/3 = 0.8333</li></ul><p><strong>Weighted Scores:</strong></p><ul><li>Current EPS Growth Rate: 0.049</li><li>5-Year Average EPS Growth Rate: 0.04167</li><li>Total EPS Score: 0.09067</li></ul><h2 id="Enterprise-Value-and-Market-Capitalization">Enterprise Value and Market Capitalization:</h2><p>This part is scraped from the report and is not included in this post. The data is used to calculate the EV/EBITDA ratio and the EV/Revenue ratio. The final scores are calculated based on the data.</p><h2 id="Enterprise-Value-EBITDA-Ratio-Weight-15">Enterprise Value/EBITDA Ratio (Weight: 15%):</h2><p><strong>Metrics and Weights:</strong></p><ul><li>Current EV/EBITDA Ratio (Weight: 7.5%)</li><li>5-Year Average EV/EBITDA Ratio (Weight: 7.5%)</li></ul><p><strong>EV/EBITDA data:</strong></p><ul><li>Current EV/EBITDA Ratio: 26.73</li><li>Historical Average EV/EBITDA Ratio: a range of 20-27</li><li>Benchmark EV/EBITDA Ratio: 25</li></ul><p><strong>Normalized Score:</strong></p><ul><li>Normalized Current EV/EBITDA Ratio: 26.73/25 = 1.0692</li><li>Normalized 5-Year Average EV/EBITDA Ratio: 23.5/25 = 0.94</li></ul><p><strong>Weighted Scores:</strong></p><ul><li>Current EV/EBITDA Ratio: 0.08019</li><li>5-Year Average EV/EBITDA Ratio: 0.0705</li><li>Total EV/EBITDA Ratio Score: 0.15069</li></ul><h2 id="Price-to-Sales-P-S-Ratio-Weight-15">Price-to-Sales (P/S) Ratio (Weight: 15%):</h2><p><strong>Metrics and Weights:</strong></p><ul><li>Current P/S Ratio (Weight: 7.5%)</li><li>5-Year Average P/S Ratio (Weight: 7.5%)</li></ul><p><strong>P/S Ratio data:</strong></p><ul><li>Current P/S Ratio: 11</li><li>Historical Average P/S Ratio: 9</li><li>Benchmark P/S Ratio: 10</li></ul><p><strong>Normalized Score:</strong></p><ul><li>Normalized Current P/S Ratio: 11/10 = 1.1</li><li>Normalized 5-Year Average P/S Ratio: 9/10 = 0.9</li></ul><p><strong>Weighted Scores:</strong></p><ul><li>Current P/S Ratio: 0.0825</li><li>5-Year Average P/S Ratio: 0.0675</li><li>Total P/S Ratio Score: 0.15</li></ul><h2 id="Price-to-Book-P-B-Ratio-Weight-15">Price-to-Book (P/B) Ratio (Weight: 15%):</h2><p><strong>Metrics and Weights:</strong></p><ul><li>Current P/B Ratio (Weight: 7.5%)</li><li>5-Year Average P/B Ratio (Weight: 7.5%)</li></ul><p><strong>P/B Ratio data:</strong></p><ul><li>Current P/B Ratio: 14</li><li>Historical Average P/B Ratio: 12</li><li>Benchmark P/B Ratio: 13</li></ul><p><strong>Normalized Score:</strong></p><ul><li>Normalized Current P/B Ratio: 14/13 = 1.0769</li><li>Normalized 5-Year Average P/B Ratio: 12/13 = 0.9231</li></ul><p><strong>Weighted Scores:</strong></p><ul><li>Current P/B Ratio: 0.08077</li><li>5-Year Average P/B Ratio: 0.06923</li><li>Total P/B Ratio Score: 0.150</li></ul><h2 id="Free-Cash-Flow-FCF-Yield-Weight-10">Free Cash Flow (FCF) Yield (Weight: 10%):</h2><p><strong>Metrics and Weights:</strong></p><ul><li>Current FCF Yield (Weight: 10%)</li></ul><p><strong>FCF Yield data:</strong></p><ul><li>Current FCF Yield: 2.07%</li><li>Benchmark FCF Yield: 2%</li></ul><p><strong>Normalzing Score:</strong></p><ul><li>Normalized Current FCF Yield: 2.07/2 = 1.035</li></ul><p><strong>Weighted Scores:</strong></p><ul><li>Current FCF Yield: 0.1035</li></ul><h2 id="Dividend-Yield-Weight-10">Dividend Yield (Weight: 10%):</h2><p><strong>Metrics and Weights:</strong></p><ul><li>Current Dividend Yield (Weight: 10%)</li><li>Dividend Growth Rate (Weight: 5%)</li></ul><p><strong>Dividend data:</strong></p><ul><li>Current Dividend Yield: 0.92%</li><li>Dividend Growth Rate: 5%</li><li>Benchmark Dividend Yield: 1%</li></ul><p><strong>Normalized Score:</strong></p><ul><li>Normalized Current Dividend Yield: 0.92/1 = 0.92</li><li>Normalized Dividend Growth Rate: 5/5 = 1</li></ul><p><strong>Weighted Scores:</strong></p><ul><li>Current Dividend Yield: 0.092</li><li>Dividend Growth Rate: 0.05</li><li>Total Dividend Score: 0.142</li></ul><h2 id="Discounted-Cash-Flow-DCF-Analysis-Weight-10">Discounted Cash Flow (DCF) Analysis (Weight: 10%):</h2><p><strong>Metrics and Weights:</strong></p><ul><li>DCF Intrinsic Value (Weight: 10%)</li></ul><p><strong>DCF data:</strong></p><ul><li>DCF Intrinsic Value: Assume calculated intrinsic value per share ishigher than the current trading price by 15%</li></ul><p><strong>Normalized Score:</strong></p><ul><li>Normalized DCF Intrinsic Value: 1.15</li></ul><p><strong>Weighted Scores:</strong></p><ul><li>DCF Intrinsic Value: 0.115</li></ul><h2 id="Comparable-Company-Analysis">Comparable Company Analysis:</h2><p>This part is scraped from the report and is not included in this post. The data is used to calculate the P/E, EV/EBITDA, P/S and P/B ratios. The final scores are calculated based on the data.</p><h2 id="Total-Valuation-Score">Total Valuation Score:</h2><p>0.1807975<em>0.15 + 0.09067</em>0.1 + 0.15069<em>0.15 + 0.15</em>0.15 + 0.15<em>0.15 + 0.1035</em>0.1 + 0.142<em>0.1 + 0.115</em>0.1 = 0.153</p><h2 id="🧮-Calculation-for-Risks"><strong>🧮 Calculation for Risks</strong></h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Investment </tag>
+            
+            <tag> Stocks </tag>
+            
+            <tag> Individual Stock Analysis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Investment-02-Stocks-04-Weighted Score Calculation-03-Competitive Position, Industry Trends and Management/Governance</title>
+      <link href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html"/>
+      <url>/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html</url>
+      
+        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>In the this post, I will continue the calculation of the weighted scores for three Competitive Position, Industry Trends and Management/Governance. Following the same quantifying process of the previous post on Business Model and Diversification Analysis, here I will just list the key metrics, weights and final scores.</p><span id="more"></span><h2 id="🔢-Content-Extracted-from-the-Report"><strong>🔢 Content Extracted from the Report</strong></h2><p>Refer to the corresponding section in the <a href="https://dogecat0.github.io/2024/07/01/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Analysis%20Report.html">report</a> for the related content used for the calculation.</p><h2 id="🧮-Calculation-for-Competitive-Position"><strong>🧮 Calculation for Competitive Position</strong></h2><h2 id="Overall-Section-Weights">Overall Section Weights:</h2><ul><li>Market Leasership: 40%</li><li>Innovations and R&amp;D: 25%</li><li>Brand and Reputation: 15%</li><li>Strategic Partnerships: 10%</li><li>Competitive Advantage: 10%</li></ul><h2 id="Weighted-Section-Scores">Weighted Section Scores:</h2><ul><li>Market Leasership: 0.1408</li><li>Innovations and R&amp;D: 0.066</li><li>Brand and Reputation: 0.021375</li><li>Strategic Partnerships: 0.0092</li><li>Competitive Advantage: 0.007</li></ul><h2 id="Total-Competitive-Position-Score-0-244375">Total Competitive Position Score: 0.244375</h2><h2 id="🧮-Calculation-for-Industry-Trends"><strong>🧮 Calculation for Industry Trends</strong></h2><h2 id="Overall-Section-Weights-2">Overall Section Weights:</h2><ul><li>Digital Transformation: 15%</li><li>Cloud Computing: 20%</li><li>AI and Machine Learning: 20%</li><li>Cybersecurity: 15%</li><li>Remote Work and Hybrid Models: 10%</li><li>Gaming Industry Growth: 10%</li><li>Internet of Things(IoT): 10%</li></ul><h2 id="Weighted-Section-Scores-2">Weighted Section Scores:</h2><ul><li>Digital Transformation: 0.1635</li><li>Cloud Computing: 0.198</li><li>AI and Machine Learning: 0.212</li><li>Cybersecurity: 0.16</li><li>Remote Work and Hybrid Models: 0.1085</li><li>Gaming Industry Growth: 0.1175</li><li>Internet of Things(IoT): 0.109</li></ul><h2 id="Total-Industry-Trends-Score-0-164025">Total Industry Trends Score: 0.164025</h2><h2 id="🧮-Calculation-for-Management-Governance"><strong>🧮 Calculation for Management/Governance</strong></h2><h2 id="Overall-Section-Weights-3">Overall Section Weights:</h2><ul><li>Leadership: 20%</li><li>Board of Directors: 20%</li><li>Corporate Governance: 20%</li><li>Executive Compensation: 15%</li><li>Shareholder Engagement: 15%</li><li>Strategic Initiatives and Innovation: 10%</li></ul><h2 id="Weighted-Section-Scores-3">Weighted Section Scores:</h2><ul><li>Leadership: 0.04</li><li>Board of Directors: 0.038</li><li>Corporate Governance: 0.036</li><li>Executive Compensation: 0.02025</li><li>Shareholder Engagement: 0.02025</li><li>Strategic Initiatives and Innovation: 0.0095</li></ul><h2 id="Total-Management-Governance-Score-0-1645">Total Management/Governance Score: 0.1645</h2>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Investment </tag>
+            
+            <tag> Stocks </tag>
+            
+            <tag> Individual Stock Analysis </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Investment-02-Stocks-01-Portfolio Review-2nd Month Summary</title>
       <link href="/2024/07/15/Investment/02-Stocks/01-Portfolio%20Review/2nd%20Month%20Summary.html"/>
       <url>/2024/07/15/Investment/02-Stocks/01-Portfolio%20Review/2nd%20Month%20Summary.html</url>
