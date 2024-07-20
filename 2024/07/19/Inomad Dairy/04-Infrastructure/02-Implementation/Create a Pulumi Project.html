@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In the last post, I discussed some points of setting up Azure for Inomad’s infrastructure. In this post, I will be creating a Pulumi project and discuss some interesting points about the init">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-19T10:45:38.000Z">
-<meta property="article:modified_time" content="2024-07-19T11:33:40.573Z">
+<meta property="article:modified_time" content="2024-07-20T20:40:25.924Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Infrastructure">
 <meta property="article:tag" content="Inomad Diary">
@@ -143,7 +143,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <h2 id="1-Pulumi-Projects-and-Stacks">1. Pulumi Projects and Stacks</h2>
 <p>During the initial setup of a Pulumi project, you will encouter some new concepts from Pulumi such as <a target="_blank" rel="noopener" href="https://www.pulumi.com/docs/concepts/projects/">projects</a> and <a target="_blank" rel="noopener" href="https://www.pulumi.com/docs/concepts/stack/">stacks</a>.</p>
 <h2 id="2-Pulumi-State-Management">2. Pulumi State Management</h2>
-<p>One another one worth mentioning is when you create a stack, the ‘orgName’ depends on whether you choose to use <a target="_blank" rel="noopener" href="https://www.pulumi.com/docs/concepts/state/#using-a-self-managed-backend">Pulumi Cloud or Self-managed Backends</a> to mange your Pulumi state files. Since I am using self-managed backend, below are some key points to consider.</p>
+<p>One another one worth mentioning is when you create a stack, the <code>orgName</code> depends on whether you choose to use <a target="_blank" rel="noopener" href="https://www.pulumi.com/docs/concepts/state/#using-a-self-managed-backend">Pulumi Cloud or Self-managed Backends</a> to mange your Pulumi state files. Since I am using self-managed backend, below are some key points to consider.</p>
 <p><strong>Where to Store State Files</strong>:<br>
 Decide where to store your state files: You can store your state files locally, in a shared file system, or in a cloud storage bucket like Azure Blob Storage or AWS S3.</p>
 <p>If you choose Azure Blog Storage like me, here are the links to get started:</p>
@@ -151,18 +151,19 @@ Decide where to store your state files: You can store your state files locally, 
 <li><a href="%5D(https://www.pulumi.com/docs/concepts/state/#using-a-self-managed-backend)">Azure Blob Storage for Pulumi state</a></li>
 <li><a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-gb/products/storage/blobs">Azure Blob Storage</a></li>
 </ul>
-<p>The general steps to set up Azure Blob Storage for Pulumi state are:</p>
+<p>The general steps to set up an Azure Blob Storage for Pulumi state are:</p>
 <ul>
-<li>Create a resource group if you haven’t done so to hold the storage account (e.g., rg-dev-storage).</li>
+<li>Create a resource group if you haven’t done so to hold the storage account (e.g., <code>rg-dev-storage</code>).</li>
 <li>Create a storage account in the resource group. ()<br>
-⚠️ Note here, for Azure storage account, you can only name it with Lowercase letters and numbers and must be between 3 and 24 characters long. It is also universally unique so it’s a good idea to include a unique name like your organization name or project name in it.(e.g., <your-project-name>devstorage)Sometimes the error message is not clear and you might get stuck here. <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules">Resource Name Rules</a></li>
-<li>Create a Blob container in the storage account to hold the state files specifically for your Pulumi project.(e.g., state-container)</li>
+⚠️ Note here, for Azure storage account, you can only name it with Lowercase letters and numbers and must be between 3 and 24 characters long. It is also universally unique so it’s a good idea to include a unique name like your organization name or project name in it.(e.g., <code>&lt;your-project-name&gt;devstorage</code>)Sometimes the error message is not clear and you might get stuck here. <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules">Resource Name Rules</a></li>
+<li>Create a Blob container in the storage account to hold the state files specifically for your Pulumi project.(e.g., <code>state-container</code>)</li>
+<li>Get the storage account key and set environment variable <code>AZURE_STORAGE_KEY</code> for Pulumi to use to store the state files in the Azure Blob Storage.</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html" data-id="clysmluko001exy694evv6ke1" data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html" data-id="clyulfleu001ev369ftz6e4p5" data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
