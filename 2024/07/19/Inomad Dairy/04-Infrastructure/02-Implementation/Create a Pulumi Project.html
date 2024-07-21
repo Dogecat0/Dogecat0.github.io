@@ -26,10 +26,10 @@
 <meta property="og:description" content="🔎 Intro In the last post, I discussed some points of setting up Azure for Inomad’s infrastructure. In this post, I will be creating a Pulumi project and discuss some interesting points about the init">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-19T10:45:38.000Z">
-<meta property="article:modified_time" content="2024-07-20T20:57:14.964Z">
+<meta property="article:modified_time" content="2024-07-21T09:14:51.959Z">
 <meta property="article:author" content="Zhicheng Wang">
+<meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
-<meta property="article:tag" content="Inomad Diary">
 <meta property="article:tag" content="Azure">
 <meta property="article:tag" content="Pulumi">
 <meta name="twitter:card" content="summary">
@@ -168,10 +168,14 @@ Decide where to store your state files: You can store your state files locally, 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pulumi stack init dev
 pulumi config <span class="token builtin class-name">set</span> azure:subscriptionId <span class="token operator">&lt;</span>subscription-id<span class="token operator">></span> <span class="token parameter variable">--stack</span> dev
 pulumi stack <span class="token keyword">select</span> dev<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<ul>
+<li>When you create a stack you will be asked to specify a secret provider. You can choose to use the default secret provider <code>passphrase</code> or use a custom secret provider. If you choose to use a custom secret provider, you will need to provide the <a target="_blank" rel="noopener" href="https://www.pulumi.com/docs/cli/commands/pulumi_stack_change-secrets-provider/">URL</a> of the secret provider. For example, you can use Azure Key Vault as a secret provider. <a target="_blank" rel="noopener" href="https://azure.microsoft.com/en-gb/services/key-vault/">Azure Key Vault</a></li>
+</ul>
+
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html" data-id="clyum1789001e9969htuhdtyn" data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html" data-id="clyvche7w001exx693sjdcyfq" data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
@@ -180,9 +184,9 @@ pulumi stack <span class="token keyword">select</span> dev<span aria-hidden="tru
       
   <ul class="article-tag-list">
     
-      <li class="article-tag-list-item"><a href="/tags/Infrastructure/">#Infrastructure</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Inomad/">#Inomad</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/Inomad-Diary/">#Inomad Diary</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Infrastructure/">#Infrastructure</a></li>
     
       <li class="article-tag-list-item"><a href="/tags/Azure/">#Azure</a></li>
     
