@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In the last post, I discussed some points of setting up Azure for Inomad’s infrastructure. In this post, I will be creating a Pulumi project and discuss some interesting points about the init">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-19T10:45:38.000Z">
-<meta property="article:modified_time" content="2024-07-21T09:14:51.959Z">
+<meta property="article:modified_time" content="2024-07-23T10:35:13.440Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -162,6 +162,8 @@ Decide where to store your state files: You can store your state files locally, 
 <li>Login to Pulumi backend using the Azure Blob Storage account and container URL and the storage account key.</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pulumi login azblob://<span class="token operator">&lt;</span>blob-container-name<span class="token operator">></span>?storage_account<span class="token operator">=</span><span class="token operator">&lt;</span>storage-account-name<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="3-Pulumi-Stack-Initialization">3. Pulumi Stack Initialization</h2>
+<p>Once you have set up the backends for Pulumi state, you can now initialize a Pulumi project and stack.</p>
 <ul>
 <li>Create a new stack for the project. Try to use the same name as the environment you are working on (e.g., <code>dev</code>, <code>staging</code>, <code>prod</code>). So the suggested practice here is you creating a stack for each environment you are working on.</li>
 </ul>
@@ -175,7 +177,7 @@ pulumi stack <span class="token keyword">select</span> dev<span aria-hidden="tru
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html" data-id="clyvche7w001exx693sjdcyfq" data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html" data-id="clyya4vfi001e3o695bzhg7xz" data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
