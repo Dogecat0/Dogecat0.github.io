@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In this post, I will start creating resources in Azure using Pulumi. The full process is quite complex, so I will try to break it down into smaller parts and raise the key points here during">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-23T19:29:57.000Z">
-<meta property="article:modified_time" content="2024-07-23T19:50:28.114Z">
+<meta property="article:modified_time" content="2024-07-23T19:53:45.824Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -139,7 +139,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <span id="more"></span>
 <h2 id="📁-Resource-Group"><strong>📁 Resource Group</strong></h2>
 <p>The resources in Azure are organized into resource groups. A resource group is a logical container for resources deployed on Azure. You can deploy, update, and delete multiple resources in a resource group together. More about <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/manage-resource-groups-portal">Azure Resource Group</a>.</p>
-<p>Probably more to be added while it’s going but at this moment the key resources I will be using are:</p>
+<p>Probably more to be added while it’s going but at this moment the key resources I am using are:</p>
 <ul>
 <li>Container App</li>
 <li>Container Registry</li>
@@ -153,7 +153,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <li>Insights</li>
 </ul>
 <p>I’ve organized my resources into three resource groups:</p>
-<h2 id="1-‘web-app-rg’">1.‘web_app_rg’:</h2>
+<h2 id="1-‘web-app-rg’">1. ‘web_app_rg’:</h2>
 <ul>
 <li>Container App</li>
 <li>Container Registry</li>
@@ -170,7 +170,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <li>Simplifies tracking and optimizing costs specifically associated with the web application itself.</li>
 <li>It grants the easier managing permissions for developers and operators who need access only to the application resources.</li>
 </ul>
-<h2 id="2-‘devops-rg’">2.‘devops_rg’:</h2>
+<h2 id="2-‘devops-rg’">2. ‘devops_rg’:</h2>
 <ul>
 <li>DevOps</li>
 </ul>
@@ -180,7 +180,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <li>It enhanced security by isolating DevOps tools and credentials, ensuring taht only DevOps access.</li>
 <li>It simplifies scaling DevOps tools independently of the application resources.</li>
 </ul>
-<h2 id="3-‘network-and-monitoring-rg’">3.‘network_and_monitoring_rg’:</h2>
+<h2 id="3-‘network-and-monitoring-rg’">3. ‘network_and_monitoring_rg’:</h2>
 <ul>
 <li>Network</li>
 <li>Insights</li>
@@ -191,11 +191,12 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <li>It centralized location for all monitoring tools, which simplifies the process of setting up and managing alerts, dashboards, and logs.</li>
 <li>It enhanced security byisolating network and monitoring resources, ensuring network configurations are not tampered with unintentially.</li>
 </ul>
+<p>Organizing resources into resource groups is a good practice for managing and monitoring resources in Azure. It depends on the complexity of the application and the team’s requirements bae on the resources’ nature and purpose. Resources in different resource groups can communicate with each other, which makes it possible if you need more resource groups in the future.</p>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clyytyzqi001ewk69b5s072li" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clyyu33qm001e8l69467t2532" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
