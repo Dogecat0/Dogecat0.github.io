@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In this post, I will start creating resources in Azure using Pulumi. The full process is quite complex, so I will try to break it down into smaller parts and raise the key points here during">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-23T19:29:57.000Z">
-<meta property="article:modified_time" content="2024-07-23T19:54:14.514Z">
+<meta property="article:modified_time" content="2024-07-23T20:43:17.484Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -192,11 +192,21 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <li>It enhanced security byisolating network and monitoring resources, ensuring network configurations are not tampered with unintentially.</li>
 </ul>
 <p>Organizing resources into resource groups is a good practice for managing and monitoring resources in Azure. It depends on the complexity of the application and the team’s requirements bae on the resources’ nature and purpose. Resources in different resource groups can communicate with each other, which makes it possible if you need more resource groups in the future.</p>
+<h2 id="📦-Container-Registry"><strong>📦 Container Registry</strong></h2>
+<p>Azure Container Registry is a managed, private Docker registry service based on the open-source Docker Registry 2.0. It allows you to store and manage container images for all types of container deployments. More about <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/container-registry/">Azure Container Registry</a>.</p>
+<p>The Pulumi code to create a container registry in Azure can be find <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/containerregistry/registry/">here</a></p>
+<p><strong>Things to consider when creating a container registry:</strong></p>
+<ul>
+<li>Assign role-based access control (RBAC) roles to the registry to control access to the registry like <code>AcrPull</code> and <code>AcrPush</code>.</li>
+<li>SKU: Choose the SKU based on the requirements of the application. The SKU determines the capabilities and features of the registry. Here it has <code>Basic</code> and <code>Standard</code> SKUs.</li>
+<li>Registry Name: The name of the registry must be unique within Azure. It must be between 5 and 50 characters long alphanumeric.<br>
+⚠️ Note here, since the registry name must be unique within Azure, so it’s a good idea to include a unique name like your organization name or project name in it. (e.g., <code>&lt;your-project-name&gt;containerregistry</code>). This also applies to other resources in Azure. It’s also a good practice if you can add corresponding environment names to the resources to make it easier to identify which resources belong to which environment.</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clyyu3rwn001ede692sfo8ft9" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clyyvuyjz001ebv696pmd8gww" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
