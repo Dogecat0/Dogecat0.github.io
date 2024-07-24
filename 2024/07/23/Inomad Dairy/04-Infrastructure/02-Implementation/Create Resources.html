@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In this post, I will start creating resources in Azure using Pulumi. The full process is quite complex, so I will try to break it down into smaller parts and raise the key points here during">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-23T19:29:57.000Z">
-<meta property="article:modified_time" content="2024-07-24T12:28:59.591Z">
+<meta property="article:modified_time" content="2024-07-24T14:55:24.761Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -236,11 +236,18 @@ Currently in Pulumi latest azure-native module, it does not support retrieving t
 (⚠️ Note here, since the registry name must be unique within Azure, so it’s a good idea to include a unique name like your organization name or project name in it. (e.g., <code>&lt;your-project-name&gt;containerregistry</code>). This also applies to other resources in Azure. It’s also a good practice if you can add corresponding environment names to the resources to make it easier to identify which resources belong to which environment.)</li>
 <li>Export the registry name and login server to use in the container app deployment.</li>
 </ul>
+<h2 id="🖥️-SQL-Server-and-Database"><strong>🖥️ SQL Server and Database</strong></h2>
+<p>Azure SQL Database is a fully managed relational database service that provides a broad variety of features to enable you to scale, secure, and monitor your database. More about <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/azure-sql/database/">Azure SQL Database</a>.</p>
+<p>The Pulumi code to create a SQL Server and SQL Database in Azure can be find <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/sql/">here</a>.</p>
+<p><strong>Things to consider when creating a SQL Server and SQL Database:</strong></p>
+<ul>
+<li>Create a <code>KeyVault</code> and assign the Server credentials to the KeyVault to secure them. Of course you need to assign the proper RBAC roles to the KeyVault to allow the SQL Server to access the credentials.</li>
+</ul>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clyztn6uo001e3r69gmv03owf" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clyzyva04001e4k69an9a8b4d" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
