@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In this post, I will start creating resources in Azure using Pulumi. The full process is quite complex, so I will try to break it down into smaller parts and raise the key points here during">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-23T19:29:57.000Z">
-<meta property="article:modified_time" content="2024-07-24T14:55:24.761Z">
+<meta property="article:modified_time" content="2024-07-25T22:10:54.619Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -241,13 +241,42 @@ Currently in Pulumi latest azure-native module, it does not support retrieving t
 <p>The Pulumi code to create a SQL Server and SQL Database in Azure can be find <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/sql/">here</a>.</p>
 <p><strong>Things to consider when creating a SQL Server and SQL Database:</strong></p>
 <ul>
-<li>Create a <code>KeyVault</code> and assign the Server credentials to the KeyVault to secure them. Of course you need to assign the proper RBAC roles to the KeyVault to allow the SQL Server to access the credentials.</li>
+<li>Create a <code>KeyVault</code> and assign the Server credentials to the KeyVault to secure them. Of course you need to assign the proper RBAC roles to the KeyVault to allow the SQL Server to access the credentials.<br>
+(⚠️ Note here, pulumi_azure_native does not suppport retireving the actual key value from the KeyVault, so you need to use Azure CLI to retrieve the secret value from the KeyVault and use it in the Pulumi code. For example:</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">get_kv_secret</span><span class="token punctuation">(</span>vault_name<span class="token punctuation">,</span> secret_name<span class="token punctuation">,</span> access_token<span class="token punctuation">,</span> secret_version<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    url <span class="token operator">=</span> <span class="token string-interpolation"><span class="token string">f"https://</span><span class="token interpolation"><span class="token punctuation">&#123;</span>vault_name<span class="token punctuation">&#125;</span></span><span class="token string">.vault.azure.net/secrets/</span><span class="token interpolation"><span class="token punctuation">&#123;</span>secret_name<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span>
+    <span class="token keyword">if</span> secret_version<span class="token punctuation">:</span>
+        url <span class="token operator">+=</span> <span class="token string-interpolation"><span class="token string">f"/</span><span class="token interpolation"><span class="token punctuation">&#123;</span>secret_version<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span>
+    url <span class="token operator">+=</span> <span class="token string">"?api-version=7.0"</span>
+
+    headers <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">"Authorization"</span><span class="token punctuation">:</span> <span class="token string-interpolation"><span class="token string">f"Bearer </span><span class="token interpolation"><span class="token punctuation">&#123;</span>access_token<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span>
+
+    response <span class="token operator">=</span> requests<span class="token punctuation">.</span>get<span class="token punctuation">(</span>url<span class="token punctuation">,</span> headers<span class="token operator">=</span>headers<span class="token punctuation">,</span> timeout<span class="token operator">=</span><span class="token number">30</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> response<span class="token punctuation">.</span>status_code <span class="token operator">!=</span> <span class="token number">200</span><span class="token punctuation">:</span>
+        <span class="token keyword">raise</span> requests<span class="token punctuation">.</span>exceptions<span class="token punctuation">.</span>HTTPError<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"Failed to get secret: </span><span class="token interpolation"><span class="token punctuation">&#123;</span>response<span class="token punctuation">.</span>text<span class="token punctuation">&#125;</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+
+    secret <span class="token operator">=</span> response<span class="token punctuation">.</span>json<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>json<span class="token punctuation">.</span>dumps<span class="token punctuation">(</span>secret<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> secret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>)</p>
+<h2 id="🫙-Storage-Account-and-Blob-Container">**🫙 Storage Account and Blob Container</h2>
+<p>This is the straghtforward part of the implementation. The Pulumi code to create a Storage Account and Blob Container in Azure can be find <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/storage/">here</a>.</p>
+<h2 id="🛢️-ContainerApp">**🛢️ ContainerApp</h2>
+<p>Azure Container Apps is a fully managed serverless container service that enables you to deploy and run containerized applications without having to manage the underlying infrastructure. More about <a target="_blank" rel="noopener" href="https://docs.microsoft.com/en-us/azure/container-apps/">Azure Container Apps</a>.</p>
+<p>The Pulumi code to create a Container App in Azure can be find <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/web/containerapp/">here</a>.</p>
+<p><strong>Things to consider when creating a Container App:</strong></p>
+<ul>
+<li>First, you need to create a image source from the container registry you created earlier and here you also need to install a new module <code>pulumi_docker</code>. Example can be found here in <a target="_blank" rel="noopener" href="https://www.pulumi.com/docs/reference/pkg/docker/image/">Pulumi Docs</a>.<br>
+(⚠️ Note here, in <code>RegistryArgs</code> you need to fill in the registry credentials to access the container registry. If you’ve created your registry without having credentials, you can also use <code>az acr login</code> with your Microsoft Entra ID which you should have assigned acr permissions to or a Service Principle to access the registry.)</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clyzyva04001e4k69an9a8b4d" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clz1tvfrf001ei569egkvhqum" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
