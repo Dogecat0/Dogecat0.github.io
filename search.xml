@@ -4,19 +4,6 @@
   
     
     <entry>
-      <title>resrouces</title>
-      <link href="/2024/07/26/resrouces.html"/>
-      <url>/2024/07/26/resrouces.html</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources</title>
       <link href="/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html"/>
       <url>/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html</url>
@@ -77,9 +64,9 @@
       
         <tags>
             
-            <tag> Infrastructure </tag>
-            
             <tag> Inomad Diary </tag>
+            
+            <tag> Infrastructure </tag>
             
             <tag> Azure </tag>
             
