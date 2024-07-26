@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In this post, I will start creating resources in Azure using Pulumi. The full process is quite complex, so I will try to break it down into smaller parts and raise the key points here during">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-23T19:29:57.000Z">
-<meta property="article:modified_time" content="2024-07-26T21:56:51.937Z">
+<meta property="article:modified_time" content="2024-07-26T22:46:50.177Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -277,7 +277,7 @@ Currently in Pulumi latest azure-native module, it does not support retrieving t
 <li><code>custom_domains</code>: This is the domain that you want to use to access the Azure Container App. <code>binding_type</code>: The type of binding for the custom domain. <code>certificate</code>: The certificate that you want to use for the custom domain gained from associated Container App envrionment. <code>host_name</code>: The host name that you want to use for the custom domain.</li>
 <li><code>probes</code> property of <code>containers</code> in `templates: Probes are mechanisms used to check the halth and status of a container. There are three types of probes in Kubernetes and other container orchestrators: liveness probes, readiness probes, and startup probes. Liveness probes are used to determine if a container is running correctly. Readiness probes determine if a container is ready to accept traffic. Startup probes are used to check if an application within a container has started.</li>
 </ul>
-<p><strong>3.Managed Envrionment:</strong> This is the environment where the container app is going to run. The pulumi code to create a managed environment can be found <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/app/managedenvironment/">here</a>. And the Microsoft docs for the managed environment can be found <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/templates/microsoft.app/managedenvironments?pivots=deployment-language-bicep">here</a>.</p>
+<p><strong>3. Managed Envrionment:</strong> This is the environment where the container app is going to run. The pulumi code to create a managed environment can be found <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/app/managedenvironment/">here</a>. And the Microsoft docs for the managed environment can be found <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/templates/microsoft.app/managedenvironments?pivots=deployment-language-bicep">here</a>.</p>
 <p>⚠️ Concepts I picked up here:</p>
 <ul>
 <li><code>app_logs_configuration</code>: Cluster configuration which enables the log daemon to export app logs to a destination. Currently only “log-analytics” is supported</li>
@@ -288,7 +288,7 @@ Currently in Pulumi latest azure-native module, it does not support retrieving t
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clz3ajxrd001ebv69gmn4gs1s" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clz3alb0s001ei0692zkx9ia4" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
