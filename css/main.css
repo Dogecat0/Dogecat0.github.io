@@ -116,6 +116,15 @@
     .article-nav {
         @apply flex items-center justify-between
     }
+    .archive-article {
+        @apply m-5 p-5 border border-secondary
+    }
+    .archive-article-date {
+        @apply text-sm
+    }
+    .archive-article-title {
+        @apply hover:underline hover:opacity-70 text-accent-light
+    }
 
     /* Post tag */
     .article-date {
@@ -138,6 +147,14 @@
         @apply bg-primary capitalize text-xl text-center px-5 py-1
     }
     .widget {
-        @apply pt-2 pb-5 my-5
+        @apply pb-5 my-5 text-sm
+    }
+
+    /* Pagination */
+    #page-nav {
+        @apply space-x-3
+    }
+    .page-number .current {
+        @apply font-bold
     }
 }
