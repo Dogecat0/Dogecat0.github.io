@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HENBHMXMT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0HENBHMXMT');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>Inomad Diary-04-Infrastructure-01-Readings-Development and Deployment | Zhicheng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
+  <meta name="description" content="🔎 Intro In this post, I will explore the role of development and deployment technologies in modern cloud infrastructure and their importance in building scalable, reliable, and efficient web applicat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Inomad Diary-04-Infrastructure-01-Readings-Development and Deployment">
+<meta property="og:url" content="https://dogecat0.github.io/2024/07/04/Inomad%20Dairy/04-Infrastructure/01-Readings/Development%20and%20Deployment.html">
+<meta property="og:site_name" content="Zhicheng&#39;s Blog">
+<meta property="og:description" content="🔎 Intro In this post, I will explore the role of development and deployment technologies in modern cloud infrastructure and their importance in building scalable, reliable, and efficient web applicat">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-04T14:47:16.000Z">
+<meta property="article:modified_time" content="2024-07-07T09:12:42.907Z">
+<meta property="article:author" content="Zhicheng Wang">
+<meta property="article:tag" content="Inomad">
+<meta property="article:tag" content="Infrastructure">
+<meta property="article:tag" content="Development">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/output.css">
+
+  
+    <link rel="stylesheet" href="/css/prism.css">
+    <script src="/js/prism.js"></script>
+  
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="body">
+  <div id="container" class="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="header-title-group inner">
+      <p id="logo-wrap" class="header-title">
+        Zhicheng&#39;s Blog
+        <!-- <a href="/" id="logo">Zhicheng&#39;s Blog</a> -->
+      </p>
+      
+        <p id="subtitle-wrap" class="header-subtitle">
+          A Chronicles of a Self-taught Programmer: Learn to Debug Life
+          <!-- <a href="/" id="subtitle">A Chronicles of a Self-taught Programmer: Learn to Debug Life</a> -->
+        </p>
+      
+      
+        <p id="description-wrap" class="header-description">
+          Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity (and ChatGPT&#39;s endless patience), bolstered by my humble attitude of learning (with millions of searches on Google),
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+
+✉️: zcmmwang@gmail.com
+
+          <!-- <a href="/" id="description">Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity (and ChatGPT&#39;s endless patience), bolstered by my humble attitude of learning (with millions of searches on Google),
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+
+✉️: zcmmwang@gmail.com
+</a> -->
+        </p>
+      
+    </div>
+    <div id="header-inner" class="nav-menu inner">
+      <nav id="main-nav" class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      
+    <div id="site_search" class="site-search">
+     <div class="form-group" class="site-search-input">
+      <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+     </div>  
+    <div id="local-search-result" class="local-search-result"></div>
+    </div>
+  
+    </div>
+  </div>
+</header>
+
+      <div class="sub-container outer">
+        <section class="post-container" id="main"><article id="post-Inomad Dairy/04-Infrastructure/01-Readings/Development and Deployment" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2024-07-04T14:47:16.000Z" itemprop="datePublished">2024-07-04</time>
+  <br>
+  
+  Updated: <time class="dt-published" datetime="2024-07-07T09:12:42.907Z" itemprop="datePublished">2024-07-07</time>
+  
+</p>
+    
+  </div>
+  <hr>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Inomad Diary-04-Infrastructure-01-Readings-Development and Deployment
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
+<p>In this post, I will explore the role of development and deployment technologies in modern cloud infrastructure and their importance in building scalable, reliable, and efficient web applications and services. Development technologies encompass a wide range of tools, frameworks, and practices that enable developers to create, deploy, and maintain software solutions in the cloud.</p>
+<span id="more"></span>
+<p>Development and deployment technologies play a crucial role in modern cloud infrastructure by providing developers with the tools and frameworks needed to build scalable, reliable, and efficient web applications and services. These technologies enable developers to write code, test applications, deploy updates, and monitor performance in a cloud environment, ensuring that software solutions meet the needs of users and organizations.</p>
+<h2 id="🔗-Programming-Languages"><strong>🔗 Programming Languages</strong></h2>
+<ul>
+<li>Python: Widely used for its simplicity and readability. Strong support in automation, scripting, and integrating with cloud services.</li>
+<li>Java: Robust, platform-independent, and widely used in large-scale enterprise applications. Supports multithreading and high-performance systems.</li>
+<li>Go: Known for its performance and efficiency in cloud-native applications. It’s statically typed and compiled, which help inbuilding reliable and efficient software.</li>
+<li>JavaScript/Node.js: Essential for serverless architectures and building APIs. Offers a non-blocking I/O model, making it efficient for real-time applications.</li>
+</ul>
+<h2 id="📦-Frameworks-and-Libraries"><strong>📦 Frameworks and Libraries</strong></h2>
+<ul>
+<li>Flask/Django (Python): Flask is a lightweight web framework, while Django is a full-stack framework with built-in ORM and admin interface.</li>
+<li>Spring Boot (Java): Simplifies microservices development. Integrates well with cloud platform like AWS and Azure.</li>
+<li>Express.js (Node.js): Minimalist web framework for building RESTful APIs and server-side applications.</li>
+<li>Gin (Go): Lightweight and fast web framework for building high-performance APIs and microservices.</li>
+</ul>
+<h2 id="🧑‍💻-Integrated-Development-Environments-IDEs"><strong>🧑‍💻 Integrated Development Environments (IDEs)</strong></h2>
+<ul>
+<li>VS Code: Highly extensible with numerous plugins for cloud development, including Docker, Kubernetes, and cloud service integrations.</li>
+<li>IntelliJ IDEA: Comprehensive support for Java and other JVM languages. Rich features for cloud development and integration.</li>
+<li>PyCharm: Best suited for Python development with advanced features for debugging, testing, and deployment.</li>
+<li>Eclipse: Versatile IDE supporting multiple languages, popular for Java development.</li>
+</ul>
+<h2 id="🎮-Version-Control"><strong>🎮 Version Control</strong></h2>
+<ul>
+<li>Git: Widely used for distributed version control. Essential for collaboration, code review, and continuous integration/continuous deployment (CI/CD) pipelines.</li>
+<li>GitHub/GitLab: Popular platform for hosting Git repositories, enabling collaboration, issue tracking, and project management, and integrated with cloud services.</li>
+</ul>
+<h2 id="🔧-Development-Practices"><strong>🔧 Development Practices</strong></h2>
+<ul>
+<li>CI/CD pipelines automate the build, test, and deployment processes, ensuring code quality and reliability.</li>
+<li>Infrastructure as Code (IaC): Managing and provisioning computing infrastructure through machine-readable definition files. (e.g. Terraform, CloudFormation, Pulumi)</li>
+</ul>
+<h2 id="🫙-Containerization-and-Orchestration"><strong>🫙 Containerization and Orchestration</strong></h2>
+<ul>
+<li>Docker: Standar for containerizing applications. Allows for consistent environments across development, testing, and production.</li>
+<li>Kubernetes: Industry-standard for managging containerized applications at scale. Offers features like automated deployment, scaling, and mangement of containerized applications.</li>
+</ul>
+<h2 id="🖥️-Serverless-Architecture"><strong>🖥️ Serverless Architecture</strong></h2>
+<ul>
+<li>AWS Lambda: Allows running code without provisioning servers. Integrated with other AWS services.</li>
+<li>Azure Functions: Event-driven serverless compute service. Supports multiple languages and integrates with Azure services.</li>
+<li>Google Cloud Functions: Lightweight, event-based, asynchronous compute solution for cloud applications.</li>
+</ul>
+<h2 id="📁-Databases"><strong>📁 Databases</strong></h2>
+<ul>
+<li>Relational Databases: SQL-based databases like MySQL, PostgreSQL, Oracle, and Microsoft SQL Server.</li>
+<li>NoSQL Databases: Document stores (MongoDB, CouchDB), Key-value stores (Redis, DynamoDB), Column-family stores (Cassandra, HBase), Graph databases (Neo4j, Amazon Neptune).</li>
+</ul>
+<p>More details on databases can be found in the [previous post](<a href="https://dogecat0.github.io/2024/07/04/Inomad%20Dairy/Inomad">https://dogecat0.github.io/2024/07/04/Inomad Dairy/Inomad</a> Diary-04-Infrastructure-01-Readings05-Database.html).</p>
+<h2 id="📈-Monitoring-and-Logging"><strong>📈 Monitoring and Logging</strong></h2>
+<ul>
+<li>Prometheus: Open-source monitoring and alerting toolkit. Collects metrics from monitored targets and stores them in a time-series database.</li>
+<li>Grafana: Visualization tool for monitoring data. Integrates with various data sources and provides customizable dashboards.</li>
+<li>ELK Stack (Elasticsearch, Logstash, Kibana): Centralized logging and log analysis solution. Elasticsearch stores and indexes logs, Logstash processes and forwards logs, and Kibana visualizes log data.</li>
+</ul>
+<h2 id="🔒-Security-and-Compliance"><strong>🔒 Security and Compliance</strong></h2>
+<ul>
+<li>OWASP Top 10: List of the most critical security risks to web applications. Includes vulnerabilities like injection, broken authentication, and sensitive data exposure.</li>
+<li>SAST (Static Application Security Testing) and DAST (Dynamic Application Security Testing) tools help identify and remediate security vulnerabilities in applications.(e.g. SonarQube, OWASP ZAP)</li>
+</ul>
+<h2 id="✅-Best-Practices"><strong>✅ Best Practices</strong></h2>
+<ul>
+<li>Automate Everything: Automate all aspects of deployment, from code commits to production rollouts, to reduce human error and increase consistency.</li>
+<li>Use Version Control: Ensure all configurations and scripts are stored in version control systems like Git to track changes and facilitate rollback if needed.</li>
+<li>Immutable Infrastrucutre: Deploy applications on immutable infrastructure where servers are not modified post-deployment. Instaed, deploy new serves with the new configuration.</li>
+<li>Blue-Green Deployment: Minimize downtime and reduce risk by deploying new versions alongside exsiting ones and swtiching traffic only when the new version is verified.</li>
+<li>Canary Releases: Gradually roll out chagnes to a small subset of users before full deployment, allowing for real-world testing and reducing risk.</li>
+<li>Monitoring and Logging: Implement robust monitoring and logging to ensure visibility into application performance and quick detection of issues.</li>
+<li>Security and Compliance: Integrate security checks into the CI/CD pipeline to ensure compliance with security standards and policies.</li>
+</ul>
+<p>Understanding and effectively utilizing development and deployment technologies is crucial for cloud engineers. These tools and practices not only enhance the efficiency and reliability of software delivery but also ensure that applications are secure, scalable, and resilient.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/04/Inomad%20Dairy/04-Infrastructure/01-Readings/Development%20and%20Deployment.html" data-id="clzilu8m70010x1694kq4hvo3" data-title="Inomad Diary-04-Infrastructure-01-Readings-Development and Deployment" class="article-share-link" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+        </svg>
+      </button>
+      
+      
+      
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/Inomad/">#Inomad</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Infrastructure/">#Infrastructure</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Development/">#Development</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2024/07/05/Inomad%20Dairy/04-Infrastructure/01-Readings/Messaging.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Inomad Diary-04-Infrastructure-01-Readings-Messaging
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/07/04/Inomad%20Dairy/04-Infrastructure/01-Readings/Database.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Inomad Diary-04-Infrastructure-01-Readings-Database</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside class="sidebar" id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Tags</p>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/" rel="tag">AWS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Auditing/" rel="tag">Auditing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Computing/" rel="tag">Cloud Computing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Computing-Technologies/" rel="tag">Cloud Computing Technologies</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collections/" rel="tag">Collections</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compliance/" rel="tag">Compliance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Development/" rel="tag">Development</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/" rel="tag">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/" rel="tag">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Form/" rel="tag">Form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Forms/" rel="tag">Forms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Formset/" rel="tag">Formset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Full-Stack/" rel="tag">Full Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Governance/" rel="tag">Governance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Individual-Stock-Analysis/" rel="tag">Individual Stock Analysis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Infrastructure/" rel="tag">Infrastructure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inomad/" rel="tag">Inomad</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inomad-Diary/" rel="tag">Inomad Diary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logging/" rel="tag">Logging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Messaging/" rel="tag">Messaging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monitoring/" rel="tag">Monitoring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mortgage/" rel="tag">Mortgage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Networking/" rel="tag">Networking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProductModel/" rel="tag">ProductModel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pulumi/" rel="tag">Pulumi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SES/" rel="tag">SES</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stocks/" rel="tag">Stocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Storage/" rel="tag">Storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/axios/" rel="tag">axios</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Archives</p>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Recent Posts</p>
+    <div class="widget">
+      <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html">Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html">Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2024/07/18/Inomad%20Dairy/04-Infrastructure/02-Implementation/Azure%20Setup.html">Inomad Diary-04-Infrastructure-02-Implementations-01-Azure Setup</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Final%20Score.html">Investment-02-Stocks-04-Final Score</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Risks.html">Investment-02-Stocks-04-Weighted Score Calculation-05-Risks</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner footer-info">
+      
+      &copy; 2024 Zhicheng Wang<br>
+      <div>
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<!-- 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+ -->
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+  </div>
+</body>
+</html>

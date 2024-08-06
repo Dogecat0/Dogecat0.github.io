@@ -18,6 +18,10 @@
     li a {
         @apply text-accent-light hover:opacity-70 hover:underline
     }
+    /* New styles for time text */
+    p br + .dt-published {
+        @apply text-accent-light;
+    }
 
 }
 
@@ -93,10 +97,9 @@
     }
 
 
-
     /* Post */
     .article-meta {
-        @apply mb-3
+        @apply mb-3 text-sm
     }
     .article-inner {
         @apply bg-tertiary my-5 py-5 px-5
@@ -118,11 +121,6 @@
     .article-date {
         @apply pt-5
     }
-
-    .article-updated {
-        @apply pt-5
-    }
-
     .post-tag {
         @apply px-5
     }
