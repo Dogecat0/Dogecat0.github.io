@@ -22,6 +22,9 @@
     p br + .dt-published {
         @apply text-accent-light;
     }
+    code {
+        @apply text-secondary bg-secondary bg-opacity-10 p-1
+    }
 
 }
 
@@ -83,8 +86,14 @@
     .nav-menu {
         @apply flex justify-start py-5 space-x-5;
     }
+    .main-nav {
+        @apply flex items-center;
+    }
     .main-nav-link {
         @apply uppercase my-5 mr-3 px-3 py-1 hover:bg-opacity-60 bg-accent
+    }
+    .site-search {
+        @apply flex items-center
     }
     .footer-info {
         @apply flex items-stretch justify-between py-5;
@@ -134,7 +143,7 @@
         @apply px-5
     }
     .article-tag-list {
-        @apply flex space-x-3
+        @apply flex ml-5 space-x-3
     }
     .article-tag-list-item {
         @apply hover:underline list-none
@@ -153,8 +162,5 @@
     /* Pagination */
     #page-nav {
         @apply space-x-3
-    }
-    .page-number .current {
-        @apply font-bold
     }
 }

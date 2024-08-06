@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In this post, I will start creating resources in Azure using Pulumi. The full process is quite complex, so I will try to break it down into smaller parts and raise the key points here during">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-23T19:29:57.000Z">
-<meta property="article:modified_time" content="2024-08-06T14:06:39.027Z">
+<meta property="article:modified_time" content="2024-08-06T19:20:42.717Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -123,7 +123,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-23T19:29:57.000Z" itemprop="datePublished">2024-07-23</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2024-08-06T14:06:39.027Z" itemprop="datePublished">2024-08-06</time>
+  Updated: <time class="dt-published" datetime="2024-08-06T19:20:42.717Z" itemprop="datePublished">2024-08-06</time>
   
 </p>
     
@@ -163,7 +163,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <li>Insights</li>
 </ul>
 <p>I’ve organized my resources into three resource groups:</p>
-<h2 id="1-‘web-app-rg’">1. ‘web_app_rg’:</h2>
+<h2 id="1-web-app-rg">1. <code>web_app_rg</code>:</h2>
 <ul>
 <li>Container App</li>
 <li>Container Registry</li>
@@ -180,7 +180,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <li>Simplifies tracking and optimizing costs specifically associated with the web application itself.</li>
 <li>It grants the easier managing permissions for developers and operators who need access only to the application resources.</li>
 </ul>
-<h2 id="2-‘devops-rg’">2. ‘devops_rg’:</h2>
+<h2 id="2-devops-rg">2. <code>devops_rg</code>:</h2>
 <ul>
 <li>DevOps</li>
 </ul>
@@ -190,7 +190,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 <li>It enhanced security by isolating DevOps tools and credentials, ensuring taht only DevOps access.</li>
 <li>It simplifies scaling DevOps tools independently of the application resources.</li>
 </ul>
-<h2 id="3-‘network-and-monitoring-rg’">3. ‘network_and_monitoring_rg’:</h2>
+<h2 id="3-network-and-monitoring-rg">3. <code>network_and_monitoring_rg</code>:</h2>
 <ul>
 <li>Network</li>
 <li>Insights</li>
@@ -269,7 +269,7 @@ Currently in Pulumi latest azure-native module, it does not support retrieving t
     <span class="token keyword">return</span> secret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="🫙-Storage-Account-and-Blob-Container"><strong>🫙 Storage Account and Blob Container</strong></h2>
 <p>This is the straghtforward part of the implementation. The Pulumi code to create a Storage Account and Blob Container in Azure can be find <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/storage/">here</a>.</p>
-<h2 id="🚚-Content-Delivery-Network-CDN">**🚚 Content Delivery Network (CDN)</h2>
+<h2 id="🚚-Content-Delivery-Network-CDN"><strong>🚚 Content Delivery Network (CDN)</strong></h2>
 <p>Azure Content Delivery Network (CDN) is a global content delivery network solution for delivering high-bandwidth content. <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/cdn/">Pulumi Docs</a>.</p>
 <h2 id="Things-to-consider-when-creating-a-Container-App">Things to consider when creating a Container App:</h2>
 <p><strong>1. CDN Profile:</strong> The CDN profile is a container for the CDN endpoints. It defines the pricing tier and the CDN provider. The profile should be global.</p>
@@ -309,7 +309,7 @@ Currently in Pulumi latest azure-native module, it does not support retrieving t
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clzisd7sn001ern69eog926df" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clzit4j6q001e7j69hm1q6a8u" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
