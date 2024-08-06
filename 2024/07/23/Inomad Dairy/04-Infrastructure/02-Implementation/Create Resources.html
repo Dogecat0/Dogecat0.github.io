@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In this post, I will start creating resources in Azure using Pulumi. The full process is quite complex, so I will try to break it down into smaller parts and raise the key points here during">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-23T19:29:57.000Z">
-<meta property="article:modified_time" content="2024-07-26T22:46:50.177Z">
+<meta property="article:modified_time" content="2024-08-06T14:04:15.447Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -120,6 +120,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     <p class="article-date">
   <time class="dt-published" datetime="2024-07-23T19:29:57.000Z" itemprop="datePublished">2024-07-23</time>
 </p>
+    <p class="article-updated">
+    Updated: <time class="dt-published" datetime="2024-08-06T14:04:15.447Z" itemprop="datePublished">2024-08-06</time>
+</p>
+  
     
   </div>
   <hr>
@@ -263,10 +267,20 @@ Currently in Pulumi latest azure-native module, it does not support retrieving t
     <span class="token keyword">return</span> secret<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="🫙-Storage-Account-and-Blob-Container"><strong>🫙 Storage Account and Blob Container</strong></h2>
 <p>This is the straghtforward part of the implementation. The Pulumi code to create a Storage Account and Blob Container in Azure can be find <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/storage/">here</a>.</p>
+<h2 id="🚚-Content-Delivery-Network-CDN">**🚚 Content Delivery Network (CDN)</h2>
+<p>Azure Content Delivery Network (CDN) is a global content delivery network solution for delivering high-bandwidth content. <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/cdn/">Pulumi Docs</a>.</p>
+<h2 id="Things-to-consider-when-creating-a-Container-App">Things to consider when creating a Container App:</h2>
+<p><strong>1. CDN Profile:</strong> The CDN profile is a container for the CDN endpoints. It defines the pricing tier and the CDN provider. The profile should be global.</p>
+<p><strong>2. CDN Endpoint:</strong> The CDN endpoint is the actual CDN service that delivers content to end-users. It is associated with a CDN profile and a custom domain name.</p>
+<ul>
+<li><code>origin</code>: The origin of the CDN endpoint. This is the source of the content that the CDN delivers to end-users. The origin can be a storage account, a web app, or any other public endpoint.<br>
+(⚠️ Note, in <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/cli/azure/cdn/endpoint?view=azure-cli-latest#az-cdn-endpoint-create">Micsoft doc</a>, when you create an endpoint, the <code>origin</code> means the <code>custom domain</code> which in Pulumi, is <code>origin_host_header</code>.)</li>
+<li><code>origin_group</code>: The origin group is a collection of origins that the CDN endpoint uses to deliver content. The CDN endpoint can use multiple origins to deliver content to end-users. The origin group can be used to define failover and load balancing rules for the CDN endpoint.</li>
+</ul>
 <h2 id="🛢️-ContainerApp"><strong>🛢️ ContainerApp</strong></h2>
 <p>Azure Container Apps is a fully managed serverless container service that enables you to deploy and run containerized applications without having to manage the underlying infrastructure. More about <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/templates/microsoft.app/containerapps?pivots=deployment-language-bicep#container">Azure Container Apps</a>.</p>
 <p>The Pulumi code to create a Container App in Azure can be find <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/app/containerapp/">here</a>.</p>
-<h2 id="Things-to-consider-when-creating-a-Container-App">Things to consider when creating a Container App:</h2>
+<h2 id="Things-to-consider-when-creating-a-Container-App-2">Things to consider when creating a Container App:</h2>
 <p><strong>1. Docker Image:</strong> First, you need to create a image source from the container registry you created earlier and here you also need to install a new module <code>pulumi_docker</code>. Example can be found here in <a target="_blank" rel="noopener" href="https://www.pulumi.com/docs/reference/pkg/docker/image/">Pulumi Docs</a>.</p>
 <p>⚠️ Note here, in <code>RegistryArgs</code> you need to fill in the registry credentials to access the container registry. If you’ve created your registry without having credentials, you can use <code>az acr login</code> with your Microsoft Entra ID which you should have assigned acr permissions to or a Service Principle to access the registry.</p>
 <p><strong>2. Container App:</strong> Defining the container app requires more configuration. Below is the example of the configuration from the <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/app/containerapp/">Pulumi Docs</a>:</p>
@@ -288,11 +302,12 @@ Currently in Pulumi latest azure-native module, it does not support retrieving t
 <li><code>log_analytics_configuration</code>: Log Analytics configuration, must only be provided when destination is configured as ‘log-analytics’. This leads to the creation of another resource <code>LogAnalyticsWorkspace</code> which is a workspace for storing log data. <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/container-apps/log-monitoring?tabs=bash">Microsoft doc</a>. <a target="_blank" rel="noopener" href="https://www.pulumi.com/registry/packages/azure-native/api-docs/operationalinsights/workspace/">Pulumi doc</a>.</li>
 <li><code>custom_domain_configuration</code>: Custom domain configuration allows you to map a custom domain (e.g., <a target="_blank" rel="noopener" href="http://www.my-name.com">www.my-name.com</a>) to your Azure managed environment or specific resources within it. This is often necessary when you want your application to be accessible via a branded domain name rather than the default Azure-generated domain name.</li>
 </ul>
+<h2 id="🔍-Insights"><strong>🔍 Insights</strong></h2>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clz3b3zab001eys69e7w4bkoe" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clzihro10001en969ge6h3kho" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>

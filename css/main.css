@@ -118,6 +118,11 @@
     .article-date {
         @apply pt-5
     }
+
+    .article-updated {
+        @apply pt-5
+    }
+
     .post-tag {
         @apply px-5
     }
