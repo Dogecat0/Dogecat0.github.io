@@ -620,7 +620,7 @@
       <link href="/2024/04/23/Inomad%20Dairy/01-ProductModel.html"/>
       <url>/2024/04/23/Inomad%20Dairy/01-ProductModel.html</url>
       
-        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>As the business model of Inomad is updating constantly especially the product lines during the scaling-up stage, the product model also requires to be updated frequently.</p><span id="more"></span><p>It’s been a while since last time I update the Inomad series. The old demo on GitHub for <a href="https://github.com/Dogecat0/inomad-demo">Inomad</a> is still there, but quite out of date. I’ve been working on the new version of Inomad, which is constantly updating the product lines and the product model. The categories, the materials, the colors, the sizes, the main product and variants, all these core attributes of the product model are fun to work with. Also another important part of Inomad product is the sustainable mateiral and recylcing idea. Hopefully I can share more about them soon and put website into production.</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2><p>As the business model of Inomad is updating constantly especially the product lines during the scaling-up stage, the product model also requires to be updated frequently.</p><span id="more"></span><p>It’s been a while since last time I update the Inomad series. The current demo on GitHub for <a href="https://github.com/Dogecat0/inomad-demo">Inomad</a> is here, but maybe slightly out of date as I’ve been constantly updating Inomad. The product lines and the product model have been the main updates recently. The categories, the materials, the colors, the sizes, the main product and variants, all these core attributes of the product model are fun to work with. Also another important part of Inomad product is the sustainable mateiral and recylcing idea. Hopefully I can share more about them soon and put website into production.</p>]]></content>
       
       
       
@@ -835,21 +835,17 @@
     
     
     <entry>
-      <title>Inomad-Dairy-00-SES</title>
+      <title>Inomad-Dairy-00-Introduction</title>
       <link href="/2023/11/10/Inomad%20Dairy/00-SES.html"/>
       <url>/2023/11/10/Inomad%20Dairy/00-SES.html</url>
       
-        <content type="html"><![CDATA[<h2 id="🥳🎊"><strong>🥳🎊</strong></h2><p>I have been thinking to start a series about the e-commerce platform <a href="https://github.com/Dogecat0/inomad-demo">Inomad</a> for quite a while now. However, I was not sure about the content of the series and how to structure it. The thinking is till going on but I’ve decided to start it anyway. So, here we go, let’s begin with a small celebration today.</p><p>After almost a week waiting for the SES service to be approved, Inomad finally got the approval email from AWS. Thanks to the <a href="https://github.com/django-ses/django-ses">django-ses</a> package, I was able to set up the email service quite easily with just set <code>EMAIL_BACKEND = django_ses.SESBackend</code> in the <code>settings.py </code>file.</p><p>TBC…</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="🥳🎊"><strong>🥳🎊</strong></h2><p>I have been thinking to start a series about the e-commerce platform <a href="https://github.com/Dogecat0/inomad-demo">Inomad</a> for quite a while now. However, I was not sure about the content of the series and how to structure it. The thinking is till going on but I’ve decided to start it and modify the series as I go.</p>]]></content>
       
       
       
         <tags>
             
             <tag> Inomad </tag>
-            
-            <tag> AWS </tag>
-            
-            <tag> SES </tag>
             
         </tags>
       
