@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro In this post, I will start creating resources in Azure using Pulumi. The full process is quite complex, so I will try to break it down into smaller parts and raise the key points here during">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2024-07-23T19:29:57.000Z">
-<meta property="article:modified_time" content="2024-08-08T22:06:17.731Z">
+<meta property="article:modified_time" content="2024-08-09T14:52:09.148Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Inomad">
 <meta property="article:tag" content="Infrastructure">
@@ -123,7 +123,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-23T19:29:57.000Z" itemprop="datePublished">2024-07-23</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2024-08-08T22:06:17.731Z" itemprop="datePublished">2024-08-08</time>
+  Updated: <time class="dt-published" datetime="2024-08-09T14:52:09.148Z" itemprop="datePublished">2024-08-09</time>
   
 </p>
     
@@ -312,13 +312,13 @@ Currently in Pulumi latest azure-native module, it does not support retrieving t
 <ul>
 <li><code>address_space</code>: The address space of the virtual network. This is the range of IP addresses that the virtual network can use. Normally, you can use the default address space <code>10.0.0./16</code>.</li>
 <li><code>subnets</code>: The subnets of the virtual network. Subnets are used to divide the virtual network into smaller networks. Each subnet has its own range of IP addresses. Normally, you can use the default subnet <code>10.0.1.0/24</code> for <code>web-subnet</code> and <code>10.0.1.0/24</code> for <code>db-subnet</code>. <a target="_blank" rel="noopener" href="https://techcommunity.microsoft.com/t5/itops-talk-blog/configuring-azure-virtual-network-subnets-with-cidr-notation/ba-p/2047809">Here</a> is a good article about CIDR notation.</li>
-<li><code>security_group</code>: A security group is a collection of security rules that define how traffic is allowed or denied in the virtual network. Security groups are used to control the flow of traffic between resources in the network and between the network and the internet. <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/virtual-network/security-overview">More</a> about Azure Network Security.</li>
+<li><code>security_group</code>: Network Security Groups are a fundamental feature in Azure used to manage and control network traffic to and from Azure resources in a virtual network. NSGs act as a firewall at the subnet or network interface level, allowing or deniying traffic based on security rules. <a target="_blank" rel="noopener" href="https://learn.microsoft.com/en-us/azure/virtual-network/security-overview">More</a> about Azure Network Security. <code>priority</code> in <code>security_rule</code> is the priority of the rule. The lower the number, the higher the priority. It does not imply the importance of one rule over another but rather dictates which rule is evaluated first when a network packet is processed.</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clzltv7h1001egy695vqk7eoz" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
+      <button title="Share" data-url="https://dogecat0.github.io/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="clzn5olm9001eik694ua2hvbs" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
         <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
         </svg>
       </button>
