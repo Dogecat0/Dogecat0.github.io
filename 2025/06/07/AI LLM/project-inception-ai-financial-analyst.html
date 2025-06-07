@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HENBHMXMT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0HENBHMXMT');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner | Zhicheng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
+  <meta name="description" content="It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! But this isn’t just about building another AI tool. This is a dual experiment:">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner">
+<meta property="og:url" content="https://dogecat0.github.io/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html">
+<meta property="og:site_name" content="Zhicheng&#39;s Blog">
+<meta property="og:description" content="It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! But this isn’t just about building another AI tool. This is a dual experiment:">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-07T09:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-07T21:23:54.608Z">
+<meta property="article:author" content="Zhicheng Wang">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="FastAPI">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="OpenAI">
+<meta property="article:tag" content="FinTech">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/output.css">
+
+  
+    <link rel="stylesheet" href="/css/prism.css">
+    <script src="/js/prism.js"></script>
+  
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="body">
+  <div id="container" class="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="header-title-group inner">
+      <p id="logo-wrap" class="header-title">
+        Zhicheng&#39;s Blog
+        <!-- <a href="/" id="logo">Zhicheng&#39;s Blog</a> -->
+      </p>
+      
+        <p id="subtitle-wrap" class="header-subtitle">
+          A Chronicles of a Self-taught Programmer: Learn to Debug Life
+          <!-- <a href="/" id="subtitle">A Chronicles of a Self-taught Programmer: Learn to Debug Life</a> -->
+        </p>
+      
+      
+        <p id="description-wrap" class="header-description">
+          Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity (and ChatGPT&#39;s endless patience), bolstered by my humble attitude of learning (with millions of searches on Google),
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+
+✉️: zcmmwang@gmail.com
+
+          <!-- <a href="/" id="description">Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity (and ChatGPT&#39;s endless patience), bolstered by my humble attitude of learning (with millions of searches on Google),
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+
+✉️: zcmmwang@gmail.com
+</a> -->
+        </p>
+      
+    </div>
+    <div id="header-inner" class="nav-menu inner">
+      <nav id="main-nav" class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      
+    <div id="site_search" class="site-search">
+     <div class="form-group" class="site-search-input">
+      <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+     </div>  
+    <div id="local-search-result" class="local-search-result"></div>
+    </div>
+  
+    </div>
+  </div>
+</header>
+
+      <div class="sub-container outer">
+        <section class="post-container" id="main"><article id="post-AI LLM/project-inception-ai-financial-analyst" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2025-06-07T09:00:00.000Z" itemprop="datePublished">2025-06-07</time>
+  <br>
+  
+</p>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AI-Projects/">AI Projects</a>
+  </div>
+
+  </div>
+  <hr>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! But this isn’t just about building another AI tool. This is a dual experiment:</p>
+<ol>
+<li>Can we build an AI-powered tool to automate the analysis of complex financial documents for the purpose of learning the latest AI LLM techniques?</li>
+<li>How far can a developer push a project by truly <em>partnering</em> with AI coding assistants?, and I’ll be sharing the journey right here.</li>
+</ol>
+<h3 id="The-Problem-Information-Overload-in-Finance">The Problem: Information Overload in Finance</h3>
+<p>Before the project I had not much experience with financial documents, only a basic understanding of their importance and relevance. After spending some time working with the filings, I realized the challenge: You’re faced with mountains of dense, jargon-filled documents like 10-Ks and 10-Qs. Buried within these SEC filings is a goldmine of information about a company’s performance, strategy, and risks. But extracting and understanding it is a tedious, manual process and never even mention that not all SEC filings themselves are not standardized.</p>
+<p>But one thing we can be sure is with the power of LLMs, and the huge amount of text data offered by those filings, we can swim in the sea of information and surface the insights that matter.</p>
+<span id="more"></span>
+<h3 id="The-Vision-An-AI-Analyst-Built-by-a-Human-AI-Team">The Vision: An AI Analyst, Built by a Human-AI Team</h3>
+<p>The goal is to create a web application where a user can input a stock ticker and receive a comprehensive, AI-driven analysis. This isn’t just about pulling numbers; it’s about understanding the narrative and context behind them.</p>
+<p>The application will break down the analysis into four key areas:</p>
+<ol>
+<li><strong>Financial History</strong>: Interactive charts and trends from historical financial statements.</li>
+<li><strong>Business Analysis</strong>: A deep dive into the company’s operations, products, competitive advantages, and strategic initiatives.</li>
+<li><strong>MD&amp;A (Management’s Discussion &amp; Analysis)</strong>: Key takeaways and performance indicators directly from management’s perspective.</li>
+<li><strong>Risk Factors</strong>: A prioritized overview of the risks the company faces, complete with a severity and likelihood matrix.</li>
+</ol>
+<h3 id="The-Tech-Stack">The Tech Stack</h3>
+<p>I’ve chosen a Python stack to bring this to life:</p>
+<ul>
+<li><strong>AI Coding Assistants</strong>: My partners in crime. I’m using <strong>GitHub Copilot</strong> integrated with various powerful models like <strong>Google’s Gemini 2.5 Pro</strong> and <strong>Anthropic’s Claude 3.7 Sonnet</strong> to accelerate <strong>every</strong> part of the development process.</li>
+<li><strong>Backend</strong>: <code>FastAPI</code> for a high-performance, asynchronous API.</li>
+<li><strong>Data Sourcing</strong>: The excellent <code>edgartools</code> library to fetch filings directly from the SEC EDGAR database.</li>
+<li><strong>The “AI Brain”</strong>: <code>OpenAI</code>’s API (specifically models like GPT-4o-mini) to read and interpret the raw text from the filings.</li>
+<li><strong>Data Modeling</strong>: <code>Pydantic</code> to enforce strict, structured JSON outputs from the LLM, ensuring data quality and reliability.</li>
+<li><strong>Frontend</strong>: Simple, server-side rendered HTML with Bootstrap so far to create a clean, functional dashboard. This will be updated ideally with React as currently UI is for the purpose of demo.</li>
+</ul>
+<h3 id="How-It-Works-A-High-Level-Flow">How It Works: A High-Level Flow</h3>
+<ol>
+<li><strong>User Input</strong>: The user provides a stock ticker (e.g., <code>AAPL</code>) and an email (required for SEC API access) on the web interface.</li>
+<li><strong>Data Fetching</strong>: The <code>CompanyDataManager</code> class uses <code>edgartools</code> to find the company and download its latest 10-K and 10-Q filings.</li>
+<li><strong>Section Extraction</strong>: The application identifies and extracts the raw text from key sections like “Business,” “Risk Factors,” and “MD&amp;A”.</li>
+<li><strong>AI Analysis</strong>: Each section’s text is passed to a specialized “Analyzer” class (e.g., <code>BusinessAnalyzer</code>, <code>RiskFactorAnalyzer</code>). These analyzers use tailored prompts to instruct the LLM to extract specific information and structure it according to predefined Pydantic models. This is where the magic happens!</li>
+<li><strong>Data Structuring</strong>: The LLM’s JSON output is validated by the Pydantic models, ensuring the data is clean and consistent.</li>
+<li><strong>Display</strong>: The structured data is then passed to the Jinja2 templates, which render the final interactive dashboard for the user.</li>
+</ol>
+<p>Here’s a look at the project’s core structure:</p>
+<pre class="line-numbers language-none"><code class="language-none">src&#x2F;
+├── api&#x2F;          # FastAPI, routers, and templates
+├── analysis&#x2F;     # The LLM-powered analyzer classes
+├── data&#x2F;         # EDGAR data fetching and management
+├── financial&#x2F;    # Financial statement extraction and formatting
+├── models&#x2F;       # Pydantic models for structured data
+└── utils&#x2F;        # Common utilities, including the base analyzer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="What’s-Next">What’s Next?</h3>
+<p>This is just the beginning. The foundation is laid, but building a reliable AI system requires more than just calling an API. Need to measure its performance, control its costs, and continuously improve its accuracy.</p>
+<p>In my next post, I’ll dive into the crucial framework I’ve just finished building for <strong>model evaluation and cost tracking</strong>. It’s one thing to build a cool demo, but it’s another to build something you can actually measure and trust.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <button title="Share" data-url="https://dogecat0.github.io/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html" data-id="cmbmr0qjr00040m690kyh7n31" data-title="LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner" class="article-share-link" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+        </svg>
+      </button>
+      
+      
+      
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/Python/">#Python</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/FastAPI/">#FastAPI</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/LLM/">#LLM</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/AI/">#AI</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/OpenAI/">#OpenAI</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/FinTech/">#FinTech</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Anatomy of an AI Financial Analyst: From Raw Filing to Interactive Dashboard
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside class="sidebar" id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Categories</p>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Projects/">AI Projects</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Tags</p>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Auditing/" rel="tag">Auditing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Computing/" rel="tag">Cloud Computing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Computing-Technologies/" rel="tag">Cloud Computing Technologies</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collections/" rel="tag">Collections</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compliance/" rel="tag">Compliance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cost-Management/" rel="tag">Cost Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Development/" rel="tag">Development</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/" rel="tag">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Evaluation/" rel="tag">Evaluation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/" rel="tag">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastAPI/" rel="tag">FastAPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FinTech/" rel="tag">FinTech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Form/" rel="tag">Form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Forms/" rel="tag">Forms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Formset/" rel="tag">Formset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Full-Stack/" rel="tag">Full Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Governance/" rel="tag">Governance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Individual-Stock-Analysis/" rel="tag">Individual Stock Analysis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Infrastructure/" rel="tag">Infrastructure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inomad/" rel="tag">Inomad</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inomad-Diary/" rel="tag">Inomad Diary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logging/" rel="tag">Logging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MLOps/" rel="tag">MLOps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Messaging/" rel="tag">Messaging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monitoring/" rel="tag">Monitoring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mortgage/" rel="tag">Mortgage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Networking/" rel="tag">Networking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenAI/" rel="tag">OpenAI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProductModel/" rel="tag">ProductModel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pulumi/" rel="tag">Pulumi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pydantic/" rel="tag">Pydantic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stocks/" rel="tag">Stocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Storage/" rel="tag">Storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/axios/" rel="tag">axios</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Archives</p>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Recent Posts</p>
+    <div class="widget">
+      <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html">Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html">Anatomy of an AI Financial Analyst: From Raw Filing to Interactive Dashboard</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html">LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html">Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html">Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner footer-info">
+      
+      &copy; 2025 Zhicheng Wang<br>
+      <div>
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<!-- 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+ -->
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+  </div>
+</body>
+</html>
