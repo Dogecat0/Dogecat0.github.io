@@ -2,28 +2,82 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-primary: #f8f9fa;
+  --color-secondary: #1f2937;
+  --color-accent: #4f46e5;
+  --color-accent-light: #818cf8;
+  --color-tertiary: #ffffff;
+  --color-muted: #6b7280;
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --transition: all 0.2s ease-in-out;
+}
+
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply text-base antialiased;
+  }
+
   h2 {
-    @apply text-lg font-normal py-3;
+    @apply text-xl font-medium py-3 tracking-tight;
   }
+
   p {
-    @apply leading-8 my-3;
+    @apply leading-relaxed my-3 text-base md:text-lg;
   }
+
   p a {
-    @apply text-accent-light hover:opacity-70 hover:underline;
+    @apply text-accent-light hover:opacity-80 hover:underline transition-opacity duration-200;
   }
+
   li {
-    @apply leading-8 my-3 list-disc list-inside;
+    @apply leading-relaxed my-3 list-disc list-inside text-base md:text-lg;
   }
+
   li a {
-    @apply text-accent-light hover:opacity-70 hover:underline;
+    @apply text-accent-light hover:opacity-80 hover:underline transition-opacity duration-200;
   }
+
   /* New styles for time text */
   p br + .dt-published {
-    @apply text-accent-light;
+    @apply text-accent-light text-sm font-medium;
   }
+
   code {
-    @apply text-secondary bg-secondary bg-opacity-10 p-1;
+    @apply text-secondary bg-secondary bg-opacity-5 p-1 rounded-md font-mono text-sm;
+  }
+
+  img {
+    @apply rounded-md max-w-full h-auto;
+  }
+
+  blockquote {
+    @apply border-l-4 border-accent-light pl-4 italic my-4 text-muted;
+  }
+
+  /* Meta information (date, category) likely appearing before the title inside the article container */
+  /* Ensure you have a wrapper like <div class="article-meta-info"> around your date and category elements */
+  .article-meta {
+    display: flex;
+    align-items: baseline; /* Key for aligning text elements like date and category */
+    flex-wrap: wrap;
+    gap: 0.5em 1em; /* Vertical and horizontal gap between items */
+    font-size: 0.875em; /* Approx 15.75px if article base is 18px */
+    color: #9ca3af; /* Tailwind gray-400, for less emphasis */
+    margin-bottom: 0.75em; /* Space before the divider line */
+  }
+
+  /* Styling for individual meta items if needed, though flex handles most */
+  .article-meta .article-date,
+  .article-meta .article-category {
+    align-self: baseline; /* Explicitly align self to baseline */
+    /* vertical-align is not needed here as flex 'align-items: baseline' handles it */
   }
 }
 
@@ -32,133 +86,345 @@
   .site-search {
     @apply text-primary;
   }
-  .search-result-list {
-    @apply flex flex-col bg-secondary p-5 m-5 absolute z-50;
+
+  .site-search input {
+    @apply rounded-md border border-gray-300 px-3 py-2 focus:outline-none focus:ring-2 focus:ring-accent-light focus:border-transparent transition-all duration-200;
   }
+
+  .search-result-list {
+    @apply flex flex-col bg-tertiary p-4 m-4 absolute z-50 rounded-lg shadow-md max-h-[80vh] overflow-y-auto border border-gray-200;
+  }
+
   .search-result-title {
-    @apply font-medium capitalize;
+    @apply font-medium capitalize text-lg mb-2 hover:text-accent-light transition-colors duration-200;
+  }
+
+  .search-result-item {
+    @apply border-b border-gray-100 py-3 last:border-0 hover:bg-gray-50 px-2 rounded transition-colors duration-200;
   }
 }
 
 @layer share {
   /* Post share */
   .article-share-box {
-    @apply absolute bg-accent-light p-4 shadow-lg invisible;
+    @apply absolute bg-tertiary p-4 shadow-md invisible rounded-lg border border-gray-200 transition-all duration-200 transform;
   }
+
   .article-share-box.on {
     @apply visible;
   }
+
   .article-share-input {
-    @apply border p-2 w-full;
+    @apply border border-gray-300 p-2 w-full rounded focus:outline-none focus:ring-2 focus:ring-accent-light focus:border-transparent text-sm;
   }
+
   .article-share-links {
     @apply flex justify-around mt-4;
   }
+
   .article-share-links a {
-    @apply text-2xl mx-2 hover:text-opacity-80;
+    @apply text-xl mx-2 hover:text-accent-light transition-colors duration-200 p-2 rounded-full hover:bg-gray-100;
   }
 }
 
 @layer components {
   /* Global */
   .body {
-    @apply bg-primary font-pop font-light;
+    @apply bg-primary font-pop font-light text-secondary;
   }
+
   .container {
     @apply max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-5 text-secondary;
   }
-  .sub-container {
-    @apply flex flex-row items-center justify-between py-5;
+
+  .outer {
+    @apply flex flex-col items-start justify-between py-5 space-y-4;
   }
+
   .header-title-group {
     @apply flex flex-col items-start;
   }
+
   .header-title {
-    @apply text-4xl font-semibold uppercase py-5;
+    @apply text-3xl md:text-4xl font-semibold uppercase py-3 md:py-5 tracking-tight;
   }
+
   .header-subtitle {
-    @apply text-2xl font-medium italic py-5;
+    @apply text-xl md:text-2xl font-medium italic py-3 md:py-5 text-muted;
   }
+
   .header-description {
-    @apply text-base leading-8 max-w-5xl py-5;
+    @apply text-base md:text-lg leading-relaxed max-w-5xl py-3 md:py-5 text-muted;
   }
+
   .nav-menu {
-    @apply flex justify-start py-5 space-x-5;
+    @apply flex flex-wrap justify-start py-3 md:py-5 space-x-3 md:space-x-5;
   }
+
   .main-nav {
-    @apply flex items-center;
+    @apply flex items-center flex-wrap;
   }
+
   .main-nav-link {
-    @apply uppercase my-5 mr-3 px-3 py-1 hover:bg-opacity-60 bg-accent;
+    @apply uppercase my-2 md:my-5 mr-2 md:mr-3 px-3 py-2 hover:bg-opacity-90 bg-accent text-white rounded transition-all duration-200 text-sm md:text-base font-medium;
   }
+
   .site-search {
-    @apply flex items-center;
+    @apply flex items-center mt-4 md:mt-0;
   }
+
   .footer-info {
-    @apply flex items-stretch justify-between py-5;
+    @apply flex flex-col md:flex-row items-center md:items-stretch justify-between py-5 space-y-4 md:space-y-0 text-sm text-muted;
   }
+
   .post-container {
-    @apply max-w-5xl;
+    @apply max-w-5xl w-full;
   }
+
   .sidebar {
-    @apply bg-tertiary px-5 mx-5;
+    @apply bg-tertiary px-5 mx-0 mt-8 rounded-lg shadow-sm w-full;
   }
 
   /* Post */
   .article-meta {
-    @apply mb-3 text-sm;
+    @apply mb-3 text-sm text-muted flex flex-wrap items-center gap-3;
   }
+
   .article-inner {
-    @apply bg-tertiary my-5 py-5 px-5;
+    @apply bg-tertiary my-5 py-5 px-4 md:px-6 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md;
   }
+
   .article-header {
-    @apply capitalize mb-2 text-center text-2xl font-medium bg-accent-light transition ease-in-out delay-150 hover:bg-opacity-70 duration-300;
+    @apply capitalize mb-4 text-center text-2xl md:text-3xl font-medium bg-accent-light bg-opacity-10 text-accent py-3 rounded-md transition ease-in-out hover:bg-opacity-20 duration-200;
   }
+
   .article-entry {
-    @apply py-5 leading-8;
+    @apply py-5 leading-relaxed;
   }
+
   .article-footer {
-    @apply flex items-center justify-between bg-primary mt-2 px-5;
+    @apply flex flex-wrap items-center justify-between bg-primary mt-4 px-3 md:px-5 py-3 rounded-md border-t border-gray-100;
   }
+
   .article-nav {
-    @apply flex items-center justify-between;
+    @apply flex items-center justify-between w-full mt-6 pt-6 border-t border-gray-100;
   }
+
   .archive-article {
-    @apply m-5 p-5 border border-secondary;
+    @apply m-3 md:m-5 p-4 md:p-5 border border-gray-200 rounded-lg hover:shadow-md transition-all duration-200;
   }
+
   .archive-article-date {
-    @apply text-sm;
+    @apply text-sm text-muted;
   }
+
   .archive-article-title {
-    @apply hover:underline hover:opacity-70;
+    @apply hover:underline hover:text-accent-light transition-colors duration-200 font-medium;
+  }
+
+  .article-category {
+    @apply text-sm text-muted bg-gray-700 px-2 py-1 rounded-full hover:bg-gray-200 transition-colors duration-200;
   }
 
   /* Post tag */
   .article-date {
-    @apply pt-5;
+    @apply pt-5 text-muted;
   }
+
   .post-tag {
-    @apply px-5;
+    @apply px-3 md:px-5;
   }
+
   .article-tag-list {
-    @apply flex ml-5 space-x-3;
+    @apply flex flex-wrap ml-0 md:ml-5 gap-2 md:space-x-3;
   }
+
   .article-tag-list-item {
-    @apply hover:underline list-none;
+    @apply hover:underline list-none bg-gray-100 px-2 py-1 rounded-full text-xs text-muted  transition-all duration-200;
   }
 
   .widget-wrap {
-    @apply py-5 my-5;
+    @apply py-4 my-4 border-b border-gray-100 last:border-b-0;
   }
+
   .widget-title {
-    @apply bg-primary capitalize text-xl text-center px-5 py-1;
+    @apply bg-gray-50 capitalize text-lg text-center px-4 py-2 rounded-md font-medium mb-4;
   }
+
   .widget {
-    @apply pb-5 my-5 text-sm;
+    @apply pb-3 my-3 text-sm;
+  }
+
+  .widget ul li {
+    @apply border-b border-gray-50 last:border-b-0 py-2;
+  }
+
+  .widget a {
+    @apply hover:text-accent-light transition-colors duration-200;
   }
 
   /* Pagination */
   #page-nav {
-    @apply space-x-3;
+    @apply space-x-3 flex justify-center mt-8;
+  }
+
+  #page-nav a,
+  #page-nav span {
+    @apply px-4 py-2 border border-gray-200 rounded-md hover:bg-accent-light hover:text-white transition-all duration-200;
+  }
+
+  #page-nav .current {
+    @apply bg-accent-light text-white;
+  }
+
+  /* Back to top button */
+  #back-to-top {
+    @apply fixed bottom-8 right-8 bg-accent text-white p-3 rounded-full shadow-md opacity-0 invisible transition-all duration-300 hover:bg-accent-light z-50;
+  }
+
+  /* Animation classes */
+  .fade-in {
+    @apply opacity-100 transition-opacity duration-500;
+  }
+
+  /* Images with captions */
+  .caption {
+    @apply text-center text-sm text-muted mt-2 italic;
+  }
+
+  /* Base styles for article content.
+     Adjust the 'article' selector if your theme uses a different wrapper for post content,
+     e.g., '.post-content' or '.article-entry'. */
+  article {
+    @apply text-gray-300 text-lg leading-relaxed;
+  }
+
+  /* Main post title on its dedicated page */
+
+  /* Content Headings */
+  article h2 {
+    @apply text-3xl font-bold text-gray-200 my-4;
+  }
+
+  article h3 {
+    @apply text-2xl font-bold text-gray-200 my-3;
+  }
+
+  article h4 {
+    @apply text-xl font-bold text-gray-300 my-3;
+  }
+
+  article h5,
+  article h6 {
+    @apply text-lg font-bold text-gray-300 my-2;
+  }
+
+  /* Paragraphs */
+  article p {
+    @apply mb-4;
+  }
+
+  /* Lists */
+  article ul,
+  article ol {
+    @apply list-inside list-disc my-4 pl-5;
+  }
+
+  article li {
+    @apply mb-2;
+  }
+
+  /* Nested lists */
+  article ul ul,
+  article ol ol,
+  article ul ol,
+  article ol ul {
+    @apply my-2;
+  }
+
+  /* Blockquotes */
+  article blockquote {
+    @apply border-l-4 border-accent-light pl-4 italic my-4 text-muted;
+  }
+
+  article blockquote p {
+    @apply mb-2;
+  }
+
+  article blockquote p:last-child {
+    @apply mb-0;
+  }
+
+  /* Preformatted text / Code blocks (Prism.css will handle most styling for <pre>) */
+  article pre {
+    @apply mb-6;
+  }
+
+  /* Ensure inline code styles don't conflict with Prism's full code block styles */
+  article pre code {
+    @apply bg-transparent p-0 rounded-none text-inherit text-base;
+  }
+}
+
+/* Responsive adjustments for mobile */
+@media (max-width: 640px) {
+  .header-title {
+    @apply text-2xl;
+  }
+
+  .header-subtitle {
+    @apply text-lg;
+  }
+
+  .article-header {
+    @apply text-xl;
+  }
+
+  .main-nav-link {
+    @apply my-1 px-2 py-1 text-xs;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-primary: #111827;
+    --color-secondary: #e5e7eb;
+    --color-tertiary: #1f2937;
+    --color-muted: #9ca3af;
+  }
+
+  .body {
+    @apply bg-gray-900;
+  }
+
+  .article-inner,
+  .sidebar {
+    @apply bg-gray-800;
+  }
+
+  .article-footer {
+    @apply bg-gray-900 border-gray-800;
+  }
+
+  code {
+    @apply bg-gray-700;
+  }
+
+  .widget-title {
+    @apply bg-gray-700;
+  }
+
+  .archive-article {
+    @apply border-gray-700;
+  }
+
+  .article-tag-list-item {
+    @apply bg-gray-700 text-gray-300;
+  }
+
+  #page-nav a,
+  #page-nav span {
+    @apply border-gray-700;
   }
 }

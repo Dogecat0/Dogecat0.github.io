@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
   <meta charset="utf-8">
   
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -48,10 +48,10 @@
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-<body class="body">
-  <div id="container" class="container">
-    <div id="wrap">
-      <header id="header">
+  <body class="body">
+    <div id="container" class="container">
+      <div id="wrap">
+        <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="header-title-group inner">
@@ -108,16 +108,24 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   </div>
 </header>
 
-      <div class="sub-container outer">
-        <section class="post-container" id="main">
+        <div class="outer">
+          <section class="post-container" id="main">
   
-    <article id="post-AI LLM/measuring-what-matters-evaluation-and-cost-tracking" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article
+  id="post-AI LLM/measuring-what-matters-evaluation-and-cost-tracking"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
 <p class="article-date">
   Published: <time class="dt-published" datetime="2025-06-07T20:30:00.000Z" itemprop="datePublished">2025-06-07</time>
   <br>
+  
+  Updated: <time class="dt-published" datetime="2025-06-08T09:01:48.380Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
@@ -126,43 +134,52 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   </div>
 
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 itemprop="name">
       <a class="p-name article-title" href="/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html">Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst</a>
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>In this post, we will dive a bit into model evaluation. Building with Large Language Models (LLMs) presents two major challenges:</p>
+       <p>In this post, we will dive a bit into model evaluation. Building with Large Language Models (LLMs) presents two major challenges:</p>
 <ol>
 <li><strong>How do you know if the output is any good?</strong></li>
 <li><strong>How do you prevent API costs from spiraling out of control?</strong></li>
 </ol>
-<p>Today, I tackled both of these head-on by building a robust evaluation and cost-tracking framework. It’s an (again) interesting but necessary step for moving from a fun prototype to a reliable tool.</p>
-            
-          <p class="article-more-link">
-            <a href="/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html#more">Read More &gt;&gt;</a>
-          </p>
-        
-      
+<p>Today, I tackled both of these head-on by building a robust evaluation and cost-tracking framework. It’s an (again) interesting but necessary step for moving from a fun prototype to a reliable tool.</p> 
+      <p class="article-more-link">
+        <a href="/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html" data-id="cmbmtrwdz0001df699a3resdb" data-title="Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html"
+        data-id="cmbngtq6j00018s695z6saivv"
+        data-title="Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/Python/">#Python</a></li>
@@ -170,8 +187,6 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <li class="article-tag-list-item"><a href="/tags/LLM/">#LLM</a></li>
     
       <li class="article-tag-list-item"><a href="/tags/AI/">#AI</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/MLOps/">#MLOps</a></li>
     
       <li class="article-tag-list-item"><a href="/tags/Evaluation/">#Evaluation</a></li>
     
@@ -184,10 +199,16 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   
 </article>
 
-
+ 
 
   
-    <article id="post-AI LLM/anatomy-of-an-ai-financial-analyst" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article
+  id="post-AI LLM/anatomy-of-an-ai-financial-analyst"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
@@ -202,39 +223,48 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   </div>
 
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 itemprop="name">
       <a class="p-name article-title" href="/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html">Anatomy of an AI Financial Analyst: From Raw Filing to Interactive Dashboard</a>
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>In the last post, I briefly outlined the project for an AI-powered tool to analyze SEC filings. In this blog, I’m diving deep into the architecture and core components that form the engine of this financial analyst.</p>
-<p>We’ll dissect the journey of a single user request, from a ticker symbol entered into a form all the way to a rich, interactive dashboard filled with AI-generated insights.</p>
-            
-          <p class="article-more-link">
-            <a href="/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html#more">Read More &gt;&gt;</a>
-          </p>
-        
-      
+       <p>In the last post, I briefly outlined the project for an AI-powered tool to analyze SEC filings. In this blog, I’m diving deep into the architecture and core components that form the engine of this financial analyst.</p>
+<p>We’ll dissect the journey of a single user request, from a ticker symbol entered into a form all the way to a rich, interactive dashboard filled with AI-generated insights.</p> 
+      <p class="article-more-link">
+        <a href="/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html" data-id="cmbmtrwdv0000df6918k67fzq" data-title="Anatomy of an AI Financial Analyst: From Raw Filing to Interactive Dashboard" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html"
+        data-id="cmbngtq6g00008s696i6ddp41"
+        data-title="Anatomy of an AI Financial Analyst: From Raw Filing to Interactive Dashboard"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/Python/">#Python</a></li>
@@ -256,10 +286,16 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   
 </article>
 
-
+ 
 
   
-    <article id="post-AI LLM/project-inception-ai-financial-analyst" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article
+  id="post-AI LLM/project-inception-ai-financial-analyst"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
@@ -274,45 +310,54 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   </div>
 
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 itemprop="name">
       <a class="p-name article-title" href="/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html">LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner</a>
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! But this isn’t just about building another AI tool. This is a dual experiment:</p>
+       <p>It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! But this isn’t just about building another AI tool. This is a dual experiment:</p>
 <ol>
 <li>Can we build an AI-powered tool to automate the analysis of complex financial documents for the purpose of learning the latest AI LLM techniques?</li>
 <li>How far can a developer push a project by truly <em>partnering</em> with AI coding assistants?, and I’ll be sharing the journey right here.</li>
 </ol>
 <h3 id="The-Problem-Information-Overload-in-Finance">The Problem: Information Overload in Finance</h3>
 <p>Before the project I had not much experience with financial documents, only a basic understanding of their importance and relevance. After spending some time working with the filings, I realized the challenge: You’re faced with mountains of dense, jargon-filled documents like 10-Ks and 10-Qs. Buried within these SEC filings is a goldmine of information about a company’s performance, strategy, and risks. But extracting and understanding it is a tedious, manual process and never even mention that not all SEC filings themselves are not standardized.</p>
-<p>But one thing we can be sure is with the power of LLMs, and the huge amount of text data offered by those filings, we can swim in the sea of information and surface the insights that matter.</p>
-            
-          <p class="article-more-link">
-            <a href="/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html#more">Read More &gt;&gt;</a>
-          </p>
-        
-      
+<p>But one thing we can be sure is with the power of LLMs, and the huge amount of text data offered by those filings, we can swim in the sea of information and surface the insights that matter.</p> 
+      <p class="article-more-link">
+        <a href="/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html" data-id="cmbmtrwe10004df691134gxui" data-title="LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html"
+        data-id="cmbngtq6m00048s69cqylhuwf"
+        data-title="LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/Python/">#Python</a></li>
@@ -334,10 +379,16 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   
 </article>
 
-
+ 
 
   
-    <article id="post-Inomad Dairy/04-Infrastructure/02-Implementation/Create Resources" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article
+  id="post-Inomad Dairy/04-Infrastructure/02-Implementation/Create Resources"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
@@ -345,44 +396,53 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-23T19:29:57.000Z" itemprop="datePublished">2024-07-23</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2024-08-09T14:52:09.148Z" itemprop="datePublished">2024-08-09</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:08:10.060Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 itemprop="name">
       <a class="p-name article-title" href="/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html">Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources</a>
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>In this post, I will start creating resources in Azure using Pulumi. The full process is quite complex, so I will try to break it down into smaller parts and raise the key points here during my implementation.</p>
-            
-          <p class="article-more-link">
-            <a href="/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html#more">Read More &gt;&gt;</a>
-          </p>
-        
-      
+       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
+<p>In this post, I will start creating resources in Azure using Pulumi. The full process is quite complex, so I will try to break it down into smaller parts and raise the key points here during my implementation.</p> 
+      <p class="article-more-link">
+        <a href="/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html" data-id="cmbmtrwek001odf691o756ya8" data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html"
+        data-id="cmbngtq73001q8s693iza1klf"
+        data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/Inomad/">#Inomad</a></li>
@@ -400,10 +460,16 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   
 </article>
 
-
+ 
 
   
-    <article id="post-Inomad Dairy/04-Infrastructure/02-Implementation/Create a Pulumi Project" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article
+  id="post-Inomad Dairy/04-Infrastructure/02-Implementation/Create a Pulumi Project"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
@@ -411,44 +477,53 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-19T10:45:38.000Z" itemprop="datePublished">2024-07-19</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2024-07-23T11:55:27.050Z" itemprop="datePublished">2024-07-23</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:08:09.550Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 itemprop="name">
       <a class="p-name article-title" href="/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html">Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project</a>
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>In the last post, I discussed some points of setting up Azure for Inomad’s infrastructure. In this post, I will be creating a Pulumi project and discuss some interesting points about the initial setup and considerations.</p>
-            
-          <p class="article-more-link">
-            <a href="/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html#more">Read More &gt;&gt;</a>
-          </p>
-        
-      
+       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
+<p>In the last post, I discussed some points of setting up Azure for Inomad’s infrastructure. In this post, I will be creating a Pulumi project and discuss some interesting points about the initial setup and considerations.</p> 
+      <p class="article-more-link">
+        <a href="/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html" data-id="cmbmtrwek001qdf69hxn5f6rg" data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html"
+        data-id="cmbngtq74001s8s692djfbjl7"
+        data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/Inomad/">#Inomad</a></li>
@@ -466,10 +541,16 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   
 </article>
 
-
+ 
 
   
-    <article id="post-Inomad Dairy/04-Infrastructure/02-Implementation/Azure Setup" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article
+  id="post-Inomad Dairy/04-Infrastructure/02-Implementation/Azure Setup"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
@@ -477,44 +558,53 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-18T14:35:25.000Z" itemprop="datePublished">2024-07-18</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2024-08-06T19:20:18.687Z" itemprop="datePublished">2024-08-06</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:08:08.850Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 itemprop="name">
       <a class="p-name article-title" href="/2024/07/18/Inomad%20Dairy/04-Infrastructure/02-Implementation/Azure%20Setup.html">Inomad Diary-04-Infrastructure-02-Implementations-01-Azure Setup</a>
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>This post is the beginning of the implementation phase for Inomad’s infrastructure on Azure. As the usual like other posts in Inomad series, I will just highlight the key points I’ve encountered instead of making the series an instruction of ‘How to’. This post will cover the initial steps and considerations for deploying Inomad’s infrastructure on Azure.</p>
-            
-          <p class="article-more-link">
-            <a href="/2024/07/18/Inomad%20Dairy/04-Infrastructure/02-Implementation/Azure%20Setup.html#more">Read More &gt;&gt;</a>
-          </p>
-        
-      
+       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
+<p>This post is the beginning of the implementation phase for Inomad’s infrastructure on Azure. As the usual like other posts in Inomad series, I will just highlight the key points I’ve encountered instead of making the series an instruction of ‘How to’. This post will cover the initial steps and considerations for deploying Inomad’s infrastructure on Azure.</p> 
+      <p class="article-more-link">
+        <a href="/2024/07/18/Inomad%20Dairy/04-Infrastructure/02-Implementation/Azure%20Setup.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2024/07/18/Inomad%20Dairy/04-Infrastructure/02-Implementation/Azure%20Setup.html" data-id="cmbmtrwek001ldf69fayrenes" data-title="Inomad Diary-04-Infrastructure-02-Implementations-01-Azure Setup" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2024/07/18/Inomad%20Dairy/04-Infrastructure/02-Implementation/Azure%20Setup.html"
+        data-id="cmbngtq73001o8s691lw4gch7"
+        data-title="Inomad Diary-04-Infrastructure-02-Implementations-01-Azure Setup"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/Infrastructure/">#Infrastructure</a></li>
@@ -530,10 +620,16 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   
 </article>
 
-
+ 
 
   
-    <article id="post-Investment/02-Stocks/02-Individual Stock Analysis/Final Score" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article
+  id="post-Investment/02-Stocks/02-Individual Stock Analysis/Final Score"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
@@ -541,42 +637,53 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-17T10:10:15.000Z" itemprop="datePublished">2024-07-17</time>
   <br>
   
+  Updated: <time class="dt-published" datetime="2025-06-08T09:08:57.600Z" itemprop="datePublished">2025-06-08</time>
+  
 </p>
     
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 itemprop="name">
       <a class="p-name article-title" href="/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Final%20Score.html">Investment-02-Stocks-04-Final Score</a>
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>This post will conduct the final section of the weighted score calculation for an individual stock, which is the Final Score. The actual final score in this case does not matter since all the data is searched and represented by ChatGPT, of which the accuracy is not guaranteed. I will provide the considerations and next steps instead to further guide the investment decision-making process.</p>
-            
-          <p class="article-more-link">
-            <a href="/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Final%20Score.html#more">Read More &gt;&gt;</a>
-          </p>
-        
-      
+       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
+<p>This post will conduct the final section of the weighted score calculation for an individual stock, which is the Final Score. The actual final score in this case does not matter since all the data is searched and represented by ChatGPT, of which the accuracy is not guaranteed. I will provide the considerations and next steps instead to further guide the investment decision-making process.</p> 
+      <p class="article-more-link">
+        <a href="/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Final%20Score.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Final%20Score.html" data-id="cmbmtrwem001xdf69efs3h5xl" data-title="Investment-02-Stocks-04-Final Score" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Final%20Score.html"
+        data-id="cmbngtq75001w8s69gq72andx"
+        data-title="Investment-02-Stocks-04-Final Score"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/Investment/">#Investment</a></li>
@@ -592,10 +699,16 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   
 </article>
 
-
+ 
 
   
-    <article id="post-Investment/02-Stocks/02-Individual Stock Analysis/Weighted Score Calculation/Risks" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article
+  id="post-Investment/02-Stocks/02-Individual Stock Analysis/Weighted Score Calculation/Risks"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
@@ -603,42 +716,53 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-17T09:46:07.000Z" itemprop="datePublished">2024-07-17</time>
   <br>
   
+  Updated: <time class="dt-published" datetime="2025-06-08T09:09:01.510Z" itemprop="datePublished">2025-06-08</time>
+  
 </p>
     
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 itemprop="name">
       <a class="p-name article-title" href="/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Risks.html">Investment-02-Stocks-04-Weighted Score Calculation-05-Risks</a>
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>This post will conduct the final section of the weighted score calculation for an individual stock, which is the Risks section. The key metrics, weights, and final scores are detailed below.</p>
-            
-          <p class="article-more-link">
-            <a href="/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Risks.html#more">Read More &gt;&gt;</a>
-          </p>
-        
-      
+       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
+<p>This post will conduct the final section of the weighted score calculation for an individual stock, which is the Risks section. The key metrics, weights, and final scores are detailed below.</p> 
+      <p class="article-more-link">
+        <a href="/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Risks.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Risks.html" data-id="cmbmtrweo0023df69830hafju" data-title="Investment-02-Stocks-04-Weighted Score Calculation-05-Risks" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Risks.html"
+        data-id="cmbngtq7600228s69fzoe9vzn"
+        data-title="Investment-02-Stocks-04-Weighted Score Calculation-05-Risks"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/Investment/">#Investment</a></li>
@@ -654,10 +778,16 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   
 </article>
 
-
+ 
 
   
-    <article id="post-Investment/02-Stocks/02-Individual Stock Analysis/Weighted Score Calculation/Valuation" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article
+  id="post-Investment/02-Stocks/02-Individual Stock Analysis/Weighted Score Calculation/Valuation"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
@@ -665,44 +795,53 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-16T11:30:17.000Z" itemprop="datePublished">2024-07-16</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2024-07-17T10:04:46.072Z" itemprop="datePublished">2024-07-17</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:09:02.470Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 itemprop="name">
       <a class="p-name article-title" href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Valuation.html">Investment-02-Stocks-04-Weighted Score Calculation-04-Valuation</a>
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>This post is the caculation of Valuation score for the weighted score calculation of an individual stock. This is a very straightforward calculation as it’s all data based similar to Financial Performance section. The key metrics, weights and final scores are in the content below.</p>
-            
-          <p class="article-more-link">
-            <a href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Valuation.html#more">Read More &gt;&gt;</a>
-          </p>
-        
-      
+       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
+<p>This post is the caculation of Valuation score for the weighted score calculation of an individual stock. This is a very straightforward calculation as it’s all data based similar to Financial Performance section. The key metrics, weights and final scores are in the content below.</p> 
+      <p class="article-more-link">
+        <a href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Valuation.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Valuation.html" data-id="cmbmtrweo0024df695ip54b2v" data-title="Investment-02-Stocks-04-Weighted Score Calculation-04-Valuation" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Valuation.html"
+        data-id="cmbngtq7r008y8s69himc0q4q"
+        data-title="Investment-02-Stocks-04-Weighted Score Calculation-04-Valuation"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/Investment/">#Investment</a></li>
@@ -718,10 +857,16 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   
 </article>
 
-
+ 
 
   
-    <article id="post-Investment/02-Stocks/02-Individual Stock Analysis/Weighted Score Calculation/Competitive Position and Industry Trends" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+    <article
+  id="post-Investment/02-Stocks/02-Individual Stock Analysis/Weighted Score Calculation/Competitive Position and Industry Trends"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
@@ -729,42 +874,53 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-16T11:15:53.000Z" itemprop="datePublished">2024-07-16</time>
   <br>
   
+  Updated: <time class="dt-published" datetime="2025-06-08T09:08:59.810Z" itemprop="datePublished">2025-06-08</time>
+  
 </p>
     
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 itemprop="name">
       <a class="p-name article-title" href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html">Investment-02-Stocks-04-Weighted Score Calculation-03-Competitive Position, Industry Trends and Management/Governance</a>
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
-<p>In the this post, I will continue the calculation of the weighted scores for three Competitive Position, Industry Trends and Management/Governance. Following the same quantifying process of the previous post on Business Model and Diversification Analysis, here I will just list the key metrics, weights and final scores.</p>
-            
-          <p class="article-more-link">
-            <a href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html#more">Read More &gt;&gt;</a>
-          </p>
-        
-      
+       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
+<p>In the this post, I will continue the calculation of the weighted scores for three Competitive Position, Industry Trends and Management/Governance. Following the same quantifying process of the previous post on Business Model and Diversification Analysis, here I will just list the key metrics, weights and final scores.</p> 
+      <p class="article-more-link">
+        <a href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html" data-id="cmbmtrwen0020df69fsm73e3q" data-title="Investment-02-Stocks-04-Weighted Score Calculation-03-Competitive Position, Industry Trends and Management/Governance" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html"
+        data-id="cmbngtq76001z8s6999x4ejxf"
+        data-title="Investment-02-Stocks-04-Weighted Score Calculation-03-Competitive Position, Industry Trends and Management/Governance"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/Investment/">#Investment</a></li>
@@ -780,7 +936,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   
 </article>
 
-
+ 
 
   
 
@@ -791,34 +947,13 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   </nav>
 
 </section>
-        
-          <aside class="sidebar" id="sidebar">
+           <aside class="sidebar" id="sidebar">
   
     
   <div class="widget-wrap">
     <p class="widget-title">Categories</p>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Projects/">AI Projects</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <p class="widget-title">Tags</p>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Auditing/" rel="tag">Auditing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Computing/" rel="tag">Cloud Computing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Computing-Technologies/" rel="tag">Cloud Computing Technologies</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collections/" rel="tag">Collections</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compliance/" rel="tag">Compliance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cost-Management/" rel="tag">Cost Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Development/" rel="tag">Development</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/" rel="tag">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Evaluation/" rel="tag">Evaluation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/" rel="tag">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastAPI/" rel="tag">FastAPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FinTech/" rel="tag">FinTech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Form/" rel="tag">Form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Forms/" rel="tag">Forms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Formset/" rel="tag">Formset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Full-Stack/" rel="tag">Full Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Governance/" rel="tag">Governance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Individual-Stock-Analysis/" rel="tag">Individual Stock Analysis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Infrastructure/" rel="tag">Infrastructure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inomad/" rel="tag">Inomad</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inomad-Diary/" rel="tag">Inomad Diary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logging/" rel="tag">Logging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MLOps/" rel="tag">MLOps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Messaging/" rel="tag">Messaging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monitoring/" rel="tag">Monitoring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mortgage/" rel="tag">Mortgage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Networking/" rel="tag">Networking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenAI/" rel="tag">OpenAI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProductModel/" rel="tag">ProductModel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pulumi/" rel="tag">Pulumi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pydantic/" rel="tag">Pydantic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stocks/" rel="tag">Stocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Storage/" rel="tag">Storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/axios/" rel="tag">axios</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <p class="widget-title">Archives</p>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
     </div>
   </div>
 
@@ -856,9 +991,9 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 
   
 </aside>
-        
-      </div>
-      <footer id="footer">
+          
+        </div>
+        <footer id="footer">
   
   <div class="outer">
     <div id="footer-info" class="inner footer-info">
@@ -872,15 +1007,14 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   </div>
 </footer>
 
-    </div>
-    <nav id="mobile-nav">
+      </div>
+      <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
-</nav>
-    
+</nav> 
 
 
 <script src="/js/jquery-3.6.4.min.js"></script>
@@ -930,6 +1064,6 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
    </script>
 
 
-  </div>
-</body>
+    </div>
+  </body>
 </html>

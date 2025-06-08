@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
   <meta charset="utf-8">
   
 <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -26,7 +26,7 @@
 <meta property="og:description" content="🔎 Intro Series of 04 blogs will cover the backend part of the full stack JavaScript development, towards implementing functionality on the server side of the stack. This blog covers the basics of Nod">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2023-12-06T12:02:52.000Z">
-<meta property="article:modified_time" content="2024-07-04T10:41:41.215Z">
+<meta property="article:modified_time" content="2025-06-08T09:09:29.460Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="JavaScript">
 <meta property="article:tag" content="Full Stack">
@@ -54,10 +54,10 @@
   
 <meta name="generator" content="Hexo 6.3.0"></head>
 
-<body class="body">
-  <div id="container" class="container">
-    <div id="wrap">
-      <header id="header">
+  <body class="body">
+    <div id="container" class="container">
+      <div id="wrap">
+        <header id="header">
   <div id="banner"></div>
   <div id="header-outer" class="outer">
     <div id="header-title" class="header-title-group inner">
@@ -114,8 +114,14 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   </div>
 </header>
 
-      <div class="sub-container outer">
-        <section class="post-container" id="main"><article id="post-JavaScript Full Stack Series/04-Nodejs and Express" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <div class="outer">
+          <section class="post-container" id="main"><article
+  id="post-JavaScript Full Stack Series/04-Nodejs and Express"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
   <div class="article-meta">
     
 
@@ -123,31 +129,29 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2023-12-06T12:02:52.000Z" itemprop="datePublished">2023-12-06</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2024-07-04T10:41:41.215Z" itemprop="datePublished">2024-07-04</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:09:29.460Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
   </div>
-  <hr>
+  <hr />
   <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+     
+    <header class="article-header">
+      
   
     <h1 class="p-name article-title" itemprop="headline name">
       JavaScript Full Stack Series-04-Nodejs and Express
     </h1>
   
 
-      </header>
+    </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-      
-        <h2 id="🔎-Intro"><strong>🔎 Intro</strong></h2>
+       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
 <p>Series of 04 blogs will cover the backend part of the full stack JavaScript development, towards implementing functionality on the server side of the stack. This blog covers the basics of Nodejs and Express, and how to use them to build a simple server.</p>
 <span id="more"></span>
-<h2 id="💡-New-concepts"><strong>💡 New concepts</strong></h2>
+<h3 id="💡-New-concepts"><strong>💡 New concepts</strong></h3>
 <ul>
 <li>Nodejs:<br>
 Node.js is an open-source, cross-platform, back-end JavaScript runtime environment that runs on the V8 engine and executes JavaScript code outside a web browser. <a target="_blank" rel="noopener" href="https://nodejs.org/en/about/">More details</a></li>
@@ -162,21 +166,33 @@ Postman is a collaboration platform for API development. Postman’s features si
 <li>REST Client:<br>
 REST Client allows you to send HTTP request and view the response in Visual Studio Code directly. <a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client">More details</a></li>
 </ul>
-<h2 id="👨‍💻-Reviewed-concepts"><strong>👨‍💻 Reviewed concepts</strong></h2>
+<h3 id="👨‍💻-Reviewed-concepts"><strong>👨‍💻 Reviewed concepts</strong></h3>
 <ul>
 <li>[REST](<a target="_blank" rel="noopener" href="https://dogecat0.github.io/2023/12/03/JavaScript">https://dogecat0.github.io/2023/12/03/JavaScript</a> Full Stack Series/03-Altering-Data-from-Server.html)</li>
 </ul>
-
-      
+ 
     </div>
     <footer class="article-footer">
-      <button title="Share" data-url="https://zhicheng-wang.com/2023/12/06/JavaScript%20Full%20Stack%20Series/04-Nodejs%20and%20Express.html" data-id="cmbmtrwef0013df69e1azb7uq" data-title="JavaScript Full Stack Series-04-Nodejs and Express" class="article-share-link" type="button">
-        <svg xmlns="http://www.w3.org/2000/svg" height="1.2em" viewBox="0 0 448 512"><path fill="#ffffff" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"/>
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2023/12/06/JavaScript%20Full%20Stack%20Series/04-Nodejs%20and%20Express.html"
+        data-id="cmbngtq6y00138s69gizt0rbt"
+        data-title="JavaScript Full Stack Series-04-Nodejs and Express"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
         </svg>
       </button>
-      
-      
-      
+        
   <ul class="article-tag-list">
     
       <li class="article-tag-list-item"><a href="/tags/JavaScript/">#JavaScript</a></li>
@@ -191,8 +207,7 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
 
     </footer>
   </div>
-  
-    
+   
 <nav id="article-nav" class="article-nav">
   
     <a href="/2024/04/23/Inomad%20Dairy/01-ProductModel.html" id="article-nav-newer" class="article-nav-link-wrap">
@@ -211,40 +226,18 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
     </a>
   
 </nav>
-
-  
+ 
 </article>
 
-
+ 
 </section>
-        
-          <aside class="sidebar" id="sidebar">
+           <aside class="sidebar" id="sidebar">
   
     
   <div class="widget-wrap">
     <p class="widget-title">Categories</p>
     <div class="widget">
       <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Projects/">AI Projects</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <p class="widget-title">Tags</p>
-    <div class="widget">
-      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Architecture/" rel="tag">Architecture</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Auditing/" rel="tag">Auditing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Azure/" rel="tag">Azure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CDN/" rel="tag">CDN</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/" rel="tag">CSS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Computing/" rel="tag">Cloud Computing</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cloud-Computing-Technologies/" rel="tag">Cloud Computing Technologies</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collections/" rel="tag">Collections</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Compliance/" rel="tag">Compliance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Cost-Management/" rel="tag">Cost Management</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Database/" rel="tag">Database</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Development/" rel="tag">Development</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Django/" rel="tag">Django</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Evaluation/" rel="tag">Evaluation</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Express/" rel="tag">Express</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FastAPI/" rel="tag">FastAPI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FinTech/" rel="tag">FinTech</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Form/" rel="tag">Form</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Forms/" rel="tag">Forms</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Formset/" rel="tag">Formset</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Full-Stack/" rel="tag">Full Stack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Governance/" rel="tag">Governance</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Individual-Stock-Analysis/" rel="tag">Individual Stock Analysis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Infrastructure/" rel="tag">Infrastructure</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inomad/" rel="tag">Inomad</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Inomad-Diary/" rel="tag">Inomad Diary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Investment/" rel="tag">Investment</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LLM/" rel="tag">LLM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Logging/" rel="tag">Logging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MLOps/" rel="tag">MLOps</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Messaging/" rel="tag">Messaging</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Monitoring/" rel="tag">Monitoring</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mortgage/" rel="tag">Mortgage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Networking/" rel="tag">Networking</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Nodejs/" rel="tag">Nodejs</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/OpenAI/" rel="tag">OpenAI</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ProductModel/" rel="tag">ProductModel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pulumi/" rel="tag">Pulumi</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Pydantic/" rel="tag">Pydantic</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/" rel="tag">Python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/REST/" rel="tag">REST</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/" rel="tag">React</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Security/" rel="tag">Security</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stocks/" rel="tag">Stocks</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Storage/" rel="tag">Storage</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/axios/" rel="tag">axios</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <p class="widget-title">Archives</p>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2025/06/">June 2025</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/07/">July 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/06/">June 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/05/">May 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2024/04/">April 2024</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/12/">December 2023</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2023/11/">November 2023</a></li></ul>
     </div>
   </div>
 
@@ -282,9 +275,9 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
 
   
 </aside>
-        
-      </div>
-      <footer id="footer">
+          
+        </div>
+        <footer id="footer">
   
   <div class="outer">
     <div id="footer-info" class="inner footer-info">
@@ -298,15 +291,14 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
   </div>
 </footer>
 
-    </div>
-    <nav id="mobile-nav">
+      </div>
+      <nav id="mobile-nav">
   
     <a href="/" class="mobile-nav-link">Home</a>
   
     <a href="/archives" class="mobile-nav-link">Archives</a>
   
-</nav>
-    
+</nav> 
 
 
 <script src="/js/jquery-3.6.4.min.js"></script>
@@ -356,6 +348,6 @@ REST Client allows you to send HTTP request and view the response in Visual Stud
    </script>
 
 
-  </div>
-</body>
+    </div>
+  </body>
 </html>
