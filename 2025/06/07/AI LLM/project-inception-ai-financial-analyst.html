@@ -18,15 +18,15 @@
   <title>LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner | Zhicheng&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
-  <meta name="description" content="It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! But this isn’t just about building another AI tool. This is a dual experiment:">
+  <meta name="description" content="It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! This is a dual experiment:  Can we build an AI-powered tool to automate the an">
 <meta property="og:type" content="article">
 <meta property="og:title" content="LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner">
 <meta property="og:url" content="https://zhicheng-wang.com/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html">
 <meta property="og:site_name" content="Zhicheng&#39;s Blog">
-<meta property="og:description" content="It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! But this isn’t just about building another AI tool. This is a dual experiment:">
+<meta property="og:description" content="It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! This is a dual experiment:  Can we build an AI-powered tool to automate the an">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-06-07T09:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-07T21:23:54.608Z">
+<meta property="article:modified_time" content="2025-06-08T10:08:20.590Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="FastAPI">
@@ -131,6 +131,8 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2025-06-07T09:00:00.000Z" itemprop="datePublished">2025-06-07</time>
   <br>
   
+  Updated: <time class="dt-published" datetime="2025-06-08T10:08:20.590Z" itemprop="datePublished">2025-06-08</time>
+  
 </p>
     
   <div class="article-category">
@@ -152,14 +154,15 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-       <p>It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! But this isn’t just about building another AI tool. This is a dual experiment:</p>
+       <p>It’s been a while, but I’m happy to be back to blogging (helped by my AI assistants) with a new project and a new series! This is a dual experiment:</p>
 <ol>
 <li>Can we build an AI-powered tool to automate the analysis of complex financial documents for the purpose of learning the latest AI LLM techniques?</li>
-<li>How far can a developer push a project by truly <em>partnering</em> with AI coding assistants?, and I’ll be sharing the journey right here.</li>
+<li>How far can a developer push a project by truly <em>partnering</em> with AI coding assistants?</li>
 </ol>
+<p>I’ll be sharing the journey right here.</p>
 <h3 id="The-Problem-Information-Overload-in-Finance">The Problem: Information Overload in Finance</h3>
-<p>Before the project I had not much experience with financial documents, only a basic understanding of their importance and relevance. After spending some time working with the filings, I realized the challenge: You’re faced with mountains of dense, jargon-filled documents like 10-Ks and 10-Qs. Buried within these SEC filings is a goldmine of information about a company’s performance, strategy, and risks. But extracting and understanding it is a tedious, manual process and never even mention that not all SEC filings themselves are not standardized.</p>
-<p>But one thing we can be sure is with the power of LLMs, and the huge amount of text data offered by those filings, we can swim in the sea of information and surface the insights that matter.</p>
+<p>Before the project I had not much experience with financial documents especially company filings, only a basic understanding of their importance and relevance. After spending some time digging into them, I realized the challenge: You’re faced with mountains of dense, jargon-filled documents like 10-Ks and 10-Qs. Buried within these SEC filings is a goldmine of information about a company’s performance, strategy, and risks. But extracting and understanding it is a tedious, manual process and never even mention that not all SEC filings themselves are not standardized.</p>
+<p>There are many websites have information about companies like Yahoo Finance, Google Finance, and others. But to build a platform with LLMs that can truly understand and analyze these documents, it’s essential to work directly with the raw data. This is where the SEC’s EDGAR database comes in, providing access to all public filings.</p>
 <span id="more"></span>
 <h3 id="The-Vision-An-AI-Analyst-Built-by-a-Human-AI-Team">The Vision: An AI Analyst, Built by a Human-AI Team</h3>
 <p>The goal is to create a web application where a user can input a stock ticker and receive a comprehensive, AI-driven analysis. This isn’t just about pulling numbers; it’s about understanding the narrative and context behind them.</p>
@@ -198,15 +201,14 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 ├── models&#x2F;       # Pydantic models for structured data
 └── utils&#x2F;        # Common utilities, including the base analyzer<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h3 id="What’s-Next">What’s Next?</h3>
-<p>This is just the beginning. The foundation is laid, but building a reliable AI system requires more than just calling an API. Need to measure its performance, control its costs, and continuously improve its accuracy.</p>
-<p>In my next post, I’ll dive into the crucial framework I’ve just finished building for <strong>model evaluation and cost tracking</strong>. It’s one thing to build a cool demo, but it’s another to build something you can actually measure and trust.</p>
+<p>This is just the beginning. The foundation is laid, but building a reliable AI system requires more than just calling an API. Next post will dive a bit more into the architecture and the core components of the application, including how the AI assistants are integrated into the development process.</p>
  
     </div>
     <footer class="article-footer">
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html"
-        data-id="cmbngxyyh0004ou693w6detp0"
+        data-id="cmbnjogqk0004ix694uh4gwon"
         data-title="LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner"
         class="article-share-link"
         type="button"
