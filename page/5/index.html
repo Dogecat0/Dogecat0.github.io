@@ -155,7 +155,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2023/11/08/JavaScript%20Full%20Stack%20Series/02-React.html"
-        data-id="cmbpm676y000t5c697wdj8d9t"
+        data-id="cmbpoqhlx000wvj69blt47x1l"
         data-title="JavaScript Full Stack Series-02-React"
         class="article-share-link"
         type="button"
@@ -234,7 +234,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2023/11/07/JavaScript%20Full%20Stack%20Series/01-Fundamentals.html"
-        data-id="cmbpm676w000p5c699w8qgfcb"
+        data-id="cmbpoqhlv000rvj69fsn13hh3"
         data-title="JavaScript Full Stack Series-01-Fundamentals"
         class="article-share-link"
         type="button"
@@ -310,7 +310,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2023/11/06/JavaScript%20Full%20Stack%20Series/00-Introduction.html"
-        data-id="cmbpm676w000o5c695yosf6fy"
+        data-id="cmbpoqhlv000qvj6983b67wcr"
         data-title="JavaScript Full Stack-00-Introduction"
         class="article-share-link"
         type="button"
@@ -343,6 +343,228 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
  
 
   
+    <article
+  id="post-AI LLM/from-sequential-to-supersonic"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2023-10-27T09:00:00.000Z" itemprop="datePublished">2023-10-27</time>
+  <br>
+  
+  Updated: <time class="dt-published" datetime="2025-06-09T22:49:02.827Z" itemprop="datePublished">2025-06-09</time>
+  
+</p>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Software-Development/">Software Development</a>
+  </div>
+
+  </div>
+  <hr />
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2023/10/27/AI%20LLM/from-sequential-to-supersonic.html">From Sequential to Supersonic: A Developer&#39;s Journey into Parallel LLM Queries</a>
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>When I first started building this application, my focus was on a simple goal: use a Large Language Model (LLM) to read dense SEC filings and extract structured, easy-to-digest insights. The initial prototype was magical. I could feed it the “Business” section of a 10-K filing, and it would return a beautiful JSON object with competitive advantages, key products, and more.</p>
+<p>But then, I started to find out each analysis takes time especially when I wanted to analyze multiple sections like Business, Management’s Discussion and Analysis (MD&amp;A), Risk Factors, and Financials. Each of these sections required a separate LLM API call, and I was making those calls one after another in a synchronous loop.</p>
+<p>That’s when I hit the wall, together with the previous ‘cache’ implementation that wasn’t caching anything. The user experience was not ideal, and I knew I had to do something about it. So in this post I will show how to transform a sequential script to a multi-layered concurrent application that feels responsive and powerful to reduce the wait time from <strong>a couple of min</strong> to just  seconds.</p>
+<h3 id="The-Agony-of-the-Synchronous-Loop">The Agony of the Synchronous Loop</h3>
+<p>My initial, naive implementation looked something like this in spirit:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># The "Before" picture - a painful, sequential process</span>
+<span class="token keyword">def</span> <span class="token function">get_comprehensive_analysis</span><span class="token punctuation">(</span>ticker<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># Each of these is a blocking LLM API call</span>
+    business_analysis <span class="token operator">=</span> analyze_business_section<span class="token punctuation">(</span>text<span class="token punctuation">)</span> <span class="token comment"># Wait...</span>
+    mda_analysis <span class="token operator">=</span> analyze_mda_section<span class="token punctuation">(</span>text<span class="token punctuation">)</span> <span class="token comment"># Wait some more...</span>
+    risk_analysis <span class="token operator">=</span> analyze_risk_section<span class="token punctuation">(</span>text<span class="token punctuation">)</span> <span class="token comment"># Still waiting...</span>
+    financials <span class="token operator">=</span> analyze_financials<span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token comment"># And wait again...</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">"business"</span><span class="token punctuation">:</span> business_analysis<span class="token punctuation">,</span>
+        <span class="token string">"mda"</span><span class="token punctuation">:</span> mda_analysis<span class="token punctuation">,</span>
+        <span class="token string">"risks"</span><span class="token punctuation">:</span> risk_analysis<span class="token punctuation">,</span>
+        <span class="token string">"financials"</span><span class="token punctuation">:</span> financials<span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>A full analysis could take up to <strong>three and half minute</strong>. This wasn’t just a bad user experience; it was an inefficient use of resources. I knew there had to be a better way. This realization kickstarted my journey into the world of Python concurrency.</p>
+<h3 id="Level-1-High-Level-Concurrency-with-asyncio">Level 1: High-Level Concurrency with <code>asyncio</code></h3>
+<p>The first and most obvious optimization was to recognize that the analyses for Business, MD&amp;A, and Risks were completely independent of each other. There was no reason to wait for one to finish before starting the next. This is a classic use case for asynchronous programming.</p>
+<p>Since my application uses FastAPI, <code>asyncio</code> was the natural choice. By converting my analysis functions to <code>async def</code> and using <code>asyncio.gather</code>, I could fire off all the top-level requests at once.</p>
+<p>My <code>dashboard_router.py</code> now orchestrates this nicely:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># src/api/routers/dashboard_router.py (simplified)</span>
+
+<span class="token keyword">import</span> asyncio
+<span class="token keyword">from</span> src<span class="token punctuation">.</span>analysis<span class="token punctuation">.</span>business <span class="token keyword">import</span> BusinessAnalyzer
+<span class="token keyword">from</span> src<span class="token punctuation">.</span>analysis<span class="token punctuation">.</span>mda <span class="token keyword">import</span> MDAAnalyzer
+<span class="token keyword">from</span> src<span class="token punctuation">.</span>analysis<span class="token punctuation">.</span>risk_factor <span class="token keyword">import</span> RiskFactorAnalyzer
+
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">comprehensive_analysis</span><span class="token punctuation">(</span>ticker<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># ... (load company data)</span>
+
+    tasks <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    task_names <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+    <span class="token comment"># Create analyzers</span>
+    business_analyzer <span class="token operator">=</span> BusinessAnalyzer<span class="token punctuation">(</span>use_concurrent<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    mda_analyzer <span class="token operator">=</span> MDAAnalyzer<span class="token punctuation">(</span>use_concurrent<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    risk_analyzer <span class="token operator">=</span> RiskFactorAnalyzer<span class="token punctuation">(</span>use_concurrent<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Schedule all top-level analyses to run concurrently</span>
+    <span class="token keyword">if</span> include_business<span class="token punctuation">:</span>
+        tasks<span class="token punctuation">.</span>append<span class="token punctuation">(</span>extract_section_analysis_async<span class="token punctuation">(</span>company_manager<span class="token punctuation">,</span> <span class="token string">"Business"</span><span class="token punctuation">,</span> business_analyzer<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        task_names<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"business"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> include_mda<span class="token punctuation">:</span>
+        tasks<span class="token punctuation">.</span>append<span class="token punctuation">(</span>extract_section_analysis_async<span class="token punctuation">(</span>company_manager<span class="token punctuation">,</span> <span class="token string">"Management's Discussion and Analysis (MD&amp;A)"</span><span class="token punctuation">,</span> mda_analyzer<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        task_names<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"mda"</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">if</span> include_risk_factors<span class="token punctuation">:</span>
+        tasks<span class="token punctuation">.</span>append<span class="token punctuation">(</span>extract_section_analysis_async<span class="token punctuation">(</span>company_manager<span class="token punctuation">,</span> <span class="token string">"Risk Factors"</span><span class="token punctuation">,</span> risk_analyzer<span class="token punctuation">)</span><span class="token punctuation">)</span>
+        task_names<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string">"risk_factors"</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Run all tasks in parallel and wait for them all to complete</span>
+    results <span class="token operator">=</span> <span class="token keyword">await</span> asyncio<span class="token punctuation">.</span>gather<span class="token punctuation">(</span><span class="token operator">*</span>tasks<span class="token punctuation">)</span>
+
+    <span class="token comment"># ... (process results)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><strong>The result?</strong> The total wait time was no longer the <em>sum</em> of all analysis times, but rather the time of the <em>single longest</em> analysis. Now without cache, a full analysis could take up to just <strong>40 seconds</strong>. A huge win!</p>
+<h3 id="Level-2-Deeper-Parallelism-with-ThreadPoolExecutor">Level 2: Deeper Parallelism with <code>ThreadPoolExecutor</code></h3>
+<p>As I celebrated my newfound speed, a new question emerged: could I go even deeper? A single analysis, like the “Business” section, is itself a request for multiple, independent pieces of information:</p>
+<ul>
+<li>Operational Overview</li>
+<li>Key Products</li>
+<li>Competitive Advantages</li>
+<li>Strategic Initiatives</li>
+<li>Business Segments</li>
+<li>And more…</li>
+</ul>
+<p>My initial prompt was a massive, one-body instruction asking the LLM to extract everything at once. While it worked, it was brittle. The LLM would sometimes miss a section or get the format slightly wrong.</p>
+<p>This led to my second “aha!” moment: what if I broke that one giant API call into several smaller, parallel calls?</p>
+<p>This is where <code>concurrent.futures.ThreadPoolExecutor</code> came in. While <code>asyncio</code> is perfect for managing <code>async/await</code> coroutines, the <code>ThreadPoolExecutor</code> lets you run any function in a separate thread. This was perfect for my analyzer classes.</p>
+<p>Here’s how I implemented it in my <code>BusinessAnalyzer</code>:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># src/analysis/business.py (simplified)</span>
+
+<span class="token keyword">import</span> concurrent<span class="token punctuation">.</span>futures
+
+<span class="token keyword">class</span> <span class="token class-name">BusinessAnalyzer</span><span class="token punctuation">(</span>BaseAnalyzer<span class="token punctuation">[</span>BusinessAnalysisSection<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">,</span> use_concurrent<span class="token punctuation">:</span> <span class="token builtin">bool</span> <span class="token operator">=</span> <span class="token boolean">True</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token builtin">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>__init__<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+        self<span class="token punctuation">.</span>use_concurrent <span class="token operator">=</span> use_concurrent
+        <span class="token keyword">if</span> self<span class="token punctuation">.</span>use_concurrent<span class="token punctuation">:</span>
+            <span class="token comment"># Each component gets its own specialized analyzer and prompt</span>
+            self<span class="token punctuation">.</span>_init_component_analyzers<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">extract_concurrent</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> text<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> BusinessAnalysisSection<span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"Starting concurrent business analysis extraction"</span><span class="token punctuation">)</span>
+        component_results <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+        tasks <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+            <span class="token string">"operational_overview"</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>_extract_component<span class="token punctuation">,</span>
+            <span class="token string">"key_products"</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>_extract_component<span class="token punctuation">,</span>
+            <span class="token string">"competitive_advantages"</span><span class="token punctuation">:</span> self<span class="token punctuation">.</span>_extract_component<span class="token punctuation">,</span>
+            <span class="token comment"># ... and so on for all sub-sections</span>
+        <span class="token punctuation">&#125;</span>
+
+        <span class="token comment"># Use a thread pool to run all sub-extractions in parallel</span>
+        <span class="token keyword">with</span> concurrent<span class="token punctuation">.</span>futures<span class="token punctuation">.</span>ThreadPoolExecutor<span class="token punctuation">(</span>max_workers<span class="token operator">=</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token keyword">as</span> executor<span class="token punctuation">:</span>
+            future_to_component <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+                executor<span class="token punctuation">.</span>submit<span class="token punctuation">(</span>task<span class="token punctuation">,</span> component<span class="token punctuation">,</span> text<span class="token punctuation">)</span><span class="token punctuation">:</span> component
+                <span class="token keyword">for</span> component<span class="token punctuation">,</span> task <span class="token keyword">in</span> tasks<span class="token punctuation">.</span>items<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            <span class="token punctuation">&#125;</span>
+
+            <span class="token keyword">for</span> future <span class="token keyword">in</span> concurrent<span class="token punctuation">.</span>futures<span class="token punctuation">.</span>as_completed<span class="token punctuation">(</span>future_to_component<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                component_name <span class="token operator">=</span> future_to_component<span class="token punctuation">[</span>future<span class="token punctuation">]</span>
+                <span class="token keyword">try</span><span class="token punctuation">:</span>
+                    result <span class="token operator">=</span> future<span class="token punctuation">.</span>result<span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    component_results<span class="token punctuation">[</span>component_name<span class="token punctuation">]</span> <span class="token operator">=</span> result
+                <span class="token keyword">except</span> Exception <span class="token keyword">as</span> e<span class="token punctuation">:</span>
+                    self<span class="token punctuation">.</span>logger<span class="token punctuation">.</span>error<span class="token punctuation">(</span><span class="token string">"Error extracting %s: %s"</span><span class="token punctuation">,</span> component_name<span class="token punctuation">,</span> <span class="token builtin">str</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                    <span class="token comment"># Crucially, I added a fallback to the single-prompt method</span>
+                    <span class="token keyword">return</span> self<span class="token punctuation">.</span>extract<span class="token punctuation">(</span>text<span class="token punctuation">)</span> <span class="token comment"># Fallback to standard extraction</span>
+
+        <span class="token keyword">return</span> BusinessAnalysisSection<span class="token punctuation">(</span><span class="token operator">**</span>component_results<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>This two-tiered approach was a game-changer:</p>
+<ol>
+<li><strong><code>asyncio.gather</code></strong> orchestrates the high-level analysis tasks (Business, MD&amp;A, etc.).</li>
+<li>Within each of those tasks, a <strong><code>ThreadPoolExecutor</code></strong> runs multiple, smaller, more focused LLM queries in parallel.</li>
+</ol>
+<p>This not only made the application even faster but also brought some unexpected benefits:</p>
+<ul>
+<li><strong>Increased Reliability:</strong> Smaller, focused prompts are less likely to confuse the LLM.</li>
+<li><strong>Improved Resilience:</strong> If the “Key Products” extraction fails, the other business components might still succeed. My code even includes a fallback to the “big prompt” method if the concurrent approach fails, making the system more robust.</li>
+<li><strong>Better Maintainability:</strong> It’s far easier to debug and refine a small prompt for “Key Products” than it is to tweak one monolithic prompt.</li>
+<li><strong>Enhanced LLM Response Quality:</strong> Smaller, focused prompts often yield more accurate, deeper insights, as the LLM can concentrate on a specific aspect of the business without being overwhelmed by too much context.</li>
+</ul>
+<h3 id="A-Practical-Lesson-Wrapping-Lists-for-LLM-Sanity">A Practical Lesson: Wrapping Lists for LLM Sanity</h3>
+<p>A quick but important lesson I learned was about JSON schema design for LLM outputs. I initially asked the model to return a root-level JSON array for things like a list of products (e.g., <code>[&#123;&quot;name&quot;: ...&#125;, &#123;&quot;name&quot;: ...&#125;]</code>). This was surprisingly flaky.</p>
+<p>The fix was simple but powerful: I wrapped the list in an object.</p>
+<p>Instead of <code>List[KeyProduct]</code>, my Pydantic model became:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># src/models/business_model.py</span>
+<span class="token keyword">class</span> <span class="token class-name">KeyProductList</span><span class="token punctuation">(</span>BaseModel<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Wrapper model for a list of key products."""</span>
+    items<span class="token punctuation">:</span> List<span class="token punctuation">[</span>KeyProduct<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Now, I ask the LLM for <code>&#123;&quot;items&quot;: [...]&#125;</code>. This simple change made the output parsing significantly more reliable.</p>
+<h3 id="Conclusion-Concurrency-is-a-Superpower-for-LLM-Apps">Conclusion: Concurrency is a Superpower for LLM Apps</h3>
+<p>My journey from a slow, sequential script to a multi-layered concurrent application was incredibly rewarding. It transformed the user experience and taught me a valuable lesson: for I/O-bound applications like those interacting with LLMs, concurrency isn’t a “nice-to-have”—it’s a core architectural requirement for building something fast, reliable, and scalable.</p>
+<p>By combining the strengths of <code>asyncio</code> for top-level task management and <code>ThreadPoolExecutor</code> for deeper, parallel sub-tasks, I was able to build a system that feels responsive and powerful, turning long waits into a few moments of processing. If you’re building with LLMs, I can’t recommend enough that you dive into Python’s concurrency toolset.</p>
+ 
+    </div>
+    <footer class="article-footer">
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2023/10/27/AI%20LLM/from-sequential-to-supersonic.html"
+        data-id="cmbpoqhlm0001vj699dhdc4nw"
+        data-title="From Sequential to Supersonic: A Developer&#39;s Journey into Parallel LLM Queries"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
+        </svg>
+      </button>
+        
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/Python/">#Python</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/FastAPI/">#FastAPI</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/LLM/">#LLM</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Concurrency/">#Concurrency</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Performance/">#Performance</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/asyncio/">#asyncio</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+ 
+
+  
 
 
   <nav id="page-nav">
@@ -357,7 +579,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   <div class="widget-wrap">
     <p class="widget-title">Categories</p>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Projects/">AI Projects</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Projects/">AI Projects</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Software-Development/">Software Development</a></li></ul>
     </div>
   </div>
 
