@@ -112,6 +112,97 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
           <section class="post-container" id="main">
   
     <article
+  id="post-AI LLM/refining-the-filing-cache"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2025-06-08T10:00:00.000Z" itemprop="datePublished">2025-06-08</time>
+  <br>
+  
+  Updated: <time class="dt-published" datetime="2025-06-09T00:25:50.529Z" itemprop="datePublished">2025-06-09</time>
+  
+</p>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AI-Projects/">AI Projects</a>
+  </div>
+
+  </div>
+  <hr />
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/08/AI%20LLM/refining-the-filing-cache.html">Debugging the Engine: Fixing a Broken Filing Cache</a>
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>After running a few analyses, I noticed from the logs that with the existing edgar caching strategy, it still made HTTP requests and my terminal logs showed that the app was re-downloading the same SEC filings over and over.</p>
+<p>The caching layer, which was supposed to prevent this, was clearly not working. This post is a chronicle of a classic developer experience: realizing a core feature isn’t working as intended and diving in to fix it.</p> 
+      <p class="article-more-link">
+        <a href="/2025/06/08/AI%20LLM/refining-the-filing-cache.html#more">Read More &gt;&gt;</a>
+      </p>
+       
+    </div>
+    <footer class="article-footer">
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2025/06/08/AI%20LLM/refining-the-filing-cache.html"
+        data-id="cmbocr77u0005uu69f12cbpg0"
+        data-title="Debugging the Engine: Fixing a Broken Filing Cache"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
+        </svg>
+      </button>
+        
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/Python/">#Python</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/FastAPI/">#FastAPI</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Architecture/">#Architecture</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/AI/">#AI</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Optimization/">#Optimization</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Caching/">#Caching</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Copilot/">#Copilot</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+ 
+
+  
+    <article
   id="post-AI LLM/measuring-what-matters-evaluation-and-cost-tracking"
   class="h-entry article article-type-post"
   itemprop="blogPost"
@@ -125,7 +216,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2025-06-07T20:30:00.000Z" itemprop="datePublished">2025-06-07</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2025-06-08T10:50:20.180Z" itemprop="datePublished">2025-06-08</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T10:50:20.000Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
@@ -163,7 +254,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html"
-        data-id="cmbnjogqh0001ix6938z74igs"
+        data-id="cmbocr77r0001uu694o9c3hg4"
         data-title="Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst"
         class="article-share-link"
         type="button"
@@ -248,7 +339,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html"
-        data-id="cmbnjogqe0000ix69ext2e0ne"
+        data-id="cmbocr77o0000uu69b853geri"
         data-title="Anatomy of an AI Financial Analyst: From Raw Filing to Interactive Dashboard"
         class="article-share-link"
         type="button"
@@ -303,7 +394,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2025-06-07T09:00:00.000Z" itemprop="datePublished">2025-06-07</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2025-06-08T10:08:20.590Z" itemprop="datePublished">2025-06-08</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T10:08:20.000Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
@@ -344,7 +435,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html"
-        data-id="cmbnjogqk0004ix694uh4gwon"
+        data-id="cmbocr77t0004uu69e7b41nr1"
         data-title="LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner"
         class="article-share-link"
         type="button"
@@ -399,7 +490,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-23T19:29:57.000Z" itemprop="datePublished">2024-07-23</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2025-06-08T09:08:10.060Z" itemprop="datePublished">2025-06-08</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:08:10.000Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
@@ -429,7 +520,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html"
-        data-id="cmbnjogr1001qix69a73m65nd"
+        data-id="cmbocr789001tuu69d71t565r"
         data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources"
         class="article-share-link"
         type="button"
@@ -480,7 +571,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-19T10:45:38.000Z" itemprop="datePublished">2024-07-19</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2025-06-08T09:08:09.550Z" itemprop="datePublished">2025-06-08</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:08:09.000Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
@@ -510,7 +601,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html"
-        data-id="cmbnjogr2001six69czs6hk7n"
+        data-id="cmbocr78a001uuu69cxo667uh"
         data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project"
         class="article-share-link"
         type="button"
@@ -561,7 +652,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-18T14:35:25.000Z" itemprop="datePublished">2024-07-18</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2025-06-08T09:08:08.850Z" itemprop="datePublished">2025-06-08</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:08:08.000Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
@@ -591,7 +682,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/18/Inomad%20Dairy/04-Infrastructure/02-Implementation/Azure%20Setup.html"
-        data-id="cmbnjogr1001oix69fc81d2tb"
+        data-id="cmbocr789001ruu694gn8b3te"
         data-title="Inomad Diary-04-Infrastructure-02-Implementations-01-Azure Setup"
         class="article-share-link"
         type="button"
@@ -640,7 +731,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-17T10:10:15.000Z" itemprop="datePublished">2024-07-17</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2025-06-08T09:08:57.600Z" itemprop="datePublished">2025-06-08</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:08:57.000Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
@@ -670,7 +761,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Final%20Score.html"
-        data-id="cmbnjogr3001wix693q6gab1w"
+        data-id="cmbocr78b001yuu69btlxgw0n"
         data-title="Investment-02-Stocks-04-Final Score"
         class="article-share-link"
         type="button"
@@ -719,7 +810,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-17T09:46:07.000Z" itemprop="datePublished">2024-07-17</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2025-06-08T09:09:01.510Z" itemprop="datePublished">2025-06-08</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:09:01.000Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
@@ -749,7 +840,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Risks.html"
-        data-id="cmbnjogr40022ix69gbpnhcm4"
+        data-id="cmbocr78d0025uu69d1zzgiew"
         data-title="Investment-02-Stocks-04-Weighted Score Calculation-05-Risks"
         class="article-share-link"
         type="button"
@@ -798,7 +889,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2024-07-16T11:30:17.000Z" itemprop="datePublished">2024-07-16</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2025-06-08T09:09:02.470Z" itemprop="datePublished">2025-06-08</time>
+  Updated: <time class="dt-published" datetime="2025-06-08T09:09:02.000Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
@@ -828,87 +919,8 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Valuation.html"
-        data-id="cmbnjogrp008yix69bi815vpi"
+        data-id="cmbocr78e0028uu691wq16p1p"
         data-title="Investment-02-Stocks-04-Weighted Score Calculation-04-Valuation"
-        class="article-share-link"
-        type="button"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="1.2em"
-          viewBox="0 0 448 512"
-        >
-          <path
-            fill="#ffffff"
-            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
-          />
-        </svg>
-      </button>
-        
-  <ul class="article-tag-list">
-    
-      <li class="article-tag-list-item"><a href="/tags/Investment/">#Investment</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/Stocks/">#Stocks</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/Individual-Stock-Analysis/">#Individual Stock Analysis</a></li>
-    
-  </ul>
-
-    </footer>
-  </div>
-  
-</article>
-
- 
-
-  
-    <article
-  id="post-Investment/02-Stocks/02-Individual Stock Analysis/Weighted Score Calculation/Competitive Position and Industry Trends"
-  class="h-entry article article-type-post"
-  itemprop="blogPost"
-  itemscope
-  itemtype="https://schema.org/BlogPosting"
->
-  <div class="article-meta">
-    
-
-<p class="article-date">
-  Published: <time class="dt-published" datetime="2024-07-16T11:15:53.000Z" itemprop="datePublished">2024-07-16</time>
-  <br>
-  
-  Updated: <time class="dt-published" datetime="2025-06-08T09:08:59.810Z" itemprop="datePublished">2025-06-08</time>
-  
-</p>
-    
-  </div>
-  <hr />
-  <div class="article-inner">
-     
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html">Investment-02-Stocks-04-Weighted Score Calculation-03-Competitive Position, Industry Trends and Management/Governance</a>
-    </h1>
-  
-
-    </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
-<p>In the this post, I will continue the calculation of the weighted scores for three Competitive Position, Industry Trends and Management/Governance. Following the same quantifying process of the previous post on Business Model and Diversification Analysis, here I will just list the key metrics, weights and final scores.</p> 
-      <p class="article-more-link">
-        <a href="/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html#more">Read More &gt;&gt;</a>
-      </p>
-       
-    </div>
-    <footer class="article-footer">
-      <button
-        title="Share"
-        data-url="https://zhicheng-wang.com/2024/07/16/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Weighted%20Score%20Calculation/Competitive%20Position%20and%20Industry%20Trends.html"
-        data-id="cmbnjogr4001zix69fabdfiml"
-        data-title="Investment-02-Stocks-04-Weighted Score Calculation-03-Competitive Position, Industry Trends and Management/Governance"
         class="article-share-link"
         type="button"
       >
@@ -969,6 +981,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <ul>
         
           <li class="recent-post-list-item">
+            <a href="/2025/06/08/AI%20LLM/refining-the-filing-cache.html">Debugging the Engine: Fixing a Broken Filing Cache</a>
+          </li>
+        
+          <li class="recent-post-list-item">
             <a href="/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html">Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst</a>
           </li>
         
@@ -982,10 +998,6 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
         
           <li class="recent-post-list-item">
             <a href="/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html">Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources</a>
-          </li>
-        
-          <li class="recent-post-list-item">
-            <a href="/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html">Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project</a>
           </li>
         
       </ul>
