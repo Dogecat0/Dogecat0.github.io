@@ -125,7 +125,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2025-06-14T22:15:27.000Z" itemprop="datePublished">2025-06-14</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2025-06-14T23:05:58.066Z" itemprop="datePublished">2025-06-15</time>
+  Updated: <time class="dt-published" datetime="2025-06-14T23:08:46.453Z" itemprop="datePublished">2025-06-15</time>
   
 </p>
     
@@ -148,54 +148,17 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-       <p>For our financial analysis tool, the latest series of updates focuses on an architectural enhancement: the integration of a persistent database layer for caching, performance tracking, and data retention. This post details the changes, the rationale behind them, and how they set the stage for future development.</p>
-<h3 id="The-Problem-The-Cost-of-Being-Stateless">The Problem: The Cost of Being Stateless</h3>
-<p>Previously, our application performed a complete, on-demand analysis for every API request. While this ensured the data was always fresh, it had significant drawbacks:</p>
-<ol>
-<li><strong>High Latency:</strong> Every request, even for the same company ticker, would trigger a series of intensive data processing and expensive Large Language Model (LLM) calls.</li>
-<li><strong>Redundant Costs:</strong> Analyzing the same filings repeatedly incurred unnecessary API costs.</li>
-<li><strong>No Historical Context:</strong> It was impossible to look back at a previous analysis or compare results over time without re-running the entire process.</li>
-<li><strong>Poential Machine Learning Model (ML) Drift:</strong> As the underlying data changed, the application had no way to track how analyses evolved over time.</li>
-</ol>
-<p>The solution was clear: we needed a caching layer. Instead of a simple key-value store, I opted for a more structured solution using a SQLite database with SQLAlchemy.</p>
-<h3 id="The-Solution-A-New-Database-Driven-Architecture">The Solution: A New Database-Driven Architecture</h3>
-<p>This update introduces a complete database backend to store the results of comprehensive analyses. This is a foundational change that refactors the application’s core logic.</p>
-<h4 id="Key-Components-of-the-New-Architecture">Key Components of the New Architecture:</h4>
-<ul>
-<li>
-<p><strong>Database Models (<code>src/models/database_models.py</code>):</strong> I’ve introduced two SQLAlchemy models: <code>Company</code> and <code>Analysis</code>. The <code>Analysis</code> table is the star of the show, storing not just the JSON blob of a completed analysis, but also the specific parameters used to generate it (<code>include_business</code>, <code>max_10k_history</code>, etc.), performance metrics like <code>cost_usd</code> and <code>processing_time</code>, and a timestamp.</p>
-</li>
-<li>
-<p><strong>Repository Pattern (<code>src/repositories/analysis_repository.py</code>):</strong> To maintain a clean separation of concerns, all direct database interactions are now handled by a new <code>AnalysisRepository</code>. This data access layer abstracts the database logic away from the API endpoints. The router is no longer responsible for how data is stored or retrieved; it simply asks the repository.</p>
-</li>
-<li>
-<p><strong>Intelligent Caching Logic (<code>src/api/routers/dashboard_router.py</code>):</strong> The main <code>comprehensive_analysis</code> endpoint has been significantly enhanced. Before initiating a new analysis, it now queries the <code>AnalysisRepository</code> for an existing result that matches the exact request parameters (ticker, sections to include, history length) and is within a specified age limit (e.g., 24 hours). If a valid entry is found, it’s returned instantly, saving both time and money.</p>
-</li>
-<li>
-<p><strong>Database Initialization (<code>src/db/init_db.py</code>):</strong> The application now automatically initializes the SQLite database and creates the necessary tables on startup, ensuring a smooth first-run experience.</p>
-</li>
-</ul>
-<h3 id="Beyond-Caching-New-Endpoints-and-Robust-Testing">Beyond Caching: New Endpoints and Robust Testing</h3>
-<p>This architectural shift also enabled new features and demanded a higher standard of testing.</p>
-<ul>
-<li>
-<p><strong>Analysis History:</strong> I’ve added a new endpoint, <code>GET /analyses/&#123;ticker&#125;</code>, which allows users to retrieve a history of all previously run analyses for a given company. Another endpoint, <code>DELETE /analyses/&#123;ticker&#125;</code>, provides a way to clear the cache for a specific ticker.</p>
-</li>
-<li>
-<p><strong>Comprehensive Testing (<code>tests/test_analysis_repository.py</code>):</strong> A change this significant requires rigorous testing. I’ve built a full test suite for the <code>AnalysisRepository</code> using <code>pytest</code>. These tests cover everything from basic save-and-retrieve operations to more complex scenarios like ensuring parameter-matching works correctly, stale data is properly filtered by <code>max_age_hours</code>, and database relationships are sound.</p>
-</li>
-</ul>
-<h3 id="Retiring-Old-Code">Retiring Old Code</h3>
-<p>With the introduction of this more sophisticated database layer, the old, file-based <code>OpenAICacheManager</code> has been deprecated. The new repository caches the entire, final analysis object, which is a much more efficient and powerful approach than caching individual, intermediate LLM calls.</p>
-<h3 id="Final-Thoughts">Final Thoughts</h3>
-<p>This change lays the groundwork for numerous future enhancements, such as tracking analysis changes over time, building more complex data visualizations, and providing deeper historical insights even for building machine learning models.</p>
- 
+       <p>For our financial analysis tool, the latest series of updates focuses on an architectural enhancement: the integration of a persistent database layer for caching, performance tracking, and data retention. This post details the changes, the rationale behind them, and how they set the stage for future development.</p> 
+      <p class="article-more-link">
+        <a href="/2025/06/14/AI%20LLM/persistent-database.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/14/AI%20LLM/persistent-database.html"
-        data-id="cmbwuivh700068q698lccb6tu"
+        data-id="cmbwulr7p0005q769eiagepv2"
         data-title="Refactoring for Resilience: Introducing a Database Caching Layer"
         class="article-share-link"
         type="button"
@@ -281,7 +244,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/10/AI%20LLM/project-demo.html"
-        data-id="cmbwuivh600058q69gq9d5rct"
+        data-id="cmbwulr7p0006q7697422ctdz"
         data-title="Seeing is Believing: A Tale of Two Demos (and the Power of Caching)"
         class="article-share-link"
         type="button"
@@ -363,7 +326,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/09/AI%20LLM/from-sequential-to-supersonic.html"
-        data-id="cmbwuivh200018q690gfocdhn"
+        data-id="cmbwulr7l0001q7694faa504i"
         data-title="From Sequential to Supersonic: A Developer&#39;s Journey into Parallel LLM Queries"
         class="article-share-link"
         type="button"
@@ -452,7 +415,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/08/AI%20LLM/refining-the-filing-cache.html"
-        data-id="cmbwuivh9000a8q69912d2hjq"
+        data-id="cmbwulr7r000aq7693zi1dmlk"
         data-title="Debugging the Engine: Fixing a Broken Filing Cache"
         class="article-share-link"
         type="button"
@@ -547,7 +510,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html"
-        data-id="cmbwuivh500048q6996f68kvh"
+        data-id="cmbwulr7o0004q769d8dk2jua"
         data-title="Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst"
         class="article-share-link"
         type="button"
@@ -632,7 +595,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html"
-        data-id="cmbwuivgz00008q69d4ms62z4"
+        data-id="cmbwulr7h0000q76994gwatxh"
         data-title="Anatomy of an AI Financial Analyst: From Raw Filing to Interactive Dashboard"
         class="article-share-link"
         type="button"
@@ -728,7 +691,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html"
-        data-id="cmbwuivh800098q691tu6992z"
+        data-id="cmbwulr7r0009q769afeehzqr"
         data-title="LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner"
         class="article-share-link"
         type="button"
@@ -813,7 +776,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html"
-        data-id="cmbwuivhs00228q69074bfj20"
+        data-id="cmbwulr8b0022q769hisi0pj9"
         data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources"
         class="article-share-link"
         type="button"
@@ -894,7 +857,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html"
-        data-id="cmbwuivhs00238q69a3gqc6x1"
+        data-id="cmbwulr8b0023q7697qrdh0cg"
         data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project"
         class="article-share-link"
         type="button"
@@ -975,7 +938,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/18/Inomad%20Dairy/04-Infrastructure/02-Implementation/Azure%20Setup.html"
-        data-id="cmbwuivhr00208q69h3rv6drk"
+        data-id="cmbwulr8a0020q76950eg5t1f"
         data-title="Inomad Diary-04-Infrastructure-02-Implementations-01-Azure Setup"
         class="article-share-link"
         type="button"
