@@ -112,6 +112,131 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
           <section class="post-container" id="main">
   
     <article
+  id="post-AI LLM/persistent-database"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2025-06-14T22:15:27.000Z" itemprop="datePublished">2025-06-14</time>
+  <br>
+  
+  Updated: <time class="dt-published" datetime="2025-06-14T23:05:58.066Z" itemprop="datePublished">2025-06-15</time>
+  
+</p>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Project-Update/">Project Update</a>
+  </div>
+
+  </div>
+  <hr />
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2025/06/14/AI%20LLM/persistent-database.html">Refactoring for Resilience: Introducing a Database Caching Layer</a>
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>For our financial analysis tool, the latest series of updates focuses on an architectural enhancement: the integration of a persistent database layer for caching, performance tracking, and data retention. This post details the changes, the rationale behind them, and how they set the stage for future development.</p>
+<h3 id="The-Problem-The-Cost-of-Being-Stateless">The Problem: The Cost of Being Stateless</h3>
+<p>Previously, our application performed a complete, on-demand analysis for every API request. While this ensured the data was always fresh, it had significant drawbacks:</p>
+<ol>
+<li><strong>High Latency:</strong> Every request, even for the same company ticker, would trigger a series of intensive data processing and expensive Large Language Model (LLM) calls.</li>
+<li><strong>Redundant Costs:</strong> Analyzing the same filings repeatedly incurred unnecessary API costs.</li>
+<li><strong>No Historical Context:</strong> It was impossible to look back at a previous analysis or compare results over time without re-running the entire process.</li>
+<li><strong>Poential Machine Learning Model (ML) Drift:</strong> As the underlying data changed, the application had no way to track how analyses evolved over time.</li>
+</ol>
+<p>The solution was clear: we needed a caching layer. Instead of a simple key-value store, I opted for a more structured solution using a SQLite database with SQLAlchemy.</p>
+<h3 id="The-Solution-A-New-Database-Driven-Architecture">The Solution: A New Database-Driven Architecture</h3>
+<p>This update introduces a complete database backend to store the results of comprehensive analyses. This is a foundational change that refactors the application’s core logic.</p>
+<h4 id="Key-Components-of-the-New-Architecture">Key Components of the New Architecture:</h4>
+<ul>
+<li>
+<p><strong>Database Models (<code>src/models/database_models.py</code>):</strong> I’ve introduced two SQLAlchemy models: <code>Company</code> and <code>Analysis</code>. The <code>Analysis</code> table is the star of the show, storing not just the JSON blob of a completed analysis, but also the specific parameters used to generate it (<code>include_business</code>, <code>max_10k_history</code>, etc.), performance metrics like <code>cost_usd</code> and <code>processing_time</code>, and a timestamp.</p>
+</li>
+<li>
+<p><strong>Repository Pattern (<code>src/repositories/analysis_repository.py</code>):</strong> To maintain a clean separation of concerns, all direct database interactions are now handled by a new <code>AnalysisRepository</code>. This data access layer abstracts the database logic away from the API endpoints. The router is no longer responsible for how data is stored or retrieved; it simply asks the repository.</p>
+</li>
+<li>
+<p><strong>Intelligent Caching Logic (<code>src/api/routers/dashboard_router.py</code>):</strong> The main <code>comprehensive_analysis</code> endpoint has been significantly enhanced. Before initiating a new analysis, it now queries the <code>AnalysisRepository</code> for an existing result that matches the exact request parameters (ticker, sections to include, history length) and is within a specified age limit (e.g., 24 hours). If a valid entry is found, it’s returned instantly, saving both time and money.</p>
+</li>
+<li>
+<p><strong>Database Initialization (<code>src/db/init_db.py</code>):</strong> The application now automatically initializes the SQLite database and creates the necessary tables on startup, ensuring a smooth first-run experience.</p>
+</li>
+</ul>
+<h3 id="Beyond-Caching-New-Endpoints-and-Robust-Testing">Beyond Caching: New Endpoints and Robust Testing</h3>
+<p>This architectural shift also enabled new features and demanded a higher standard of testing.</p>
+<ul>
+<li>
+<p><strong>Analysis History:</strong> I’ve added a new endpoint, <code>GET /analyses/&#123;ticker&#125;</code>, which allows users to retrieve a history of all previously run analyses for a given company. Another endpoint, <code>DELETE /analyses/&#123;ticker&#125;</code>, provides a way to clear the cache for a specific ticker.</p>
+</li>
+<li>
+<p><strong>Comprehensive Testing (<code>tests/test_analysis_repository.py</code>):</strong> A change this significant requires rigorous testing. I’ve built a full test suite for the <code>AnalysisRepository</code> using <code>pytest</code>. These tests cover everything from basic save-and-retrieve operations to more complex scenarios like ensuring parameter-matching works correctly, stale data is properly filtered by <code>max_age_hours</code>, and database relationships are sound.</p>
+</li>
+</ul>
+<h3 id="Retiring-Old-Code">Retiring Old Code</h3>
+<p>With the introduction of this more sophisticated database layer, the old, file-based <code>OpenAICacheManager</code> has been deprecated. The new repository caches the entire, final analysis object, which is a much more efficient and powerful approach than caching individual, intermediate LLM calls.</p>
+<h3 id="Final-Thoughts">Final Thoughts</h3>
+<p>This change lays the groundwork for numerous future enhancements, such as tracking analysis changes over time, building more complex data visualizations, and providing deeper historical insights even for building machine learning models.</p>
+ 
+    </div>
+    <footer class="article-footer">
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2025/06/14/AI%20LLM/persistent-database.html"
+        data-id="cmbwuivh700068q698lccb6tu"
+        data-title="Refactoring for Resilience: Introducing a Database Caching Layer"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
+        </svg>
+      </button>
+        
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/Python/">#Python</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/FastAPI/">#FastAPI</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/SQLAlchemy/">#SQLAlchemy</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Caching/">#Caching</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Refactoring/">#Refactoring</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Software-Engineering/">#Software Engineering</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+ 
+
+  
+    <article
   id="post-AI LLM/project-demo"
   class="h-entry article article-type-post"
   itemprop="blogPost"
@@ -156,7 +281,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/10/AI%20LLM/project-demo.html"
-        data-id="cmbpp4bsg000575698yc3f0u6"
+        data-id="cmbwuivh600058q69gq9d5rct"
         data-title="Seeing is Believing: A Tale of Two Demos (and the Power of Caching)"
         class="article-share-link"
         type="button"
@@ -238,7 +363,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/09/AI%20LLM/from-sequential-to-supersonic.html"
-        data-id="cmbpp4bsc00017569htg16xu5"
+        data-id="cmbwuivh200018q690gfocdhn"
         data-title="From Sequential to Supersonic: A Developer&#39;s Journey into Parallel LLM Queries"
         class="article-share-link"
         type="button"
@@ -327,7 +452,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/08/AI%20LLM/refining-the-filing-cache.html"
-        data-id="cmbpp4bsh000975691iq3gxi6"
+        data-id="cmbwuivh9000a8q69912d2hjq"
         data-title="Debugging the Engine: Fixing a Broken Filing Cache"
         class="article-share-link"
         type="button"
@@ -354,9 +479,9 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
       <li class="article-tag-list-item"><a href="/tags/AI/">#AI</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/Optimization/">#Optimization</a></li>
-    
       <li class="article-tag-list-item"><a href="/tags/Caching/">#Caching</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Optimization/">#Optimization</a></li>
     
       <li class="article-tag-list-item"><a href="/tags/Copilot/">#Copilot</a></li>
     
@@ -422,7 +547,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html"
-        data-id="cmbpp4bsf000475691p7310iu"
+        data-id="cmbwuivh500048q6996f68kvh"
         data-title="Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst"
         class="article-share-link"
         type="button"
@@ -507,7 +632,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html"
-        data-id="cmbpp4bsa00007569htftdh3b"
+        data-id="cmbwuivgz00008q69d4ms62z4"
         data-title="Anatomy of an AI Financial Analyst: From Raw Filing to Interactive Dashboard"
         class="article-share-link"
         type="button"
@@ -603,7 +728,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/07/AI%20LLM/project-inception-ai-financial-analyst.html"
-        data-id="cmbpp4bsg00067569cmlt2agj"
+        data-id="cmbwuivh800098q691tu6992z"
         data-title="LLM Learning Journey: Building an LLM-powered Financial Analyst with an AI Coding Partner"
         class="article-share-link"
         type="button"
@@ -688,7 +813,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/23/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20Resources.html"
-        data-id="cmbpp4bsw001y756905whhfi4"
+        data-id="cmbwuivhs00228q69074bfj20"
         data-title="Inomad Diary-04-Infrastructure-02-Implementations-03-Create Resources"
         class="article-share-link"
         type="button"
@@ -769,7 +894,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/19/Inomad%20Dairy/04-Infrastructure/02-Implementation/Create%20a%20Pulumi%20Project.html"
-        data-id="cmbpp4bsw002075690onqa83h"
+        data-id="cmbwuivhs00238q69a3gqc6x1"
         data-title="Inomad Diary-04-Infrastructure-02-Implementations-02-Create a Pulumi Project"
         class="article-share-link"
         type="button"
@@ -850,7 +975,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2024/07/18/Inomad%20Dairy/04-Infrastructure/02-Implementation/Azure%20Setup.html"
-        data-id="cmbpp4bsw001w7569hqcl31qs"
+        data-id="cmbwuivhr00208q69h3rv6drk"
         data-title="Inomad Diary-04-Infrastructure-02-Implementations-01-Azure Setup"
         class="article-share-link"
         type="button"
@@ -885,85 +1010,6 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
  
 
   
-    <article
-  id="post-Investment/02-Stocks/02-Individual Stock Analysis/Final Score"
-  class="h-entry article article-type-post"
-  itemprop="blogPost"
-  itemscope
-  itemtype="https://schema.org/BlogPosting"
->
-  <div class="article-meta">
-    
-
-<p class="article-date">
-  Published: <time class="dt-published" datetime="2024-07-17T10:10:15.000Z" itemprop="datePublished">2024-07-17</time>
-  <br>
-  
-  Updated: <time class="dt-published" datetime="2025-06-08T09:08:57.000Z" itemprop="datePublished">2025-06-08</time>
-  
-</p>
-    
-  </div>
-  <hr />
-  <div class="article-inner">
-     
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Final%20Score.html">Investment-02-Stocks-04-Final Score</a>
-    </h1>
-  
-
-    </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
-<p>This post will conduct the final section of the weighted score calculation for an individual stock, which is the Final Score. The actual final score in this case does not matter since all the data is searched and represented by ChatGPT, of which the accuracy is not guaranteed. I will provide the considerations and next steps instead to further guide the investment decision-making process.</p> 
-      <p class="article-more-link">
-        <a href="/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Final%20Score.html#more">Read More &gt;&gt;</a>
-      </p>
-       
-    </div>
-    <footer class="article-footer">
-      <button
-        title="Share"
-        data-url="https://zhicheng-wang.com/2024/07/17/Investment/02-Stocks/02-Individual%20Stock%20Analysis/Final%20Score.html"
-        data-id="cmbpp4bsy002475699diz9j8c"
-        data-title="Investment-02-Stocks-04-Final Score"
-        class="article-share-link"
-        type="button"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="1.2em"
-          viewBox="0 0 448 512"
-        >
-          <path
-            fill="#ffffff"
-            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
-          />
-        </svg>
-      </button>
-        
-  <ul class="article-tag-list">
-    
-      <li class="article-tag-list-item"><a href="/tags/Investment/">#Investment</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/Stocks/">#Stocks</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/Individual-Stock-Analysis/">#Individual Stock Analysis</a></li>
-    
-  </ul>
-
-    </footer>
-  </div>
-  
-</article>
-
- 
-
-  
 
 
   <nav id="page-nav">
@@ -978,7 +1024,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   <div class="widget-wrap">
     <p class="widget-title">Categories</p>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Projects/">AI Projects</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Projects/">AI Projects</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Project-Update/">Project Update</a></li></ul>
     </div>
   </div>
 
@@ -989,6 +1035,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     <p class="widget-title">Recent Posts</p>
     <div class="widget">
       <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/14/AI%20LLM/persistent-database.html">Refactoring for Resilience: Introducing a Database Caching Layer</a>
+          </li>
         
           <li class="recent-post-list-item">
             <a href="/2025/06/10/AI%20LLM/project-demo.html">Seeing is Believing: A Tale of Two Demos (and the Power of Caching)</a>
@@ -1004,10 +1054,6 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
         
           <li class="recent-post-list-item">
             <a href="/2025/06/07/AI%20LLM/measuring-what-matters-evaluation-and-cost-tracking.html">Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst</a>
-          </li>
-        
-          <li class="recent-post-list-item">
-            <a href="/2025/06/07/AI%20LLM/anatomy-of-an-ai-financial-analyst.html">Anatomy of an AI Financial Analyst: From Raw Filing to Interactive Dashboard</a>
           </li>
         
       </ul>
