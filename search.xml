@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Mess in Financial Filings: A new Challenges of Data Extraction</title>
+      <link href="/2025/06/19/AI%20LLM/mess-in-financial-filings.html"/>
+      <url>/2025/06/19/AI%20LLM/mess-in-financial-filings.html</url>
+      
+        <content type="html"><![CDATA[<p>In the world of financial data extraction, the challenge of parsing and interpreting complex documents is ever-present. As I continue to refine my financial analysis tool, I’ve encountered a new set of challenges that highlight the messy nature of financial filings. This post delves into these issues and how they impact the accuracy and reliability of data extraction.</p><span id="more"></span><h3 id="The-Messy-Reality-of-Financial-Filings">The Messy Reality of Financial Filings</h3><p>Today I faced a particularly messy issue while extracting 10-K financials from a company’s filings. (Yes, 10-Qs don’t have such issue) There is a form called XBRL, which is an XML-based format used for financial reporting. While it is designed to be machine-readable, the reality is that these filings can be incredibly complex and inconsistent.</p><p>There is a specific case where you want to extract the labels from the Index of the XBRL document. These labels are supposed to be standardized like <code>concept</code>, <code>label</code>, <code>level</code>, <code>abstract</code>, <code>dimension</code>, and <code>date</code> which in this case is in <code>yy-mm-dd</code> format.</p><p>Ideal format:</p><pre class="line-numbers language-none"><code class="language-none">Index([&#39;concept&#39;, &#39;label&#39;, &#39;2025-03-31&#39;, &#39;level&#39;, &#39;abstract&#39;,       &#39;dimension&#39;],      dtype&#x3D;&#39;object&#39;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>But in practice, the labels can be messy. For example, I encountered a case where the label for the date was formatted as <code>2025-03-31</code> but also had an additional label <code>2024-12-31</code> that was not in the expected format. And there were also labels like <code>2025-03-31 (Q1)</code> which were not in the expected format either.</p><p>Real format copied from my logs:</p><pre class="line-numbers language-none"><code class="language-none">Columns in statement:[&#39;concept&#39;, &#39;label&#39;, &#39;2022-12-31&#39;, &#39;2021-12-31&#39;, &#39;2020-12-31&#39;, &#39;level&#39;, &#39;abstract&#39;, &#39;dimension&#39;]Columns in statement: [&#39;concept&#39;, &#39;label&#39;, &#39;2022-06-30&#39;, &#39;level&#39;, &#39;abstract&#39;, &#39;dimension&#39;]Columns in statement: [&#39;concept&#39;, &#39;label&#39;, &#39;2022-06-30 (Q2)&#39;, &#39;2022-06-30&#39;, &#39;level&#39;, &#39;abstract&#39;, &#39;dimension&#39;]Columns in statement: [&#39;concept&#39;, &#39;label&#39;, &#39;2022-12-31&#39;, &#39;2021-12-31&#39;, &#39;level&#39;, &#39;abstract&#39;, &#39;dimension&#39;]<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="Temporary-Solution-and-Manual-Intervention">Temporary Solution and Manual Intervention</h3><p>The solution to this problem is not straightforward. It requires a combination of heuristics and manual intervention to clean up the data. The steps I took at this moment:</p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"Columns in statement:"</span><span class="token punctuation">,</span> statement<span class="token punctuation">.</span>columns<span class="token punctuation">.</span>tolist<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment"># The columns are expected to be in the order:</span> <span class="token comment"># 'concept', 'label', &lt;date_columns...>, 'level', 'abstract', 'dimension'</span> <span class="token comment"># We want to keep the first date column, which represents the most recent period.</span> <span class="token comment"># Find the index of the 'level' column. If not found, this will raise a KeyError,</span> <span class="token comment"># which is caught below.</span> level_index <span class="token operator">=</span> statement<span class="token punctuation">.</span>columns<span class="token punctuation">.</span>get_loc<span class="token punctuation">(</span><span class="token string">"level"</span><span class="token punctuation">)</span> <span class="token comment"># The date columns are between 'label' (index 1) and 'level'.</span> <span class="token comment"># So they start at index 2.</span> date_columns <span class="token operator">=</span> statement<span class="token punctuation">.</span>columns<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">:</span>level_index<span class="token punctuation">]</span> <span class="token keyword">if</span> <span class="token keyword">not</span> date_columns<span class="token punctuation">.</span>empty<span class="token punctuation">:</span>     <span class="token comment"># The first date column is the most recent period, which is what we want.</span>     latest_date_col <span class="token operator">=</span> date_columns<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>     columns_to_keep <span class="token operator">=</span> <span class="token punctuation">[</span>         <span class="token string">"concept"</span><span class="token punctuation">,</span>         <span class="token string">"label"</span><span class="token punctuation">,</span>         latest_date_col<span class="token punctuation">,</span>         <span class="token string">"level"</span><span class="token punctuation">,</span>         <span class="token string">"abstract"</span><span class="token punctuation">,</span>         <span class="token string">"dimension"</span><span class="token punctuation">,</span>     <span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>At this point, I had to manually inspect the columns and decide which ones to keep. This is not ideal, but it is a reality of working with messy financial data and the more true fact is this situation may not be the last time I encounter such inconsistencies.</p><p>The best way to handle this is probably to select the biggest date column and then check if the other date columns are in the expected format. If they are not, we can either drop them or keep them for further analysis. And there is also one exception where the date column is in the format <code>2025-03-31 (Q1)</code>. In this case, we have to extract the date part from here instead of the similar column <code>2025-03-31</code> as the data in this column is not the expected ones.</p><h3 id="Final-Thoughts">Final Thoughts</h3><p>After roughly 2 hours of debugging and manual intervention, I was able to extract the right financials from the filings. Again, why 10-Qs don’t have such issue but only 10-Ks? I don’t know. But this seems become a norm for me to encounter while dealing with financial data.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Project Update </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> Data Extraction </tag>
+            
+            <tag> Financial Filings </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Reading Notes: Thinking, Fast and Slow by Daniel Kahneman</title>
       <link href="/2025/06/18/Reading/think-fast-and-slow.html"/>
       <url>/2025/06/18/Reading/think-fast-and-slow.html</url>
@@ -51,9 +80,9 @@
             
             <tag> FastAPI </tag>
             
-            <tag> Caching </tag>
-            
             <tag> SQLAlchemy </tag>
+            
+            <tag> Caching </tag>
             
             <tag> Refactoring </tag>
             
@@ -154,9 +183,9 @@
             
             <tag> AI </tag>
             
-            <tag> Optimization </tag>
-            
             <tag> Caching </tag>
+            
+            <tag> Optimization </tag>
             
             <tag> Copilot </tag>
             
