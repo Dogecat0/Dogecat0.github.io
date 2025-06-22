@@ -4,6 +4,43 @@
   
     
     <entry>
+      <title>The Illusion of Quarterly Data: Correctly Calculating Financials from SEC Filings</title>
+      <link href="/2025/06/22/AI%20LLM/illustion-of-quaterly-data.html"/>
+      <url>/2025/06/22/AI%20LLM/illustion-of-quaterly-data.html</url>
+      
+        <content type="html"><![CDATA[<p>When building financial analysis tools, one of the most common and dangerous assumptions is that the financial data you receive—whether from an API or directly from SEC filings—represents discrete, isolated time periods. A “Q2” report, for instance, should contain data only for the second quarter. Right?</p><p>Unfortunately, this is often not the case. Raw SEC filings, specifically the quarterly <code>10-Q</code> and annual <code>10-K</code> reports, follow reporting rules that can be misleading if taken at face value. In this post, I’ll walk through the challenges of parsing these documents and present a robust Python solution to derive true, discrete quarterly financial figures.</p><span id="more"></span><h3 id="The-Core-Problem-Cumulative-vs-Discrete-Data">The Core Problem: Cumulative vs. Discrete Data</h3><p>The primary challenge lies in how different financial statements are reported throughout a fiscal year.</p><ol><li><p><strong>Income Statement</strong>: This is generally straightforward. A <code>10-Q</code> income statement covers the specific three-month period. However, the <code>10-K</code> income statement covers the <strong>entire twelve-month fiscal year</strong>, not just the fourth quarter. To get true Q4 data, you must manually calculate it:<br><code>Q4 = Annual (10-K) - Q1 - Q2 - Q3</code></p></li><li><p><strong>Cash Flow Statement &amp; Statement of Changes in Equity</strong>: These are the tricky ones. They are almost always reported on a <strong>cumulative, year-to-date basis</strong>.</p><ul><li>The <strong>Q1</strong> report shows data for the first three months.</li><li>The <strong>Q2</strong> report shows data for the <strong>first six months</strong> (<code>Q1 + actual Q2</code>).</li><li>The <strong>Q3</strong> report shows data for the <strong>first nine months</strong> (<code>Q2_cumulative + actual Q3</code>).</li><li>The <strong><code>10-K</code></strong> shows data for the full twelve months.</li></ul></li></ol><p>To get the actual data for each quarter, you must perform sequential subtraction:</p><ul><li><code>Actual Q2 = Q2_cumulative - Q1_cumulative</code></li><li><code>Actual Q3 = Q3_cumulative - Q2_cumulative</code></li><li><code>Actual Q4 = Annual (10-K) - Q3_cumulative</code></li></ul><h3 id="The-First-Trap-Assuming-a-Calendar-Year">The First Trap: Assuming a Calendar Year</h3><p>My initial approach was to group all filings by their calendar year (<code>2023</code>, <code>2024</code>, etc.) and perform the calculations within each group. This failed immediately.</p><p><strong>Why it’s wrong:</strong> Many companies (like Microsoft, Adobe, and Nike) have fiscal years that don’t align with the calendar year. A company’s fiscal year might run from July to June. Grouping by calendar year would split a single fiscal year’s filings into two different groups, making all subsequent calculations incorrect.</p><h3 id="The-Golden-Principle-Sequential-Grouping-by-10-K">The Golden Principle: Sequential Grouping by <code>10-K</code></h3><p>The correct approach is to ignore calendar dates for grouping and instead use the filings’ own reporting sequence. A fiscal year of reports follows a reliable pattern:</p><blockquote><p><strong>Three <code>10-Q</code> filings are followed by one <code>10-K</code> filing.</strong></p></blockquote><p>This <code>10-K</code> serves as the delimiter for a complete fiscal period. By processing a chronologically sorted list of filings, we can group them into fiscal years by collecting all <code>10-Q</code>s until we encounter a <code>10-K</code>, which concludes that group.</p><h3 id="The-Python-Implementation">The Python Implementation</h3><p>I implemented the logic with the help of Gemini in our FastAPI backend. The goal is to create a function, <code>_calculate_quarterly_figures</code>, that takes a list of formatted financial statement objects and returns a new list with the data adjusted.</p><p>First, a simple helper to subtract metrics from one statement dictionary using another.</p><p>Then, the main function that implements the sequential grouping and then applies our calculation rules.</p><p>The actual implementation is <code>straightforward</code> with the power of Gemini, but the logic is crucial.</p><h3 id="Key-Takeaways">Key Takeaways</h3><ol><li><strong>Understand Reporting Rules</strong>: Always be aware of how financial statements are reported. Don’t assume that a <code>10-Q</code> or <code>10-K</code> contains only the data which is well defined and formatted. Always check the reporting period and cumulative nature (or other kind) of the data.</li><li><strong>Group by Fiscal Year, Not Calendar Year</strong>: Use the <code>10-K</code> as the delimiter for fiscal years. This ensures that you correctly group all filings related to a single fiscal year.</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> Technical Deep Dive </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> FastAPI </tag>
+            
+            <tag> Finance </tag>
+            
+            <tag> Data Engineering </tag>
+            
+            <tag> SEC </tag>
+            
+            <tag> 10-K </tag>
+            
+            <tag> 10-Q </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Mess in SEC Financial Filings: A new Challenge of Data Extraction</title>
       <link href="/2025/06/19/AI%20LLM/mess-in-financial-filings.html"/>
       <url>/2025/06/19/AI%20LLM/mess-in-financial-filings.html</url>
@@ -833,11 +870,11 @@
             
             <tag> Django </tag>
             
+            <tag> JavaScript </tag>
+            
             <tag> Form </tag>
             
             <tag> Formset </tag>
-            
-            <tag> JavaScript </tag>
             
         </tags>
       
@@ -902,9 +939,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> Nodejs </tag>
             
@@ -927,9 +964,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -952,9 +989,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -977,9 +1014,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -1002,9 +1039,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -1027,9 +1064,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -1052,9 +1089,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -1075,9 +1112,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -1117,9 +1154,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
         </tags>
       
@@ -1138,9 +1175,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
             <tag> React </tag>
             
@@ -1161,9 +1198,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
         </tags>
       
@@ -1182,9 +1219,9 @@
       
         <tags>
             
-            <tag> JavaScript </tag>
-            
             <tag> Full Stack </tag>
+            
+            <tag> JavaScript </tag>
             
         </tags>
       
