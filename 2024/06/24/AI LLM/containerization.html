@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HENBHMXMT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0HENBHMXMT');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>Containerization: A Case Study in Environment and Configuration Management | Zhicheng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
+  <meta name="description" content="Today’s objective was to containerize a Python-based SEC filing analysis application to ensure a consistent and reproducible runtime environment. This process involved not only creating the necessary">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Containerization: A Case Study in Environment and Configuration Management">
+<meta property="og:url" content="https://zhicheng-wang.com/2024/06/24/AI%20LLM/containerization.html">
+<meta property="og:site_name" content="Zhicheng&#39;s Blog">
+<meta property="og:description" content="Today’s objective was to containerize a Python-based SEC filing analysis application to ensure a consistent and reproducible runtime environment. This process involved not only creating the necessary">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-06-24T19:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-25T00:00:08.629Z">
+<meta property="article:author" content="Zhicheng Wang">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="Docker">
+<meta property="article:tag" content="Docker Compose">
+<meta property="article:tag" content="Configuration Management">
+<meta property="article:tag" content="Environment Variables">
+<meta property="article:tag" content="Troubleshooting">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/output.css">
+
+  
+    <link rel="stylesheet" href="/css/prism.css">
+    <script src="/js/prism.js"></script>
+  
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body class="body">
+    <div id="container" class="container">
+      <div id="wrap">
+        <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="header-title-group inner">
+      <p id="logo-wrap" class="header-title">
+        Zhicheng&#39;s Blog
+        <!-- <a href="/" id="logo">Zhicheng&#39;s Blog</a> -->
+      </p>
+      
+        <p id="subtitle-wrap" class="header-subtitle">
+          A Chronicles of a Self-taught Programmer: Learn to Debug Life
+          <!-- <a href="/" id="subtitle">A Chronicles of a Self-taught Programmer: Learn to Debug Life</a> -->
+        </p>
+      
+      
+        <p id="description-wrap" class="header-description">
+          Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity (and LLM&#39;s endless patience), bolstered by my humble attitude of learning (with millions of searches on Google),
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+
+✉️: zcmmwang@gmail.com
+
+          <!-- <a href="/" id="description">Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity (and LLM&#39;s endless patience), bolstered by my humble attitude of learning (with millions of searches on Google),
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+
+✉️: zcmmwang@gmail.com
+</a> -->
+        </p>
+      
+    </div>
+    <div id="header-inner" class="nav-menu inner">
+      <nav id="main-nav" class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      
+    <div id="site_search" class="site-search">
+     <div class="form-group" class="site-search-input">
+      <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+     </div>  
+    <div id="local-search-result" class="local-search-result"></div>
+    </div>
+  
+    </div>
+  </div>
+</header>
+
+        <div class="outer">
+          <section class="post-container" id="main"><article
+  id="post-AI LLM/containerization"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2024-06-24T19:00:00.000Z" itemprop="datePublished">2024-06-24</time>
+  <br>
+  
+  Updated: <time class="dt-published" datetime="2025-06-25T00:00:08.629Z" itemprop="datePublished">2025-06-25</time>
+  
+</p>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AI-Projects/">AI Projects</a>
+  </div>
+
+  </div>
+  <hr />
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Containerization: A Case Study in Environment and Configuration Management
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>Today’s objective was to containerize a Python-based SEC filing analysis application to ensure a consistent and reproducible runtime environment. This process involved not only creating the necessary Docker artifacts but also refactoring the application’s configuration to adhere to best practices for handling secrets and environment-specific variables.</p>
+<span id="more"></span>
+<h3 id="Initial-Containerization-and-Refactoring">Initial Containerization and Refactoring</h3>
+<p>The first phase of the work focused on establishing the foundational components for containerization and improving the project’s production readiness.</p>
+<p>The key commits included:</p>
+<ol>
+<li><strong>Addition of <code>Dockerfile</code> and <code>docker-compose.yml</code>:</strong> Standard files were created to define the application’s image and orchestrate the service stack, respectively. The <code>Dockerfile</code> is based on a Python image, installs dependencies from <code>requirements.txt</code>, and defines the container’s entry point.</li>
+<li><strong>Dependency Management for Production:</strong> The <code>psycopg2-binary</code> package was added to <code>requirements.txt</code>. This is a critical step to move from a development-time database like SQLite to a production-grade PostgreSQL database, which the Docker environment is configured to use.</li>
+<li><strong>Configuration Handling:</strong> Environment variable management within the application’s Python code (<code>main.py</code>, <code>database.py</code>) was refactored to rely on a centralized configuration system, anticipating the need to inject variables from the Docker environment.</li>
+<li><strong>Source Control Hygiene:</strong> The <code>.gitignore</code> file was updated to exclude a broader range of files and artifacts, such as IDE configurations, environment files (<code>.env</code>), and cache directories, keeping the repository clean.</li>
+</ol>
+<h3 id="The-Core-Challenge-Propagating-Secrets-to-the-Container">The Core Challenge: Propagating Secrets to the Container</h3>
+<p>Upon the initial <code>docker-compose up</code>, the application failed with an error indicating a missing API key for the OpenAI/OpenRouter service.</p>
+<p><strong>Investigation:</strong><br>
+The root cause was identified quickly: the API credentials were hardcoded in a <code>launch.json</code> file, which is used exclusively by the VS Code debugger. These variables are not present in the runtime environment when the application is executed directly or via Docker.</p>
+<p><strong>Solution:</strong><br>
+The standard and most secure practice is to decouple secrets and configuration from the application code and development tools. The following steps were executed to resolve the issue:</p>
+<ol>
+<li>
+<p><strong>Centralize Secrets in <code>.env</code>:</strong> All environment-specific variables, including the existing <code>DATABASE_URL</code> and the new LLM credentials (<code>LLM_MODEL</code>, <code>OPENAI_API_KEY</code>, <code>OPENAI_BASE_URL</code>), were consolidated into a <code>.env</code> file at the project root. This file is explicitly excluded from version control by <code>.gitignore</code>.</p>
+</li>
+<li>
+<p><strong>Update <code>docker-compose.yml</code>:</strong> While Docker Compose automatically loads variables from a <code>.env</code> file in the same directory, it is best practice to explicitly pass them to the service for clarity and control. The <code>web</code> service definition in <code>docker-compose.yml</code> was updated to pass the LLM-related environment variables to the container.</p>
+</li>
+<li>
+<p><strong>Update Application Configuration (<code>config.py</code>):</strong> The application’s Pydantic-based settings module (<code>config.py</code>) was extended. The <code>Settings</code> class was modified to load <code>LLM_MODEL</code>, <code>OPENAI_API_KEY</code>, and <code>OPENAI_BASE_URL</code> from the environment, making them available to the application logic in a structured and validated manner.</p>
+</li>
+</ol>
+<p>This three-step process—<code>.env</code> -&gt; <code>docker-compose.yml</code> -&gt; <code>config.py</code>—establishes a robust and conventional pattern for managing configuration that works seamlessly across local development and containerized environments.</p>
+<h3 id="A-Note-on-Local-Environment-Troubleshooting">A Note on Local Environment Troubleshooting</h3>
+<p>A secondary challenge encountered during this process was related to the local Docker setup on Ubuntu. Initial commands failed with <code>permission denied... docker.sock</code>, which evolved into <code>protocol not available</code> after switching contexts.</p>
+<p>This is a common issue for users of Docker Desktop on Linux. The CLI was initially trying to connect to the traditional Docker daemon socket (<code>/var/run/docker.sock</code>), which was not running. The correct target was the Docker Desktop VM, managed via the <code>desktop-linux</code> context.</p>
+<p>The persistent <code>protocol not available</code> error indicated that the Docker Desktop backend service itself had entered a faulty state. The resolution was to perform a <strong>Clean / Purge data</strong> from the Docker Desktop troubleshooter. This action resets the Docker engine, deleting all images and containers, but resolves underlying data corruption.</p>
+<h3 id="Conclusion">Conclusion</h3>
+<p>The primary goal of containerizing the application was achieved. The key takeaway is the critical importance of a well-defined configuration management strategy. Hardcoding secrets or relying on IDE-specific features for environment setup is brittle and will fail in a true deployment pipeline. By abstracting configuration into a <code>.env</code> file and systematically propagating it through the container orchestration layer into the application, we have a more portable, secure, and production-ready system.</p>
+ 
+    </div>
+    <footer class="article-footer">
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2024/06/24/AI%20LLM/containerization.html"
+        data-id="cmcb6umzs0001tn699mwifpxy"
+        data-title="Containerization: A Case Study in Environment and Configuration Management"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
+        </svg>
+      </button>
+        
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/Python/">#Python</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Docker/">#Docker</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Docker-Compose/">#Docker Compose</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Configuration-Management/">#Configuration Management</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Environment-Variables/">#Environment Variables</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Troubleshooting/">#Troubleshooting</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+   
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2024/06/30/Inomad%20Dairy/04-Infrastructure/01-Readings/CDN%20and%20Networking.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Inomad Diary-04-Infrastructure-01-Readings-CDN and Networking
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/05/29/Inomad%20Dairy/04-Infrastructure/01-Readings/Storage%20Technologies%20in%20Cloud.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Inomad Diary-04-Infrastructure-01-Readings-Storage Technologies in Cloud</div>
+    </a>
+  
+</nav>
+ 
+</article>
+
+ 
+</section>
+           <aside class="sidebar" id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Categories</p>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Projects/">AI Projects</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Project-Update/">Project Update</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Project-Update/AI-Projects/">AI Projects</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Technical-Deep-Dive/">Technical Deep Dive</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/Technical-Deep-Dive/AI-Projects/">AI Projects</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Recent Posts</p>
+    <div class="widget">
+      <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/22/AI%20LLM/illustion-of-quaterly-data.html">The Illusion of Quarterly Data: Correctly Calculating Financials from SEC Filings</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/19/AI%20LLM/mess-in-financial-filings.html">Mess in SEC Financial Filings: A new Challenge of Data Extraction</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/18/Reading/think-fast-and-slow.html">Reading Notes: Thinking, Fast and Slow by Daniel Kahneman</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/14/AI%20LLM/persistent-database.html">Refactoring for Resilience: Introducing a Database Caching Layer</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/10/AI%20LLM/project-demo.html">Seeing is Believing: A Tale of Two Demos (and the Power of Caching)</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+          
+        </div>
+        <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner footer-info">
+      
+      &copy; 2025 Zhicheng Wang<br>
+      <div>
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div>
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav> 
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<!-- 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+ -->
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+    </div>
+  </body>
+</html>
