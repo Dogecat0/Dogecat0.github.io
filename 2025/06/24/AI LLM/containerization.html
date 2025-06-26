@@ -26,7 +26,7 @@
 <meta property="og:description" content="Today’s objective was to containerize the SEC filing analysis application to ensure a consistent and reproducible runtime environment. This process involved not only creating the necessary Docker arti">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-06-24T19:00:00.000Z">
-<meta property="article:modified_time" content="2025-06-25T00:08:06.970Z">
+<meta property="article:modified_time" content="2025-06-26T21:09:46.786Z">
 <meta property="article:author" content="Zhicheng Wang">
 <meta property="article:tag" content="Python">
 <meta property="article:tag" content="Docker">
@@ -131,7 +131,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   Published: <time class="dt-published" datetime="2025-06-24T19:00:00.000Z" itemprop="datePublished">2025-06-24</time>
   <br>
   
-  Updated: <time class="dt-published" datetime="2025-06-25T00:08:06.970Z" itemprop="datePublished">2025-06-25</time>
+  Updated: <time class="dt-published" datetime="2025-06-26T21:09:46.786Z" itemprop="datePublished">2025-06-26</time>
   
 </p>
     
@@ -188,14 +188,14 @@ The standard and most secure practice is to decouple secrets and configuration f
 <p>This is a common issue for users of Docker Desktop on Linux. The CLI was initially trying to connect to the traditional Docker daemon socket (<code>/var/run/docker.sock</code>), which was not running. The correct target was the Docker Desktop VM, managed via the <code>desktop-linux</code> context.</p>
 <p>The persistent <code>protocol not available</code> error indicated that the Docker Desktop backend service itself had entered a faulty state. The resolution was to perform a <strong>Clean / Purge data</strong> from the Docker Desktop troubleshooter. This action resets the Docker engine, deleting all images and containers, but resolves underlying data corruption.</p>
 <h3 id="Conclusion">Conclusion</h3>
-<p>The primary goal of containerizing the application was achieved. The key takeaway is the critical importance of a well-defined configuration management strategy. Hardcoding secrets or relying on IDE-specific features for environment setup is brittle and will fail in a true deployment pipeline. By abstracting configuration into a <code>.env</code> file and systematically propagating it through the container orchestration layer into the application, we have a more portable, secure, and production-ready system.</p>
+<p>The primary goal of containerizing the application was achieved. The key takeaway is the critical importance of a well-defined configuration management strategy. But again, like many things in software development, the process always involves unexpected challenges and debugging efforts.</p>
  
     </div>
     <footer class="article-footer">
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/06/24/AI%20LLM/containerization.html"
-        data-id="cmcb74r52000188695z8fclku"
+        data-id="cmcdvmypl0001d16959kff81m"
         data-title="Containerization: A Case Study in Environment and Configuration Management"
         class="article-share-link"
         type="button"
