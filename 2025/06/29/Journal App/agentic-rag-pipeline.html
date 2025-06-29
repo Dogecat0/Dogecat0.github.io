@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HENBHMXMT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0HENBHMXMT');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>Building an Agentic RAG Pipeline for Journal Analysis | Zhicheng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
+  <meta name="description" content="Today, I implemented one of the new features proposed on roadmap in my personal journal analysis app: a semantic search and synthesis engine. Instead of a traditional keyword search, I opted for an “A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Building an Agentic RAG Pipeline for Journal Analysis">
+<meta property="og:url" content="https://zhicheng-wang.com/2025/06/29/Journal%20App/agentic-rag-pipeline.html">
+<meta property="og:site_name" content="Zhicheng&#39;s Blog">
+<meta property="og:description" content="Today, I implemented one of the new features proposed on roadmap in my personal journal analysis app: a semantic search and synthesis engine. Instead of a traditional keyword search, I opted for an “A">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-29T21:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-29T21:56:14.540Z">
+<meta property="article:author" content="Zhicheng Wang">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Agentic RAG">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/output.css">
+
+  
+    <link rel="stylesheet" href="/css/prism.css">
+    <script src="/js/prism.js"></script>
+  
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body class="body">
+    <div id="container" class="container">
+      <div id="wrap">
+        <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="header-title-group inner">
+      <p id="logo-wrap" class="header-title">
+        Zhicheng&#39;s Blog
+        <!-- <a href="/" id="logo">Zhicheng&#39;s Blog</a> -->
+      </p>
+      
+        <p id="subtitle-wrap" class="header-subtitle">
+          A Chronicles of a 👨‍💻Programmer <b>(with 📊📈Analytical Mindset <s>Who was Once a 🎨🖌️Designer</s>)</b>: Learn to Debug Life
+          <!-- <a href="/" id="subtitle">A Chronicles of a 👨‍💻Programmer &lt;b&gt;(with 📊📈Analytical Mindset &lt;s&gt;Who was Once a 🎨🖌️Designer&lt;/s&gt;)&lt;/b&gt;: Learn to Debug Life</a> -->
+        </p>
+      
+      
+        <p id="description-wrap" class="header-description">
+          Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding <b><s>(with LLMs ofc, what were you expecting?)</s></b> and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity <b><s>(and AI's endless patience)</s></b>, bolstered by my humble attitude of learning <b><s>(with millions of searches on Google)</s></b>,
+I'm pretty confident this debugging process will be wrapped up by the end of this century.
+<br>
+<br>
+✉️: zcmmwang@gmail.com
+<br>
+🌟: <a href="https://github.com/Dogecat0" target="_blank" rel="noopener noreferrer">https://github.com/Dogecat0</a>
+
+          <!-- <a href="/" id="description">Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding &lt;b&gt;&lt;s&gt;(with LLMs ofc, what were you expecting?)&lt;/s&gt;&lt;/b&gt; and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity &lt;b&gt;&lt;s&gt;(and AI&#39;s endless patience)&lt;/s&gt;&lt;/b&gt;, bolstered by my humble attitude of learning &lt;b&gt;&lt;s&gt;(with millions of searches on Google)&lt;/s&gt;&lt;/b&gt;,
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+&lt;br&gt;
+&lt;br&gt;
+✉️: zcmmwang@gmail.com
+&lt;br&gt;
+🌟: &lt;a href=&#34;https://github.com/Dogecat0&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://github.com/Dogecat0&lt;/a&gt;
+</a> -->
+        </p>
+      
+    </div>
+    <div id="header-inner" class="nav-menu inner">
+      <nav id="main-nav" class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      
+    <div id="site_search" class="site-search">
+     <div class="form-group" class="site-search-input">
+      <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+     </div>  
+    <div id="local-search-result" class="local-search-result"></div>
+    </div>
+  
+    </div>
+  </div>
+</header>
+
+        <div class="outer">
+          <section class="post-container" id="main"><article
+  id="post-Journal App/agentic-rag-pipeline"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2025-06-29T21:00:00.000Z" itemprop="datePublished">2025-06-29</time>
+  <br>
+  
+</p>
+    
+  </div>
+  <hr />
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Building an Agentic RAG Pipeline for Journal Analysis
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>Today, I implemented one of the new features proposed on roadmap in my personal journal analysis app: a semantic search and synthesis engine. Instead of a traditional keyword search, I opted for an “Agentic RAG” (Retrieval-Augmented Generation) pipeline. This approach leverages a local LLM (<code>gemma3n:latest</code>) not just for generating text, but for orchestrating the entire search process. This post outlines the design thinking behind this implementation and its future potential.</p>
+<span id="more"></span>
+<h3 id="The-Problem-Bridging-Human-Intent-and-Database-Queries">The Problem: Bridging Human Intent and Database Queries</h3>
+<p>A user usually asks, <em>“What was my progress on the API refactor?”</em> A database, however, requires precise, literal terms. A direct search for “API” and “refactor” would miss relevant entries logged as “updated endpoints” or “fixed backend routes.”</p>
+<p>The core challenge was to translate the user’s high-level <em>intent</em> into a low-level, effective database query without the overhead of maintaining a dedicated vector database.</p>
+<h3 id="The-Solution-A-Two-Agent-Pipeline">The Solution: A Two-Agent Pipeline</h3>
+<p>The current solution was to split the task between two specialized “agents,” each powered by a targeted LLM prompt.</p>
+<p><strong>1. The Query Planner Agent:</strong><br>
+This is the first and most critical step. Its sole responsibility is to act as a “semantic bridge.”</p>
+<ul>
+<li><strong>Input:</strong> The user’s raw, natural language query.</li>
+<li><strong>Task:</strong> Transform the query into a structured JSON array of effective search keywords.</li>
+<li><strong>Prompt Engineering:</strong> The prompt instructs the LLM to identify core concepts, generate synonyms and related technical terms (e.g., “API” -&gt; <code>[&quot;endpoint&quot;, &quot;route&quot;, &quot;backend&quot;]</code>), and discard conversational stop words.</li>
+<li><strong>Output:</strong> A clean array of keywords, like <code>[&quot;api&quot;, &quot;refactor&quot;, &quot;endpoint&quot;, &quot;route&quot;]</code>.</li>
+</ul>
+<p>This agent turns a fuzzy query into a high-signal set of search terms, dramatically improving retrieval recall.</p>
+<p><strong>2. The Synthesizer Agent:</strong><br>
+Once the Planner provides the keywords, we perform a full-text search against the <code>description</code> and <code>notes</code> fields in our PostgreSQL database using Prisma. The top 20 most recent results are then passed to the second agent.</p>
+<ul>
+<li><strong>Input:</strong> The original user query and the context of the top 20 retrieved journal activities.</li>
+<li><strong>Task:</strong> Generate a concise, markdown-formatted summary that directly answers the user’s query.</li>
+<li><strong>Prompt Engineering:</strong> The prompt instructs the model to base its answer <em>only</em> on the provided context, preventing hallucination, and to structure the output for clear presentation.</li>
+<li><strong>Output:</strong> A human-readable summary, ready for the UI.</li>
+</ul>
+<p>This entire pipeline is exposed via a single <code>POST</code> endpoint at <code>/api/journal/search</code>, which is consumed by a new Next.js page with a simple React frontend.</p>
+<h3 id="Design-Trade-offs-and-Future-Optimizations">Design Trade-offs and Future Optimizations</h3>
+<p>This architecture represents a deliberate set of trade-offs:</p>
+<ul>
+<li><strong>Simplicity over Precision:</strong> We avoided the complexity of <code>pgvector</code> and embedding backfills by using the LLM’s reasoning for the initial search. This is simpler to implement but may be less precise than a true vector similarity search.</li>
+<li><strong>Speed over Comprehensiveness:</strong> By limiting the retrieval step to the top 20 activities (<code>take: 20</code>), we ensure a fast response and keep the LLM context manageable. However, this means the summary is based on a subset of all possible relevant data.</li>
+</ul>
+<p>This leads to a clear path for future optimization:</p>
+<p><strong>Map-Reduce Summarization for Full-Database Analysis:</strong><br>
+To overcome the <code>take: 20</code> limitation, the next step for optimization is to implement a batch-processing pattern.</p>
+<ol>
+<li><strong>Full Retrieval:</strong> Fetch <em>all</em> matching activities from the database.</li>
+<li><strong>Map:</strong> Break the results into manageable batches (e.g., of 20). Send each batch to the LLM to generate an intermediate summary.</li>
+<li><strong>Reduce:</strong> Combine all the intermediate summaries and send them to the LLM (a new agent) one final time to produce a single, cohesive, and highly accurate final answer.</li>
+</ol>
+<h2 id="This-“Map-Reduce”-approach-would-trade-latency-for-a-far-more-comprehensive-analysis-making-the-tool-even-more-powerful-It’s-an-exciting-next-step-for-the-project">This “Map-Reduce” approach would trade latency for a far more comprehensive analysis, making the tool even more powerful. It’s an exciting next step for the project.</h2>
+ 
+    </div>
+    <footer class="article-footer">
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2025/06/29/Journal%20App/agentic-rag-pipeline.html"
+        data-id="cmci7mhx9001nkj69cw088i03"
+        data-title="Building an Agentic RAG Pipeline for Journal Analysis"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
+        </svg>
+      </button>
+        
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/LLM/">#LLM</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Agentic-RAG/">#Agentic RAG</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+   
+<nav id="article-nav" class="article-nav">
+  
+  
+    <a href="/2025/06/27/Journal%20App/journal-app.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">From .txt to Web App: Building a Journaling System with Gemini&#39;s Help</div>
+    </a>
+  
+</nav>
+ 
+</article>
+
+ 
+</section>
+           <aside class="sidebar" id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Categories</p>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Journal-App/">Journal App</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SEC-Analysis/">SEC Analysis</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Recent Posts</p>
+    <div class="widget">
+      <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/29/Journal%20App/agentic-rag-pipeline.html">Building an Agentic RAG Pipeline for Journal Analysis</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/27/Journal%20App/journal-app.html">From .txt to Web App: Building a Journaling System with Gemini&#39;s Help</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/24/AI%20LLM/containerization.html">Containerization: A Case Study in Environment and Configuration Management</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/22/AI%20LLM/illustion-of-quaterly-data.html">The Illusion of Quarterly Data: Correctly Calculating Financials from SEC Filings</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/06/19/AI%20LLM/mess-in-financial-filings.html">Mess in SEC Financial Filings: A new Challenge of Data Extraction</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+          
+        </div>
+        <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner footer-info">
+      
+      &copy; 2025 Zhicheng Wang<br>
+      <div>
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div>
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav> 
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<!-- 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+ -->
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+    </div>
+  </body>
+</html>
