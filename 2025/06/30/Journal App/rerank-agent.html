@@ -15,23 +15,24 @@
 <!-- End Google Analytics -->
 
   
-  <title>JavaScript Full Stack Series-03-Rendering Collections and Modules | Zhicheng&#39;s Blog</title>
+  <title>Optimizing Semantic Search: A Two-Stage Reranker | Zhicheng&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
-  <meta name="description" content="🔎 Intro This blog covers how to render collections in React, how to use the map method to iterate over an array of objects and more related concepts.">
+  <meta name="description" content="Previously in Synapse, we have a core feature: an agentic semantic search system (Still confused what actually makes RAG, a RAG and what’s the difference between it and semantic search? They both seem">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JavaScript Full Stack Series-03-Rendering Collections and Modules">
-<meta property="og:url" content="https://zhicheng-wang.com/2023/11/28/JavaScript%20Full%20Stack%20Series/03-Rendering%20Collections%20and%20Modules.html">
+<meta property="og:title" content="Optimizing Semantic Search: A Two-Stage Reranker">
+<meta property="og:url" content="https://zhicheng-wang.com/2025/06/30/Journal%20App/rerank-agent.html">
 <meta property="og:site_name" content="Zhicheng&#39;s Blog">
-<meta property="og:description" content="🔎 Intro This blog covers how to render collections in React, how to use the map method to iterate over an array of objects and more related concepts.">
+<meta property="og:description" content="Previously in Synapse, we have a core feature: an agentic semantic search system (Still confused what actually makes RAG, a RAG and what’s the difference between it and semantic search? They both seem">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2023-11-28T18:56:56.000Z">
-<meta property="article:modified_time" content="2025-06-08T09:09:27.000Z">
+<meta property="article:published_time" content="2025-06-30T18:00:00.000Z">
+<meta property="article:modified_time" content="2025-06-30T20:33:17.683Z">
 <meta property="article:author" content="Zhicheng Wang">
-<meta property="article:tag" content="JavaScript">
-<meta property="article:tag" content="Full Stack">
-<meta property="article:tag" content="React">
-<meta property="article:tag" content="Collections">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="Architecture">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="RAG">
+<meta property="article:tag" content="Search">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
@@ -122,7 +123,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
 
         <div class="outer">
           <section class="post-container" id="main"><article
-  id="post-JavaScript Full Stack Series/03-Rendering Collections and Modules"
+  id="post-Journal App/rerank-agent"
   class="h-entry article article-type-post"
   itemprop="blogPost"
   itemscope
@@ -132,10 +133,8 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
 
 <p class="article-date">
-  Published: <time class="dt-published" datetime="2023-11-28T18:56:56.000Z" itemprop="datePublished">2023-11-28</time>
+  Published: <time class="dt-published" datetime="2025-06-30T18:00:00.000Z" itemprop="datePublished">2025-06-30</time>
   <br>
-  
-  Updated: <time class="dt-published" datetime="2025-06-08T09:09:27.000Z" itemprop="datePublished">2025-06-08</time>
   
 </p>
     
@@ -147,40 +146,47 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       
   
     <h1 class="p-name article-title" itemprop="headline name">
-      JavaScript Full Stack Series-03-Rendering Collections and Modules
+      Optimizing Semantic Search: A Two-Stage Reranker
     </h1>
   
 
     </header>
     
     <div class="e-content article-entry" itemprop="articleBody">
-       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
-<p>This blog covers how to render collections in React, how to use the <code>map</code> method to iterate over an array of objects and more related concepts.</p>
+       <p>Previously in Synapse, we have a core feature: an agentic semantic search system (Still confused what <strong>actually</strong> makes RAG, a RAG and what’s the difference between it and semantic search? They both seem to intersect. But like Andrew Ng mentioned in one of the interviews, how to define if an agent is truly autonomous? How? maybe the definition does not matter, as long as the agent works itself.) that allows users to ask natural language questions about their activities. The initial version was a standard, three-step pipeline: a <strong>Planner</strong> agent to generate keywords, a <strong>Retrieval</strong> step using those keywords against the database, and a <strong>Synthesizer</strong> agent to generate a summary.</p>
+<p>This worked, but it suffered from the classic limitation of keyword search—it lacked true semantic understanding. A query for “time spent on backend improvements” might miss an entry described as “refactored the authentication service.”</p>
 <span id="more"></span>
-<h3 id="💡-New-concepts"><strong>💡 New concepts</strong></h3>
-<ul>
-<li>Map method:<br>
-The map() method creates a new array populated with the results of calling a provided function on every element in the calling array. <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map">More details</a></li>
-<li>Refacoring Modules:<br>
-Refactoring is the process of restructuring existing computer code—changing the factoring—without changing its external behavior.</li>
-</ul>
-<h3 id="👨‍💻-Reviewed-concepts"><strong>👨‍💻 Reviewed concepts</strong></h3>
-<ul>
-<li>[Destructuring assignment](<a target="_blank" rel="noopener" href="https://dogecat0.github.io/2023/11/09/JavaScript">https://dogecat0.github.io/2023/11/09/JavaScript</a> Full Stack Series/02-JavaScript.html)</li>
-<li>[Event Handler](<a target="_blank" rel="noopener" href="https://dogecat0.github.io/2023/11/12/JavaScript">https://dogecat0.github.io/2023/11/12/JavaScript</a> Full Stack Series/02-State-and-Event-Handlers.html)</li>
-</ul>
-<h3 id="📝-Course-exercise"><strong>📝 Course exercise</strong></h3>
+<h3 id="The-Tempting-Anti-Pattern-Full-Database-Scan-with-an-LLM">The Tempting Anti-Pattern: Full Database Scan with an LLM</h3>
+<p>The first idea that came up was straightforward: why not use the LLM’s intelligence for retrieval itself? The proposal was to iterate through our entire database in small batches, sending each batch to an LLM with the prompt, “Are any of these entries relevant to the user’s query?”</p>
+<p>It’s easy to be captivated by the power of a new tool. However, after having some conversion with LLMs, this approach, while seems clever, is a production anti-pattern for several critical reasons:</p>
 <ol>
-<li>Updates to part1 exercise courseinfo with refactorred modules and trying out JavaScript arrays methods like <code>map</code>. <a target="_blank" rel="noopener" href="https://github.com/Dogecat0/fullstack_open/tree/main/part2/courseinfo">Link to the repo</a></li>
+<li><strong>Scalability:</strong> The number of LLM calls scales linearly with database size (<code>O(n)</code>). A user with a year’s worth of entries would face an unusable system, with search times stretching into minutes.</li>
+<li><strong>Latency:</strong> The process is inherently sequential. The cumulative network and inference latency would create a terrible user experience.</li>
+<li><strong>Cost:</strong> Whether using a local model (compute cycles) or a cloud API (dollars), this is an incredibly expensive way to search.</li>
 </ol>
+<p>The core mistake here is using a slow, high-precision tool (the LLM) for a fast, high-recall task (finding candidates).</p>
+<h3 id="The-new-Approach-A-Two-Stage-Reranker">The new Approach: A Two-Stage Reranker</h3>
+<p>A more robust and scalable architecture is a <strong>two-stage retrieval pipeline</strong> that incorporates a <strong>reranker</strong>. This pattern leverages the strengths of both the database and the LLM.</p>
+<p>The new pipeline looks like this:</p>
+<ol>
+<li><strong>Planner Agent (Unchanged):</strong> Generate keywords from the user’s query.</li>
+<li><strong>Broad Retrieval (High Recall):</strong> Use the keywords to query the database. Instead of fetching just 20 results, we now fetch a much larger set of candidates, say <code>take: 200</code>. This step is optimized for speed and recall—we’d rather have a few irrelevant results than miss a relevant one. This is what databases excel at.</li>
+<li><strong>Reranker Agent (High Precision):</strong> This is the new, crucial step. We send the user’s query and the 200 candidate activities to a new LLM agent. Its <em>only</em> job is to analyze this pre-filtered list and return a sorted list of the most relevant activity IDs. This is where a better semantic analysis happens, but on a small, manageable dataset.</li>
+<li><strong>Synthesizer Agent (Unchanged):</strong> The top 20 re-ranked results are passed to the final agent to generate the summary.</li>
+</ol>
+<p>This architecture is better because it aligns the tool with the task. The database handles the massive-scale filtering, and the LLM performs its nuanced understanding on a small, relevant subset of data.</p>
+<h3 id="Refining-the-Implementation-Batching-the-Reranker">Refining the Implementation: Batching the Reranker</h3>
+<p>In the final implementation, the reranker was taken a step further. Instead of sending <em>a defined max number</em> of candidates (say, 200) to the LLM in one massive prompt—which risks hitting context limits or the “lost in the middle” problem—the <code>rerankActivities</code> function now processes the candidates in batches.</p>
+<p>It loops through the 200 candidates, sending 10 at a time to the reranker agent. It then aggregates the relevant IDs from all batches. This makes the reranking process more reliable and robust, ensuring consistent performance even if the number of initial candidates grows.</p>
+<p>Now the new search system is more reliable and less prone to context issues, e.g, model timeout. It can handle larger datasets without overwhelming the LLM, while still providing high-quality, semantically relevant results.</p>
  
     </div>
     <footer class="article-footer">
       <button
         title="Share"
-        data-url="https://zhicheng-wang.com/2023/11/28/JavaScript%20Full%20Stack%20Series/03-Rendering%20Collections%20and%20Modules.html"
-        data-id="cmci7u7gi001kpn69cqotfkq9"
-        data-title="JavaScript Full Stack Series-03-Rendering Collections and Modules"
+        data-url="https://zhicheng-wang.com/2025/06/30/Journal%20App/rerank-agent.html"
+        data-id="cmcjk52rn0011d469cqudbduo"
+        data-title="Optimizing Semantic Search: A Two-Stage Reranker"
         class="article-share-link"
         type="button"
       >
@@ -198,13 +204,15 @@ Refactoring is the process of restructuring existing computer code—changing th
         
   <ul class="article-tag-list">
     
-      <li class="article-tag-list-item"><a href="/tags/JavaScript/">#JavaScript</a></li>
+      <li class="article-tag-list-item"><a href="/tags/LLM/">#LLM</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/Full-Stack/">#Full Stack</a></li>
+      <li class="article-tag-list-item"><a href="/tags/Architecture/">#Architecture</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/React/">#React</a></li>
+      <li class="article-tag-list-item"><a href="/tags/AI/">#AI</a></li>
     
-      <li class="article-tag-list-item"><a href="/tags/Collections/">#Collections</a></li>
+      <li class="article-tag-list-item"><a href="/tags/RAG/">#RAG</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Search/">#Search</a></li>
     
   </ul>
 
@@ -213,19 +221,10 @@ Refactoring is the process of restructuring existing computer code—changing th
    
 <nav id="article-nav" class="article-nav">
   
-    <a href="/2023/11/29/JavaScript%20Full%20Stack%20Series/03-Forms.html" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          JavaScript Full Stack Series-03-Forms
-        
-      </div>
-    </a>
   
-  
-    <a href="/2023/11/12/JavaScript%20Full%20Stack%20Series/02-Comoplex%20State%20and%20Debugging.html" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2025/06/29/Journal%20App/agentic-rag-pipeline.html" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">JavaScript Full Stack Series-02-Comoplex State and Debugging</div>
+      <div class="article-nav-title">Building an Agentic RAG Pipeline for Journal Analysis</div>
     </a>
   
 </nav>
@@ -253,6 +252,10 @@ Refactoring is the process of restructuring existing computer code—changing th
       <ul>
         
           <li class="recent-post-list-item">
+            <a href="/2025/06/30/Journal%20App/rerank-agent.html">Optimizing Semantic Search: A Two-Stage Reranker</a>
+          </li>
+        
+          <li class="recent-post-list-item">
             <a href="/2025/06/29/Journal%20App/agentic-rag-pipeline.html">Building an Agentic RAG Pipeline for Journal Analysis</a>
           </li>
         
@@ -266,10 +269,6 @@ Refactoring is the process of restructuring existing computer code—changing th
         
           <li class="recent-post-list-item">
             <a href="/2025/06/22/AI%20LLM/illustion-of-quaterly-data.html">The Illusion of Quarterly Data: Correctly Calculating Financials from SEC Filings</a>
-          </li>
-        
-          <li class="recent-post-list-item">
-            <a href="/2025/06/19/AI%20LLM/mess-in-financial-filings.html">Mess in SEC Financial Filings: A new Challenge of Data Extraction</a>
           </li>
         
       </ul>
