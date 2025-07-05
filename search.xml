@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>From Static to Dynamic - A Foundational Refactor for Synapse</title>
+      <link href="/2025/07/05/Journal%20App/journal-importer.html"/>
+      <url>/2025/07/05/Journal%20App/journal-importer.html</url>
+      
+        <content type="html"><![CDATA[<p>Synapse’s journal feature was a prime example, built on a hardcoded assumption that all activities were either “Work” or “Life” based on the user’s context (Hand written journal previously). This was simple to implement initially but impossible to scale. Every user’s life (Me!) is more nuanced than that binary choice.</p><p>This post outlines a foundational refactor to move from this static system to a dynamic, user-driven one.</p><span id="more"></span><h3 id="The-Foundational-Shift-The-Data-Model">The Foundational Shift: The Data Model</h3><p>The core of the problem was in the database schema. An activity was tied to a simple string.</p><p><strong>Before:</strong></p><pre class="line-numbers language-prisma" data-language="prisma"><code class="language-prisma">&#x2F;&#x2F; prisma&#x2F;schema.prismamodel Activity &#123;  id          String   @id  description String  &#x2F;&#x2F; ...  category    String &#x2F;&#x2F; &quot;WORK&quot; or &quot;LIFE&quot;&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>This was replaced by a proper relationship. We introduced a <strong>Category</strong> model and linked <strong>Activity</strong> to it via a foreign key.</p><pre class="line-numbers language-prisma" data-language="prisma"><code class="language-prisma">&#x2F;&#x2F; prisma&#x2F;schema.prismamodel Activity &#123;  id          String   @id  description String  &#x2F;&#x2F; ...  category   Category @relation(fields: [categoryId], references: [id])  categoryId String&#125;model Category &#123;  id          String   @id @default(cuid())  name        String   @unique  description String?  color       String   @default(&quot;#6B7280&quot;)  &#x2F;&#x2F; ...  activities Activity[]&#125;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>This simple schema change is the bedrock of the new system, enabling users to create, update, and delete their own categories. Naturally, this required building out a new set of CRUD API endpoints under /api/categories and a corresponding management UI.</p><h3 id="The-Payoff-An-Intelligent-Import-Agent">The Payoff: An Intelligent Import Agent</h3><p>With a dynamic category system in place, we could deprecate our old, local-only import script and build something far more powerful: an LLM-powered import UI.</p><p>The new <code>/api/import</code> endpoint uses a streaming API to provide real-time feedback to the user. Before calling the LLM, our backend agent now:</p><ol><li>Fetches all of the user’s custom categories from the database.</li><li>Injects the category <code>name</code> and <code>description</code> into the LLM’s system prompt as classification context.</li></ol><p>This allows the AI to accurately classify plain-text journal entries against a user’s unique schema, not a set of hardcoded rules.</p><p>The API contract for creating entries was also simplified. Instead of separate arrays for different categories, we now accept a single, unified <code>activities</code> array, which is cleaner and more scalable.</p><h3 id="Conclusion">Conclusion</h3><p>By addressing the inflexibility at the data model level, we not only paid down the technical debt (A debt of one or two days, thanks for my AI assistants) but also unlocked a much more powerful and intelligent feature set to allow the user to have a more personalized and meaningful journaling experience, in this case (Me! Again).</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Journal App </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> LLM </tag>
+            
+            <tag> refactoring </tag>
+            
+            <tag> architecture </tag>
+            
+            <tag> prisma </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Building AI-Powered Weekly Reports in Synapse</title>
       <link href="/2025/07/02/Journal%20App/weekly-report-generator.html"/>
       <url>/2025/07/02/Journal%20App/weekly-report-generator.html</url>
