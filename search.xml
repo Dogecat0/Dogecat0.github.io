@@ -4,6 +4,45 @@
   
     
     <entry>
+      <title>Domain Layer Implementation: Building Aperilex&#39;s Core and Revision with Claude Code</title>
+      <link href="/2025/07/09/AI%20LLM/domain-layer-implementation.html"/>
+      <url>/2025/07/09/AI%20LLM/domain-layer-implementation.html</url>
+      
+        <content type="html"><![CDATA[<p>Into the third night of coding with Claude Code, I focused on implementing the domain layer of Aperilex as outlined on the project <code>PHASE.md</code>, refining the core logic and data structures that will drive our SEC Filing Analysis Engine. This post details the process and decisions made during this phase.</p><span id="more"></span><p>After the environment setups yesterday, I asked Claude to help me lay out the detailed plan for the domain layer implementation, which is the core of Aperilex. The current workflow is having a general <code>PHASE.md</code> file that outlines the high-level goals and tasks for each phase, and then Claude Code helps me break it down into detailed steps and code implementations.</p><h2 id="The-Golden-Grand-Plan-on-Surface">The Golden-Grand Plan on Surface</h2><p>At the first the plan looks very complete and detailed, but as we started to implement, I realized that Claude made it too much like an encyclopedia entry, which tries to cover every aspect of company filings which makes it like building an encyclopedia (also, a duplicate of the <code>edgartools</code> library). So I had to revise it and ‘remind’ Claude to to focus on the core domain logic that Aperilex needs to be comprehensive analysis engine utilizing LLMs.</p><h2 id="The-Revision-Process">The Revision Process</h2><p>When I realized this which was already after the implmentation of <code>value objects</code>, I immediately asked Claude to revise the plan, focusing on the core domain logic and how Aperilex will interact with the <code>edgartools</code> library. The revised plan emphasized (for instance):</p><ul><li><strong>Core Domain Logic</strong>: Focus on the essential classes and methods that will drive the analysis engine, such as <code>Company</code>, <code>Filing</code>, and <code>DataObject</code>.</li><li><strong>Integration with <code>edgartools</code></strong>: Define how Aperilex will utilize the <code>edgartools</code> library for parsing and analyzing SEC filings, rather than duplicating its functionality.</li><li><strong>LLM Utilization</strong>: Emphasize how Aperilex will leverage LLMs to enhance the analysis and provide insights on the parsed data.</li></ul><h2 id="Time">Time</h2><p>The whole process was iterative, which took about 2 hours for the initial implementation of <code>value objects</code> and then another 2.5 hours for the revision and implementation of the <code>entities</code>.</p><h2 id="Lessons-Learned">Lessons Learned</h2><h3 id="Code-with-Claude-Code">Code with Claude Code</h3><p>The speed of development with Claude Code is impressive, but it requires careful review and guidance to ensure that the output aligns with the project’s goals. The iterative process of refining the plan and implementation is crucial to avoid unnecessary complexity and ensure that the core functionality is robust and maintainable. Also, if your project is like Aperilex, which is a domain driven project, you need to be very clear about the domain logic and how it interacts with the external libraries. Generally, again, having a good and clear plan of multiple hierarchical levels and with phases for Claude to iterate on is the key to success (not sure about the ‘success’ part but that what I’ve learned so far how to code with Claude).</p><h3 id="Code-Quality">Code Quality</h3><p>So far with the specification of the <code>CLAUDE.md</code> and the <code>PHASE.md</code>, Claude Code has been able to produce high-quality code that adheres to the project’s standards, at least to the extent of what my knowledge and what I want to learn. The clean and modular design of the architecture is still amazing and has been a great example for me so far.</p><p>We will continue to the building of the <code>Repository</code> and <code>domain services</code> in the next phase, which will interact with the classes implemented today and more to learn! :)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI Development </category>
+          
+          <category> Aperilex </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Python </tag>
+            
+            <tag> LLM </tag>
+            
+            <tag> AI </tag>
+            
+            <tag> Claude Code </tag>
+            
+            <tag> Development </tag>
+            
+            <tag> Clean Architecture </tag>
+            
+            <tag> Context7 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Architecting Aperilex: Initial Development Setups and Planning</title>
       <link href="/2025/07/08/AI%20LLM/initial-setups-and-plan.html"/>
       <url>/2025/07/08/AI%20LLM/initial-setups-and-plan.html</url>
