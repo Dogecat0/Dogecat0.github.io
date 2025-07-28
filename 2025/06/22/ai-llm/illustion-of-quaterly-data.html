@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HENBHMXMT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0HENBHMXMT');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>The Illusion of Quarterly Data: Correctly Calculating Financials from SEC Filings | Zhicheng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+    <meta name="description" content="When building financial analysis tools, one of the most common and dangerous assumptions is that the financial data you receive—whether from an API or directly ">
+  
+  
+  
+    <meta name="keywords" content="programming, software development, AI, LLM, machine learning, financial analysis, SEC filings, Python, FastAPI, web development, coding tutorials, technical blog, software engineering, Claude Code, reading, Python, FastAPI, Finance, Data Engineering, SEC, 10-K, 10-Q">
+  
+  
+  
+    <link rel="canonical" href="https://zhicheng-wang.com/2025/06/22/ai-llm/illustion-of-quaterly-data.html">
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
+  <meta name="description" content="When building financial analysis tools, one of the most common and dangerous assumptions is that the financial data you receive—whether from an API or directly from SEC filings—represents discrete, is">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The Illusion of Quarterly Data: Correctly Calculating Financials from SEC Filings">
+<meta property="og:url" content="https://zhicheng-wang.com/2025/06/22/ai-llm/illustion-of-quaterly-data.html">
+<meta property="og:site_name" content="Zhicheng&#39;s Blog">
+<meta property="og:description" content="When building financial analysis tools, one of the most common and dangerous assumptions is that the financial data you receive—whether from an API or directly from SEC filings—represents discrete, is">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-22T20:30:00.000Z">
+<meta property="article:modified_time" content="2025-07-07T22:46:02.291Z">
+<meta property="article:author" content="Zhicheng Wang">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="FastAPI">
+<meta property="article:tag" content="Finance">
+<meta property="article:tag" content="Data Engineering">
+<meta property="article:tag" content="SEC">
+<meta property="article:tag" content="10-K">
+<meta property="article:tag" content="10-Q">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/output.css">
+
+  
+    <link rel="stylesheet" href="/css/prism.css">
+    <script src="/js/prism.js"></script>
+  
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body class="body">
+    <div id="container" class="container">
+      <div id="wrap">
+        <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="header-title-group inner">
+      <p id="logo-wrap" class="header-title">
+        Zhicheng&#39;s Blog
+        <!-- <a href="/" id="logo">Zhicheng&#39;s Blog</a> -->
+      </p>
+      
+        <p id="subtitle-wrap" class="header-subtitle">
+          A Chronicles of a 👨‍💻Programmer <b>(with 📊📈Analytical Mindset <s>Who was Once a 🎨🖌️Designer</s>)</b>: Learn to Debug Life
+          <!-- <a href="/" id="subtitle">A Chronicles of a 👨‍💻Programmer &lt;b&gt;(with 📊📈Analytical Mindset &lt;s&gt;Who was Once a 🎨🖌️Designer&lt;/s&gt;)&lt;/b&gt;: Learn to Debug Life</a> -->
+        </p>
+      
+      
+        <p id="description-wrap" class="header-description">
+          Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding <b><s>(with LLMs ofc, what were you expecting?)</s></b> and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity <b><s>(and AI's endless patience)</s></b>, bolstered by my humble attitude of learning <b><s>(with millions of searches on Google)</s></b>,
+I'm pretty confident this debugging process will be wrapped up by the end of this century.
+<br>
+<br>
+✉️: zcmmwang@gmail.com
+<br>
+🌟: <a href="https://github.com/Dogecat0" target="_blank" rel="noopener noreferrer">https://github.com/Dogecat0</a>
+
+          <!-- <a href="/" id="description">Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding &lt;b&gt;&lt;s&gt;(with LLMs ofc, what were you expecting?)&lt;/s&gt;&lt;/b&gt; and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity &lt;b&gt;&lt;s&gt;(and AI&#39;s endless patience)&lt;/s&gt;&lt;/b&gt;, bolstered by my humble attitude of learning &lt;b&gt;&lt;s&gt;(with millions of searches on Google)&lt;/s&gt;&lt;/b&gt;,
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+&lt;br&gt;
+&lt;br&gt;
+✉️: zcmmwang@gmail.com
+&lt;br&gt;
+🌟: &lt;a href=&#34;https://github.com/Dogecat0&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://github.com/Dogecat0&lt;/a&gt;
+</a> -->
+        </p>
+      
+    </div>
+    <div id="header-inner" class="nav-menu inner">
+      <nav id="main-nav" class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      
+    <div id="site_search" class="site-search">
+     <div class="form-group" class="site-search-input">
+      <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+     </div>  
+    <div id="local-search-result" class="local-search-result"></div>
+    </div>
+  
+    </div>
+  </div>
+</header>
+
+        <div class="outer">
+          <section class="post-container" id="main"><article
+  id="post-ai-llm/illustion-of-quaterly-data"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2025-06-22T20:30:00.000Z" itemprop="datePublished">2025-06-22</time>
+  <br>
+  
+  Updated: <time class="dt-published" datetime="2025-07-07T22:46:02.291Z" itemprop="datePublished">2025-07-07</time>
+  
+</p>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SEC-Analysis/">SEC Analysis</a>
+  </div>
+
+  </div>
+  <hr />
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      The Illusion of Quarterly Data: Correctly Calculating Financials from SEC Filings
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>When building financial analysis tools, one of the most common and dangerous assumptions is that the financial data you receive—whether from an API or directly from SEC filings—represents discrete, isolated time periods. A “Q2” report, for instance, should contain data only for the second quarter. Right?</p>
+<p>Unfortunately, this is often not the case. Raw SEC filings, specifically the quarterly <code>10-Q</code> and annual <code>10-K</code> reports, follow reporting rules that can be misleading if taken at face value. In this post, I’ll walk through the challenges of parsing these documents and present a robust Python solution to derive true, discrete quarterly financial figures.</p>
+<span id="more"></span>
+<h3 id="The-Core-Problem-Cumulative-vs-Discrete-Data">The Core Problem: Cumulative vs. Discrete Data</h3>
+<p>The primary challenge lies in how different financial statements are reported throughout a fiscal year.</p>
+<ol>
+<li>
+<p><strong>Income Statement</strong>: This is generally straightforward. A <code>10-Q</code> income statement covers the specific three-month period. However, the <code>10-K</code> income statement covers the <strong>entire twelve-month fiscal year</strong>, not just the fourth quarter. To get true Q4 data, you must manually calculate it:<br>
+<code>Q4 = Annual (10-K) - Q1 - Q2 - Q3</code></p>
+</li>
+<li>
+<p><strong>Cash Flow Statement &amp; Statement of Changes in Equity</strong>: These are the tricky ones. They are almost always reported on a <strong>cumulative, year-to-date basis</strong>.</p>
+<ul>
+<li>The <strong>Q1</strong> report shows data for the first three months.</li>
+<li>The <strong>Q2</strong> report shows data for the <strong>first six months</strong> (<code>Q1 + actual Q2</code>).</li>
+<li>The <strong>Q3</strong> report shows data for the <strong>first nine months</strong> (<code>Q2_cumulative + actual Q3</code>).</li>
+<li>The <strong><code>10-K</code></strong> shows data for the full twelve months.</li>
+</ul>
+</li>
+</ol>
+<p>To get the actual data for each quarter, you must perform sequential subtraction:</p>
+<ul>
+<li><code>Actual Q2 = Q2_cumulative - Q1_cumulative</code></li>
+<li><code>Actual Q3 = Q3_cumulative - Q2_cumulative</code></li>
+<li><code>Actual Q4 = Annual (10-K) - Q3_cumulative</code></li>
+</ul>
+<h3 id="The-First-Trap-Assuming-a-Calendar-Year">The First Trap: Assuming a Calendar Year</h3>
+<p>My initial approach was to group all filings by their calendar year (<code>2023</code>, <code>2024</code>, etc.) and perform the calculations within each group. This failed immediately.</p>
+<p><strong>Why it’s wrong:</strong> Many companies (like Microsoft, Adobe, and Nike) have fiscal years that don’t align with the calendar year. A company’s fiscal year might run from July to June. Grouping by calendar year would split a single fiscal year’s filings into two different groups, making all subsequent calculations incorrect.</p>
+<h3 id="The-Golden-Principle-Sequential-Grouping-by-10-K">The Golden Principle: Sequential Grouping by <code>10-K</code></h3>
+<p>The correct approach is to ignore calendar dates for grouping and instead use the filings’ own reporting sequence. A fiscal year of reports follows a reliable pattern:</p>
+<blockquote>
+<p><strong>Three <code>10-Q</code> filings are followed by one <code>10-K</code> filing.</strong></p>
+</blockquote>
+<p>This <code>10-K</code> serves as the delimiter for a complete fiscal period. By processing a chronologically sorted list of filings, we can group them into fiscal years by collecting all <code>10-Q</code>s until we encounter a <code>10-K</code>, which concludes that group.</p>
+<h3 id="The-Python-Implementation">The Python Implementation</h3>
+<p>I implemented the logic with the help of Gemini in our FastAPI backend. The goal is to create a function, <code>_calculate_quarterly_figures</code>, that takes a list of formatted financial statement objects and returns a new list with the data adjusted.</p>
+<p>First, a simple helper to subtract metrics from one statement dictionary using another.</p>
+<p>Then, the main function that implements the sequential grouping and then applies our calculation rules.</p>
+<p>The actual implementation is <code>straightforward</code> with the power of Gemini, but the logic is crucial.</p>
+<h3 id="Key-Takeaways">Key Takeaways</h3>
+<ol>
+<li><strong>Understand Reporting Rules</strong>: Always be aware of how financial statements are reported. Don’t assume that a <code>10-Q</code> or <code>10-K</code> contains only the data which is well defined and formatted. Always check the reporting period and cumulative nature (or other kind) of the data.</li>
+<li><strong>Group by Fiscal Year, Not Calendar Year</strong>: Use the <code>10-K</code> as the delimiter for fiscal years. This ensures that you correctly group all filings related to a single fiscal year.</li>
+</ol>
+ 
+    </div>
+    <footer class="article-footer">
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2025/06/22/ai-llm/illustion-of-quaterly-data.html"
+        data-id="cmdni1ej3000a1m69dbsz0w5b"
+        data-title="The Illusion of Quarterly Data: Correctly Calculating Financials from SEC Filings"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
+        </svg>
+      </button>
+        
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/Python/">#Python</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/FastAPI/">#FastAPI</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Finance/">#Finance</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Data-Engineering/">#Data Engineering</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/SEC/">#SEC</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/10-K/">#10-K</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/10-Q/">#10-Q</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+   
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2025/06/24/ai-llm/containerization.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Containerization: A Case Study in Environment and Configuration Management
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/19/ai-llm/mess-in-financial-filings.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mess in SEC Financial Filings: A new Challenge of Data Extraction</div>
+    </a>
+  
+</nav>
+ 
+</article>
+
+ 
+</section>
+           <aside class="sidebar" id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Categories</p>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/">AI Development</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/Aperilex/">Aperilex</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Journal-App/">Journal App</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SEC-Analysis/">SEC Analysis</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Recent Posts</p>
+    <div class="widget">
+      <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/27/ai-llm/application-layer-completion-and-review.html">Application Layer Completion and Review for Aperilex</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/20/ai-llm/aperilex-infrastructure-layer-completion.html">Aperilex Infrastructure Layer Completion: An Intense Learning and Developing Journey</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/12/ai-llm/infrasturecture-layer-edgar-and-llm.html">Aperilex Architecture Update: Integrating EdgarTools and a Hierarchical LLM Pipeline in Infrastructure Layer</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/09/ai-llm/domain-layer-implementation.html">Domain Layer Implementation: Building Aperilex&#39;s Core and Revision with Claude Code</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/08/ai-llm/initial-setups-and-plan.html">Architecting Aperilex: Initial Development Setups and Planning</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+          
+        </div>
+        <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner footer-info">
+      
+      &copy; 2025 Zhicheng Wang<br>
+      <div>
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div>
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav> 
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<!-- 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+ -->
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+    </div>
+  </body>
+</html>

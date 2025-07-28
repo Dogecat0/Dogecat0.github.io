@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HENBHMXMT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0HENBHMXMT');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst | Zhicheng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+    <meta name="description" content="In this post, we will dive a bit into model evaluation. Building with Large Language Models (LLMs) presents two major challenges:  How do you know if the output">
+  
+  
+  
+    <meta name="keywords" content="programming, software development, AI, LLM, machine learning, financial analysis, SEC filings, Python, FastAPI, web development, coding tutorials, technical blog, software engineering, Claude Code, reading, Python, LLM, AI, Evaluation, Cost Management">
+  
+  
+  
+    <link rel="canonical" href="https://zhicheng-wang.com/2025/06/07/ai-llm/measuring-what-matters-evaluation-and-cost-tracking.html">
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
+  <meta name="description" content="In this post, we will dive a bit into model evaluation. Building with Large Language Models (LLMs) presents two major challenges:  How do you know if the output is any good? How do you prevent API cos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst">
+<meta property="og:url" content="https://zhicheng-wang.com/2025/06/07/ai-llm/measuring-what-matters-evaluation-and-cost-tracking.html">
+<meta property="og:site_name" content="Zhicheng&#39;s Blog">
+<meta property="og:description" content="In this post, we will dive a bit into model evaluation. Building with Large Language Models (LLMs) presents two major challenges:  How do you know if the output is any good? How do you prevent API cos">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-06-07T20:30:00.000Z">
+<meta property="article:modified_time" content="2025-07-07T22:46:02.291Z">
+<meta property="article:author" content="Zhicheng Wang">
+<meta property="article:tag" content="Python">
+<meta property="article:tag" content="LLM">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Evaluation">
+<meta property="article:tag" content="Cost Management">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/output.css">
+
+  
+    <link rel="stylesheet" href="/css/prism.css">
+    <script src="/js/prism.js"></script>
+  
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body class="body">
+    <div id="container" class="container">
+      <div id="wrap">
+        <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="header-title-group inner">
+      <p id="logo-wrap" class="header-title">
+        Zhicheng&#39;s Blog
+        <!-- <a href="/" id="logo">Zhicheng&#39;s Blog</a> -->
+      </p>
+      
+        <p id="subtitle-wrap" class="header-subtitle">
+          A Chronicles of a 👨‍💻Programmer <b>(with 📊📈Analytical Mindset <s>Who was Once a 🎨🖌️Designer</s>)</b>: Learn to Debug Life
+          <!-- <a href="/" id="subtitle">A Chronicles of a 👨‍💻Programmer &lt;b&gt;(with 📊📈Analytical Mindset &lt;s&gt;Who was Once a 🎨🖌️Designer&lt;/s&gt;)&lt;/b&gt;: Learn to Debug Life</a> -->
+        </p>
+      
+      
+        <p id="description-wrap" class="header-description">
+          Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding <b><s>(with LLMs ofc, what were you expecting?)</s></b> and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity <b><s>(and AI's endless patience)</s></b>, bolstered by my humble attitude of learning <b><s>(with millions of searches on Google)</s></b>,
+I'm pretty confident this debugging process will be wrapped up by the end of this century.
+<br>
+<br>
+✉️: zcmmwang@gmail.com
+<br>
+🌟: <a href="https://github.com/Dogecat0" target="_blank" rel="noopener noreferrer">https://github.com/Dogecat0</a>
+
+          <!-- <a href="/" id="description">Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding &lt;b&gt;&lt;s&gt;(with LLMs ofc, what were you expecting?)&lt;/s&gt;&lt;/b&gt; and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity &lt;b&gt;&lt;s&gt;(and AI&#39;s endless patience)&lt;/s&gt;&lt;/b&gt;, bolstered by my humble attitude of learning &lt;b&gt;&lt;s&gt;(with millions of searches on Google)&lt;/s&gt;&lt;/b&gt;,
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+&lt;br&gt;
+&lt;br&gt;
+✉️: zcmmwang@gmail.com
+&lt;br&gt;
+🌟: &lt;a href=&#34;https://github.com/Dogecat0&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://github.com/Dogecat0&lt;/a&gt;
+</a> -->
+        </p>
+      
+    </div>
+    <div id="header-inner" class="nav-menu inner">
+      <nav id="main-nav" class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      
+    <div id="site_search" class="site-search">
+     <div class="form-group" class="site-search-input">
+      <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+     </div>  
+    <div id="local-search-result" class="local-search-result"></div>
+    </div>
+  
+    </div>
+  </div>
+</header>
+
+        <div class="outer">
+          <section class="post-container" id="main"><article
+  id="post-ai-llm/measuring-what-matters-evaluation-and-cost-tracking"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2025-06-07T20:30:00.000Z" itemprop="datePublished">2025-06-07</time>
+  <br>
+  
+  Updated: <time class="dt-published" datetime="2025-07-07T22:46:02.291Z" itemprop="datePublished">2025-07-07</time>
+  
+</p>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/SEC-Analysis/">SEC Analysis</a>
+  </div>
+
+  </div>
+  <hr />
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>In this post, we will dive a bit into model evaluation. Building with Large Language Models (LLMs) presents two major challenges:</p>
+<ol>
+<li><strong>How do you know if the output is any good?</strong></li>
+<li><strong>How do you prevent API costs from spiraling out of control?</strong></li>
+</ol>
+<p>Today, I tackled both of these head-on by building a robust evaluation and cost-tracking framework. It’s an (again) interesting learning journey but important step for moving from a fun prototype to a reliable tool.</p>
+<span id="more"></span>
+<h3 id="The-Goal-Confidence-in-Quality-and-Cost">The Goal: Confidence in Quality and Cost</h3>
+<p>I wanted a system that could answer these questions automatically:</p>
+<ul>
+<li>When I change a prompt, does the analysis quality get better or worse?</li>
+<li>Which part of the analysis is the most expensive?</li>
+<li>Can I quantify the trade-off between cost and quality for different LLM models?</li>
+</ul>
+<p>To do this, My AI assistants have helped me build three key components: a golden data generator, a model evaluator, and a centralized cost registry.</p>
+<h3 id="Step-1-Establishing-the-“Golden-Truth”">Step 1: Establishing the “Golden Truth”</h3>
+<p>You can’t evaluate quality without a benchmark. I created a script, <code>create_golden_data.py</code>, to generate a “golden set” of ideal analysis outputs for a few representative tickers (like AMZN, MSFT, MA).</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># scripts/create_golden_data.py</span>
+
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">create_golden_file</span><span class="token punctuation">(</span>ticker<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> email<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""Run comprehensive analysis and save results as a golden file."""</span>
+    logger<span class="token punctuation">.</span>info<span class="token punctuation">(</span><span class="token string">"Creating golden file for ticker: %s"</span><span class="token punctuation">,</span> ticker<span class="token punctuation">)</span>
+
+    <span class="token comment"># ... setup ...</span>
+    response <span class="token operator">=</span> <span class="token keyword">await</span> comprehensive_analysis<span class="token punctuation">(</span>
+        ticker<span class="token operator">=</span>ticker<span class="token punctuation">,</span>
+        include_financials_history<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">,</span>
+        <span class="token comment"># ... other flags ...</span>
+    <span class="token punctuation">)</span>
+
+    <span class="token comment"># Save the complete, ideal JSON output</span>
+    output_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>GOLDEN_DIR<span class="token punctuation">,</span> <span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">&#123;</span>ticker<span class="token punctuation">&#125;</span></span><span class="token string">.json"</span></span><span class="token punctuation">)</span>
+    <span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span>output_path<span class="token punctuation">,</span> <span class="token string">"w"</span><span class="token punctuation">,</span> encoding<span class="token operator">=</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+        json<span class="token punctuation">.</span>dump<span class="token punctuation">(</span>response<span class="token punctuation">.</span>model_dump<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> f<span class="token punctuation">,</span> indent<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+    <span class="token comment"># ...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>This script runs the full analysis pipeline and saves the structured JSON output. This becomes the “correct” answer that future runs will be compared against.</p>
+<h3 id="Step-2-Tracking-Every-Penny-with-CostTracker-and-CostRegistry">Step 2: Tracking Every Penny with <code>CostTracker</code> and <code>CostRegistry</code></h3>
+<p>LLM costs are measured per million tokens, which can add up deceptively fast. I needed a way to track this meticulously.</p>
+<p>First, I created <code>CostTracker</code>, a simple class to record each API request’s model, token counts, and purpose.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># src/utils/cost_tracker.py</span>
+<span class="token decorator annotation punctuation">@dataclass</span>
+<span class="token keyword">class</span> <span class="token class-name">LLMRequest</span><span class="token punctuation">:</span>
+    model<span class="token punctuation">:</span> <span class="token builtin">str</span>
+    prompt_tokens<span class="token punctuation">:</span> <span class="token builtin">int</span>
+    completion_tokens<span class="token punctuation">:</span> <span class="token builtin">int</span>
+    request_type<span class="token punctuation">:</span> <span class="token builtin">str</span>
+
+<span class="token decorator annotation punctuation">@dataclass</span>
+<span class="token keyword">class</span> <span class="token class-name">CostTracker</span><span class="token punctuation">:</span>
+    requests<span class="token punctuation">:</span> List<span class="token punctuation">[</span>LLMRequest<span class="token punctuation">]</span> <span class="token operator">=</span> field<span class="token punctuation">(</span>default_factory<span class="token operator">=</span><span class="token builtin">list</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">add_request</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> request<span class="token punctuation">:</span> LLMRequest<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token boolean">None</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>requests<span class="token punctuation">.</span>append<span class="token punctuation">(</span>request<span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">get_total_cost</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">float</span><span class="token punctuation">:</span>
+        <span class="token comment"># ... calculates cost based on model pricing ...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>But with multiple analyzers (for Business, MD&amp;A, Risks) running concurrently, passing a <code>CostTracker</code> instance around would be messy. The solution? A singleton <code>CostRegistry</code>.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># src/utils/cost_registry.py</span>
+<span class="token keyword">class</span> <span class="token class-name">CostRegistry</span><span class="token punctuation">:</span>
+    _instance <span class="token operator">=</span> <span class="token boolean">None</span>
+    _lock <span class="token operator">=</span> threading<span class="token punctuation">.</span>Lock<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">def</span> <span class="token function">__new__</span><span class="token punctuation">(</span>cls<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># Singleton pattern implementation</span>
+        <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token keyword">def</span> <span class="token function">register_tracker</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> component_name<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> tracker<span class="token punctuation">:</span> CostTracker<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>trackers<span class="token punctuation">[</span>component_name<span class="token punctuation">]</span> <span class="token operator">=</span> tracker
+
+    <span class="token keyword">def</span> <span class="token function">get_total_cost</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token builtin">float</span><span class="token punctuation">:</span>
+        <span class="token comment"># ... aggregates costs from all registered trackers ...</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>Now, each <code>BaseAnalyzer</code> and <code>BaseFormatter</code> automatically registers its own <code>CostTracker</code> with the central registry upon initialization. This is clean, decoupled, and works seamlessly with concurrent execution.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># src/utils/base_analyzer.py</span>
+<span class="token keyword">class</span> <span class="token class-name">BaseAnalyzer</span><span class="token punctuation">(</span>Generic<span class="token punctuation">[</span>T<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+        self<span class="token punctuation">.</span>cost_tracker <span class="token operator">=</span> CostTracker<span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token comment"># Register this analyzer's cost tracker with the registry</span>
+        component_name <span class="token operator">=</span> self<span class="token punctuation">.</span>__class__<span class="token punctuation">.</span>__name__<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>replace<span class="token punctuation">(</span><span class="token string">"analyzer"</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span>
+        CostRegistry<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>register_tracker<span class="token punctuation">(</span>component_name<span class="token punctuation">,</span> self<span class="token punctuation">.</span>cost_tracker<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="Step-3-The-Evaluation-Harness">Step 3: The Evaluation Harness</h3>
+<p>With the golden set and cost tracking in place, the final piece was the evaluation script, <code>model_evaluation.py</code>. This script:</p>
+<ol>
+<li>Takes a list of tickers to test.</li>
+<li>Runs the full, current analysis pipeline for each one.</li>
+<li>Loads the corresponding “golden” file.</li>
+<li><strong>Compares the results</strong>, calculating metrics like <code>parse_success_rate</code> (did the section get extracted at all?) and <code>field_fill_rate</code> (how many optional fields were successfully populated?).</li>
+<li><strong>Pulls cost data</strong> from the <code>CostRegistry</code>.</li>
+<li>Saves a detailed JSON report with metrics and cost breakdowns.</li>
+</ol>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment"># scripts/model_evaluation.py</span>
+
+<span class="token keyword">async</span> <span class="token keyword">def</span> <span class="token function">evaluate_ticker</span><span class="token punctuation">(</span>ticker<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">,</span> email<span class="token punctuation">:</span> <span class="token builtin">str</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># Reset the cost registry for a clean run</span>
+    cost_registry <span class="token operator">=</span> CostRegistry<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    cost_registry<span class="token punctuation">.</span>reset<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Run the analysis</span>
+    actual <span class="token operator">=</span> <span class="token keyword">await</span> comprehensive_analysis<span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Load the benchmark</span>
+    golden <span class="token operator">=</span> load_golden<span class="token punctuation">(</span>ticker<span class="token punctuation">)</span>
+
+    <span class="token comment"># Compare and calculate metrics</span>
+    parse_rate<span class="token punctuation">,</span> fill_rate <span class="token operator">=</span> compare_results<span class="token punctuation">(</span>golden<span class="token punctuation">,</span> actual<span class="token punctuation">.</span>model_dump<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># Get costs from the central registry</span>
+    total_cost <span class="token operator">=</span> cost_registry<span class="token punctuation">.</span>get_total_cost<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">&#123;</span>
+        <span class="token string">"ticker"</span><span class="token punctuation">:</span> ticker<span class="token punctuation">,</span>
+        <span class="token string">"parse_success_rate"</span><span class="token punctuation">:</span> parse_rate<span class="token punctuation">,</span>
+        <span class="token string">"field_fill_rate"</span><span class="token punctuation">:</span> fill_rate<span class="token punctuation">,</span>
+        <span class="token string">"cost"</span><span class="token punctuation">:</span> <span class="token punctuation">&#123;</span><span class="token string">"total_cost_usd"</span><span class="token punctuation">:</span> total_cost<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="The-Result-Data-Driven-Development">The Result: Data-Driven Development</h3>
+<p>Now, after I make a change—whether it’s tweaking a prompt, swapping a model, or refactoring code—I can run a single command:</p>
+<p><code>python scripts/model_evaluation.py --tickers AAPL MSFT --email &quot;my@email.com&quot;</code></p>
+<p>And get a report like this:</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token punctuation">&#123;</span>
+  <span class="token property">"run_time"</span><span class="token operator">:</span> <span class="token string">"2025-06-07T20:57:18.945306"</span><span class="token punctuation">,</span>
+  <span class="token property">"elapsed_seconds"</span><span class="token operator">:</span> <span class="token number">326.41</span><span class="token punctuation">,</span>
+  <span class="token property">"tickers"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"MA"</span><span class="token punctuation">,</span> <span class="token string">"ARWR"</span><span class="token punctuation">,</span> <span class="token string">"VST"</span><span class="token punctuation">,</span> <span class="token string">"MSFT"</span><span class="token punctuation">,</span> <span class="token string">"AMZN"</span><span class="token punctuation">,</span> <span class="token string">"UBER"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"results"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">&#123;</span>
+      <span class="token property">"ticker"</span><span class="token operator">:</span> <span class="token string">"MA"</span><span class="token punctuation">,</span>
+      <span class="token property">"parse_success_rate"</span><span class="token operator">:</span> <span class="token number">0.8333333333333334</span><span class="token punctuation">,</span>
+      <span class="token property">"field_fill_rate"</span><span class="token operator">:</span> <span class="token number">1.0</span><span class="token punctuation">,</span>
+      <span class="token property">"latency_s"</span><span class="token operator">:</span> <span class="token number">280.47</span><span class="token punctuation">,</span>
+      <span class="token property">"errors"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+      <span class="token property">"cost"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+        <span class="token property">"total_cost_usd"</span><span class="token operator">:</span> <span class="token number">0.0813</span><span class="token punctuation">,</span>
+        <span class="token property">"breakdown"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+          <span class="token property">"base"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">"total_cost"</span><span class="token operator">:</span> <span class="token number">0.0258</span><span class="token punctuation">,</span>
+            <span class="token property">"total_tokens"</span><span class="token operator">:</span> <span class="token number">41638</span><span class="token punctuation">,</span>
+            <span class="token property">"cost_by_type"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+              <span class="token property">"BaseAnalyzer"</span><span class="token operator">:</span> <span class="token number">0.0258</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"tokens_by_type"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+              <span class="token property">"BaseAnalyzer"</span><span class="token operator">:</span> <span class="token number">41638</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"request_count"</span><span class="token operator">:</span> <span class="token number">1</span>
+          <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+          <span class="token property">"incomestatement"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">"total_cost"</span><span class="token operator">:</span> <span class="token number">0.0135</span><span class="token punctuation">,</span>
+            <span class="token property">"total_tokens"</span><span class="token operator">:</span> <span class="token number">20608</span><span class="token punctuation">,</span>
+            <span class="token property">"cost_by_type"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+              <span class="token property">"IncomeStatementFormatter"</span><span class="token operator">:</span> <span class="token number">0.0135</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"tokens_by_type"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+              <span class="token property">"IncomeStatementFormatter"</span><span class="token operator">:</span> <span class="token number">20608</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"request_count"</span><span class="token operator">:</span> <span class="token number">13</span>
+          <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+          <span class="token property">"balancesheet"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">"total_cost"</span><span class="token operator">:</span> <span class="token number">0.0196</span><span class="token punctuation">,</span>
+            <span class="token property">"total_tokens"</span><span class="token operator">:</span> <span class="token number">30754</span><span class="token punctuation">,</span>
+            <span class="token property">"cost_by_type"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+              <span class="token property">"BalanceSheetFormatter"</span><span class="token operator">:</span> <span class="token number">0.0196</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"tokens_by_type"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+              <span class="token property">"BalanceSheetFormatter"</span><span class="token operator">:</span> <span class="token number">30754</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"request_count"</span><span class="token operator">:</span> <span class="token number">13</span>
+          <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+          <span class="token property">"cashflowstatement"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">"total_cost"</span><span class="token operator">:</span> <span class="token number">0.0198</span><span class="token punctuation">,</span>
+            <span class="token property">"total_tokens"</span><span class="token operator">:</span> <span class="token number">30983</span><span class="token punctuation">,</span>
+            <span class="token property">"cost_by_type"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+              <span class="token property">"CashFlowStatementFormatter"</span><span class="token operator">:</span> <span class="token number">0.0198</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"tokens_by_type"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+              <span class="token property">"CashFlowStatementFormatter"</span><span class="token operator">:</span> <span class="token number">30983</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"request_count"</span><span class="token operator">:</span> <span class="token number">13</span>
+          <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+          <span class="token property">"equitystatement"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+            <span class="token property">"total_cost"</span><span class="token operator">:</span> <span class="token number">0.0026</span><span class="token punctuation">,</span>
+            <span class="token property">"total_tokens"</span><span class="token operator">:</span> <span class="token number">3910</span><span class="token punctuation">,</span>
+            <span class="token property">"cost_by_type"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+              <span class="token property">"EquityStatementFormatter"</span><span class="token operator">:</span> <span class="token number">0.0026</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"tokens_by_type"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+              <span class="token property">"EquityStatementFormatter"</span><span class="token operator">:</span> <span class="token number">3910</span>
+            <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+            <span class="token property">"request_count"</span><span class="token operator">:</span> <span class="token number">7</span>
+          <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+        <span class="token property">"metrics"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+          <span class="token property">"parse_success_per_dollar"</span><span class="token operator">:</span> <span class="token number">10.2501</span><span class="token punctuation">,</span>
+          <span class="token property">"field_fill_per_dollar"</span><span class="token operator">:</span> <span class="token number">12.3001</span>
+        <span class="token punctuation">&#125;</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>This framework gives a better view of the project’s performance and cost dynamics. I can see immediately if a change breaks something or has a significant impact on cost. It’s been a good learning experience building this LLM-based application, and I’m excited to see how it helps guide the project forward.</p>
+ 
+    </div>
+    <footer class="article-footer">
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2025/06/07/ai-llm/measuring-what-matters-evaluation-and-cost-tracking.html"
+        data-id="cmdni1ej6000k1m69hfyd0ifx"
+        data-title="Measuring What Matters: Building an Evaluation and Cost-Tracking Framework for my AI Financial Analyst"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
+        </svg>
+      </button>
+        
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/Python/">#Python</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/LLM/">#LLM</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/AI/">#AI</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Evaluation/">#Evaluation</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Cost-Management/">#Cost Management</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+   
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2025/06/08/ai-llm/refining-the-filing-cache.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Debugging the Engine: Fixing a Broken Filing Cache
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2025/06/07/ai-llm/anatomy-of-an-ai-financial-analyst.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Anatomy of an AI Financial Analyst: From Raw Filing to Interactive Dashboard</div>
+    </a>
+  
+</nav>
+ 
+</article>
+
+ 
+</section>
+           <aside class="sidebar" id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Categories</p>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/">AI Development</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/Aperilex/">Aperilex</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Journal-App/">Journal App</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SEC-Analysis/">SEC Analysis</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Recent Posts</p>
+    <div class="widget">
+      <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/27/ai-llm/application-layer-completion-and-review.html">Application Layer Completion and Review for Aperilex</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/20/ai-llm/aperilex-infrastructure-layer-completion.html">Aperilex Infrastructure Layer Completion: An Intense Learning and Developing Journey</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/12/ai-llm/infrasturecture-layer-edgar-and-llm.html">Aperilex Architecture Update: Integrating EdgarTools and a Hierarchical LLM Pipeline in Infrastructure Layer</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/09/ai-llm/domain-layer-implementation.html">Domain Layer Implementation: Building Aperilex&#39;s Core and Revision with Claude Code</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/08/ai-llm/initial-setups-and-plan.html">Architecting Aperilex: Initial Development Setups and Planning</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+          
+        </div>
+        <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner footer-info">
+      
+      &copy; 2025 Zhicheng Wang<br>
+      <div>
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div>
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav> 
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<!-- 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+ -->
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+    </div>
+  </body>
+</html>

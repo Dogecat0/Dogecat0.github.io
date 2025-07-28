@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HENBHMXMT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0HENBHMXMT');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>Inomad Diary-04-Infrastructure-01-Readings-Storage Technologies in Cloud | Zhicheng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+    <meta name="description" content="🔎 Intro In this post, I will explore the key storage technologies that underpin cloud computing. Storage is a critical component of any cloud infrastructure, e">
+  
+  
+  
+    <meta name="keywords" content="programming, software development, AI, LLM, machine learning, financial analysis, SEC filings, Python, FastAPI, web development, coding tutorials, technical blog, software engineering, Claude Code, reading, Inomad, Infrastructure, Cloud Computing, Storage">
+  
+  
+  
+    <link rel="canonical" href="https://zhicheng-wang.com/2024/05/29/inomad-diary/04-Infrastructure/01-Readings/Storage Technologies in Cloud.html">
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
+  <meta name="description" content="🔎 Intro In this post, I will explore the key storage technologies that underpin cloud computing. Storage is a critical component of any cloud infrastructure, enabling data persistence, retrieval, and">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Inomad Diary-04-Infrastructure-01-Readings-Storage Technologies in Cloud">
+<meta property="og:url" content="https://zhicheng-wang.com/2024/05/29/inomad-diary/04-Infrastructure/01-Readings/Storage%20Technologies%20in%20Cloud.html">
+<meta property="og:site_name" content="Zhicheng&#39;s Blog">
+<meta property="og:description" content="🔎 Intro In this post, I will explore the key storage technologies that underpin cloud computing. Storage is a critical component of any cloud infrastructure, enabling data persistence, retrieval, and">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-05-29T21:01:28.000Z">
+<meta property="article:modified_time" content="2025-06-08T09:08:06.000Z">
+<meta property="article:author" content="Zhicheng Wang">
+<meta property="article:tag" content="Inomad">
+<meta property="article:tag" content="Infrastructure">
+<meta property="article:tag" content="Cloud Computing">
+<meta property="article:tag" content="Storage">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+  
+  
+<link rel="stylesheet" href="/css/output.css">
+
+  
+    <link rel="stylesheet" href="/css/prism.css">
+    <script src="/js/prism.js"></script>
+  
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body class="body">
+    <div id="container" class="container">
+      <div id="wrap">
+        <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="header-title-group inner">
+      <p id="logo-wrap" class="header-title">
+        Zhicheng&#39;s Blog
+        <!-- <a href="/" id="logo">Zhicheng&#39;s Blog</a> -->
+      </p>
+      
+        <p id="subtitle-wrap" class="header-subtitle">
+          A Chronicles of a 👨‍💻Programmer <b>(with 📊📈Analytical Mindset <s>Who was Once a 🎨🖌️Designer</s>)</b>: Learn to Debug Life
+          <!-- <a href="/" id="subtitle">A Chronicles of a 👨‍💻Programmer &lt;b&gt;(with 📊📈Analytical Mindset &lt;s&gt;Who was Once a 🎨🖌️Designer&lt;/s&gt;)&lt;/b&gt;: Learn to Debug Life</a> -->
+        </p>
+      
+      
+        <p id="description-wrap" class="header-description">
+          Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding <b><s>(with LLMs ofc, what were you expecting?)</s></b> and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity <b><s>(and AI's endless patience)</s></b>, bolstered by my humble attitude of learning <b><s>(with millions of searches on Google)</s></b>,
+I'm pretty confident this debugging process will be wrapped up by the end of this century.
+<br>
+<br>
+✉️: zcmmwang@gmail.com
+<br>
+🌟: <a href="https://github.com/Dogecat0" target="_blank" rel="noopener noreferrer">https://github.com/Dogecat0</a>
+
+          <!-- <a href="/" id="description">Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding &lt;b&gt;&lt;s&gt;(with LLMs ofc, what were you expecting?)&lt;/s&gt;&lt;/b&gt; and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity &lt;b&gt;&lt;s&gt;(and AI&#39;s endless patience)&lt;/s&gt;&lt;/b&gt;, bolstered by my humble attitude of learning &lt;b&gt;&lt;s&gt;(with millions of searches on Google)&lt;/s&gt;&lt;/b&gt;,
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+&lt;br&gt;
+&lt;br&gt;
+✉️: zcmmwang@gmail.com
+&lt;br&gt;
+🌟: &lt;a href=&#34;https://github.com/Dogecat0&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;https://github.com/Dogecat0&lt;/a&gt;
+</a> -->
+        </p>
+      
+    </div>
+    <div id="header-inner" class="nav-menu inner">
+      <nav id="main-nav" class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      
+    <div id="site_search" class="site-search">
+     <div class="form-group" class="site-search-input">
+      <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+     </div>  
+    <div id="local-search-result" class="local-search-result"></div>
+    </div>
+  
+    </div>
+  </div>
+</header>
+
+        <div class="outer">
+          <section class="post-container" id="main"><article
+  id="post-inomad-diary/04-Infrastructure/01-Readings/Storage Technologies in Cloud"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2024-05-29T21:01:28.000Z" itemprop="datePublished">2024-05-29</time>
+  <br>
+  
+  Updated: <time class="dt-published" datetime="2025-06-08T09:08:06.000Z" itemprop="datePublished">2025-06-08</time>
+  
+</p>
+    
+  </div>
+  <hr />
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Inomad Diary-04-Infrastructure-01-Readings-Storage Technologies in Cloud
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <h3 id="🔎-Intro"><strong>🔎 Intro</strong></h3>
+<p>In this post, I will explore the key storage technologies that underpin cloud computing. Storage is a critical component of any cloud infrastructure, enabling data persistence, retrieval, and management for applications and services.</p>
+<span id="more"></span>
+<p>Cloud storage technologies enable the storage, management, and retrieval of data in a scalable, flexible, and cost-effective manner. Here are the key types of cloud storage technologies:</p>
+<h3 id="🔧-Key-Storage-Technologies-in-Cloud-Computing"><strong>🔧 Key Storage Technologies in Cloud Computing</strong></h3>
+<h3 id="1-Object-Storage">1. Object Storage</h3>
+<ul>
+<li>Definition: Object storage manages data as objects, each containing the data itself, metadata, and a unique identifier.</li>
+<li>Key Features: Scalability, durability, metadata management, cost-effectiveness.</li>
+<li>Use Cases: Storing unstructured data, media files, backups, archives.</li>
+</ul>
+<h3 id="2-Block-Storage">2. Block Storage</h3>
+<ul>
+<li>Definition: Block storage divides data into fixed-sized blocks and stores them as separate pieces, each with its own address but without metadata.</li>
+<li>Key Features: High performance, low latency, data consistency.</li>
+</ul>
+<h3 id="3-File-Storage">3. File Storage</h3>
+<ul>
+<li>Definition: File storage organizes data into a hierarchical structure of files and folders, similar to how data is stored on local file systems.</li>
+<li>Key Features: Shared access, file-level operations, compatibility with existing applications.</li>
+</ul>
+<h3 id="4-Cloud-Database-Storage">4. Cloud Database Storage</h3>
+<ul>
+<li>Definition: Cloud databases provide scalable, high-performance storage for structured data, enabling efficient querying, indexing, and transaction processing.</li>
+<li>Key Features: ACID compliance, scalability, fault tolerance.</li>
+</ul>
+<h3 id="5-Hybrid-Storage-Solutions">5. Hybrid Storage Solutions</h3>
+<ul>
+<li>Definition: Hybrid cloud storage combines on-premises storage with cloud storage services, allowing organizations to leverage the benefits of both environments.</li>
+<li>Key Features: Flexibility, cost management, and data locality for performance-sensitive applications.</li>
+</ul>
+<h3 id="🚩-Considerations-for-Choosing-Storage-Technologies"><strong>🚩 Considerations for Choosing Storage Technologies</strong></h3>
+<h3 id="1-Performance-Requirements">1. Performance Requirements</h3>
+<ul>
+<li>Consider the performance characteristics required by your applications, such as throughput, latency, and IOPS.</li>
+</ul>
+<h3 id="2-Scalability-and-Elasticity">2. Scalability and Elasticity</h3>
+<ul>
+<li>Evaluate the scalability and elasticity of storage solutions to accommodate growing data volumes and changing workloads.</li>
+</ul>
+<h3 id="3-Durability-and-Reliability">3. Durability and Reliability</h3>
+<ul>
+<li>Assess the durability and reliability of storage technologies to ensure data integrity and availability.</li>
+</ul>
+<h3 id="4-Cost-Efficiency">4. Cost Efficiency</h3>
+<ul>
+<li>Compare the cost structures of different storage options, including storage capacity, data transfer, and access fees.</li>
+</ul>
+ 
+    </div>
+    <footer class="article-footer">
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2024/05/29/inomad-diary/04-Infrastructure/01-Readings/Storage%20Technologies%20in%20Cloud.html"
+        data-id="cmdni1ejr002n1m6970sj1kqn"
+        data-title="Inomad Diary-04-Infrastructure-01-Readings-Storage Technologies in Cloud"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
+        </svg>
+      </button>
+        
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/Inomad/">#Inomad</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Infrastructure/">#Infrastructure</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Cloud-Computing/">#Cloud Computing</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/Storage/">#Storage</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+   
+<nav id="article-nav" class="article-nav">
+  
+    <a href="/2024/06/30/inomad-diary/04-Infrastructure/01-Readings/CDN%20and%20Networking.html" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Inomad Diary-04-Infrastructure-01-Readings-CDN and Networking
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2024/05/29/inomad-diary/04-Infrastructure/01-Readings/Technologies%20in%20Cloud%20Computing.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Inomad Diary-04-Infrastructure-01-Readings-Technologies in Cloud Computing</div>
+    </a>
+  
+</nav>
+ 
+</article>
+
+ 
+</section>
+           <aside class="sidebar" id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Categories</p>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/">AI Development</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/Aperilex/">Aperilex</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Journal-App/">Journal App</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SEC-Analysis/">SEC Analysis</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Recent Posts</p>
+    <div class="widget">
+      <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/27/ai-llm/application-layer-completion-and-review.html">Application Layer Completion and Review for Aperilex</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/20/ai-llm/aperilex-infrastructure-layer-completion.html">Aperilex Infrastructure Layer Completion: An Intense Learning and Developing Journey</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/12/ai-llm/infrasturecture-layer-edgar-and-llm.html">Aperilex Architecture Update: Integrating EdgarTools and a Hierarchical LLM Pipeline in Infrastructure Layer</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/09/ai-llm/domain-layer-implementation.html">Domain Layer Implementation: Building Aperilex&#39;s Core and Revision with Claude Code</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/08/ai-llm/initial-setups-and-plan.html">Architecting Aperilex: Initial Development Setups and Planning</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+          
+        </div>
+        <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner footer-info">
+      
+      &copy; 2025 Zhicheng Wang<br>
+      <div>
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div>
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav> 
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<!-- 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+ -->
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+    </div>
+  </body>
+</html>
