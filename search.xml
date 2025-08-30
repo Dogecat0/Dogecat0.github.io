@@ -525,9 +525,9 @@
             
             <tag> FastAPI </tag>
             
-            <tag> Caching </tag>
-            
             <tag> SQLAlchemy </tag>
+            
+            <tag> Caching </tag>
             
             <tag> Refactoring </tag>
             
@@ -628,9 +628,9 @@
             
             <tag> AI </tag>
             
-            <tag> Optimization </tag>
-            
             <tag> Caching </tag>
+            
+            <tag> Optimization </tag>
             
             <tag> Copilot </tag>
             
@@ -854,9 +854,9 @@
       
         <tags>
             
-            <tag> Inomad </tag>
-            
             <tag> Security </tag>
+            
+            <tag> Inomad </tag>
             
             <tag> Infrastructure </tag>
             
