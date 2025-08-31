@@ -752,6 +752,20 @@
   </url>
   
   <url>
+    <loc>https://zhicheng-wang.com/tags/RAG/</loc>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Search/</loc>
+    <lastmod>2025-08-31</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://zhicheng-wang.com/tags/Zod/</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>weekly</changefreq>
@@ -823,20 +837,6 @@
   
   <url>
     <loc>https://zhicheng-wang.com/tags/Database/</loc>
-    <lastmod>2025-08-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/RAG/</loc>
-    <lastmod>2025-08-31</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Search/</loc>
     <lastmod>2025-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
