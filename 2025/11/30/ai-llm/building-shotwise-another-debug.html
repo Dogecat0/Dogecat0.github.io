@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta charset="utf-8">
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0HENBHMXMT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0HENBHMXMT');
+</script>
+<!-- End Google Analytics -->
+
+  
+  <title>From Hobby Photos to Shotwise: Building an AI Photo Critique App in 20 Hours | Zhicheng&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  
+  
+    <meta name="description" content="Spent the last couple of nights (~20 hours) turning one of the “life outside building” ideas into an actual app. It’s called Shotwise: upload a photo, get an AI">
+  
+  
+  
+    <meta name="keywords" content="programming, software development, AI, LLM, machine learning, financial analysis, SEC filings, Python, FastAPI, web development, coding tutorials, technical blog, software engineering, Claude Code, reading, nextjs, react, typescript, stripe, supabase, gemini, ai, photography">
+  
+  
+  
+    <link rel="canonical" href="https://zhicheng-wang.com/2025/11/30/ai-llm/building-shotwise-another-debug.html">
+  
+  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,400;0,600;0,800;1,200;1,400;1,600;1,800&display=swap" rel="stylesheet">
+  <meta name="description" content="Spent the last couple of nights (~20 hours) turning one of the “life outside building” ideas into an actual app. It’s called Shotwise: upload a photo, get an AI critique, then generate an improved ver">
+<meta property="og:type" content="article">
+<meta property="og:title" content="From Hobby Photos to Shotwise: Building an AI Photo Critique App in 20 Hours">
+<meta property="og:url" content="https://zhicheng-wang.com/2025/11/30/ai-llm/building-shotwise-another-debug.html">
+<meta property="og:site_name" content="Zhicheng&#39;s Blog">
+<meta property="og:description" content="Spent the last couple of nights (~20 hours) turning one of the “life outside building” ideas into an actual app. It’s called Shotwise: upload a photo, get an AI critique, then generate an improved ver">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-11-30T18:00:00.000Z">
+<meta property="article:modified_time" content="2025-11-30T15:30:14.813Z">
+<meta property="article:author" content="Zhicheng Wang">
+<meta property="article:tag" content="nextjs">
+<meta property="article:tag" content="react">
+<meta property="article:tag" content="typescript">
+<meta property="article:tag" content="stripe">
+<meta property="article:tag" content="supabase">
+<meta property="article:tag" content="gemini">
+<meta property="article:tag" content="ai">
+<meta property="article:tag" content="photography">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Zhicheng's Blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/icons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+  
+  
+<link rel="stylesheet" href="/css/output.css">
+
+  
+    <link rel="stylesheet" href="/css/prism.css">
+    <script src="/js/prism.js"></script>
+  
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+  <body class="body">
+    <div id="container" class="container">
+      <div id="wrap">
+        <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="header-title-group inner">
+      <p id="logo-wrap" class="header-title">
+        Zhicheng&#39;s Blog
+        <!-- <a href="/" id="logo">Zhicheng&#39;s Blog</a> -->
+      </p>
+      
+        <p id="subtitle-wrap" class="header-subtitle">
+          A Chronicles of a 👨‍💻Programmer <s>(with 📊📈Analytical Mindset Who was Once a 🎨🖌️Designer)</s>: Learn to Debug Life
+          <!-- <a href="/" id="subtitle">A Chronicles of a 👨‍💻Programmer &lt;s&gt;(with 📊📈Analytical Mindset Who was Once a 🎨🖌️Designer)&lt;/s&gt;: Learn to Debug Life</a> -->
+        </p>
+      
+      
+        <p id="description-wrap" class="header-description">
+          Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding <s>(with LLMs ofc, what were you expecting?)</s> and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity <s>(and AI's endless patience)</s>, bolstered by my humble attitude of learning <s>(with millions of searches on Google)</s>,
+I'm pretty confident this debugging process will be wrapped up by the end of this century.
+<br>
+<br>
+👨‍💻 Building: 
+<br>
+• <a href="https://www.aperilexlabs.com" target="_blank" rel="noopener noreferrer">AperilexLabs</a>
+<br>
+• <a href="https://www.shotwiseai.com" target="_blank" rel="noopener noreferrer">Shotwise</a>
+<br>
+• <a href="https://www.zhicheng-wang.com/llm-whitepaper-viewer/" target="_blank" rel="noopener noreferrer">LLM Reader</a>
+<br>
+<br>
+✉️: zcmmwang@gmail.com
+<br>
+🐦: <a href="https://x.com/ZhichengWang87" target="_blank" rel="noopener noreferrer">X</a>
+<br>
+🌟: <a href="https://github.com/Dogecat0" target="_blank" rel="noopener noreferrer">GitHub</a>
+
+          <!-- <a href="/" id="description">Welcome to my blog!
+This blog chronicles my personal exploration into the worlds of coding &lt;s&gt;(with LLMs ofc, what were you expecting?)&lt;/s&gt; and life itself.
+Here, I share the things I encounter while learning to program.
+Think of it as me trying to debug life while getting better at debugging code.
+Fueled by my own insatiable curiosity &lt;s&gt;(and AI&#39;s endless patience)&lt;/s&gt;, bolstered by my humble attitude of learning &lt;s&gt;(with millions of searches on Google)&lt;/s&gt;,
+I&#39;m pretty confident this debugging process will be wrapped up by the end of this century.
+&lt;br&gt;
+&lt;br&gt;
+👨‍💻 Building: 
+&lt;br&gt;
+• &lt;a href=&#34;https://www.aperilexlabs.com&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;AperilexLabs&lt;/a&gt;
+&lt;br&gt;
+• &lt;a href=&#34;https://www.shotwiseai.com&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;Shotwise&lt;/a&gt;
+&lt;br&gt;
+• &lt;a href=&#34;https://www.zhicheng-wang.com/llm-whitepaper-viewer/&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;LLM Reader&lt;/a&gt;
+&lt;br&gt;
+&lt;br&gt;
+✉️: zcmmwang@gmail.com
+&lt;br&gt;
+🐦: &lt;a href=&#34;https://x.com/ZhichengWang87&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;X&lt;/a&gt;
+&lt;br&gt;
+🌟: &lt;a href=&#34;https://github.com/Dogecat0&#34; target=&#34;_blank&#34; rel=&#34;noopener noreferrer&#34;&gt;GitHub&lt;/a&gt;
+</a> -->
+        </p>
+      
+    </div>
+    <div id="header-inner" class="nav-menu inner">
+      <nav id="main-nav" class="main-nav">
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      
+    <div id="site_search" class="site-search">
+     <div class="form-group" class="site-search-input">
+      <input type="text" id="local-search-input" name="q" results="0" placeholder="Search" class="st-search-input st-default-search-input form-control"/>
+     </div>  
+    <div id="local-search-result" class="local-search-result"></div>
+    </div>
+  
+    </div>
+  </div>
+</header>
+
+        <div class="outer">
+          <section class="post-container" id="main"><article
+  id="post-ai-llm/building-shotwise-another-debug"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2025-11-30T18:00:00.000Z" itemprop="datePublished">2025-11-30</time>
+  <br>
+  
+</p>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AI-Development/">AI Development</a> / <a class="article-category-link" href="/categories/AI-Development/Shotwise/">Shotwise</a>
+  </div>
+
+  </div>
+  <hr />
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      From Hobby Photos to Shotwise: Building an AI Photo Critique App in 20 Hours
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>Spent the last couple of nights (~20 hours) turning one of the “life outside building” ideas into an actual app.</p>
+<p>It’s called Shotwise: upload a photo, get an AI critique, then generate an improved version.</p>
+<p>This one was very different from my other project (Aperilex). Aperilex is a slow, deliberate learning grind; Shotwise is much more of a controlled dopamine sprint.</p>
+<span id="more"></span>
+<h3 id="From-“Life-Outside-Building”-Idea-to-App">From “Life Outside Building” Idea to App</h3>
+<p>This all started from one of the “life outside building” series ideas that wouldn’t leave my head. Instead of letting it sit as a note, I decided to see how far I could push it in a short, intense window.</p>
+<p>I ended up spending a couple of nights, roughly 20+ hours, to convert that idea into an actual app. It’s been a very satisfying validation process on two fronts:</p>
+<ol>
+<li>Using the latest AI tools to quickly put everything together and deploy a real app with a modern stack.</li>
+<li>Converting a hobby (photography and critique) into something executable and interactive, instead of just a personal obsession.</li>
+</ol>
+<h3 id="A-Controlled-Dopamine-Sprint-vs-Slow-Learning-Projects">A Controlled Dopamine Sprint vs Slow Learning Projects</h3>
+<p>Compared to <a target="_blank" rel="noopener" href="https://www.aperilexlabs.com">Aperilex</a>, this feels like the opposite style of building.</p>
+<p>Aperilex is a slow and dedicated learning project: understand every abstraction, rebuild pieces by hand, treat it like a long-term craft project.</p>
+<p>Shotwise is the “I want a dopamine rush” project I’ve been wanting for a while:</p>
+<ul>
+<li>Next.js 16 + React 19 + Tailwind v4 brutalist theme on the frontend</li>
+<li>Prisma/Postgres, Supabase storage, Stripe billing, NextAuth Google, Gemini APIs on the backend</li>
+<li>Vercel for deployment</li>
+<li>Antigravity for frontend UI help, Codex for backend wiring</li>
+</ul>
+<p>The satisfying part was seeing how quickly all of this can come together when you lean into AI tooling:</p>
+<ul>
+<li>Sketch UX and flows → turn into real components fast</li>
+<li>Wire up auth, billing, storage, and rate limits with AI doing ~80% of the boilerplate</li>
+<li>Still needing to think seriously about structure, security, and edge cases</li>
+<li>Get to a deployed app in nights</li>
+</ul>
+<h3 id="Can-AI-Critique-Photos-in-a-Structured-Way">Can AI Critique Photos in a Structured Way?</h3>
+<p>I’ve always felt that photography critique is very subjective. Two people can look at the same portrait or product shot and argue forever about whether it’s “good”.</p>
+<p>Shotwise is my attempt to ask a more structured question:</p>
+<blockquote>
+<p>Can we validate a photo with AI and output a structured critique list so we actually know <em>why</em> it’s good or bad, and <em>where</em> to improve?</p>
+</blockquote>
+<p>Instead of vague “nice shot” feedback, the app tries to produce an explicit checklist:</p>
+<ul>
+<li>What works: lighting, framing, expression, background, styling, etc.</li>
+<li>What doesn’t: clutter, pose issues, contrast problems, color balance, composition flaws</li>
+<li>Concrete edit instructions: things a second model (the generator) can follow to create an improved version</li>
+</ul>
+<p>That’s the core loop:<br>
+one model reviews → one model rebuilds the frame.</p>
+<h3 id="Prompt-and-Schema-Design-Work">Prompt and Schema Design Work</h3>
+<p>A lot of the effort wasn’t just coding, but <em>shaping</em> how the models behave.</p>
+<p>Some of the main pieces:</p>
+<ul>
+<li>Using strict Zod schemas to force structured critique JSON instead of “vibes only” paragraphs</li>
+<li>Making the critique output explicit about strengths vs weaknesses vs actionable edits</li>
+<li>Separating “locked” vs “flexible” elements
+<ul>
+<li>e.g. keep the subject, outfit, and general pose</li>
+<li>allow background, lighting, and secondary styling to change</li>
+</ul>
+</li>
+<li>Being clear about camera geometry and perspective so the generator doesn’t go off the rails</li>
+<li>Tuning “revision strength” so the image evolves instead of turning into a completely different photo</li>
+</ul>
+<p>This is where Supabase, Prisma, Stripe, etc. feel relatively straightforward, and prompt / schema design becomes the real design problem.</p>
+<h3 id="Tech-Stack-Reality-Check">Tech Stack Reality Check</h3>
+<p>On the infra side, Shotwise is also a good practice ground for the full stack:</p>
+<ul>
+<li>Next.js 16 App Router + React 19 + Tailwind v4 brutalist UI</li>
+<li>Prisma/Postgres for data model: users, subscriptions, photo sessions, critiques, generated images, usage events</li>
+<li>Supabase for storage: uploads and generated images</li>
+<li>Stripe for subscriptions, quotas, and usage tracking</li>
+<li>Google auth via NextAuth + Prisma adapter</li>
+<li>Gemini for both critique and image generation</li>
+<li>Vercel for deployment, with rate limiting, environment config, and all the usual moving parts</li>
+</ul>
+<p>UX matters a lot here, even for an MVP. The first experience — landing → upload → critique → generation → result — needed to feel coherent and smooth, not like a loose collection of API demos.</p>
+<h3 id="The-“Is-This-a-Product-”-Question">The “Is This a Product?” Question</h3>
+<p>The most interesting part: I put a subscription plan in there.</p>
+<p>Stripe plans, quotas, usage tracking, billing portal, the whole SaaS setup. On paper, this looks like a product. Deep down, there is clearly a desire to treat it like a business product.</p>
+<p>But after some careful thinking, I realized something:</p>
+<ul>
+<li>I’m not sure I’m ready yet to go talk to potential “customers.”</li>
+<li>I don’t really want to “advertise” it or run a proper go-to-market motion right now.</li>
+<li>I feel more comfortable sharing what the project does and why I built it to satisfy my own urge to build.</li>
+</ul>
+<p>So for the moment, the business layer is wired up, but emotionally it’s still in “build log” mode, not “launch announcement” mode.</p>
+<h3 id="For-Now-More-Than-a-Toy-Less-Than-a-Company">For Now: More Than a Toy, Less Than a Company</h3>
+<p>Right now, Shotwise sits in a middle ground that I actually like:</p>
+<ul>
+<li>More than a toy, less than a company</li>
+<li>A real deployed app with auth, billing, quotas, storage, and infra in place</li>
+<li>A sandbox to practice prompt engineering, UX, security, and architecture with real constraints</li>
+</ul>
+<p>And importantly, it’s proof to myself that I can take an idea from the “life outside building” notes and turn it into a working app in a short, intense window using modern AI tools.</p>
+<p>I’m sharing this less as a launch and more as a build story.</p>
+<p>At some point I might be ready to talk to users, niche down (maybe just profile photos or product shots), and treat this as a serious product. For now, I’m enjoying the phase where you build the thing you can’t get out of your head and see how far you can push it.</p>
+ 
+    </div>
+    <footer class="article-footer">
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2025/11/30/ai-llm/building-shotwise-another-debug.html"
+        data-id="cmilvnx2c0005yb69b174duqq"
+        data-title="From Hobby Photos to Shotwise: Building an AI Photo Critique App in 20 Hours"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
+        </svg>
+      </button>
+        
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/nextjs/">#nextjs</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/react/">#react</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/typescript/">#typescript</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/stripe/">#stripe</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/supabase/">#supabase</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/gemini/">#gemini</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/ai/">#ai</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/photography/">#photography</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+   
+<nav id="article-nav" class="article-nav">
+  
+  
+    <a href="/2025/08/31/ai-llm/review-build-with-claude-code.html" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Building with Claude Code: 7 Weeks of Review and Reflection</div>
+    </a>
+  
+</nav>
+ 
+</article>
+
+ 
+</section>
+           <aside class="sidebar" id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Categories</p>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/">AI Development</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/Aperilex/">Aperilex</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/Shotwise/">Shotwise</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Journal-App/">Journal App</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SEC-Analysis/">SEC Analysis</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <p class="widget-title">Recent Posts</p>
+    <div class="widget">
+      <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/11/30/ai-llm/building-shotwise-another-debug.html">From Hobby Photos to Shotwise: Building an AI Photo Critique App in 20 Hours</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/08/31/ai-llm/review-build-with-claude-code.html">Building with Claude Code: 7 Weeks of Review and Reflection</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/27/ai-llm/application-layer-completion-and-review.html">Application Layer Completion and Review for Aperilex</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/20/ai-llm/aperilex-infrastructure-layer-completion.html">Aperilex Infrastructure Layer Completion: An Intense Learning and Developing Journey</a>
+          </li>
+        
+          <li class="recent-post-list-item">
+            <a href="/2025/07/12/ai-llm/infrasturecture-layer-edgar-and-llm.html">Aperilex Architecture Update: Integrating EdgarTools and a Hierarchical LLM Pipeline in Infrastructure Layer</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+          
+        </div>
+        <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner footer-info">
+      <div class="footer-left">
+        
+        &copy; 2025 Zhicheng Wang
+      </div>
+      <div class="footer-right">
+        Powered by 
+        <a href="https://hexo.io/" target="_blank">Hexo</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+      </div>
+      <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav> 
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+<script src="/js/search.js"></script>
+
+
+
+
+
+
+
+
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<!-- 
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+ -->
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+
+    </div>
+  </body>
+</html>

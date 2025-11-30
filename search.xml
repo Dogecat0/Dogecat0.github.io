@@ -4,6 +4,47 @@
   
     
     <entry>
+      <title>From Hobby Photos to Shotwise: Building an AI Photo Critique App in 20 Hours</title>
+      <link href="/2025/11/30/ai-llm/building-shotwise-another-debug.html"/>
+      <url>/2025/11/30/ai-llm/building-shotwise-another-debug.html</url>
+      
+        <content type="html"><![CDATA[<p>Spent the last couple of nights (~20 hours) turning one of the “life outside building” ideas into an actual app.</p><p>It’s called Shotwise: upload a photo, get an AI critique, then generate an improved version.</p><p>This one was very different from my other project (Aperilex). Aperilex is a slow, deliberate learning grind; Shotwise is much more of a controlled dopamine sprint.</p><span id="more"></span><h3 id="From-“Life-Outside-Building”-Idea-to-App">From “Life Outside Building” Idea to App</h3><p>This all started from one of the “life outside building” series ideas that wouldn’t leave my head. Instead of letting it sit as a note, I decided to see how far I could push it in a short, intense window.</p><p>I ended up spending a couple of nights, roughly 20+ hours, to convert that idea into an actual app. It’s been a very satisfying validation process on two fronts:</p><ol><li>Using the latest AI tools to quickly put everything together and deploy a real app with a modern stack.</li><li>Converting a hobby (photography and critique) into something executable and interactive, instead of just a personal obsession.</li></ol><h3 id="A-Controlled-Dopamine-Sprint-vs-Slow-Learning-Projects">A Controlled Dopamine Sprint vs Slow Learning Projects</h3><p>Compared to <a href="https://www.aperilexlabs.com">Aperilex</a>, this feels like the opposite style of building.</p><p>Aperilex is a slow and dedicated learning project: understand every abstraction, rebuild pieces by hand, treat it like a long-term craft project.</p><p>Shotwise is the “I want a dopamine rush” project I’ve been wanting for a while:</p><ul><li>Next.js 16 + React 19 + Tailwind v4 brutalist theme on the frontend</li><li>Prisma/Postgres, Supabase storage, Stripe billing, NextAuth Google, Gemini APIs on the backend</li><li>Vercel for deployment</li><li>Antigravity for frontend UI help, Codex for backend wiring</li></ul><p>The satisfying part was seeing how quickly all of this can come together when you lean into AI tooling:</p><ul><li>Sketch UX and flows → turn into real components fast</li><li>Wire up auth, billing, storage, and rate limits with AI doing ~80% of the boilerplate</li><li>Still needing to think seriously about structure, security, and edge cases</li><li>Get to a deployed app in nights</li></ul><h3 id="Can-AI-Critique-Photos-in-a-Structured-Way">Can AI Critique Photos in a Structured Way?</h3><p>I’ve always felt that photography critique is very subjective. Two people can look at the same portrait or product shot and argue forever about whether it’s “good”.</p><p>Shotwise is my attempt to ask a more structured question:</p><blockquote><p>Can we validate a photo with AI and output a structured critique list so we actually know <em>why</em> it’s good or bad, and <em>where</em> to improve?</p></blockquote><p>Instead of vague “nice shot” feedback, the app tries to produce an explicit checklist:</p><ul><li>What works: lighting, framing, expression, background, styling, etc.</li><li>What doesn’t: clutter, pose issues, contrast problems, color balance, composition flaws</li><li>Concrete edit instructions: things a second model (the generator) can follow to create an improved version</li></ul><p>That’s the core loop:<br>one model reviews → one model rebuilds the frame.</p><h3 id="Prompt-and-Schema-Design-Work">Prompt and Schema Design Work</h3><p>A lot of the effort wasn’t just coding, but <em>shaping</em> how the models behave.</p><p>Some of the main pieces:</p><ul><li>Using strict Zod schemas to force structured critique JSON instead of “vibes only” paragraphs</li><li>Making the critique output explicit about strengths vs weaknesses vs actionable edits</li><li>Separating “locked” vs “flexible” elements<ul><li>e.g. keep the subject, outfit, and general pose</li><li>allow background, lighting, and secondary styling to change</li></ul></li><li>Being clear about camera geometry and perspective so the generator doesn’t go off the rails</li><li>Tuning “revision strength” so the image evolves instead of turning into a completely different photo</li></ul><p>This is where Supabase, Prisma, Stripe, etc. feel relatively straightforward, and prompt / schema design becomes the real design problem.</p><h3 id="Tech-Stack-Reality-Check">Tech Stack Reality Check</h3><p>On the infra side, Shotwise is also a good practice ground for the full stack:</p><ul><li>Next.js 16 App Router + React 19 + Tailwind v4 brutalist UI</li><li>Prisma/Postgres for data model: users, subscriptions, photo sessions, critiques, generated images, usage events</li><li>Supabase for storage: uploads and generated images</li><li>Stripe for subscriptions, quotas, and usage tracking</li><li>Google auth via NextAuth + Prisma adapter</li><li>Gemini for both critique and image generation</li><li>Vercel for deployment, with rate limiting, environment config, and all the usual moving parts</li></ul><p>UX matters a lot here, even for an MVP. The first experience — landing → upload → critique → generation → result — needed to feel coherent and smooth, not like a loose collection of API demos.</p><h3 id="The-“Is-This-a-Product-”-Question">The “Is This a Product?” Question</h3><p>The most interesting part: I put a subscription plan in there.</p><p>Stripe plans, quotas, usage tracking, billing portal, the whole SaaS setup. On paper, this looks like a product. Deep down, there is clearly a desire to treat it like a business product.</p><p>But after some careful thinking, I realized something:</p><ul><li>I’m not sure I’m ready yet to go talk to potential “customers.”</li><li>I don’t really want to “advertise” it or run a proper go-to-market motion right now.</li><li>I feel more comfortable sharing what the project does and why I built it to satisfy my own urge to build.</li></ul><p>So for the moment, the business layer is wired up, but emotionally it’s still in “build log” mode, not “launch announcement” mode.</p><h3 id="For-Now-More-Than-a-Toy-Less-Than-a-Company">For Now: More Than a Toy, Less Than a Company</h3><p>Right now, Shotwise sits in a middle ground that I actually like:</p><ul><li>More than a toy, less than a company</li><li>A real deployed app with auth, billing, quotas, storage, and infra in place</li><li>A sandbox to practice prompt engineering, UX, security, and architecture with real constraints</li></ul><p>And importantly, it’s proof to myself that I can take an idea from the “life outside building” notes and turn it into a working app in a short, intense window using modern AI tools.</p><p>I’m sharing this less as a launch and more as a build story.</p><p>At some point I might be ready to talk to users, niche down (maybe just profile photos or product shots), and treat this as a serious product. For now, I’m enjoying the phase where you build the thing you can’t get out of your head and see how far you can push it.</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> AI Development </category>
+          
+          <category> Shotwise </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> nextjs </tag>
+            
+            <tag> react </tag>
+            
+            <tag> typescript </tag>
+            
+            <tag> stripe </tag>
+            
+            <tag> supabase </tag>
+            
+            <tag> gemini </tag>
+            
+            <tag> ai </tag>
+            
+            <tag> photography </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Building with Claude Code: 7 Weeks of Review and Reflection</title>
       <link href="/2025/08/31/ai-llm/review-build-with-claude-code.html"/>
       <url>/2025/08/31/ai-llm/review-build-with-claude-code.html</url>
@@ -885,9 +926,9 @@
       
         <tags>
             
-            <tag> Security </tag>
-            
             <tag> Inomad </tag>
+            
+            <tag> Security </tag>
             
             <tag> Infrastructure </tag>
             
