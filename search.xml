@@ -4,7 +4,7 @@
   
     
     <entry>
-      <title>From Hobby Photos to Shotwise: Building an AI Photo Critique App in 20 Hours</title>
+      <title>From Hobby Photos to Shotwise: Building an AI Photo Critique App</title>
       <link href="/2025/11/30/ai-llm/building-shotwise-another-debug.html"/>
       <url>/2025/11/30/ai-llm/building-shotwise-another-debug.html</url>
       
@@ -926,9 +926,9 @@
       
         <tags>
             
-            <tag> Inomad </tag>
-            
             <tag> Security </tag>
+            
+            <tag> Inomad </tag>
             
             <tag> Infrastructure </tag>
             
