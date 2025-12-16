@@ -597,9 +597,9 @@
             
             <tag> FastAPI </tag>
             
-            <tag> SQLAlchemy </tag>
-            
             <tag> Caching </tag>
+            
+            <tag> SQLAlchemy </tag>
             
             <tag> Refactoring </tag>
             
@@ -700,9 +700,9 @@
             
             <tag> AI </tag>
             
-            <tag> Caching </tag>
-            
             <tag> Optimization </tag>
+            
+            <tag> Caching </tag>
             
             <tag> Copilot </tag>
             
