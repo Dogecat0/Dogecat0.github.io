@@ -92,15 +92,6 @@
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/2025/06/24/ai-llm/containerization.html</loc>
-    
-    <lastmod>2025-07-07</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
     <loc>https://zhicheng-wang.com/2025/06/09/ai-llm/from-sequential-to-supersonic.html</loc>
     
     <lastmod>2025-07-07</lastmod>
@@ -119,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/2025/06/07/ai-llm/measuring-what-matters-evaluation-and-cost-tracking.html</loc>
+    <loc>https://zhicheng-wang.com/2025/06/24/ai-llm/containerization.html</loc>
     
     <lastmod>2025-07-07</lastmod>
     
@@ -138,6 +129,15 @@
   
   <url>
     <loc>https://zhicheng-wang.com/2025/06/14/ai-llm/persistent-database.html</loc>
+    
+    <lastmod>2025-07-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/2025/06/07/ai-llm/measuring-what-matters-evaluation-and-cost-tracking.html</loc>
     
     <lastmod>2025-07-07</lastmod>
     
@@ -497,41 +497,6 @@
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/tags/Docker/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Docker-Compose/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Configuration-Management/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Environment-Variables/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Troubleshooting/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://zhicheng-wang.com/tags/Claude-Code/</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -637,14 +602,35 @@
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/tags/Evaluation/</loc>
+    <loc>https://zhicheng-wang.com/tags/Docker/</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/tags/Cost-Management/</loc>
+    <loc>https://zhicheng-wang.com/tags/Docker-Compose/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Configuration-Management/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Environment-Variables/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Troubleshooting/</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -715,6 +701,20 @@
   
   <url>
     <loc>https://zhicheng-wang.com/tags/Copilot/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Evaluation/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Cost-Management/</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -875,27 +875,6 @@
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/tags/Auditing/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Monitoring/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Logging/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://zhicheng-wang.com/tags/Cloud-Computing/</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -917,6 +896,27 @@
   </url>
   
   <url>
+    <loc>https://zhicheng-wang.com/tags/Auditing/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Monitoring/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Logging/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://zhicheng-wang.com/tags/Database/</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -931,13 +931,6 @@
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/tags/Storage/</loc>
-    <lastmod>2026-03-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://zhicheng-wang.com/tags/Compliance/</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -946,6 +939,13 @@
   
   <url>
     <loc>https://zhicheng-wang.com/tags/Governance/</loc>
+    <lastmod>2026-03-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Storage/</loc>
     <lastmod>2026-03-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
