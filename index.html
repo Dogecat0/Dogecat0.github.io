@@ -197,53 +197,17 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     
     <div class="e-content article-entry" itemprop="articleBody">
        <p>Spent the last few weeks diving deep into building Dossigraphica—a high-fidelity Geographic Intelligence (GEOINT) visualization platform.</p>
-<p>This one was a massive step up in complexity. While some projects are quick dopamine sprints, Dossigraphica turned into an intense, multi-layered architectural challenge, blending heavy frontend 3D rendering with a complex, autonomous backend research pipeline.</p>
-<h3 id="Basic-Information">Basic Information</h3>
-<p>First, let’s look at some interesting stats from the project:</p>
-<ul>
-<li><strong>Core Focus:</strong> Visualizing global footprint, supply chain dependencies, and geopolitical risk profiles.</li>
-<li><strong>Frontend Stack:</strong> React 19, TypeScript, Vite, Tailwind CSS 4, Zustand 5, <code>react-globe.gl</code>, Three.js.</li>
-<li><strong>Backend Stack:</strong> Python with FastAPI (SSE Streaming), LiteLLM (for local llama.cpp, Gemini, Featherless).</li>
-<li><strong>Research Pipeline:</strong> Async generators, Pydantic, Brave Search API, Jina Reader API.</li>
-</ul>
-<h3 id="From-Concept-to-Reality-The-“Parchment-and-Ink”-Aesthetic">From Concept to Reality: The “Parchment and Ink” Aesthetic</h3>
-<p>One of the most satisfying parts of this project was nailing the visual identity. I didn’t want this to look like just another generic dashboard. I wanted it to feel like a modern intelligence brief mixed with classic cartography.</p>
-<p>We landed on a “Parchment and Ink” style. The centerpiece is the interactive 3D globe built with <code>react-globe.gl</code> and Three.js, which maps out office hubs, supply chain arcs, and risk hotspots. Combining this with the integrated global strategy hub—featuring the Value Chain Matrix and Macro Risk Convergence panels—made the UI feel incredibly immersive.</p>
-<h3 id="The-Autonomous-Research-Agent-Structuring-the-Unstructured">The Autonomous Research Agent: Structuring the Unstructured</h3>
-<p>The real beast of Dossigraphica is the Python Sidecar—an autonomous, local-first research agent pipeline. Instead of just querying an LLM, the pipeline executes a deterministic workflow:</p>
-<ol>
-<li><strong>Planning:</strong> Generating targeted search queries.</li>
-<li><strong>Searching:</strong> Using the Brave Discovery API to scour the web.</li>
-<li><strong>Extraction &amp; Sieve:</strong> Using Jina Reader API for markdown extraction, followed by a Map-Reduce summarization.</li>
-<li><strong>Entity Assembly:</strong> Detecting data gaps and synthesizing geographic information.</li>
-<li><strong>Drafting:</strong> Parallel generation of structured JSON intelligence and rich Markdown dossiers.</li>
-</ol>
-<p>Getting an LLM to reliably extract and structure geographic and supply chain data without hallucinating or losing context was a massive challenge.</p>
-<h3 id="Challenges-Tracing-Assembly-and-Rate-Limits">Challenges: Tracing, Assembly, and Rate Limits</h3>
-<p>Building an orchestration engine that runs multiple async tasks in parallel is never easy.</p>
-<p>I hit several walls during development:</p>
-<ul>
-<li><strong>Tracing Model Inputs and Outputs:</strong> Debugging an agentic pipeline where the LLM is constantly communicating and restructuring data is hard. The current setup for logs and inference tracing helped immensely to peek under the hood and understand exactly where the agent was hallucinating or failing.</li>
-<li><strong>Entity Assembly and Enrichment Search:</strong> This is the absolute beast step of the pipeline. Synthesizing disparate data points, identifying gaps, and enriching the geographic context takes the most time and tuning to perfect the answers.</li>
-<li><strong>API Bottlenecks and Quotas:</strong> While the Gemini API handles the heavy lifting, the Jina Reader API turned out to be the current bottleneck for pipeline execution speed. Without an API key, the free tier limits you to 20 requests per minute, meaning bulk URL processing has to be carefully throttled.</li>
-</ul>
-<h3 id="Tech-Stack-Reality-Check-The-Hybrid-LLM-Setup">Tech Stack Reality Check: The Hybrid LLM Setup</h3>
-<p>Building the intelligence layer required moving past simple API calls and designing a resilient, hybrid orchestration system:</p>
-<ul>
-<li><strong>Model-Agnostic Architecture (High-Level):</strong> The pipeline is structured to decouple the research logic from the underlying model provider. By implementing a unified routing layer, the system can dynamically switch between heavy-duty cloud models (Gemini) for complex entity synthesis, and local fallback instances for lighter tasks if needed (My 3070 did run a couple of research with Google new Gemma4 model, it was decent but not mind blowing and time consuming).</li>
-<li><strong>Unified Interface via LiteLLM (Technical Deep-Dive):</strong> To achieve this flexibility without duplicating prompt engineering, the backend relies on <code>LiteLLM</code>. This acts as a proxy, mapping standardized OpenAI-compatible payloads to Gemini endpoints under the hood. This allows seamless integration with a local <code>llama.cpp</code> or Featherless server just by swapping an environment variable as you like (Funny how I started with this whole project using local LLM but now I am here using Gemini for everything lol).</li>
-</ul>
-<h3 id="Final-Thoughts">Final Thoughts</h3>
-<p>Dossigraphica sits right at the intersection of complex data orchestration and high-end data visualization.</p>
-<p>It’s proof that you can take unstructured web data, run it through an autonomous agentic pipeline, and render it into a highly structured, beautiful 3D intelligence dashboard (dashboard is just the side project but nice to again have this full-stack experience). It was an intense learning journey driven by curiosity and the desire to build something on my own to automate a task I find interesting (Geopolitical risk analysis of publicly traded companies).</p>
-<p>For now, I’m just enjoying watching the globe spin as the research agent seamlessly streams its findings into the UI.</p>
- 
+<p>This one was a massive step up in complexity. While some projects are quick dopamine sprints, Dossigraphica turned into an intense, multi-layered architectural challenge, blending heavy frontend 3D rendering with a complex, autonomous backend research pipeline.</p> 
+      <p class="article-more-link">
+        <a href="/2026/05/12/ai-llm/building-dossigraphica.html#more">Read More &gt;&gt;</a>
+      </p>
+       
     </div>
     <footer class="article-footer">
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2026/05/12/ai-llm/building-dossigraphica.html"
-        data-id="cmp35nuc30005qu69c8p0hv8l"
+        data-id="cmp35qnfv0005eh698dp7bmhk"
         data-title="Building Dossigraphica: An Autonomous Geo-Intelligence Dashboard"
         class="article-share-link"
         type="button"
@@ -335,7 +299,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/11/30/ai-llm/building-shotwise-another-debug.html"
-        data-id="cmp35nuc30006qu69b1t1gtna"
+        data-id="cmp35qnfw0006eh69ap6p3lfz"
         data-title="From Hobby Photos to Shotwise: Building an AI Photo Critique App"
         class="article-share-link"
         type="button"
@@ -425,7 +389,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/08/31/ai-llm/review-build-with-claude-code.html"
-        data-id="cmp35nucd000xqu69bhki6pwh"
+        data-id="cmp35qng70015eh699kjbfjvj"
         data-title="Building with Claude Code: 7 Weeks of Review and Reflection"
         class="article-share-link"
         type="button"
@@ -505,7 +469,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/27/ai-llm/application-layer-completion-and-review.html"
-        data-id="cmp35nuc10004qu6953g3fiv1"
+        data-id="cmp35qnfv0004eh690fjw8xhg"
         data-title="Application Layer Completion and Review for Aperilex"
         class="article-share-link"
         type="button"
@@ -587,7 +551,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/20/ai-llm/aperilex-infrastructure-layer-completion.html"
-        data-id="cmp35nubz0001qu693c7t5ism"
+        data-id="cmp35qnfs0001eh69d687drkw"
         data-title="Aperilex Infrastructure Layer Completion: An Intense Learning and Developing Journey"
         class="article-share-link"
         type="button"
@@ -671,7 +635,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/12/ai-llm/infrasturecture-layer-edgar-and-llm.html"
-        data-id="cmp35nuc9000jqu694ose8ssh"
+        data-id="cmp35qng0000feh69a0pf7z8r"
         data-title="Aperilex Architecture Update: Integrating EdgarTools and a Hierarchical LLM Pipeline in Infrastructure Layer"
         class="article-share-link"
         type="button"
@@ -759,7 +723,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/09/ai-llm/domain-layer-implementation.html"
-        data-id="cmp35nuc5000aqu695nc094lx"
+        data-id="cmp35qng1000jeh69equg2y7r"
         data-title="Domain Layer Implementation: Building Aperilex&#39;s Core and Revision with Claude Code"
         class="article-share-link"
         type="button"
@@ -847,7 +811,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/08/ai-llm/initial-setups-and-plan.html"
-        data-id="cmp35nuc9000kqu6974t1fco3"
+        data-id="cmp35qng2000leh697ebkgwgt"
         data-title="Architecting Aperilex: Initial Development Setups and Planning"
         class="article-share-link"
         type="button"
@@ -937,7 +901,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/07/ai-llm/rewrite-sec-filing-analysis.html"
-        data-id="cmp35nucf0014qu6968p92g6e"
+        data-id="cmp35qng70019eh69fbjq1xd1"
         data-title="Learning with Claude Code: Plan the Rewrite for SEC Analysis Project"
         class="article-share-link"
         type="button"
@@ -1024,7 +988,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/05/journal-app/journal-importer.html"
-        data-id="cmp35nucn001xqu693vct4c0o"
+        data-id="cmp35qngd0020eh69gdrh4lzw"
         data-title="From Static to Dynamic - A Foundational Refactor for Synapse"
         class="article-share-link"
         type="button"
