@@ -162,6 +162,133 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
           <section class="post-container" id="main">
   
     <article
+  id="post-ai-llm/building-dossigraphica"
+  class="h-entry article article-type-post"
+  itemprop="blogPost"
+  itemscope
+  itemtype="https://schema.org/BlogPosting"
+>
+  <div class="article-meta">
+    
+
+<p class="article-date">
+  Published: <time class="dt-published" datetime="2026-05-11T23:00:00.000Z" itemprop="datePublished">2026-05-12</time>
+  <br>
+  
+</p>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/AI-Development/">AI Development</a> / <a class="article-category-link" href="/categories/AI-Development/Dossigraphica/">Dossigraphica</a>
+  </div>
+
+  </div>
+  <hr />
+  <div class="article-inner">
+     
+    <header class="article-header">
+      
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2026/05/12/ai-llm/building-dossigraphica.html">Building Dossigraphica: An Autonomous Geo-Intelligence Dashboard</a>
+    </h1>
+  
+
+    </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+       <p>Spent the last few weeks diving deep into building Dossigraphica—a high-fidelity Geographic Intelligence (GEOINT) visualization platform.</p>
+<p>This one was a massive step up in complexity. While some projects are quick dopamine sprints, Dossigraphica turned into an intense, multi-layered architectural challenge, blending heavy frontend 3D rendering with a complex, autonomous backend research pipeline.</p>
+<h3 id="Basic-Information">Basic Information</h3>
+<p>First, let’s look at some interesting stats from the project:</p>
+<ul>
+<li><strong>Core Focus:</strong> Visualizing global footprint, supply chain dependencies, and geopolitical risk profiles.</li>
+<li><strong>Frontend Stack:</strong> React 19, TypeScript, Vite, Tailwind CSS 4, Zustand 5, <code>react-globe.gl</code>, Three.js.</li>
+<li><strong>Backend Stack:</strong> Python with FastAPI (SSE Streaming), LiteLLM (for local llama.cpp, Gemini, Featherless).</li>
+<li><strong>Research Pipeline:</strong> Async generators, Pydantic, Brave Search API, Jina Reader API.</li>
+</ul>
+<h3 id="From-Concept-to-Reality-The-“Parchment-and-Ink”-Aesthetic">From Concept to Reality: The “Parchment and Ink” Aesthetic</h3>
+<p>One of the most satisfying parts of this project was nailing the visual identity. I didn’t want this to look like just another generic dashboard. I wanted it to feel like a modern intelligence brief mixed with classic cartography.</p>
+<p>We landed on a “Parchment and Ink” style. The centerpiece is the interactive 3D globe built with <code>react-globe.gl</code> and Three.js, which maps out office hubs, supply chain arcs, and risk hotspots. Combining this with the integrated global strategy hub—featuring the Value Chain Matrix and Macro Risk Convergence panels—made the UI feel incredibly immersive.</p>
+<h3 id="The-Autonomous-Research-Agent-Structuring-the-Unstructured">The Autonomous Research Agent: Structuring the Unstructured</h3>
+<p>The real beast of Dossigraphica is the Python Sidecar—an autonomous, local-first research agent pipeline. Instead of just querying an LLM, the pipeline executes a deterministic workflow:</p>
+<ol>
+<li><strong>Planning:</strong> Generating targeted search queries.</li>
+<li><strong>Searching:</strong> Using the Brave Discovery API to scour the web.</li>
+<li><strong>Extraction &amp; Sieve:</strong> Using Jina Reader API for markdown extraction, followed by a Map-Reduce summarization.</li>
+<li><strong>Entity Assembly:</strong> Detecting data gaps and synthesizing geographic information.</li>
+<li><strong>Drafting:</strong> Parallel generation of structured JSON intelligence and rich Markdown dossiers.</li>
+</ol>
+<p>Getting an LLM to reliably extract and structure geographic and supply chain data without hallucinating or losing context was a massive challenge.</p>
+<h3 id="Challenges-Tracing-Assembly-and-Rate-Limits">Challenges: Tracing, Assembly, and Rate Limits</h3>
+<p>Building an orchestration engine that runs multiple async tasks in parallel is never easy.</p>
+<p>I hit several walls during development:</p>
+<ul>
+<li><strong>Tracing Model Inputs and Outputs:</strong> Debugging an agentic pipeline where the LLM is constantly communicating and restructuring data is hard. The current setup for logs and inference tracing helped immensely to peek under the hood and understand exactly where the agent was hallucinating or failing.</li>
+<li><strong>Entity Assembly and Enrichment Search:</strong> This is the absolute beast step of the pipeline. Synthesizing disparate data points, identifying gaps, and enriching the geographic context takes the most time and tuning to perfect the answers.</li>
+<li><strong>API Bottlenecks and Quotas:</strong> While the Gemini API handles the heavy lifting, the Jina Reader API turned out to be the current bottleneck for pipeline execution speed. Without an API key, the free tier limits you to 20 requests per minute, meaning bulk URL processing has to be carefully throttled.</li>
+</ul>
+<h3 id="Tech-Stack-Reality-Check-The-Hybrid-LLM-Setup">Tech Stack Reality Check: The Hybrid LLM Setup</h3>
+<p>Building the intelligence layer required moving past simple API calls and designing a resilient, hybrid orchestration system:</p>
+<ul>
+<li><strong>Model-Agnostic Architecture (High-Level):</strong> The pipeline is structured to decouple the research logic from the underlying model provider. By implementing a unified routing layer, the system can dynamically switch between heavy-duty cloud models (Gemini) for complex entity synthesis, and local fallback instances for lighter tasks if needed (My 3070 did run a couple of research with Google new Gemma4 model, it was decent but not mind blowing and time consuming).</li>
+<li><strong>Unified Interface via LiteLLM (Technical Deep-Dive):</strong> To achieve this flexibility without duplicating prompt engineering, the backend relies on <code>LiteLLM</code>. This acts as a proxy, mapping standardized OpenAI-compatible payloads to Gemini endpoints under the hood. This allows seamless integration with a local <code>llama.cpp</code> or Featherless server just by swapping an environment variable as you like (Funny how I started with this whole project using local LLM but now I am here using Gemini for everything lol).</li>
+</ul>
+<h3 id="Final-Thoughts">Final Thoughts</h3>
+<p>Dossigraphica sits right at the intersection of complex data orchestration and high-end data visualization.</p>
+<p>It’s proof that you can take unstructured web data, run it through an autonomous agentic pipeline, and render it into a highly structured, beautiful 3D intelligence dashboard (dashboard is just the side project but nice to again have this full-stack experience). It was an intense learning journey driven by curiosity and the desire to build something on my own to automate a task I find interesting (Geopolitical risk analysis of publicly traded companies).</p>
+<p>For now, I’m just enjoying watching the globe spin as the research agent seamlessly streams its findings into the UI.</p>
+ 
+    </div>
+    <footer class="article-footer">
+      <button
+        title="Share"
+        data-url="https://zhicheng-wang.com/2026/05/12/ai-llm/building-dossigraphica.html"
+        data-id="cmp35nuc30005qu69c8p0hv8l"
+        data-title="Building Dossigraphica: An Autonomous Geo-Intelligence Dashboard"
+        class="article-share-link"
+        type="button"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="1.2em"
+          viewBox="0 0 448 512"
+        >
+          <path
+            fill="#ffffff"
+            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
+          />
+        </svg>
+      </button>
+        
+  <ul class="article-tag-list">
+    
+      <li class="article-tag-list-item"><a href="/tags/python/">#python</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/llm/">#llm</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/react/">#react</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/typescript/">#typescript</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/threejs/">#threejs</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/fastapi/">#fastapi</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/agents/">#agents</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/geoint/">#geoint</a></li>
+    
+  </ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+ 
+
+  
+    <article
   id="post-ai-llm/building-shotwise-another-debug"
   class="h-entry article article-type-post"
   itemprop="blogPost"
@@ -208,7 +335,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/11/30/ai-llm/building-shotwise-another-debug.html"
-        data-id="cmmv4er5f0005m4691xho82d0"
+        data-id="cmp35nuc30006qu69b1t1gtna"
         data-title="From Hobby Photos to Shotwise: Building an AI Photo Critique App"
         class="article-share-link"
         type="button"
@@ -227,11 +354,11 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
         
   <ul class="article-tag-list">
     
-      <li class="article-tag-list-item"><a href="/tags/nextjs/">#nextjs</a></li>
-    
       <li class="article-tag-list-item"><a href="/tags/react/">#react</a></li>
     
       <li class="article-tag-list-item"><a href="/tags/typescript/">#typescript</a></li>
+    
+      <li class="article-tag-list-item"><a href="/tags/nextjs/">#nextjs</a></li>
     
       <li class="article-tag-list-item"><a href="/tags/stripe/">#stripe</a></li>
     
@@ -298,7 +425,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/08/31/ai-llm/review-build-with-claude-code.html"
-        data-id="cmmv4er5p0011m4696y4t9fup"
+        data-id="cmp35nucd000xqu69bhki6pwh"
         data-title="Building with Claude Code: 7 Weeks of Review and Reflection"
         class="article-share-link"
         type="button"
@@ -378,7 +505,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/27/ai-llm/application-layer-completion-and-review.html"
-        data-id="cmmv4er5f0004m4698vmndtsa"
+        data-id="cmp35nuc10004qu6953g3fiv1"
         data-title="Application Layer Completion and Review for Aperilex"
         class="article-share-link"
         type="button"
@@ -460,7 +587,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/20/ai-llm/aperilex-infrastructure-layer-completion.html"
-        data-id="cmmv4er5d0001m46909os9929"
+        data-id="cmp35nubz0001qu693c7t5ism"
         data-title="Aperilex Infrastructure Layer Completion: An Intense Learning and Developing Journey"
         class="article-share-link"
         type="button"
@@ -544,7 +671,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/12/ai-llm/infrasturecture-layer-edgar-and-llm.html"
-        data-id="cmmv4er5j000em4694vwlfi6x"
+        data-id="cmp35nuc9000jqu694ose8ssh"
         data-title="Aperilex Architecture Update: Integrating EdgarTools and a Hierarchical LLM Pipeline in Infrastructure Layer"
         class="article-share-link"
         type="button"
@@ -632,7 +759,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/09/ai-llm/domain-layer-implementation.html"
-        data-id="cmmv4er5g0006m4694peb8xu7"
+        data-id="cmp35nuc5000aqu695nc094lx"
         data-title="Domain Layer Implementation: Building Aperilex&#39;s Core and Revision with Claude Code"
         class="article-share-link"
         type="button"
@@ -720,7 +847,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/08/ai-llm/initial-setups-and-plan.html"
-        data-id="cmmv4er5l000jm46959357tpi"
+        data-id="cmp35nuc9000kqu6974t1fco3"
         data-title="Architecting Aperilex: Initial Development Setups and Planning"
         class="article-share-link"
         type="button"
@@ -810,7 +937,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/07/ai-llm/rewrite-sec-filing-analysis.html"
-        data-id="cmmv4er5q0015m4695b3b51eh"
+        data-id="cmp35nucf0014qu6968p92g6e"
         data-title="Learning with Claude Code: Plan the Rewrite for SEC Analysis Project"
         class="article-share-link"
         type="button"
@@ -897,7 +1024,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
       <button
         title="Share"
         data-url="https://zhicheng-wang.com/2025/07/05/journal-app/journal-importer.html"
-        data-id="cmmv4er5u001um469a12wbl3u"
+        data-id="cmp35nucn001xqu693vct4c0o"
         data-title="From Static to Dynamic - A Foundational Refactor for Synapse"
         class="article-share-link"
         type="button"
@@ -934,96 +1061,11 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
  
 
   
-    <article
-  id="post-journal-app/weekly-report-generator"
-  class="h-entry article article-type-post"
-  itemprop="blogPost"
-  itemscope
-  itemtype="https://schema.org/BlogPosting"
->
-  <div class="article-meta">
-    
-
-<p class="article-date">
-  Published: <time class="dt-published" datetime="2025-07-02T21:00:00.000Z" itemprop="datePublished">2025-07-02</time>
-  <br>
-  
-  Updated: <time class="dt-published" datetime="2025-07-02T23:33:33.455Z" itemprop="datePublished">2025-07-03</time>
-  
-</p>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Journal-App/">Journal App</a>
-  </div>
-
-  </div>
-  <hr />
-  <div class="article-inner">
-     
-    <header class="article-header">
-      
-  
-    <h1 itemprop="name">
-      <a class="p-name article-title" href="/2025/07/02/journal-app/weekly-report-generator.html">Building AI-Powered Weekly Reports in Synapse</a>
-    </h1>
-  
-
-    </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-       <p>Raw data is valuable, but insights are transformative. Synapse has been good enough at capturing daily activities, but the next logical step has always been to synthesize that data into high-level understanding. Today’s task is to implement the new feature on the roadmap: <strong>AI-Powered Weekly Reports</strong>.</p>
-<p>This feature moves beyond simple data retrieval and uses LLM to analyze a week’s worth of activities, generating a concise, structured summary of your time allocation, key accomplishments, and emerging trends.</p> 
-      <p class="article-more-link">
-        <a href="/2025/07/02/journal-app/weekly-report-generator.html#more">Read More &gt;&gt;</a>
-      </p>
-       
-    </div>
-    <footer class="article-footer">
-      <button
-        title="Share"
-        data-url="https://zhicheng-wang.com/2025/07/02/journal-app/weekly-report-generator.html"
-        data-id="cmmv4er5v0021m4695tz5f7u9"
-        data-title="Building AI-Powered Weekly Reports in Synapse"
-        class="article-share-link"
-        type="button"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          height="1.2em"
-          viewBox="0 0 448 512"
-        >
-          <path
-            fill="#ffffff"
-            d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z"
-          />
-        </svg>
-      </button>
-        
-  <ul class="article-tag-list">
-    
-      <li class="article-tag-list-item"><a href="/tags/LLM/">#LLM</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/AI/">#AI</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/Next-js/">#Next.js</a></li>
-    
-      <li class="article-tag-list-item"><a href="/tags/Zod/">#Zod</a></li>
-    
-  </ul>
-
-    </footer>
-  </div>
-  
-</article>
-
- 
-
-  
 
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -1033,7 +1075,7 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
   <div class="widget-wrap">
     <p class="widget-title">Categories</p>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/">AI Development</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/Aperilex/">Aperilex</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/Shotwise/">Shotwise</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Journal-App/">Journal App</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SEC-Analysis/">SEC Analysis</a></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/">AI Development</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/Aperilex/">Aperilex</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/Dossigraphica/">Dossigraphica</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/AI-Development/Shotwise/">Shotwise</a></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Journal-App/">Journal App</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/Reading/">Reading</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/SEC-Analysis/">SEC Analysis</a></li></ul>
     </div>
   </div>
 
@@ -1044,6 +1086,10 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
     <p class="widget-title">Recent Posts</p>
     <div class="widget">
       <ul>
+        
+          <li class="recent-post-list-item">
+            <a href="/2026/05/12/ai-llm/building-dossigraphica.html">Building Dossigraphica: An Autonomous Geo-Intelligence Dashboard</a>
+          </li>
         
           <li class="recent-post-list-item">
             <a href="/2025/11/30/ai-llm/building-shotwise-another-debug.html">From Hobby Photos to Shotwise: Building an AI Photo Critique App</a>
@@ -1059,10 +1105,6 @@ I&#39;m pretty confident this debugging process will be wrapped up by the end of
         
           <li class="recent-post-list-item">
             <a href="/2025/07/20/ai-llm/aperilex-infrastructure-layer-completion.html">Aperilex Infrastructure Layer Completion: An Intense Learning and Developing Journey</a>
-          </li>
-        
-          <li class="recent-post-list-item">
-            <a href="/2025/07/12/ai-llm/infrasturecture-layer-edgar-and-llm.html">Aperilex Architecture Update: Integrating EdgarTools and a Hierarchical LLM Pipeline in Infrastructure Layer</a>
           </li>
         
       </ul>
