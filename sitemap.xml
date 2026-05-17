@@ -744,6 +744,20 @@
   </url>
   
   <url>
+    <loc>https://zhicheng-wang.com/tags/Optimization/</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Copilot/</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://zhicheng-wang.com/tags/AI-Development/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -759,20 +773,6 @@
   
   <url>
     <loc>https://zhicheng-wang.com/tags/Security/</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Optimization/</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Copilot/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -870,13 +870,6 @@
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/tags/Zod/</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://zhicheng-wang.com/tags/RAG/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -885,6 +878,13 @@
   
   <url>
     <loc>https://zhicheng-wang.com/tags/Search/</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Zod/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -989,13 +989,6 @@
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/tags/Cloud-Computing-Technologies/</loc>
-    <lastmod>2026-05-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://zhicheng-wang.com/tags/Inomad-Diary/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -1004,6 +997,13 @@
   
   <url>
     <loc>https://zhicheng-wang.com/tags/Azure/</loc>
+    <lastmod>2026-05-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Cloud-Computing-Technologies/</loc>
     <lastmod>2026-05-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
