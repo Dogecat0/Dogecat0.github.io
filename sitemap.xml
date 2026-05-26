@@ -781,13 +781,6 @@
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/tags/AI-Development/</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://zhicheng-wang.com/tags/Project-Setup/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
@@ -803,6 +796,13 @@
   
   <url>
     <loc>https://zhicheng-wang.com/tags/Inomad/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/AI-Development/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -838,20 +838,6 @@
   
   <url>
     <loc>https://zhicheng-wang.com/tags/JavaScript/</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Book-Notes/</loc>
-    <lastmod>2026-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://zhicheng-wang.com/tags/Psychology/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -922,6 +908,20 @@
   
   <url>
     <loc>https://zhicheng-wang.com/tags/Zod/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Book-Notes/</loc>
+    <lastmod>2026-05-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://zhicheng-wang.com/tags/Psychology/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -1077,14 +1077,14 @@
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/categories/Reading/</loc>
+    <loc>https://zhicheng-wang.com/categories/Journal-App/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://zhicheng-wang.com/categories/Journal-App/</loc>
+    <loc>https://zhicheng-wang.com/categories/Reading/</loc>
     <lastmod>2026-05-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
