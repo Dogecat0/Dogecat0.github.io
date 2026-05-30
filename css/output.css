@@ -832,10 +832,15 @@ blockquote {
   }
 }
 
-/* Ensure no bold for any text in subtitle */
+/* Ensure no bold for any text in subtitle except strong/b tags */
 
 .header-subtitle * {
   font-weight: 300;
+}
+
+.header-subtitle strong,
+  .header-subtitle b {
+  font-weight: 600;
 }
 
 .header-description {
@@ -858,10 +863,15 @@ blockquote {
   }
 }
 
-/* Ensure no bold for any text in description */
+/* Ensure no bold for any text in description except strong/b tags */
 
 .header-description * {
   font-weight: 300;
+}
+
+.header-description strong,
+  .header-description b {
+  font-weight: 600;
 }
 
 .nav-menu {

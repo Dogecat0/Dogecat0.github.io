@@ -187,18 +187,28 @@
     @apply text-xl md:text-2xl font-light italic py-3 md:py-5 text-muted;
   }
 
-  /* Ensure no bold for any text in subtitle */
+  /* Ensure no bold for any text in subtitle except strong/b tags */
   .header-subtitle * {
     @apply font-light;
+  }
+
+  .header-subtitle strong,
+  .header-subtitle b {
+    @apply font-semibold;
   }
 
   .header-description {
     @apply text-base md:text-lg font-light leading-relaxed max-w-5xl py-3 md:py-5 text-muted;
   }
 
-  /* Ensure no bold for any text in description */
+  /* Ensure no bold for any text in description except strong/b tags */
   .header-description * {
     @apply font-light;
+  }
+
+  .header-description strong,
+  .header-description b {
+    @apply font-semibold;
   }
 
   .nav-menu {
